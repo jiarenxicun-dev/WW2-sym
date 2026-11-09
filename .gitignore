@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+
+# Databases & local state
+data/
+*.db
+*.db-wal
+*.db-shm
+
+# Archives & Temporary
+*.zip
+*.log
+scratch/
