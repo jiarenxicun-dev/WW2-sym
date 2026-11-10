@@ -629,11 +629,13 @@ async def handle_custom_tank(request: web.Request) -> web.Response:
 
     world_id = _get_world_id(request, body if "body" in locals() else None)
     state = load_world_state(world_id)
+    category = (body.get("category") or "中戦車").strip()
     new_tank = {
         "id": f"custom_tk_{uuid.uuid4().hex[:6]}",
         "name": f"{name} ({base_hull}+{main_gun})" if base_hull else name,
         "country": country,
-        "type": "架空/カスタム戦車",
+        "category": category,
+        "type": body.get("type") or category or "架空/カスタム戦車",
         "cost": round(cost, 2),
         "desc": desc or f"車体: {base_hull or '独自'} / 主砲: {main_gun or '独自'}（1945年9月15日基準準拠）",
     }
@@ -641,6 +643,80 @@ async def handle_custom_tank(request: web.Request) -> web.Response:
     save_world_state(state, world_id if "world_id" in locals() else "world_admin1")
     await broadcast_state(state)
     return web.json_response({"ok": True, "state": state, "tank": new_tank})
+
+
+async def handle_military_import(request: web.Request) -> web.Response:
+    """
+    軍備・国家データ共有コードからのインポート処理。
+    指定国家に師団、艦艇、機体、施設、マイ師団を一括インポート・復元する。
+    """
+    body = await request.json()
+    nation_id = (body.get("nation_id") or "").strip()
+    data = body.get("data") or {}
+
+    world_id = _get_world_id(request, body)
+    state = load_world_state(world_id)
+
+    nat = _find_nation(state, nation_id)
+    if not nat:
+        return web.json_response({"ok": False, "error": "対象国家が見つかりません。"}, status=404)
+
+    # 師団の追加
+    if "divisions" in data and isinstance(data["divisions"], list):
+        for div in data["divisions"]:
+            div_copy = dict(div)
+            div_copy["id"] = f"div_{uuid.uuid4().hex[:8]}"
+            nat.setdefault("divisions", []).append(div_copy)
+
+    # 海軍艦艇・船団
+    if "naval_units" in data and isinstance(data["naval_units"], list):
+        for nu in data["naval_units"]:
+            existing = next((x for x in nat.setdefault("naval_units", []) if x.get("unit_id") == nu.get("unit_id")), None)
+            if existing:
+                existing["count"] = existing.get("count", 0) + nu.get("count", 1)
+            else:
+                nat["naval_units"].append(dict(nu))
+
+    # 空軍機体
+    if "air_units" in data and isinstance(data["air_units"], list):
+        for au in data["air_units"]:
+            existing = next((x for x in nat.setdefault("air_units", []) if x.get("unit_id") == au.get("unit_id")), None)
+            if existing:
+                existing["count"] = existing.get("count", 0) + au.get("count", 1)
+            else:
+                nat["air_units"].append(dict(au))
+
+    # 施設
+    if "facilities" in data and isinstance(data["facilities"], list):
+        for fac in data["facilities"]:
+            fid = fac if isinstance(fac, str) else fac.get("facility_id")
+            inst = {
+                "id": f"inst_{uuid.uuid4().hex[:6]}",
+                "facility_id": fid,
+                "province_id": fac.get("province_id", nat.get("capital_id", "")) if isinstance(fac, dict) else nat.get("capital_id", ""),
+            }
+            nat.setdefault("facilities", []).append(inst)
+
+    # マイ師団テンプレート
+    if "saved_division_templates" in data and isinstance(data["saved_division_templates"], list):
+        for tpl in data["saved_division_templates"]:
+            tpl_copy = dict(tpl)
+            tpl_copy["id"] = f"utpl_{uuid.uuid4().hex[:8]}"
+            tpl_copy["nation_id"] = nat["id"]
+            state.setdefault("saved_division_templates", []).append(tpl_copy)
+
+    # プロビンス側の facilities リストにも同期
+    prov_map = {p["id"]: p for p in state.get("provinces", [])}
+    for fac in nat.get("facilities", []):
+        pid = fac.get("province_id") if isinstance(fac, dict) else nat.get("capital_id")
+        fid = fac.get("facility_id") if isinstance(fac, dict) else fac
+        if pid and pid in prov_map:
+            pf = prov_map[pid].setdefault("facilities", [])
+            if fid not in pf:
+                pf.append(fid)
+    save_world_state(state, world_id)
+    await broadcast_state(state)
+    return web.json_response({"ok": True, "state": state})
 
 
 async def handle_procure(request: web.Request) -> web.Response:
@@ -1180,6 +1256,7 @@ def create_app() -> web.Application:
     app.router.add_post("/api/military/division", handle_division_action)
     app.router.add_post("/api/military/custom_tank", handle_custom_tank)
     app.router.add_post("/api/military/procure", handle_procure)
+    app.router.add_post("/api/military/import", handle_military_import)
     app.router.add_post("/api/diplomacy/treaty", handle_treaty)
     app.router.add_post("/api/news/post", handle_news_post)
     app.router.add_post("/api/war/declare", handle_war_declare)

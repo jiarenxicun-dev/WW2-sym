@@ -551,10 +551,48 @@ input[type="color"] {
 }
 
 .shop-filter-bar {
-  display: grid;
-  grid-template-columns: 160px 1fr;
+  display: flex;
   gap: 6px;
   margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.shop-filter-bar select {
+  min-width: 140px;
+}
+
+.shop-filter-bar input[type="text"] {
+  flex: 1;
+  min-width: 180px;
+}
+
+.badge-category {
+  display: inline-block;
+  padding: 1px 6px;
+  font-size: 10.5px;
+  font-weight: 600;
+  border-radius: 4px;
+  background: rgba(56, 189, 248, 0.15);
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+}
+
+.badge-cat-heavy {
+  background: rgba(239, 68, 68, 0.15);
+  color: #f87171;
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+.badge-cat-medium {
+  background: rgba(245, 158, 11, 0.15);
+  color: #fbbf24;
+  border-color: rgba(245, 158, 11, 0.3);
+}
+
+.badge-cat-light {
+  background: rgba(16, 185, 129, 0.15);
+  color: #34d399;
+  border-color: rgba(16, 185, 129, 0.3);
 }
 
 .shop-list, .inventory-list, .news-feed, .treaty-list, .nation-mini-list {

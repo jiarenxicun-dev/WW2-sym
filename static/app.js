@@ -35,7 +35,50 @@ let BUILDER_SUPPORTS = [{ support_id: "sup_at", tank_id: null, custom_calc: fals
 let BUILDER_OVERRIDE_COST = 380.0;
 
 // ショップタブ状態
-let ACTIVE_SHOP_DOMAIN = "navy"; // navy | air | facility
+let ACTIVE_SHOP_DOMAIN = "navy"; // navy | air | facility | tank
+
+// 平時マップカラーモード
+let ACTIVE_PEACE_COLOR_MODE = "owner"; // owner | diplomacy
+
+function getProvinceDiplomacyColor(p, activeNat) {
+  if (!p || !p.owner_id || !activeNat) return null;
+  if (p.owner_id === activeNat.id) {
+    return { fill: "#facc15", stroke: "#ca8a04", label: "自国領", fillOpacity: "0.68" };
+  }
+
+  const treaties = APP_STATE?.treaties || [];
+  let isAlliance = false;
+  let isNap = false;
+  let isTransit = false;
+
+  for (const tr of treaties) {
+    const isParty = (tr.nation_a === activeNat.id && tr.nation_b === p.owner_id) ||
+                    (tr.nation_b === activeNat.id && tr.nation_a === p.owner_id);
+    if (!isParty) continue;
+    if (tr.type === "alliance") isAlliance = true;
+    else if (tr.type === "nap") isNap = true;
+    else if (tr.type === "transit") isTransit = true;
+  }
+
+  let isAtWar = false;
+  for (const w of (APP_STATE?.wars || [])) {
+    if (w.status !== "active") continue;
+    const inAtk = (w.attackers || []).includes(activeNat.id);
+    const inDfn = (w.defenders || []).includes(activeNat.id);
+    const targetInAtk = (w.attackers || []).includes(p.owner_id);
+    const targetInDfn = (w.defenders || []).includes(p.owner_id);
+    if ((inAtk && targetInDfn) || (inDfn && targetInAtk)) {
+      isAtWar = true;
+      break;
+    }
+  }
+
+  if (isAtWar) return { fill: "#ef4444", stroke: "#b91c1c", label: "交戦国", fillOpacity: "0.65" };
+  if (isAlliance) return { fill: "#10b981", stroke: "#047857", label: "同盟国", fillOpacity: "0.65" };
+  if (isNap) return { fill: "#38bdf8", stroke: "#0284c7", label: "不可侵", fillOpacity: "0.60" };
+  if (isTransit) return { fill: "#a855f7", stroke: "#7e22ce", label: "通行権", fillOpacity: "0.60" };
+  return { fill: "#475569", stroke: "#334155", label: "中立国", fillOpacity: "0.55" };
+}
 
 // PNGバケツ塗りキャンバス履歴
 let pngUndoStack = [];
@@ -558,7 +601,11 @@ function getActiveWar() {
 
 function getAllTanks() {
   if (!CATALOG) return [];
-  return [...(APP_STATE?.custom_tanks || []), ...CATALOG.tanks];
+  const list = [...(APP_STATE?.custom_tanks || []), ...(CATALOG.tanks || [])];
+  return list.map((t) => ({
+    ...t,
+    category: t.category || t.type || "その他",
+  }));
 }
 
 // ============================================================================
@@ -923,7 +970,15 @@ ${p.coastal ? "沿岸" : "内陸"}
     let stroke = "rgba(71,85,105,0.45)";
     let strokeW = "0.45";
 
-    if (owner) {
+    const activeNatForDiplo = getActiveNation();
+    const diploColor = ACTIVE_PEACE_COLOR_MODE === "diplomacy" ? getProvinceDiplomacyColor(p, activeNatForDiplo) : null;
+
+    if (diploColor) {
+      fill = diploColor.fill;
+      fillOpacity = diploColor.fillOpacity || "0.75";
+      stroke = diploColor.stroke;
+      strokeW = "0.85";
+    } else if (owner) {
       fill = owner.color;
       fillOpacity = "0.75";
       stroke = "rgba(15,23,42,0.85)";
@@ -1081,7 +1136,15 @@ function renderPeacetimeMap() {
     let stroke = "rgba(148,163,184,0.35)";
     let strokeW = "0.75";
 
-    if (mapStyle === "political") {
+    const activeNatForDiplo = getActiveNation();
+    const diploColor = ACTIVE_PEACE_COLOR_MODE === "diplomacy" ? getProvinceDiplomacyColor(p, activeNatForDiplo) : null;
+
+    if (diploColor) {
+      fill = diploColor.fill;
+      fillOpacity = diploColor.fillOpacity || "0.65";
+      stroke = diploColor.stroke;
+      strokeW = "0.9";
+    } else if (mapStyle === "political") {
       if (owner) {
         fill = owner.color;
         fillOpacity = "0.55";
@@ -2191,6 +2254,8 @@ function renderDivisionBuilderRows() {
   const regListEl = document.getElementById("builder-regiments-list");
   regListEl.innerHTML = "";
 
+  const tankCats = ["ALL", "重戦車", "中戦車", "軽戦車", "超重戦車", "巡航・快速戦車", "歩兵戦車", "自走砲・砲戦車"];
+
   BUILDER_REGIMENTS.forEach((item, idx) => {
     const regDef = CATALOG.base_regiments.find((r) => r.id === item.regiment_id) || CATALOG.base_regiments[0];
     const row = document.createElement("div");
@@ -2207,14 +2272,42 @@ function renderDivisionBuilderRows() {
     if (regDef.is_tank_unit) {
       const curTank = item.tank_id || regDef.default_tank_id || "su_t34_85";
       const tkObj = allTanks.find((t) => t.id === curTank) || allTanks[0];
+      const curCat = item.selected_cat || "ALL";
+      const filteredTanks = curCat === "ALL" ? allTanks : allTanks.filter((t) => t.category === curCat);
       const calcCost = !item.custom_calc && (curTank === "su_t34_85" || curTank === "us_m4_76") ? regDef.cost : +(tkObj.cost * 76 + 10).toFixed(1);
       unitCostNote = `${calcCost}億`;
+
+      const catOptions = tankCats.map((c) => `<option value="${c}" ${c === curCat ? "selected" : ""}>${c === "ALL" ? "🏷️ すべての区分" : c}</option>`).join("");
+      const badgeCls = tkObj.category === "重戦車" ? "badge-cat-heavy" : tkObj.category === "中戦車" ? "badge-cat-medium" : tkObj.category === "軽戦車" ? "badge-cat-light" : "badge-category";
+
+      const tankChoices = filteredTanks.some((t) => t.id === curTank) ? filteredTanks : [tkObj, ...filteredTanks.filter((t) => t.id !== curTank)];
+
       tankSelectHtml = `
-        <div style="margin-top:5px;">
-          <label style="font-size:11px;color:#fde047;">配備戦車選択（76両×単価＋諸経費10億）:</label>
+        <div style="margin-top:6px;background:rgba(0,0,0,0.2);padding:6px;border-radius:6px;border:1px solid rgba(255,255,255,0.08);">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:6px;margin-bottom:4px;flex-wrap:wrap;">
+            <label style="font-size:11px;color:#fde047;display:flex;align-items:center;gap:6px;">
+              <span>配備戦車 (76両):</span>
+              <span class="badge-category ${badgeCls}">${tkObj.category || "戦車"}</span>
+            </label>
+            <div style="display:flex;align-items:center;gap:4px;">
+              <span style="font-size:10.5px;color:#94a3b8;">区分絞込:</span>
+              <select data-tank-cat-reg-idx="${idx}" class="sel-reg-tank-cat" style="font-size:11px;padding:2px 6px;width:auto;min-width:110px;background:#1e293b;color:#f8fafc;border-color:#475569;">
+                ${catOptions}
+              </select>
+            </div>
+          </div>
           <select data-tank-reg-idx="${idx}" class="sel-reg-tank" style="margin-top:2px;">
-            ${allTanks.map((t) => `<option value="${t.id}" ${t.id === curTank ? "selected" : ""}>[${t.country}] ${t.name} （単価 ${t.cost}億/両 → 76両大隊: ${(t.cost * 76 + 10).toFixed(1)}億）</option>`).join("")}
+            ${tankChoices.map((t) => {
+              const bTag = `[${t.category || "戦車"}]`;
+              return `<option value="${t.id}" ${t.id === curTank ? "selected" : ""}>${bTag} [${t.country}] ${t.name} (単価${t.cost}億 → 76両大隊:${(t.cost * 76 + 10).toFixed(1)}億)</option>`;
+            }).join("")}
           </select>
+          <div style="font-size:10.5px;color:#94a3b8;margin-top:3px;display:flex;gap:8px;flex-wrap:wrap;">
+            <span>火力(対戦車HA): <strong style="color:#f87171;">${tkObj.ha || "-"}</strong></span>
+            <span>火力(対歩兵SA): <strong style="color:#fbbf24;">${tkObj.sa || "-"}</strong></span>
+            <span>装甲: <strong style="color:#38bdf8;">${tkObj.armor || "-"}</strong></span>
+            <span>速度: <strong style="color:#34d399;">${tkObj.speed || "-"}km/h</strong></span>
+          </div>
         </div>
       `;
     }
@@ -2265,14 +2358,42 @@ function renderDivisionBuilderRows() {
     if (supDef.is_tank_unit) {
       const curTank = item.tank_id || supDef.default_tank_id || "su_t34_85";
       const tkObj = allTanks.find((t) => t.id === curTank) || allTanks[0];
+      const curCat = item.selected_cat || "ALL";
+      const filteredTanks = curCat === "ALL" ? allTanks : allTanks.filter((t) => t.category === curCat);
       const calcCost = !item.custom_calc && (curTank === "su_t34_85" || curTank === "us_m4_76") ? supDef.cost : +(tkObj.cost * 22).toFixed(1);
       supCostNote = `${calcCost}億`;
+
+      const catOptions = tankCats.map((c) => `<option value="${c}" ${c === curCat ? "selected" : ""}>${c === "ALL" ? "🏷️ すべての区分" : c}</option>`).join("");
+      const badgeCls = tkObj.category === "重戦車" ? "badge-cat-heavy" : tkObj.category === "中戦車" ? "badge-cat-medium" : tkObj.category === "軽戦車" ? "badge-cat-light" : "badge-category";
+
+      const tankChoices = filteredTanks.some((t) => t.id === curTank) ? filteredTanks : [tkObj, ...filteredTanks.filter((t) => t.id !== curTank)];
+
       tankSelectHtml = `
-        <div style="margin-top:5px;">
-          <label style="font-size:11px;color:#fde047;">配備戦車選択（22両×単価）:</label>
+        <div style="margin-top:6px;background:rgba(0,0,0,0.2);padding:6px;border-radius:6px;border:1px solid rgba(255,255,255,0.08);">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:6px;margin-bottom:4px;flex-wrap:wrap;">
+            <label style="font-size:11px;color:#fde047;display:flex;align-items:center;gap:6px;">
+              <span>配備戦車 (22両):</span>
+              <span class="badge-category ${badgeCls}">${tkObj.category || "戦車"}</span>
+            </label>
+            <div style="display:flex;align-items:center;gap:4px;">
+              <span style="font-size:10.5px;color:#94a3b8;">区分絞込:</span>
+              <select data-tank-cat-sup-idx="${idx}" class="sel-sup-tank-cat" style="font-size:11px;padding:2px 6px;width:auto;min-width:110px;background:#1e293b;color:#f8fafc;border-color:#475569;">
+                ${catOptions}
+              </select>
+            </div>
+          </div>
           <select data-tank-sup-idx="${idx}" class="sel-sup-tank" style="margin-top:2px;">
-            ${allTanks.map((t) => `<option value="${t.id}" ${t.id === curTank ? "selected" : ""}>[${t.country}] ${t.name} （単価 ${t.cost}億/両 → 22両中隊: ${(t.cost * 22).toFixed(1)}億）</option>`).join("")}
+            ${tankChoices.map((t) => {
+              const bTag = `[${t.category || "戦車"}]`;
+              return `<option value="${t.id}" ${t.id === curTank ? "selected" : ""}>${bTag} [${t.country}] ${t.name} (単価${t.cost}億 → 22両中隊:${(t.cost * 22).toFixed(1)}億)</option>`;
+            }).join("")}
           </select>
+          <div style="font-size:10.5px;color:#94a3b8;margin-top:3px;display:flex;gap:8px;flex-wrap:wrap;">
+            <span>火力(対戦車HA): <strong style="color:#f87171;">${tkObj.ha || "-"}</strong></span>
+            <span>火力(対歩兵SA): <strong style="color:#fbbf24;">${tkObj.sa || "-"}</strong></span>
+            <span>装甲: <strong style="color:#38bdf8;">${tkObj.armor || "-"}</strong></span>
+            <span>速度: <strong style="color:#34d399;">${tkObj.speed || "-"}</strong></span>
+          </div>
         </div>
       `;
     }
@@ -2298,6 +2419,14 @@ function renderDivisionBuilderRows() {
       BUILDER_OVERRIDE_COST = null;
       renderDivisionBuilderRows();
       renderDivisionSpecPreview();
+    });
+  });
+
+  regListEl.querySelectorAll(".sel-reg-tank-cat").forEach((el) => {
+    el.addEventListener("change", () => {
+      const i = Number(el.getAttribute("data-tank-cat-reg-idx"));
+      BUILDER_REGIMENTS[i].selected_cat = el.value;
+      renderDivisionBuilderRows();
     });
   });
 
@@ -2331,6 +2460,14 @@ function renderDivisionBuilderRows() {
       BUILDER_OVERRIDE_COST = null;
       renderDivisionBuilderRows();
       renderDivisionSpecPreview();
+    });
+  });
+
+  supListEl.querySelectorAll(".sel-sup-tank-cat").forEach((el) => {
+    el.addEventListener("change", () => {
+      const i = Number(el.getAttribute("data-tank-cat-sup-idx"));
+      BUILDER_SUPPORTS[i].selected_cat = el.value;
+      renderDivisionBuilderRows();
     });
   });
 
@@ -2453,6 +2590,7 @@ function renderDivisionSpecPreview() {
 
 function renderProcurementShop() {
   const countrySel = document.getElementById("shop-country-filter");
+  const categorySel = document.getElementById("shop-category-filter");
   const searchVal = (document.getElementById("shop-search").value || "").trim().toLowerCase();
   const listEl = document.getElementById("shop-items-list");
   const facProvBar = document.getElementById("shop-facility-prov-bar");
@@ -2461,93 +2599,185 @@ function renderProcurementShop() {
   }
 
   let items = [];
-  if (ACTIVE_SHOP_DOMAIN === "navy") items = CATALOG.naval_units;
-  else if (ACTIVE_SHOP_DOMAIN === "air") items = CATALOG.air_units;
-  else items = CATALOG.facilities;
+  if (ACTIVE_SHOP_DOMAIN === "navy") items = CATALOG.naval_units || [];
+  else if (ACTIVE_SHOP_DOMAIN === "air") items = CATALOG.air_units || [];
+  else if (ACTIVE_SHOP_DOMAIN === "tank") items = getAllTanks();
+  else items = CATALOG.facilities || [];
 
-  // 国フィルタ更新
+  // 国フィルター更新
   const countries = Array.from(new Set(items.map((x) => x.country).filter(Boolean)));
   const prevCountry = countrySel.value;
-  countrySel.innerHTML = `<option value="ALL">すべての国・カテゴリ (${items.length}種)</option>`;
+  countrySel.innerHTML = `<option value="ALL">すべての国 (${items.length}種)</option>`;
   for (const c of countries) {
     countrySel.innerHTML += `<option value="${c}" ${c === prevCountry ? "selected" : ""}>${c}</option>`;
   }
   const activeCountry = countrySel.value;
 
+  // 区分（カテゴリ）フィルター更新
+  const categories = Array.from(new Set(items.map((x) => x.category).filter(Boolean)));
+  const prevCategory = categorySel?.value || "ALL";
+  if (categorySel) {
+    categorySel.innerHTML = `<option value="ALL">すべての兵器区分 (${categories.length}区分)</option>`;
+    for (const cat of categories) {
+      categorySel.innerHTML += `<option value="${cat}" ${cat === prevCategory ? "selected" : ""}>🏷️ ${cat}</option>`;
+    }
+  }
+  const activeCategory = categorySel?.value || "ALL";
+
   const filtered = items.filter((item) => {
     if (activeCountry !== "ALL" && item.country && item.country !== activeCountry) return false;
-    if (searchVal && !`${item.name} ${item.country || ""} ${item.category || ""} ${item.desc || ""}`.toLowerCase().includes(searchVal)) return false;
+    if (activeCategory !== "ALL" && item.category && item.category !== activeCategory) return false;
+    if (searchVal) {
+      const searchTarget = `${item.name} ${item.country || ""} ${item.category || ""} ${item.type || ""} ${item.desc || ""}`.toLowerCase();
+      if (!searchTarget.includes(searchVal)) return false;
+    }
     return true;
   });
 
   listEl.innerHTML = "";
   const activeNat = getActiveNation();
 
+  if (filtered.length === 0) {
+    listEl.innerHTML = `<div class="muted" style="text-align:center;padding:24px;font-size:13px;">条件に一致する兵器が見つかりませんでした（検索条件や区分フィルターを変更してください）</div>`;
+    return;
+  }
+
   for (const item of filtered) {
     const row = document.createElement("div");
     row.className = "shop-item";
+
+    const badgeCls = item.category === "重戦車" ? "badge-cat-heavy" : item.category === "中戦車" ? "badge-cat-medium" : item.category === "軽戦車" ? "badge-cat-light" : "badge-category";
+    const catBadge = item.category ? `<span class="badge-category ${badgeCls}">${item.category}</span>` : "";
+
     let subInfo = "";
+    let actionAreaHtml = "";
+
     if (ACTIVE_SHOP_DOMAIN === "navy") {
       const extra = [];
       if (item.carrier_air) extra.push(`艦載機 ${item.carrier_air}機込（空母の艦載機は値段に含まれます）`);
       if (item.transport_cap) extra.push(item.amphibious ? `1個師団を港のない沿岸へ強襲揚陸可能` : `港から港へ1個師団を海上輸送可能`);
-      subInfo = `[${item.country} / ${item.category}]${extra.length ? " — " + extra.join("・") : ""}`;
+      subInfo = `[${item.country}] ${extra.length ? extra.join("・") : "対艦:" + (item.naval_atk || "-") + " / 装甲:" + (item.naval_def || "-") + " / 対空:" + (item.aa || "-")}`;
+      actionAreaHtml = `
+        <span class="price-tag">${item.cost}億</span>
+        <input type="number" value="1" min="1" max="100" style="width:52px;" class="shop-qty-input" />
+        <button class="btn btn-xs btn-primary btn-buy-item">購入</button>
+      `;
     } else if (ACTIVE_SHOP_DOMAIN === "air") {
       const extra = [];
       if (item.can_carry_nuke) extra.push(`核兵器搭載可能`);
       if (item.is_nuke) extra.push(`B-29 スーパーフォートレスにのみ搭載可能（1発/月）`);
-      subInfo = `[${item.country} / ${item.category}]${extra.length ? " — " + extra.join("・") : ""}`;
+      subInfo = `[${item.country}] ${extra.length ? extra.join("・") : "対空:" + (item.air_atk || "-") + " / 対地CAS:" + (item.cas || "-") + " / 戦略爆撃:" + (item.strat || "-")}`;
+      actionAreaHtml = `
+        <span class="price-tag">${item.cost}億</span>
+        <input type="number" value="${item.is_nuke ? 1 : 10}" min="1" max="500" style="width:52px;" class="shop-qty-input" />
+        <button class="btn btn-xs btn-primary btn-buy-item">購入</button>
+      `;
+    } else if (ACTIVE_SHOP_DOMAIN === "tank") {
+      const bnCost = +(item.cost * 76 + 10).toFixed(1);
+      const coCost = +(item.cost * 22).toFixed(1);
+      subInfo = `[${item.country}] 1両:${item.cost}億 / 76両大隊:${bnCost}億 / 22両中隊:${coCost}億<br/><span style="color:#94a3b8;">対戦車HA: <strong style="color:#f87171;">${item.ha || "-"}</strong> ｜ 対歩兵SA: <strong style="color:#fbbf24;">${item.sa || "-"}</strong> ｜ 装甲: <strong style="color:#38bdf8;">${item.armor || "-"}</strong> ｜ 速度: <strong style="color:#34d399;">${item.speed || "-"}km/h</strong></span>`;
+      actionAreaHtml = `
+        <span class="price-tag">単価 ${item.cost}億/両</span>
+        <button class="btn btn-xs btn-amber btn-apply-tank-builder" title="この戦車を師団ビルダーの戦車枠にセット">🪖 師団ビルダーに適用</button>
+      `;
     } else {
       subInfo = item.desc || "";
+      actionAreaHtml = `
+        <span class="price-tag">${item.cost}億</span>
+        <button class="btn btn-xs btn-primary btn-buy-item">選択プロビンスに配備</button>
+      `;
     }
 
     row.innerHTML = `
       <div style="flex:1;min-width:0;">
-        <div class="shop-item-title">${item.name}</div>
-        <div class="shop-item-sub" style="white-space:normal;line-height:1.4;">${subInfo}</div>
+        <div class="shop-item-title" style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+          <span>${item.name}</span>
+          ${catBadge}
+          ${item.type && item.type !== item.category ? `<small class="muted" style="font-size:10px;">(${item.type})</small>` : ""}
+        </div>
+        <div class="shop-item-sub" style="white-space:normal;line-height:1.4;margin-top:2px;">${subInfo}</div>
       </div>
       <div style="display:flex;align-items:center;gap:6px;flex-shrink:0;">
-        <span class="price-tag">${item.cost}億</span>
-        ${ACTIVE_SHOP_DOMAIN !== "facility" ? `<input type="number" value="${ACTIVE_SHOP_DOMAIN === "air" && !item.is_nuke ? 10 : 1}" min="1" max="500" style="width:58px;" class="shop-qty-input" />` : ""}
-        <button class="btn btn-xs btn-primary btn-buy-item">${ACTIVE_SHOP_DOMAIN === "facility" ? "選択プロビンスに配備" : "購入"}</button>
+        ${actionAreaHtml}
       </div>
     `;
 
-    row.querySelector(".btn-buy-item").addEventListener("click", async () => {
-      if (!activeNat) return;
-      const qtyInput = row.querySelector(".shop-qty-input");
-      const facProvId = document.getElementById("shop-facility-prov")?.value || activeNat.capital_id;
-      if (ACTIVE_SHOP_DOMAIN === "facility") {
-        const targetP = APP_STATE?.provinces?.find((p) => p.id === facProvId);
-        if (["fac_naval_port", "fac_coastal_gun"].includes(item.id) && targetP && !targetP.coastal) {
-          showToast(`『${item.name}』は沿岸プロビンスにのみ配備可能です（『${targetP.name}』は内陸です）。`, true);
-          return;
+    if (ACTIVE_SHOP_DOMAIN === "tank") {
+      row.querySelector(".btn-apply-tank-builder")?.addEventListener("click", () => {
+        // 師団ビルダーの戦車枠（基幹連隊または補助大隊）にこの戦車をセット
+        let applied = false;
+        for (let i = 0; i < BUILDER_REGIMENTS.length; i++) {
+          const rDef = CATALOG.base_regiments.find((r) => r.id === BUILDER_REGIMENTS[i].regiment_id);
+          if (rDef?.is_tank_unit) {
+            BUILDER_REGIMENTS[i].tank_id = item.id;
+            BUILDER_REGIMENTS[i].selected_cat = item.category || "ALL";
+            BUILDER_REGIMENTS[i].custom_calc = true;
+            applied = true;
+            break;
+          }
         }
-      }
-      try {
-        const payload = {
-          nation_id: activeNat.id,
-          domain: ACTIVE_SHOP_DOMAIN,
-          action: "buy",
-          unit_id: item.id,
-          count: qty,
-        };
+        if (!applied) {
+          // 連隊に戦車大隊がない場合、補助大隊の戦車中隊を探す
+          for (let i = 0; i < BUILDER_SUPPORTS.length; i++) {
+            const sDef = CATALOG.support_battalions.find((s) => s.id === BUILDER_SUPPORTS[i].support_id);
+            if (sDef?.is_tank_unit) {
+              BUILDER_SUPPORTS[i].tank_id = item.id;
+              BUILDER_SUPPORTS[i].selected_cat = item.category || "ALL";
+              BUILDER_SUPPORTS[i].custom_calc = true;
+              applied = true;
+              break;
+            }
+          }
+        }
+        if (!applied && BUILDER_REGIMENTS.length > 0) {
+          // 戦車大隊を1枠目に設定
+          BUILDER_REGIMENTS[0] = { regiment_id: "reg_tank_bn", tank_id: item.id, selected_cat: item.category || "ALL", custom_calc: true };
+          applied = true;
+        }
+        BUILDER_OVERRIDE_COST = null;
+        renderDivisionBuilderRows();
+        renderDivisionSpecPreview();
+        showToast(`🪖 師団ビルダーに『${item.name}』を適用しました！`);
+        document.getElementById("builder-regiments-list")?.scrollIntoView({ behavior: "smooth" });
+      });
+    } else {
+      row.querySelector(".btn-buy-item")?.addEventListener("click", async () => {
+        if (!activeNat) return;
+        const qtyInput = row.querySelector(".shop-qty-input");
+        const qty = qtyInput ? Math.max(1, Number(qtyInput.value || 1)) : 1;
+        const facProvId = document.getElementById("shop-facility-prov")?.value || activeNat.capital_id;
         if (ACTIVE_SHOP_DOMAIN === "facility") {
-          payload.province_id = facProvId;
+          const targetP = APP_STATE?.provinces?.find((p) => p.id === facProvId);
+          if (["fac_naval_port", "fac_coastal_gun"].includes(item.id) && targetP && !targetP.coastal) {
+            showToast(`『${item.name}』は沿岸プロビンスにのみ配備可能です（『${targetP.name}』は内陸です）。`, true);
+            return;
+          }
         }
-        const res = await apiPost("/api/military/procure", payload);
-        APP_STATE = res.state;
-        if (ACTIVE_SHOP_DOMAIN === "facility") {
-          const provName = APP_STATE.provinces.find((p) => p.id === facProvId)?.name.split("(")[0] || facProvId;
-          showToast(`${item.name} を『${provName}』に配備しました！`);
-        } else {
-          showToast(`${item.name} ×${qty} を調達しました！`);
+        try {
+          const payload = {
+            nation_id: activeNat.id,
+            domain: ACTIVE_SHOP_DOMAIN,
+            action: "buy",
+            unit_id: item.id,
+            count: qty,
+          };
+          if (ACTIVE_SHOP_DOMAIN === "facility") {
+            payload.province_id = facProvId;
+          }
+          const res = await apiPost("/api/military/procure", payload);
+          APP_STATE = res.state;
+          if (ACTIVE_SHOP_DOMAIN === "facility") {
+            const provName = APP_STATE.provinces.find((p) => p.id === facProvId)?.name.split("(")[0] || facProvId;
+            showToast(`${item.name} を『${provName}』に配備しました！`);
+          } else {
+            showToast(`${item.name} ×${qty} を調達しました！`);
+          }
+          renderAll();
+        } catch (err) {
+          showToast(err.message, true);
         }
-        renderAll();
-      } catch (err) {
-        showToast(err.message, true);
-      }
-    });
+      });
+    }
 
     listEl.appendChild(row);
   }
@@ -3132,6 +3362,14 @@ function setupEventListeners() {
   document.getElementById("chk-show-units").addEventListener("change", renderPeacetimeMap);
   document.getElementById("chk-show-terrain")?.addEventListener("change", renderPeacetimeMap);
   document.getElementById("select-peace-map-style")?.addEventListener("change", renderPeacetimeMap);
+  document.getElementById("select-peace-color-mode")?.addEventListener("change", (e) => {
+    ACTIVE_PEACE_COLOR_MODE = e.target.value;
+    const legendEl = document.getElementById("diplomacy-legend-bar");
+    if (legendEl) {
+      legendEl.style.display = ACTIVE_PEACE_COLOR_MODE === "diplomacy" ? "flex" : "none";
+    }
+    renderPeacetimeMap();
+  });
   document.getElementById("state-search").addEventListener("input", renderStateSearch);
   document.getElementById("state-region-filter").addEventListener("change", renderStateSearch);
   document.getElementById("state-search-results").addEventListener("change", (e) => {
@@ -3587,6 +3825,22 @@ function setupEventListeners() {
     });
   });
 
+  document.getElementById("select-history-tpl")?.addEventListener("change", (e) => {
+    const tplId = e.target.value;
+    if (!tplId) return;
+    const tpl = CATALOG.division_templates.find((t) => t.id === tplId);
+    if (!tpl) return;
+    document.getElementById("div-name").value = tpl.name.replace(/（[^）]+）/g, "").replace(/【[^】]+】/g, "").trim();
+    BUILDER_REGIMENTS = tpl.regiments.map((r) => ({ ...r, custom_calc: false }));
+    BUILDER_ARTILLERY = tpl.artillery_id;
+    BUILDER_SUPPORTS = tpl.supports.map((s) => ({ ...s, custom_calc: false }));
+    BUILDER_OVERRIDE_COST = tpl.override_cost || tpl.official_cost || null;
+    renderDivisionBuilderRows();
+    renderDivisionSpecPreview();
+    showToast(`🏛️ 史実編成『${tpl.name}』をビルダーに読み込みました！`);
+    e.target.value = "";
+  });
+
   document.getElementById("btn-add-regiment").addEventListener("click", () => {
     if (BUILDER_REGIMENTS.length >= 4) {
       showToast("基幹連隊は最大4個までです", true);
@@ -3679,6 +3933,7 @@ function setupEventListeners() {
         name: document.getElementById("ct-name").value,
         base_hull: document.getElementById("ct-hull").value,
         main_gun: document.getElementById("ct-gun").value,
+        category: document.getElementById("ct-category")?.value || "中戦車",
         cost: Number(document.getElementById("ct-cost").value),
         desc: document.getElementById("ct-desc")?.value || "",
       });
@@ -3702,6 +3957,7 @@ function setupEventListeners() {
   });
 
   document.getElementById("shop-country-filter").addEventListener("change", renderProcurementShop);
+  document.getElementById("shop-category-filter")?.addEventListener("change", renderProcurementShop);
   document.getElementById("shop-search").addEventListener("input", renderProcurementShop);
 
   // 外交・条約・ニュース
@@ -3962,6 +4218,185 @@ function setupEventListeners() {
       const target = btn.getAttribute("data-close");
       if (target) document.getElementById(target).style.display = "none";
     });
+  });
+
+  // 国家データ／軍備共有コード（インポート・エクスポート）
+  initShareCodeModal();
+}
+
+function initShareCodeModal() {
+  const modal = document.getElementById("modal-share-code");
+  const openBtn = document.getElementById("btn-open-share-code");
+  if (!modal || !openBtn) return;
+
+  const exportPanel = document.getElementById("share-panel-export");
+  const importPanel = document.getElementById("share-panel-import");
+  const scopeSel = document.getElementById("share-export-scope");
+  const exportText = document.getElementById("share-export-text");
+  const importText = document.getElementById("share-import-text");
+  const copyBtn = document.getElementById("btn-copy-share-code");
+  const execImportBtn = document.getElementById("btn-execute-import");
+
+  function updateExportCode() {
+    const activeNat = getActiveNation();
+    if (!activeNat) {
+      exportText.value = "国家が選択されていません。";
+      return;
+    }
+    const scope = scopeSel?.value || "all";
+    let payload = {};
+
+    if (scope === "all") {
+      payload = {
+        version: "aiwa_ww2_v1",
+        type: "nation_military",
+        nation_id: activeNat.id,
+        nation_name: activeNat.name,
+        created_at: new Date().toISOString(),
+        data: {
+          divisions: activeNat.divisions || [],
+          naval_units: activeNat.naval_units || [],
+          air_units: activeNat.air_units || [],
+          facilities: activeNat.facilities || [],
+          saved_division_templates: (APP_STATE?.saved_division_templates || []).filter((t) => t.nation_id === activeNat.id),
+        },
+      };
+    } else if (scope === "divisions") {
+      payload = {
+        version: "aiwa_ww2_v1",
+        type: "divisions_only",
+        nation_name: activeNat.name,
+        created_at: new Date().toISOString(),
+        data: {
+          divisions: activeNat.divisions || [],
+          saved_division_templates: (APP_STATE?.saved_division_templates || []).filter((t) => t.nation_id === activeNat.id),
+        },
+      };
+    } else {
+      payload = {
+        version: "aiwa_ww2_v1",
+        type: "single_division_template",
+        created_at: new Date().toISOString(),
+        data: {
+          name: document.getElementById("div-name")?.value || "カスタム師団",
+          regiments: BUILDER_REGIMENTS,
+          artillery_id: BUILDER_ARTILLERY,
+          supports: BUILDER_SUPPORTS,
+          override_cost: BUILDER_OVERRIDE_COST,
+        },
+      };
+    }
+
+    const jsonStr = JSON.stringify(payload, null, 2);
+    try {
+      const b64 = btoa(unescape(encodeURIComponent(JSON.stringify(payload))));
+      exportText.value = `AIWA-CODE::${b64}::AIWA-END\n\n/* --- 可読テキスト形式 ---\n${jsonStr}\n*/`;
+    } catch (e) {
+      exportText.value = jsonStr;
+    }
+  }
+
+  openBtn.addEventListener("click", () => {
+    updateExportCode();
+    modal.style.display = "flex";
+  });
+
+  scopeSel?.addEventListener("change", updateExportCode);
+
+  modal.querySelectorAll(".share-tab-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      modal.querySelectorAll(".share-tab-btn").forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+      const mode = btn.getAttribute("data-share-mode");
+      if (mode === "export") {
+        exportPanel.style.display = "block";
+        importPanel.style.display = "none";
+        updateExportCode();
+      } else {
+        exportPanel.style.display = "none";
+        importPanel.style.display = "block";
+      }
+    });
+  });
+
+  copyBtn?.addEventListener("click", () => {
+    if (!exportText.value) return;
+    navigator.clipboard.writeText(exportText.value).then(() => {
+      showToast("📋 共有コードをクリップボードにコピーしました！");
+    }).catch(() => {
+      exportText.select();
+      document.execCommand("copy");
+      showToast("📋 共有コードをコピーしました！");
+    });
+  });
+
+  execImportBtn?.addEventListener("click", async () => {
+    const raw = (importText?.value || "").trim();
+    if (!raw) {
+      showToast("共有コードが入力されていません", true);
+      return;
+    }
+
+    let parsed = null;
+    const m = raw.match(/AIWA-CODE::([A-Za-z0-9+/=]+)::AIWA-END/);
+    if (m) {
+      try {
+        const jsonStr = decodeURIComponent(escape(atob(m[1])));
+        parsed = JSON.parse(jsonStr);
+      } catch (err) {
+        // フォールバック
+      }
+    }
+    if (!parsed) {
+      try {
+        const clean = raw.replace(/\/\*[\s\S]*?\*\//g, "").trim();
+        parsed = JSON.parse(clean);
+      } catch (err) {
+        showToast("共有コードの解析に失敗しました。正しいコードを貼り付けてください。", true);
+        return;
+      }
+    }
+
+    if (!parsed || !parsed.data) {
+      showToast("無効な共有コード形式です", true);
+      return;
+    }
+
+    // A. 単体師団編成の場合：師団ビルダーに即座に展開
+    if (parsed.type === "single_division_template") {
+      const d = parsed.data;
+      if (d.name) document.getElementById("div-name").value = d.name;
+      if (d.regiments) BUILDER_REGIMENTS = d.regiments.map((r) => ({ ...r, custom_calc: false }));
+      if (d.artillery_id) BUILDER_ARTILLERY = d.artillery_id;
+      if (d.supports) BUILDER_SUPPORTS = d.supports.map((s) => ({ ...s, custom_calc: false }));
+      BUILDER_OVERRIDE_COST = d.override_cost || null;
+      renderDivisionBuilderRows();
+      renderDivisionSpecPreview();
+      modal.style.display = "none";
+      showToast(`🪖 師団編成『${d.name || "カスタム師団"}』をビルダーにインポートしました！`);
+      document.getElementById("builder-regiments-list")?.scrollIntoView({ behavior: "smooth" });
+      return;
+    }
+
+    // B. 国家全体の軍備または保有師団一括の場合：サーバーAPIへPOST
+    const activeNat = getActiveNation();
+    if (!activeNat) {
+      showToast("インポート先の国家を選択してください", true);
+      return;
+    }
+
+    try {
+      const res = await apiPost("/api/military/import", {
+        nation_id: activeNat.id,
+        data: parsed.data,
+      });
+      APP_STATE = res.state;
+      modal.style.display = "none";
+      showToast(`📦 軍備データを『${activeNat.name}』にインポートしました！`);
+      renderAll();
+    } catch (err) {
+      showToast(err.message, true);
+    }
   });
 }
 

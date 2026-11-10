@@ -91,6 +91,10 @@
               <option value="terrain">⛰️ 自然地形アトラス (山岳・河川強調)</option>
               <option value="hq_dark">📡 参謀本部ブリーフィング図</option>
             </select>
+            <select id="select-peace-color-mode" class="mode-select" style="font-size:12px;padding:3px 6px;border-color:#38bdf8;background:#0f172a;color:#38bdf8;font-weight:600;">
+              <option value="owner">🏳️ 領土所有国マップ</option>
+              <option value="diplomacy">🤝 外交関係カラーマップ</option>
+            </select>
             <label class="checkbox-label">
               <input type="checkbox" id="chk-show-terrain" checked /> 河川・山脈
             </label>
@@ -125,6 +129,15 @@
           <span>🏙️ 都市圏</span>
           <span>🏖️ 沿岸</span>
           <span>🏜️ 砂漠</span>
+        </div>
+        <div id="diplomacy-legend-bar" class="map-legend" style="display:none;background:rgba(15,23,42,0.9);border:1px solid #38bdf8;margin-top:4px;">
+          <strong style="color:#38bdf8;">🤝 外交カラー凡例:</strong>
+          <span><span style="display:inline-block;width:12px;height:12px;background:#fde047;border-radius:2px;vertical-align:middle;"></span> 選択国家(自国)</span>
+          <span><span style="display:inline-block;width:12px;height:12px;background:#10b981;border-radius:2px;vertical-align:middle;"></span> 軍事同盟国</span>
+          <span><span style="display:inline-block;width:12px;height:12px;background:#38bdf8;border-radius:2px;vertical-align:middle;"></span> 不可侵条約国</span>
+          <span><span style="display:inline-block;width:12px;height:12px;background:#a855f7;border-radius:2px;vertical-align:middle;"></span> 軍事通行権</span>
+          <span><span style="display:inline-block;width:12px;height:12px;background:#ef4444;border-radius:2px;vertical-align:middle;"></span> 交戦国(戦争中)</span>
+          <span><span style="display:inline-block;width:12px;height:12px;background:#475569;border-radius:2px;vertical-align:middle;"></span> 中立国</span>
         </div>
       </section>
 
@@ -367,13 +380,22 @@
           ・各連隊・大隊の<strong>公式説明文（全文）</strong>を確認でき、作成した編成は<strong>「自分用の師団」</strong>として保存できます。
         </p>
 
-        <!-- 公式テンプレート1クリック読込 -->
-        <div class="template-bar">
-          <span>📌 公式テンプレ読込:</span>
+        <!-- 公式テンプレート＆史実編成ライブラリ 1クリック読込 -->
+        <div class="template-bar" style="display:flex;flex-wrap:wrap;gap:6px;align-items:center;">
+          <span>📌 テンプレ読込:</span>
+          <select id="select-history-tpl" style="font-size:11.5px;padding:3px 8px;background:#1e293b;color:#fde047;border:1px solid #eab308;border-radius:4px;font-weight:600;">
+            <option value="">🏛️ 史実編成ライブラリから選ぶ...</option>
+            <option value="tpl_de_panzer_1939">🇩🇪 1939年ドイツ装甲師団 (電撃戦)</option>
+            <option value="tpl_su_rifle_div">🇷🇺 ソ連赤軍ライフル師団 (狙撃師団)</option>
+            <option value="tpl_us_armored_div">🇺🇸 米軍機甲師団 (諸兵科連合)</option>
+            <option value="tpl_uk_airborne_div">🇬🇧 英軍第1空挺師団 (レッドデビルズ)</option>
+            <option value="tpl_jp_infantry_div">🇯🇵 日本陸軍歩兵師団 (常設師団)</option>
+            <option value="tpl_su_guards_tank">⭐ ソ連親衛重戦車突破軍</option>
+          </select>
           <button class="btn btn-xs btn-outline tpl-load-btn" data-tpl="tpl_infantry_div">歩兵師団 (380億)</button>
-          <button class="btn btn-xs btn-outline tpl-load-btn" data-tpl="tpl_motorized_div">自動車化歩兵師団 (440億)</button>
-          <button class="btn btn-xs btn-outline tpl-load-btn" data-tpl="tpl_mechanized_div">機械化歩兵師団 (740億)</button>
-          <button class="btn btn-xs btn-outline tpl-load-btn" data-tpl="tpl_armored_div">機甲師団 (1240億)</button>
+          <button class="btn btn-xs btn-outline tpl-load-btn" data-tpl="tpl_motorized_div">自動車化 (440億)</button>
+          <button class="btn btn-xs btn-outline tpl-load-btn" data-tpl="tpl_mechanized_div">機械化 (740億)</button>
+          <button class="btn btn-xs btn-outline tpl-load-btn" data-tpl="tpl_armored_div">機甲 (1240億)</button>
         </div>
 
         <!-- 自分用の師団（保存済みマイ師団テンプレート）一覧・読込・保存 -->
@@ -437,13 +459,14 @@
         </div>
       </section>
 
-      <!-- 中央カラム：海軍・空軍・施設・核兵器 カタログショップ -->
+      <!-- 中央カラム：陸海空・施設・核兵器 総合調達ショップ -->
       <section class="card">
-        <h2>⚓✈️🏰 海軍・空軍・施設・核兵器 調達ショップ</h2>
+        <h2>🪖⚓✈️🏰 陸海空・施設 総合調達ショップ</h2>
         <div class="shop-tabs">
-          <button class="btn btn-sm shop-tab-btn active" data-shop="navy">⚓ 海軍艦艇・揚陸/輸送船団</button>
+          <button class="btn btn-sm shop-tab-btn active" data-shop="navy">⚓ 海軍艦艇・船団</button>
           <button class="btn btn-sm shop-tab-btn" data-shop="air">✈️ 空軍機体・核兵器</button>
-          <button class="btn btn-sm shop-tab-btn" data-shop="facility">🏰 軍港(必須)・レーダー・要塞</button>
+          <button class="btn btn-sm shop-tab-btn" data-shop="tank">🪖 陸軍戦車カタログ</button>
+          <button class="btn btn-sm shop-tab-btn" data-shop="facility">🏰 軍港(必須)・要塞・レーダー</button>
         </div>
 
         <div id="shop-facility-prov-bar" class="sub-box" style="display:none;margin-bottom:8px;">
@@ -456,9 +479,12 @@
 
         <div class="shop-filter-bar">
           <select id="shop-country-filter">
-            <option value="ALL">すべての国・カテゴリ</option>
+            <option value="ALL">すべての国</option>
           </select>
-          <input type="text" id="shop-search" placeholder="兵器名で検索 (例: 大和, 零戦, P-51, 軍港, 揚陸)..." />
+          <select id="shop-category-filter">
+            <option value="ALL">すべての兵器区分</option>
+          </select>
+          <input type="text" id="shop-search" placeholder="兵器名・区分で検索 (例: 重戦車, 戦闘機, 大和, P-51)..." />
         </div>
 
         <div id="shop-items-list" class="shop-list"></div>
@@ -468,7 +494,10 @@
       <section class="card">
         <div class="card-header-flex">
           <h2>📋 現在保有している軍備一覧</h2>
-          <span class="badge badge-ok">解体時は100%全額返金</span>
+          <div style="display:flex;align-items:center;gap:6px;">
+            <button id="btn-open-share-code" class="btn btn-xs btn-amber">📦 共有コード (入出力)</button>
+            <span class="badge badge-ok">解体時100%返金</span>
+          </div>
         </div>
         <div id="nation-force-summary" class="force-summary-banner"></div>
         <div id="nation-inventory-list" class="inventory-list"></div>
@@ -625,9 +654,20 @@
           <label>搭載主砲 <input type="text" id="ct-gun" placeholder="例: 122mm A-19 / D-25T" /></label>
         </div>
         <div class="row-2">
+          <label>車両区分
+            <select id="ct-category">
+              <option value="中戦車">中戦車</option>
+              <option value="重戦車">重戦車</option>
+              <option value="軽戦車">軽戦車</option>
+              <option value="超重戦車">超重戦車</option>
+              <option value="巡航・快速戦車">巡航・快速戦車</option>
+              <option value="歩兵戦車">歩兵戦車</option>
+              <option value="自走砲・砲戦車">自走砲・砲戦車</option>
+            </select>
+          </label>
           <label>1両単価(億) <input type="number" id="ct-cost" value="4.2" step="0.1" min="0.5" /></label>
-          <label>車両説明・備考 <input type="text" id="ct-desc" placeholder="例: M4車体に122mm砲を搭載した火力支援戦車" /></label>
         </div>
+        <label>車両説明・備考 <input type="text" id="ct-desc" placeholder="例: M4車体に122mm砲を搭載した火力支援戦車" /></label>
         <button id="btn-submit-custom-tank" class="btn btn-amber btn-block">🔧 カスタム戦車を値段表に登録する</button>
       </div>
     </div>
@@ -665,6 +705,52 @@
         <button id="btn-reset-blank" class="btn btn-amber btn-block">
           🏳️ シナリオ②：完全な白地図から新規スタート（ゼロから建国・ソロ/マルチ用）
         </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- モーダル5: 国家データ／軍備のインポート・エクスポート（共有コード化） -->
+  <div id="modal-share-code" class="modal-backdrop" style="display:none;">
+    <div class="modal-card" style="max-width:620px;">
+      <div class="card-header-flex">
+        <h3>📦 国家データ／軍備 共有コード（インポート・エクスポート）</h3>
+        <button class="btn btn-xs btn-outline modal-close" data-close="modal-share-code">✕</button>
+      </div>
+      <p class="rule-note">
+        ・<strong>エクスポート</strong>: 現在選択中の国家の軍備（師団・艦艇・機体・施設・マイ師団）を共有コードとして出力・コピーできます。<br/>
+        ・<strong>インポート</strong>: 共有コードを貼り付けることで、他プレイヤーの編成や保存データを瞬時に自国へ反映できます。
+      </p>
+
+      <div class="shop-tabs" style="margin-bottom:8px;">
+        <button class="btn btn-sm share-tab-btn active" data-share-mode="export">📤 共有コードのエクスポート (出力)</button>
+        <button class="btn btn-sm share-tab-btn" data-share-mode="import">📥 共有コードのインポート (読込)</button>
+      </div>
+
+      <!-- 出力パネル -->
+      <div id="share-panel-export">
+        <label>エクスポート対象:
+          <select id="share-export-scope" style="margin-bottom:6px;">
+            <option value="all">📦 国家全体の軍備データ（師団＋海軍＋空軍＋施設）</option>
+            <option value="divisions">🪖 保有師団＆マイ師団テンプレートのみ</option>
+            <option value="builder">✏️ 現在ビルダーで設計中の師団編成のみ</option>
+          </select>
+        </label>
+        <textarea id="share-export-text" rows="8" readonly style="width:100%;font-family:monospace;font-size:11.5px;background:#090d16;color:#38bdf8;"></textarea>
+        <div class="row-2" style="margin-top:8px;">
+          <button id="btn-copy-share-code" class="btn btn-primary">📋 共有コードをコピー</button>
+          <button class="btn btn-outline modal-close" data-close="modal-share-code">閉じる</button>
+        </div>
+      </div>
+
+      <!-- 入力パネル -->
+      <div id="share-panel-import" style="display:none;">
+        <label>共有コード（Base64 または JSON）を貼り付け:
+          <textarea id="share-import-text" rows="8" placeholder="ここに共有コードをペーストしてください..." style="width:100%;font-family:monospace;font-size:11.5px;"></textarea>
+        </label>
+        <div style="margin-top:6px;display:flex;gap:6px;flex-wrap:wrap;">
+          <button id="btn-execute-import" class="btn btn-amber" style="flex:1;">📥 この内容を自国軍備にインポートして反映</button>
+          <button class="btn btn-outline modal-close" data-close="modal-share-code">閉じる</button>
+        </div>
       </div>
     </div>
   </div>
