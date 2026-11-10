@@ -67,7 +67,45 @@ function formatOku(oku) {
 
 let IS_STANDALONE_MODE = false;
 
+function syncStandaloneFacilities(state) {
+  if (!state || !state.provinces) return;
+  const provById = {};
+  for (const p of state.provinces) {
+    p.has_port = false;
+    p.has_fort = false;
+    p.has_radar = false;
+    p.has_coastal_gun = false;
+    p.facilities = [];
+    provById[p.id] = p;
+  }
+  for (const nat of state.nations || []) {
+    const pids = nat.province_ids || [];
+    const capId = nat.capital_id || pids[0] || "";
+    const coastalPid = pids.find((pid) => provById[pid]?.coastal) || capId;
+    const normalized = [];
+    (nat.facilities || []).forEach((item, idx) => {
+      const fid = typeof item === "string" ? item : item?.facility_id || item?.unit_id;
+      if (!fid) return;
+      const pid = typeof item === "string"
+        ? (fid === "fac_naval_port" || fid === "fac_coastal_gun" ? coastalPid : capId)
+        : (item.province_id || capId);
+      const id = (typeof item === "object" && item?.id) || `finst_${nat.id}_${idx + 1}_${fid}`;
+      normalized.push({ id, facility_id: fid, province_id: pid });
+      const tp = provById[pid];
+      if (tp) {
+        if (!tp.facilities.includes(fid)) tp.facilities.push(fid);
+        if (fid === "fac_naval_port") tp.has_port = true;
+        else if (fid === "fac_fortress") tp.has_fort = true;
+        else if (fid === "fac_radar") tp.has_radar = true;
+        else if (fid === "fac_coastal_gun") tp.has_coastal_gun = true;
+      }
+    });
+    nat.facilities = normalized;
+  }
+}
+
 function saveStandaloneState() {
+  if (APP_STATE) syncStandaloneFacilities(APP_STATE);
   if (!IS_STANDALONE_MODE || !APP_STATE) return;
   try {
     localStorage.setItem("aiwa_web_standalone_state_v2", JSON.stringify(APP_STATE));
@@ -246,18 +284,16 @@ function handleStandaloneApi(url, data = {}) {
       const target = data.target_owner_id || null;
       if (prov.owner_id && prov.owner_id !== target) {
         const oldN = findNat(prov.owner_id);
-        if (oldN) oldN.province_ids = oldN.province_ids.filter((x) => x !== prov.id);
+        if (oldN) {
+          oldN.province_ids = oldN.province_ids.filter((x) => x !== prov.id);
+          oldN.facilities = (oldN.facilities || []).filter((x) => !(typeof x === "object" && x.province_id === prov.id));
+        }
       }
       prov.owner_id = target;
       if (target) {
         const newN = findNat(target);
         if (newN && !newN.province_ids.includes(prov.id)) newN.province_ids.push(prov.id);
       }
-    } else if (data.action === "warp_unit") {
-      const nat = findNat(data.nation_id);
-      const div = (nat?.divisions || []).find((d) => d.id === data.division_id);
-      if (!div) throw new Error("師団が見つかりません。");
-      div.province_id = prov.id;
     }
     saveStandaloneState();
     return { ok: true, state };
@@ -304,7 +340,7 @@ function handleStandaloneApi(url, data = {}) {
         supports: data.supports,
         override_cost: data.override_cost,
         count,
-        province_id: data.province_id || nat.capital_id,
+        province_id: nat.capital_id,
         spec,
       });
       if (data.also_save_template) {
@@ -403,13 +439,28 @@ function handleStandaloneApi(url, data = {}) {
       }
     } else if (data.domain === "facility") {
       const f = CATALOG.facilities.find((x) => x.id === data.unit_id);
+      syncStandaloneFacilities(state);
       if (data.action === "buy") {
+        const pid = data.province_id || nat.capital_id || (nat.province_ids || [])[0];
+        const prov = state.provinces.find((p) => p.id === pid);
+        if (!prov || prov.owner_id !== nat.id) throw new Error("施設は自国が領有するプロビンスにのみ配備できます。");
+        if ((nat.facilities || []).some((x) => x.facility_id === f.id && x.province_id === pid)) {
+          throw new Error(`『${prov.name}』には既に『${f.name}』が配備されています。`);
+        }
         if (nat.budget < f.cost) throw new Error(`予算不足です（必要: ${f.cost}億）`);
         nat.budget = +(nat.budget - f.cost).toFixed(1);
-        if (!nat.facilities.includes(f.id)) nat.facilities.push(f.id);
+        nat.facilities.push({ id: "finst_" + Date.now(), facility_id: f.id, province_id: pid });
       } else {
-        nat.facilities = nat.facilities.filter((x) => x !== f.id);
-        nat.budget = +(nat.budget + f.cost).toFixed(1);
+        let removed = false;
+        nat.facilities = (nat.facilities || []).filter((x) => {
+          if (removed) return true;
+          if ((data.instance_id && x.id === data.instance_id) || (!data.instance_id && x.facility_id === f.id && (!data.province_id || x.province_id === data.province_id))) {
+            removed = true;
+            return false;
+          }
+          return true;
+        });
+        if (removed) nat.budget = +(nat.budget + f.cost).toFixed(1);
       }
     }
     saveStandaloneState();
@@ -558,6 +609,7 @@ function connectWebSocket() {
 // ============================================================================
 function renderAll() {
   if (!APP_STATE || !CATALOG) return;
+  syncStandaloneFacilities(APP_STATE);
   renderTopbar();
   renderPeacetimeMap();
   updateFoundSelectionUI();
@@ -567,6 +619,15 @@ function renderAll() {
   renderWartimeTab();
   renderMilitaryTab();
   renderDiplomacyTab();
+}
+
+function getProvinceFacilityIcons(p) {
+  const icons = [];
+  if (p.has_port) icons.push({ icon: "⚓", color: "#38bdf8", label: "軍港" });
+  if (p.has_radar) icons.push({ icon: "📡", color: "#a78bfa", label: "防空レーダー網" });
+  if (p.has_fort) icons.push({ icon: "🏰", color: "#e2e8f0", label: "永久要塞線" });
+  if (p.has_coastal_gun) icons.push({ icon: "🛡️", color: "#f97316", label: "海岸砲要塞" });
+  return icons;
 }
 
 function renderTopbar() {
@@ -688,7 +749,7 @@ let WORLD_MARKER_GROUP = null;
 let WORLD_ADJ_GROUP = null;
 let WORLD_BADGES_GROUP = null;
 
-function renderWorldAdmin1Map(svg, tooltip, provs, provById, nationsById, divCountByProv) {
+function renderWorldAdmin1Map(svg, tooltip, provs, provById, nationsById) {
   const wMap = window.WORLD_ADMIN1_MAP || null;
   const showAdj = document.getElementById("chk-show-adj")?.checked ?? false;
   const showUnits = document.getElementById("chk-show-units")?.checked ?? true;
@@ -797,15 +858,17 @@ function renderWorldAdmin1Map(svg, tooltip, provs, provById, nationsById, divCou
     svg.querySelectorAll(".prov-node, .island-marker").forEach((node) => {
       const pid = node.getAttribute("data-prov-id");
       const showTooltip = (e) => {
-        const p = provById[pid];
+        const p = APP_STATE?.provinces?.find((x) => x.id === pid) || provById[pid];
         if (!p) return;
-        const owner = nationsById[p.owner_id];
+        const owner = APP_STATE?.nations?.find((n) => n.id === p.owner_id);
+        const facIcons = getProvinceFacilityIcons(p);
+        const facText = facIcons.length > 0 ? facIcons.map((f) => `${f.icon}${f.label}`).join("・") : "なし";
         tooltip.textContent = `${p.name} (${p.id})
 国/地域: ${p.region || "不明"}
 面積: ${p.area_km2 ? p.area_km2.toLocaleString() + " km²" : "不明"}
 ${p.coastal ? "沿岸" : "内陸"}
 領有国: ${owner ? `${owner.flag || ""} ${owner.name}` : "未領有（白地）"}
-駐屯師団: ${divCountByProv[p.id]?.count || 0}`;
+配備施設: ${facText}`;
         tooltip.hidden = false;
         const rect = tooltip.parentElement.getBoundingClientRect();
         const x = e.clientX - rect.left + 14;
@@ -878,7 +941,7 @@ ${p.coastal ? "沿岸" : "内陸"}
     marker.style.fill = getFoundFill(marker.getAttribute("data-prov-id")) || "";
   });
 
-  // Badges Layer (首都・都市・港・砦・師団バッジ)
+  // Badges Layer (首都・都市・施設バッジ)
   let badgesGroup = document.getElementById("world-badges-layer");
   if (!badgesGroup) {
     badgesGroup = document.createElementNS("http://www.w3.org/2000/svg", "g");
@@ -899,20 +962,18 @@ ${p.coastal ? "沿岸" : "内陸"}
     } else if (p.is_city || isFoundCity) {
       bHtml += `<text x="${cx}" y="${cy}" font-size="8.5" fill="#f8fafc" text-anchor="middle" dominant-baseline="central" pointer-events="none" filter="drop-shadow(0 1px 2px rgba(0,0,0,0.8))">●</text>`;
     }
-    if (p.has_port) {
-      bHtml += `<text x="${cx + 6}" y="${cy - 6}" font-size="8" fill="#38bdf8" text-anchor="middle" dominant-baseline="central" pointer-events="none">⚓</text>`;
-    }
-    if (p.has_fort) {
-      bHtml += `<text x="${cx - 6}" y="${cy - 6}" font-size="8" fill="#e2e8f0" text-anchor="middle" dominant-baseline="central" pointer-events="none">🏰</text>`;
-    }
-    if (showUnits && divCountByProv[p.id]) {
-      const dc = divCountByProv[p.id];
-      bHtml += `
-        <g transform="translate(${cx}, ${cy - 10})" pointer-events="none">
-          <rect x="-14" y="-6.5" width="28" height="13" rx="2.5" fill="rgba(15,23,42,0.92)" stroke="${dc.color || '#3b82f6'}" stroke-width="1.1" />
-          <text x="0" y="1" text-anchor="middle" dominant-baseline="central" fill="#fde047" font-size="7.5" font-weight="700">${dc.flag || ''}${dc.count}師</text>
-        </g>
-      `;
+    if (showUnits) {
+      const facIcons = getProvinceFacilityIcons(p);
+      if (facIcons.length > 0) {
+        const iconsStr = facIcons.map((f) => f.icon).join("");
+        const badgeW = Math.max(16, facIcons.length * 10 + 6);
+        bHtml += `
+          <g transform="translate(${cx}, ${cy - 9})" pointer-events="none">
+            <rect x="${-badgeW / 2}" y="-6" width="${badgeW}" height="12" rx="2.5" fill="rgba(15,23,42,0.88)" stroke="rgba(56,189,248,0.75)" stroke-width="0.9" />
+            <text x="0" y="0.5" text-anchor="middle" dominant-baseline="central" font-size="7.8">${iconsStr}</text>
+          </g>
+        `;
+      }
     }
   }
   badgesGroup.innerHTML = bHtml;
@@ -938,17 +999,8 @@ function renderPeacetimeMap() {
   const provById = {};
   for (const p of provs) provById[p.id] = p;
 
-  const divCountByProv = {};
-  for (const n of APP_STATE.nations) {
-    for (const d of n.divisions || []) {
-      const pid = d.province_id || n.capital_id;
-      if (!divCountByProv[pid]) divCountByProv[pid] = { count: 0, flag: n.flag, color: n.color };
-      divCountByProv[pid].count += Number(d.count || 1);
-    }
-  }
-
   if (isWorldAdmin1) {
-    return renderWorldAdmin1Map(svg, tooltip, provs, provById, nationsById, divCountByProv);
+    return renderWorldAdmin1Map(svg, tooltip, provs, provById, nationsById);
   }
 
   svg.setAttribute("viewBox", `${PEACE_VB.x} ${PEACE_VB.y} ${PEACE_VB.w} ${PEACE_VB.h}`);
@@ -1133,25 +1185,27 @@ function renderPeacetimeMap() {
     }
   }
 
-  // 5. 都市・首都ポイント・ラベル・駐屯師団バッジ（最前面レイヤー）
+  // 5. 都市・首都ポイント・ラベル・施設バッジ（最前面レイヤー）
   for (const p of provs) {
     const rProv = rmap?.provinces?.[p.id];
     const cx = rProv ? rProv.cx : p.x;
     const cy = rProv ? rProv.cy : p.y;
     const isFoundCap = PEACE_TOOL === "found" && FOUND_SELECTION.capital === p.id;
     const isFoundCity = PEACE_TOOL === "found" && FOUND_SELECTION.cities.includes(p.id);
-    if (!p.is_capital && !p.is_city && !isFoundCap && !isFoundCity && !divCountByProv[p.id]) continue;
+    const facIcons = showUnits ? getProvinceFacilityIcons(p) : [];
+    if (!p.is_capital && !p.is_city && !isFoundCap && !isFoundCity && facIcons.length === 0) continue;
     const shortName = p.name.split("(")[0];
     const labelFontSize = zoomedOut ? 8.4 : Math.max(5.2, Math.min(8.5, (PEACE_VB.w / 1500) * 8.8));
 
     let badges = "";
     if (p.is_capital || isFoundCap) badges += "★";
     else if (p.is_city || isFoundCity) badges += "●";
-    if (p.has_port) badges += "⚓";
-    if (p.has_fort) badges += "🏰";
+    if (showUnits && facIcons.length > 0) {
+      badges += (badges ? " " : "") + facIcons.map((f) => f.icon).join("");
+    }
 
-    const dotR = (p.is_capital || isFoundCap) ? 4.6 : ((p.is_city || isFoundCity) ? 3.4 : 2.1);
-    const dotCol = (p.is_capital || isFoundCap) ? "#fde047" : ((p.is_city || isFoundCity) ? "#f8fafc" : "rgba(226,232,240,0.85)");
+    const dotR = (p.is_capital || isFoundCap) ? 4.6 : ((p.is_city || isFoundCity) ? 3.4 : 2.5);
+    const dotCol = (p.is_capital || isFoundCap) ? "#fde047" : ((p.is_city || isFoundCity) ? "#f8fafc" : "#38bdf8");
 
     html += `
       <g class="prov-label-node" data-prov-id="${p.id}" style="cursor:pointer;">
@@ -1159,18 +1213,8 @@ function renderPeacetimeMap() {
         <text x="${cx}" y="${cy - 6}" text-anchor="middle" fill="#ffffff" font-size="${labelFontSize}" font-weight="700" style="text-shadow: 0 1px 3px #000, 0 0 2px #000;">
           ${badges ? badges + " " : ""}${escapeMapText(shortName)}
         </text>
+      </g>
     `;
-
-    if (showUnits && divCountByProv[p.id]) {
-      const dc = divCountByProv[p.id];
-      html += `
-        <g transform="translate(${cx - 15}, ${cy + 3.5})">
-          <rect x="0" y="0" width="30" height="12" rx="2.5" fill="rgba(15,23,42,0.92)" stroke="${dc.color}" stroke-width="1.1" />
-          <text x="15" y="9" text-anchor="middle" fill="#fde047" font-size="8" font-weight="700">${dc.flag}${dc.count}師</text>
-        </g>
-      `;
-    }
-    html += `</g>`;
   }
 
   svg.innerHTML = html;
@@ -1180,7 +1224,9 @@ function renderPeacetimeMap() {
     const p = provById[node.getAttribute("data-prov-id")];
     const showTooltip = (e) => {
       const owner = nationsById[p.owner_id];
-      tooltip.textContent = `${p.name} (${p.id})\n地域: ${p.region || "不明"}\n地形: ${p.terrain || "不明"}\n${p.coastal ? "沿岸" : "内陸"}\n領有国: ${owner ? `${owner.flag || ""} ${owner.name}` : "未領有"}\n駐屯師団: ${divCountByProv[p.id]?.count || 0}`;
+      const facIcons = getProvinceFacilityIcons(p);
+      const facText = facIcons.length > 0 ? facIcons.map((f) => `${f.icon}${f.label}`).join("・") : "なし";
+      tooltip.textContent = `${p.name} (${p.id})\n地域: ${p.region || "不明"}\n地形: ${p.terrain || "不明"}\n${p.coastal ? "沿岸" : "内陸"}\n領有国: ${owner ? `${owner.flag || ""} ${owner.name}` : "未領有"}\n配備施設: ${facText}`;
       tooltip.hidden = false;
       const rect = tooltip.parentElement.getBoundingClientRect();
       const x = e.clientX - rect.left + 14;
@@ -1346,12 +1392,14 @@ function renderProvinceInspectPanel() {
     <div style="display:flex;flex-direction:column;gap:8px;">
       <div><strong>領有国:</strong> ${owner ? `<span style="color:${owner.color};font-weight:700;">${owner.flag} ${owner.name}</span>` : "<span class='muted'>🏳️ 未領有（白地プロビンス）</span>"}</div>
       <div><strong>地形:</strong> <code>${prov.terrain}</code> ${prov.coastal ? "🌊沿岸プロビンス" : "⛰️内陸プロビンス"}</div>
-      <div><strong>拠点ステータス:</strong>
+      <div><strong>拠点ステータス・配備施設:</strong>
         ${prov.is_capital ? "<span class='badge badge-warn'>★ 首都</span> " : ""}
         ${prov.is_city ? "<span class='badge badge-ok'>● 主要都市</span> " : ""}
         ${prov.has_port ? "<span class='badge badge-ok'>⚓ 軍港設置済</span> " : ""}
-        ${prov.has_fort ? "<span class='badge badge-warn'>🏰 要塞線</span>" : ""}
-        ${!prov.is_capital && !prov.is_city && !prov.has_port && !prov.has_fort ? "通常プロビンス" : ""}
+        ${prov.has_radar ? "<span class='badge badge-ok'>📡 防空レーダー網</span> " : ""}
+        ${prov.has_fort ? "<span class='badge badge-warn'>🏰 永久要塞線</span> " : ""}
+        ${prov.has_coastal_gun ? "<span class='badge badge-warn'>🛡️ 海岸砲要塞</span> " : ""}
+        ${!prov.is_capital && !prov.is_city && !prov.has_port && !prov.has_radar && !prov.has_fort && !prov.has_coastal_gun ? "通常プロビンス（施設なし）" : ""}
       </div>
       <div><strong>陸続き隣接:</strong> <span class="muted">${nbNames || "なし"}</span></div>
   `;
@@ -1365,22 +1413,6 @@ function renderProvinceInspectPanel() {
         <button id="btn-buy-white-prov" class="btn btn-sm btn-primary btn-block" style="margin-top:6px;">
           💰 ${activeNat.flag}${activeNat.name}が100億円でこの白地を購入
         </button>
-      </div>
-    `;
-  }
-
-  // 平時ワープ機能（自国または同盟・通行権保有国のプロビンスへ師団移動）
-  if (activeNat && activeNat.divisions && activeNat.divisions.length > 0) {
-    html += `
-      <div class="sub-box" style="margin-top:6px;">
-        <strong>🚂 平時の部隊ワープ（#戦争ルール 準拠）</strong>
-        <p class="muted">自国・同盟国・軍事通行権を持つ国のプロビンスへ師団を移動できます。</p>
-        <div class="row-2" style="margin-top:5px;">
-          <select id="select-warp-div">
-            ${activeNat.divisions.map((d) => `<option value="${d.id}">${d.name} (${d.count}師団)</option>`).join("")}
-          </select>
-          <button id="btn-exec-warp" class="btn btn-xs btn-amber">📍 ここへワープ</button>
-        </div>
       </div>
     `;
   }
@@ -1399,26 +1431,6 @@ function renderProvinceInspectPanel() {
         });
         APP_STATE = res.state;
         showToast(`${prov.name} を100億円で購入しました！`);
-        renderAll();
-      } catch (err) {
-        showToast(err.message, true);
-      }
-    });
-  }
-
-  const warpBtn = document.getElementById("btn-exec-warp");
-  if (warpBtn) {
-    warpBtn.addEventListener("click", async () => {
-      const divId = document.getElementById("select-warp-div").value;
-      try {
-        const res = await apiPost("/api/province/action", {
-          action: "warp_unit",
-          province_id: prov.id,
-          nation_id: activeNat.id,
-          division_id: divId,
-        });
-        APP_STATE = res.state;
-        showToast(`${prov.name} へ部隊をワープ展開しました！`);
         renderAll();
       } catch (err) {
         showToast(err.message, true);
@@ -1850,7 +1862,8 @@ function computeNationSpentBreakdown(nat) {
     if (u) airSpent += u.cost * Number(item.count || 0);
   }
   let facSpent = 0;
-  for (const fid of nat.facilities || []) {
+  for (const fItem of nat.facilities || []) {
+    const fid = typeof fItem === "string" ? fItem : fItem.facility_id;
     const f = facMap[fid];
     if (f) facSpent += f.cost;
   }
@@ -2028,15 +2041,20 @@ function renderMilitaryTab() {
   renderUserSavedTemplates();
   renderArmyCatalogFullReference();
 
-  // 配備プロビンスセレクト
-  const provSel = document.getElementById("div-prov");
-  const prevProv = provSel.value;
-  provSel.innerHTML = "";
-  for (const pid of activeNat.province_ids || []) {
-    const p = APP_STATE.provinces.find((x) => x.id === pid);
-    if (p) {
-      const selected = prevProv ? pid === prevProv : pid === activeNat.capital_id;
-      provSel.innerHTML += `<option value="${pid}" ${selected ? "selected" : ""}>${p.name}</option>`;
+  // 施設配備プロビンスセレクト
+  const facProvSel = document.getElementById("shop-facility-prov");
+  if (facProvSel) {
+    const prevProv = facProvSel.value;
+    facProvSel.innerHTML = "";
+    for (const pid of activeNat.province_ids || []) {
+      const p = APP_STATE.provinces.find((x) => x.id === pid);
+      if (p) {
+        const selected = prevProv ? pid === prevProv : pid === activeNat.capital_id;
+        const facIcons = getProvinceFacilityIcons(p).map((f) => f.icon).join("");
+        const capTag = p.is_capital ? "★首都 " : p.is_city ? "●都市 " : "";
+        const coastTag = p.coastal ? "🌊沿岸" : "⛰️内陸";
+        facProvSel.innerHTML += `<option value="${pid}" ${selected ? "selected" : ""}>${capTag}${p.name} [${coastTag}] ${facIcons ? `(配備済:${facIcons})` : ""}</option>`;
+      }
     }
   }
 
@@ -2315,6 +2333,10 @@ function renderProcurementShop() {
   const countrySel = document.getElementById("shop-country-filter");
   const searchVal = (document.getElementById("shop-search").value || "").trim().toLowerCase();
   const listEl = document.getElementById("shop-items-list");
+  const facProvBar = document.getElementById("shop-facility-prov-bar");
+  if (facProvBar) {
+    facProvBar.style.display = ACTIVE_SHOP_DOMAIN === "facility" ? "block" : "none";
+  }
 
   let items = [];
   if (ACTIVE_SHOP_DOMAIN === "navy") items = CATALOG.naval_units;
@@ -2365,7 +2387,7 @@ function renderProcurementShop() {
       <div style="display:flex;align-items:center;gap:6px;flex-shrink:0;">
         <span class="price-tag">${item.cost}億</span>
         ${ACTIVE_SHOP_DOMAIN !== "facility" ? `<input type="number" value="${ACTIVE_SHOP_DOMAIN === "air" && !item.is_nuke ? 10 : 1}" min="1" max="500" style="width:58px;" class="shop-qty-input" />` : ""}
-        <button class="btn btn-xs btn-primary btn-buy-item">購入</button>
+        <button class="btn btn-xs btn-primary btn-buy-item">${ACTIVE_SHOP_DOMAIN === "facility" ? "選択プロビンスに配備" : "購入"}</button>
       </div>
     `;
 
@@ -2373,16 +2395,26 @@ function renderProcurementShop() {
       if (!activeNat) return;
       const qtyInput = row.querySelector(".shop-qty-input");
       const qty = qtyInput ? Math.max(1, Number(qtyInput.value || 1)) : 1;
+      const facProvId = document.getElementById("shop-facility-prov")?.value || activeNat.capital_id;
       try {
-        const res = await apiPost("/api/military/procure", {
+        const payload = {
           nation_id: activeNat.id,
           domain: ACTIVE_SHOP_DOMAIN,
           action: "buy",
           unit_id: item.id,
           count: qty,
-        });
+        };
+        if (ACTIVE_SHOP_DOMAIN === "facility") {
+          payload.province_id = facProvId;
+        }
+        const res = await apiPost("/api/military/procure", payload);
         APP_STATE = res.state;
-        showToast(`${item.name} ×${qty} を調達しました！`);
+        if (ACTIVE_SHOP_DOMAIN === "facility") {
+          const provName = APP_STATE.provinces.find((p) => p.id === facProvId)?.name.split("(")[0] || facProvId;
+          showToast(`${item.name} を『${provName}』に配備しました！`);
+        } else {
+          showToast(`${item.name} ×${qty} を調達しました！`);
+        }
         renderAll();
       } catch (err) {
         showToast(err.message, true);
@@ -2397,7 +2429,7 @@ function renderNationInventory(nat) {
   const banner = document.getElementById("nation-force-summary");
   const listEl = document.getElementById("nation-inventory-list");
 
-  const hasPort = (nat.facilities || []).includes("fac_naval_port");
+  const hasPort = (nat.facilities || []).some((x) => (typeof x === "string" ? x : x.facility_id) === "fac_naval_port");
   const navMap = {};
   for (const u of CATALOG.naval_units) navMap[u.id] = u;
   const airMap = {};
@@ -2425,14 +2457,18 @@ function renderNationInventory(nat) {
   listEl.innerHTML = "";
 
   // 1. 施設
-  for (const fid of nat.facilities || []) {
+  for (const fItem of nat.facilities || []) {
+    const fid = typeof fItem === "string" ? fItem : fItem.facility_id;
     const f = facMap[fid];
     if (!f) continue;
+    const provId = typeof fItem === "object" ? fItem.province_id : nat.capital_id;
+    const instId = typeof fItem === "object" ? fItem.id : "";
+    const provName = APP_STATE.provinces.find((p) => p.id === provId)?.name.split("(")[0] || provId || "首都";
     const el = document.createElement("div");
     el.className = "inv-item";
     el.innerHTML = `
       <div style="flex:1;">
-        <div class="shop-item-title">🏰 [施設] ${f.name}</div>
+        <div class="shop-item-title">🏰 [施設] ${f.name} <span class="badge badge-ok">📍${provName}</span></div>
         <div class="shop-item-sub" style="white-space:normal;">${f.desc} （解体すると ${f.cost}億円 返金）</div>
       </div>
       <button class="btn btn-xs btn-outline">解体(+${f.cost}億)</button>
@@ -2443,10 +2479,12 @@ function renderNationInventory(nat) {
         domain: "facility",
         action: "disband",
         unit_id: fid,
+        instance_id: instId,
+        province_id: provId,
         count: 1,
       });
       APP_STATE = res.state;
-      showToast(`${f.name} を解体し全額返金しました。`);
+      showToast(`${f.name}（${provName}）を解体し全額返金しました。`);
       renderAll();
     });
     listEl.appendChild(el);
@@ -2456,7 +2494,6 @@ function renderNationInventory(nat) {
   for (const div of nat.divisions || []) {
     const unitCost = Number(div.spec?.cost || 380);
     const refund = +(unitCost * Number(div.count || 1)).toFixed(1);
-    const provName = APP_STATE.provinces.find((p) => p.id === div.province_id)?.name.split("(")[0] || "首都";
     const unitDescs = div.spec?.unit_descriptions || [];
 
     const el = document.createElement("div");
@@ -2466,7 +2503,7 @@ function renderNationInventory(nat) {
     el.innerHTML = `
       <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;">
         <div style="flex:1;">
-          <div class="shop-item-title">🪖 ${div.name} × ${div.count}個師団 <span class="badge badge-ok">📍${provName}</span></div>
+          <div class="shop-item-title">🪖 ${div.name} × ${div.count}個師団</div>
           <div class="shop-item-sub" style="margin-top:2px;">1個師団単価: <strong>${unitCost}億</strong> / 小計: <strong style="color:#fbbf24;">${refund.toLocaleString()}億</strong></div>
           <div class="shop-item-sub" style="white-space:normal;margin-top:2px;color:#e2e8f0;">内訳: ${(div.spec?.breakdown || []).join(" ＋ ")}</div>
         </div>
@@ -3486,7 +3523,6 @@ function setupEventListeners() {
         nation_id: activeNat.id,
         name: document.getElementById("div-name").value,
         count: Number(document.getElementById("div-count").value || 1),
-        province_id: document.getElementById("div-prov").value,
         regiments: BUILDER_REGIMENTS,
         artillery_id: BUILDER_ARTILLERY,
         supports: BUILDER_SUPPORTS,
@@ -3637,11 +3673,14 @@ function setupEventListeners() {
     }
 
     lines.push("", `## 🏰 施設・その他`);
-    for (const fid of nat.facilities || []) {
+    for (const fItem of nat.facilities || []) {
+      const fid = typeof fItem === "string" ? fItem : fItem.facility_id;
       const f = facMap[fid];
       if (!f) continue;
+      const provId = typeof fItem === "object" ? fItem.province_id : nat.capital_id;
+      const provName = provById[provId]?.name || provId || "首都";
       totalSpent += f.cost;
-      lines.push(`- **${f.name}** （${f.cost}億）`);
+      lines.push(`- **${f.name}** [📍${provName}] （${f.cost}億）`);
     }
 
     lines.push(

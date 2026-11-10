@@ -90,7 +90,8 @@ def compute_battle_simulation(
         nation_summaries: List[Dict[str, Any]] = []
 
         for nat in side_nations:
-            nat_facs = nat.get("facilities", [])
+            nat_fac_items = nat.get("facilities", [])
+            nat_facs = [f.get("facility_id") if isinstance(f, dict) else f for f in nat_fac_items]
             facilities_owned.extend(nat_facs)
             has_port = "fac_naval_port" in nat_facs
             has_radar = "fac_radar" in nat_facs

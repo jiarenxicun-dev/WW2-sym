@@ -730,20 +730,51 @@ async def handle_procure(request: web.Request) -> web.Response:
         if not f:
             return web.json_response({"ok": False, "error": "施設が見つかりません。"}, status=404)
         if action == "buy":
+            province_id = body.get("province_id") or nat.get("capital_id") or (nat.get("province_ids") or [None])[0]
+            if not province_id or province_id not in prov_by_id:
+                return web.json_response({"ok": False, "error": "配備先のプロビンスを選択してください。"}, status=400)
+            target_prov = prov_by_id[province_id]
+            if target_prov.get("owner_id") != nat["id"]:
+                return web.json_response({"ok": False, "error": "施設は自国が領有するプロビンスにのみ配備できます。"}, status=400)
+            already = any(
+                (x.get("facility_id") == unit_id and x.get("province_id") == province_id)
+                if isinstance(x, dict) else (x == unit_id and province_id == nat.get("capital_id"))
+                for x in nat.get("facilities", [])
+            )
+            if already:
+                return web.json_response({
+                    "ok": False,
+                    "error": f"『{target_prov['name']}』には既に『{f['name']}』が配備されています。"
+                }, status=400)
             if float(nat["budget"]) < f["cost"]:
                 return web.json_response({"ok": False, "error": f"予算不足です（必要: {f['cost']:.0f}億）。"}, status=400)
             nat["budget"] = round(float(nat["budget"]) - f["cost"], 1)
-            if unit_id not in nat["facilities"]:
-                nat["facilities"].append(unit_id)
-            cap = prov_by_id.get(nat.get("capital_id"))
-            if unit_id == "fac_naval_port" and cap:
-                cap["has_port"] = True
-            if unit_id == "fac_fortress" and cap:
-                cap["has_fort"] = True
+            nat.setdefault("facilities", []).append({
+                "id": f"finst_{uuid.uuid4().hex[:8]}",
+                "facility_id": unit_id,
+                "province_id": province_id,
+            })
         else:
-            if unit_id in nat["facilities"]:
-                nat["facilities"].remove(unit_id)
-                nat["budget"] = round(float(nat["budget"]) + f["cost"], 1)
+            instance_id = body.get("instance_id")
+            province_id = body.get("province_id")
+            removed = False
+            new_facs = []
+            for x in nat.get("facilities", []):
+                if not removed:
+                    if isinstance(x, dict):
+                        if (instance_id and x.get("id") == instance_id) or (
+                            not instance_id and x.get("facility_id") == unit_id and (not province_id or x.get("province_id") == province_id)
+                        ):
+                            removed = True
+                            continue
+                    elif x == unit_id:
+                        removed = True
+                        continue
+                new_facs.append(x)
+            if not removed:
+                return web.json_response({"ok": False, "error": "解体する施設が見つかりません。"}, status=400)
+            nat["facilities"] = new_facs
+            nat["budget"] = round(float(nat["budget"]) + f["cost"], 1)
 
     save_world_state(state, world_id if "world_id" in locals() else "world_admin1")
     await broadcast_state(state)

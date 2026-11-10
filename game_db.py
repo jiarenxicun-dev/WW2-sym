@@ -896,6 +896,9 @@ def build_scenario_state(scenario_type: str = "world_admin1", world_id: str = "w
             p["is_city"] = False
             p["has_port"] = False
             p["has_fort"] = False
+            p["has_radar"] = False
+            p["has_coastal_gun"] = False
+            p["facilities"] = []
         return {
             "world_id": "world_admin1",
             "name": "世界マップ（1,527州・世界規模建国）",
@@ -931,6 +934,9 @@ def build_scenario_state(scenario_type: str = "world_admin1", world_id: str = "w
         p["is_city"] = False
         p["has_port"] = False
         p["has_fort"] = False
+        p["has_radar"] = False
+        p["has_coastal_gun"] = False
+        p["facilities"] = []
 
     prov_by_id = {p["id"]: p for p in provinces}
     nations: List[Dict[str, Any]] = []
@@ -954,19 +960,15 @@ def build_scenario_state(scenario_type: str = "world_admin1", world_id: str = "w
                 if cid in prov_by_id:
                     prov_by_id[cid]["is_city"] = True
 
-            facs = list(raw_n.get("initial_facilities", []))
-            if "fac_naval_port" in facs:
-                # 沿岸プロビンスまたは首都に軍港アイコンを設定
-                port_set = False
-                for pid in pids:
-                    if pid in prov_by_id and prov_by_id[pid].get("coastal"):
-                        prov_by_id[pid]["has_port"] = True
-                        port_set = True
-                        break
-                if not port_set and cap_id in prov_by_id:
-                    prov_by_id[cap_id]["has_port"] = True
-            if "fac_fortress" in facs and cap_id in prov_by_id:
-                prov_by_id[cap_id]["has_fort"] = True
+            coastal_pid = next((pid for pid in pids if pid in prov_by_id and prov_by_id[pid].get("coastal")), cap_id)
+            facs: List[Dict[str, Any]] = []
+            for f_idx, fid in enumerate(raw_n.get("initial_facilities", [])):
+                f_pid = coastal_pid if fid in ("fac_naval_port", "fac_coastal_gun") else cap_id
+                facs.append({
+                    "id": f"finst_{nid}_{f_idx+1}",
+                    "facility_id": fid,
+                    "province_id": f_pid,
+                })
 
             divs: List[Dict[str, Any]] = []
             for idx, d in enumerate(raw_n.get("initial_divisions", [])):
@@ -1227,7 +1229,7 @@ def build_scenario_state(scenario_type: str = "world_admin1", world_id: str = "w
             }
         ]
 
-    return {
+    state = {
         "world_id": "default",
         "scenario_type": scenario_type,
         "week": 1,
@@ -1243,6 +1245,68 @@ def build_scenario_state(scenario_type: str = "world_admin1", world_id: str = "w
         "news": news,
         "updated_at": datetime.now(timezone.utc).isoformat(),
     }
+    sync_province_facilities(state)
+    return state
+
+
+def sync_province_facilities(state: Dict[str, Any]) -> None:
+    """
+    各国家の保有施設データ（旧形式の文字列ID配列および新形式の {id, facility_id, province_id} 辞書配列）を正規化し、
+    各プロビンスの施設フラグ（has_port, has_fort, has_radar, has_coastal_gun, facilities）を同期します。
+    """
+    provinces = state.get("provinces", [])
+    prov_by_id = {p["id"]: p for p in provinces}
+    for p in provinces:
+        p["has_port"] = False
+        p["has_fort"] = False
+        p["has_radar"] = False
+        p["has_coastal_gun"] = False
+        p["facilities"] = []
+
+    for nat in state.get("nations", []):
+        nid = nat.get("id", "nat")
+        cap_id = nat.get("capital_id")
+        pids = nat.get("province_ids", [])
+        coastal_pid = next((pid for pid in pids if pid in prov_by_id and prov_by_id[pid].get("coastal")), cap_id)
+
+        normalized_facs: List[Dict[str, Any]] = []
+        for idx, item in enumerate(nat.get("facilities", [])):
+            if isinstance(item, str):
+                fid = item
+                default_pid = coastal_pid if fid in ("fac_naval_port", "fac_coastal_gun") else cap_id
+                f_obj = {
+                    "id": f"finst_{nid}_{idx+1}_{fid}",
+                    "facility_id": fid,
+                    "province_id": default_pid or (pids[0] if pids else ""),
+                }
+            elif isinstance(item, dict):
+                fid = item.get("facility_id") or item.get("unit_id") or ""
+                if not fid:
+                    continue
+                pid = item.get("province_id") or cap_id or (pids[0] if pids else "")
+                f_obj = {
+                    "id": item.get("id") or f"finst_{nid}_{idx+1}_{fid}",
+                    "facility_id": fid,
+                    "province_id": pid,
+                }
+            else:
+                continue
+
+            normalized_facs.append(f_obj)
+            target_p = prov_by_id.get(f_obj["province_id"])
+            if target_p:
+                if fid not in target_p["facilities"]:
+                    target_p["facilities"].append(fid)
+                if fid == "fac_naval_port":
+                    target_p["has_port"] = True
+                elif fid == "fac_fortress":
+                    target_p["has_fort"] = True
+                elif fid == "fac_radar":
+                    target_p["has_radar"] = True
+                elif fid == "fac_coastal_gun":
+                    target_p["has_coastal_gun"] = True
+
+        nat["facilities"] = normalized_facs
 
 
 def load_world_state(world_id: str = "world_admin1") -> Dict[str, Any]:
@@ -1283,6 +1347,9 @@ def load_world_state(world_id: str = "world_admin1") -> Dict[str, Any]:
                         "is_city": False,
                         "has_port": False,
                         "has_fort": False,
+                        "has_radar": False,
+                        "has_coastal_gun": False,
+                        "facilities": [],
                     }
                     provinces.append(child)
                     saved[child_id] = child
@@ -1298,6 +1365,7 @@ def load_world_state(world_id: str = "world_admin1") -> Dict[str, Any]:
         for sp in state.get("provinces", []):
             if sp["id"] in latest_coords:
                 sp["x"], sp["y"] = latest_coords[sp["id"]]
+        sync_province_facilities(state)
         # 師団スペック（説明文・内訳・コスト）を最新カタログ定義で同期
         custom_tanks = state.get("custom_tanks", [])
         for nat in state.get("nations", []):
@@ -1321,6 +1389,7 @@ def load_world_state(world_id: str = "world_admin1") -> Dict[str, Any]:
 
 
 def save_world_state(state: Dict[str, Any], world_id: str = "default") -> None:
+    sync_province_facilities(state)
     state["updated_at"] = datetime.now(timezone.utc).isoformat()
     with get_conn() as conn:
         conn.execute(

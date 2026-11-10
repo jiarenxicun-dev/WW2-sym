@@ -386,10 +386,9 @@
         </div>
 
         <div class="builder-form">
-          <div class="row-3">
+          <div class="row-2">
             <label>師団名称 <input type="text" id="div-name" value="第1歩兵師団" /></label>
             <label>編成師団数 <input type="number" id="div-count" value="5" min="1" max="200" /></label>
-            <label>初期配備プロビンス <select id="div-prov"></select></label>
           </div>
 
           <!-- 基幹連隊 (3〜4個) -->
@@ -445,6 +444,14 @@
           <button class="btn btn-sm shop-tab-btn active" data-shop="navy">⚓ 海軍艦艇・揚陸/輸送船団</button>
           <button class="btn btn-sm shop-tab-btn" data-shop="air">✈️ 空軍機体・核兵器</button>
           <button class="btn btn-sm shop-tab-btn" data-shop="facility">🏰 軍港(必須)・レーダー・要塞</button>
+        </div>
+
+        <div id="shop-facility-prov-bar" class="sub-box" style="display:none;margin-bottom:8px;">
+          <label style="display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;">
+            <strong>📍 施設の配備先プロビンス:</strong>
+            <select id="shop-facility-prov" style="flex:1;min-width:180px;"></select>
+          </label>
+          <p class="muted" style="margin-top:4px;font-size:11px;">※選択した自国プロビンスに施設（⚓軍港・📡防空レーダー網・🏰永久要塞・🛡️海岸砲要塞）を配備し、平時マップ上に反映します。</p>
         </div>
 
         <div class="shop-filter-bar">
