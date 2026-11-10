@@ -658,6 +658,20 @@ input[type="color"] {
   gap: 5px;
 }
 
+#tab-peacetime-map {
+  --found-capital: #fbbf24;
+  --found-city: #38bdf8;
+  --found-extra: #4ade80;
+}
+
+.found-capital { color: var(--found-capital); }
+.found-city { color: var(--found-city); }
+.found-extra { color: var(--found-extra); }
+
+#found-status {
+  margin: 6px 0;
+}
+
 .found-selection-box {
   background: var(--bg-input);
   border: 1px dashed #3b82f6;
@@ -691,6 +705,9 @@ input[type="color"] {
   border: 1px solid var(--border);
   margin-top: 4px;
 }
+
+#btn-found-austria-1914[hidden],
+#btn-png-europe-1914[hidden] { display: none; }
 
 /* PNG Canvas Painter */
 .png-canvas-wrapper {

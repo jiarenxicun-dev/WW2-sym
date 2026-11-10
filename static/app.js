@@ -560,6 +560,7 @@ function renderAll() {
   if (!APP_STATE || !CATALOG) return;
   renderTopbar();
   renderPeacetimeMap();
+  updateFoundSelectionUI();
   renderStateSearch();
   renderProvinceInspectPanel();
   renderPeacetimeNationList();
@@ -856,11 +857,13 @@ ${p.coastal ? "沿岸" : "内陸"}
     }
 
     const isSelected = p.id === SELECTED_PROV_ID;
-    const isFoundCap = FOUND_SELECTION.capital === p.id;
-    const isFoundCity = FOUND_SELECTION.cities.includes(p.id);
-    const isFoundExtra = FOUND_SELECTION.extra.includes(p.id);
+    const foundFill = getFoundFill(p.id);
+    if (foundFill) {
+      fill = foundFill;
+      fillOpacity = "0.9";
+    }
 
-    if (isSelected || isFoundCap || isFoundCity || isFoundExtra) {
+    if (isSelected || foundFill) {
       stroke = "#facc15";
       strokeW = "1.8";
     }
@@ -870,6 +873,10 @@ ${p.coastal ? "沿岸" : "内陸"}
     path.setAttribute("stroke", stroke);
     path.setAttribute("stroke-width", strokeW);
   }
+
+  WORLD_MARKER_GROUP?.querySelectorAll(".island-marker").forEach((marker) => {
+    marker.style.fill = getFoundFill(marker.getAttribute("data-prov-id")) || "";
+  });
 
   // Badges Layer (首都・都市・港・砦・師団バッジ)
   let badgesGroup = document.getElementById("world-badges-layer");
@@ -884,8 +891,8 @@ ${p.coastal ? "沿岸" : "内陸"}
     if (!pData) continue;
     const cx = pData.cx;
     const cy = pData.cy;
-    const isFoundCap = FOUND_SELECTION.capital === p.id;
-    const isFoundCity = FOUND_SELECTION.cities.includes(p.id);
+    const isFoundCap = PEACE_TOOL === "found" && FOUND_SELECTION.capital === p.id;
+    const isFoundCity = PEACE_TOOL === "found" && FOUND_SELECTION.cities.includes(p.id);
 
     if (p.is_capital || isFoundCap) {
       bHtml += `<text x="${cx}" y="${cy}" font-size="11" fill="#fbbf24" text-anchor="middle" dominant-baseline="central" pointer-events="none" filter="drop-shadow(0 1px 2px rgba(0,0,0,0.8))">★</text>`;
@@ -909,6 +916,14 @@ ${p.coastal ? "沿岸" : "内陸"}
     }
   }
   badgesGroup.innerHTML = bHtml;
+}
+
+function getFoundFill(provinceId) {
+  if (PEACE_TOOL !== "found") return null;
+  if (FOUND_SELECTION.capital === provinceId) return "var(--found-capital)";
+  if (FOUND_SELECTION.cities.includes(provinceId)) return "var(--found-city)";
+  if (FOUND_SELECTION.extra.includes(provinceId)) return "var(--found-extra)";
+  return null;
 }
 
 function renderPeacetimeMap() {
@@ -1023,11 +1038,13 @@ function renderPeacetimeMap() {
     }
 
     const isSelected = p.id === SELECTED_PROV_ID;
-    const isFoundCap = FOUND_SELECTION.capital === p.id;
-    const isFoundCity = FOUND_SELECTION.cities.includes(p.id);
-    const isFoundExtra = FOUND_SELECTION.extra.includes(p.id);
+    const foundFill = getFoundFill(p.id);
+    if (foundFill) {
+      fill = foundFill;
+      fillOpacity = "0.9";
+    }
 
-    if (isSelected || isFoundCap || isFoundCity || isFoundExtra) {
+    if (isSelected || foundFill) {
       stroke = "#facc15";
       strokeW = "2.6";
     }
@@ -1037,7 +1054,7 @@ function renderPeacetimeMap() {
     if (rProv && rProv.path) {
       // 下地に自然地形色を敷き、その上に領有国カラーを重ねることで重厚な地図質感を出す
       html += `<path d="${rProv.path}" fill="${terrainCol}" fill-opacity="0.92" stroke="none" />`;
-      if (owner && mapStyle === "terrain") {
+      if (owner && mapStyle === "terrain" && !foundFill) {
         html += `<path d="${rProv.path}" fill="${owner.color}" fill-opacity="0.26" stroke="${stroke}" stroke-width="${strokeW}" stroke-linejoin="round" />`;
       } else {
         html += `<path d="${rProv.path}" fill="${fill}" fill-opacity="${fillOpacity}" stroke="${stroke}" stroke-width="${strokeW}" stroke-linejoin="round" />`;
@@ -1121,8 +1138,8 @@ function renderPeacetimeMap() {
     const rProv = rmap?.provinces?.[p.id];
     const cx = rProv ? rProv.cx : p.x;
     const cy = rProv ? rProv.cy : p.y;
-    const isFoundCap = FOUND_SELECTION.capital === p.id;
-    const isFoundCity = FOUND_SELECTION.cities.includes(p.id);
+    const isFoundCap = PEACE_TOOL === "found" && FOUND_SELECTION.capital === p.id;
+    const isFoundCity = PEACE_TOOL === "found" && FOUND_SELECTION.cities.includes(p.id);
     if (!p.is_capital && !p.is_city && !isFoundCap && !isFoundCity && !divCountByProv[p.id]) continue;
     const shortName = p.name.split("(")[0];
     const labelFontSize = zoomedOut ? 8.4 : Math.max(5.2, Math.min(8.5, (PEACE_VB.w / 1500) * 8.8));
@@ -1245,20 +1262,67 @@ async function onPeacetimeProvinceClick(provId) {
   renderProvinceInspectPanel();
 }
 
+function getFoundSelection() {
+  const { capital, cities, extra } = FOUND_SELECTION;
+  const provinces = new Map(APP_STATE.provinces.map((p) => [p.id, p]));
+  return { capital, cities, provinces, selected: new Set([capital, ...cities, ...extra].filter(Boolean)) };
+}
+
+function getFoundPaths(capital, provinces, canEnter) {
+  const previous = new Map([[capital, null]]);
+  const queue = [capital];
+  for (let i = 0; i < queue.length; i++) {
+    const id = queue[i];
+    for (const next of provinces.get(id)?.neighbors || []) {
+      if (previous.has(next) || !canEnter(next)) continue;
+      previous.set(next, id);
+      queue.push(next);
+    }
+  }
+  return previous;
+}
+
+function getFoundReadiness({ capital, cities, provinces, selected }) {
+  if (!capital || cities.length !== 2) {
+    return { message: "白地の首都1つと主要都市2つを選んでください。" };
+  }
+  for (const id of selected) {
+    const province = provinces.get(id);
+    if (!province || province.owner_id) {
+      return { message: `「${province?.name || id}」は選択できません。別の白地を選んでください。` };
+    }
+  }
+  const paths = getFoundPaths(capital, provinces, (id) => selected.has(id));
+  const disconnected = cities.filter((id) => !paths.has(id));
+  if (disconnected.length) {
+    const names = disconnected.map((id) => provinces.get(id).name).join("、");
+    return {
+      message: `首都と「${names}」がつながっていません。間の白地も追加領土に選んでください。`,
+      disconnected: true,
+    };
+  }
+  return { message: "首都と主要都市2つがつながっています。", ready: true };
+}
+
 function updateFoundSelectionUI() {
-  const provById = {};
-  for (const p of APP_STATE.provinces) provById[p.id] = p;
+  const selection = getFoundSelection();
+  const { provinces } = selection;
   document.getElementById("found-cap-label").textContent = FOUND_SELECTION.capital
-    ? `★ ${provById[FOUND_SELECTION.capital]?.name}`
+    ? `★ ${provinces.get(FOUND_SELECTION.capital)?.name}`
     : "マップ上の空き地をクリック (未選択)";
   document.getElementById("found-cities-label").textContent =
     FOUND_SELECTION.cities.length > 0
-      ? FOUND_SELECTION.cities.map((c) => `● ${provById[c]?.name}`).join("、") + ` (${FOUND_SELECTION.cities.length}/2)`
+      ? FOUND_SELECTION.cities.map((c) => `● ${provinces.get(c)?.name}`).join("、") + ` (${FOUND_SELECTION.cities.length}/2)`
       : "未選択 (0/2)";
   document.getElementById("found-provs-label").textContent =
     FOUND_SELECTION.extra.length > 0
-      ? FOUND_SELECTION.extra.map((c) => provById[c]?.name).join("、")
+      ? FOUND_SELECTION.extra.map((c) => provinces.get(c)?.name).join("、")
       : "なし";
+  const readiness = getFoundReadiness(selection);
+  document.getElementById("found-status").textContent = readiness.message;
+  document.getElementById("btn-found-connect").disabled = !readiness.disconnected;
+  document.getElementById("btn-found-austria-1914").hidden =
+    APP_STATE.world_id !== "world_admin1" || !window.WORLD_ADMIN1_MAP?.austriaHungary1914;
 }
 
 function renderProvinceInspectPanel() {
@@ -2668,6 +2732,7 @@ function loadPngWorldMap() {
     height,
   };
   document.getElementById("png-tolerance").disabled = true;
+  document.getElementById("btn-png-europe-1914").hidden = !map.europe1914;
   drawPngWorldMap(canvas.getContext("2d"));
 }
 
@@ -2894,6 +2959,7 @@ function setupEventListeners() {
       document.getElementById("peace-panel-inspect").style.display = PEACE_TOOL === "inspect" ? "block" : "none";
       document.getElementById("peace-panel-found").style.display = PEACE_TOOL === "found" ? "block" : "none";
       document.getElementById("peace-panel-bucket").style.display = PEACE_TOOL === "bucket" ? "block" : "none";
+      renderPeacetimeMap();
     });
   });
 
@@ -2906,8 +2972,8 @@ function setupEventListeners() {
   document.getElementById("state-search-results").addEventListener("change", (e) => {
     const p = APP_STATE.provinces.find((state) => state.id === e.target.value);
     if (!p) return;
-    document.querySelector('.map-tool-btn[data-ptool="inspect"]').click();
-    const rp = window.REALISTIC_MAP_DATA?.provinces?.[p.id];
+    if (PEACE_TOOL !== "found") document.querySelector('.map-tool-btn[data-ptool="inspect"]').click();
+    const rp = (window.WORLD_ADMIN1_MAP?.provinces?.[p.id] || window.REALISTIC_MAP_DATA?.provinces?.[p.id]);
     PEACE_VB.w = 600;
     PEACE_VB.h = 370;
     PEACE_VB.x = (rp?.cx ?? p.x) - PEACE_VB.w / 2;
@@ -3005,10 +3071,69 @@ function setupEventListeners() {
     renderPeacetimeMap();
   });
 
-  document.getElementById("btn-submit-found").addEventListener("click", async () => {
+  document.getElementById("btn-found-austria-1914").addEventListener("click", () => {
+    const preset = window.WORLD_ADMIN1_MAP.austriaHungary1914;
+    const { provinces } = getFoundSelection();
+    const unavailable = preset.provinces.find((id) => !provinces.has(id) || provinces.get(id).owner_id);
+    if (unavailable) {
+      document.getElementById("found-status").textContent =
+        `「${provinces.get(unavailable)?.name || unavailable}」を選べないため、帝国領を一括選択できません。`;
+      return;
+    }
+    const { capital, cities } = preset;
+    FOUND_SELECTION = {
+      capital,
+      cities: [...cities],
+      extra: preset.provinces.filter((id) => id !== capital && !cities.includes(id)),
+    };
+    const name = document.getElementById("found-name");
+    if (!name.value.trim()) name.value = "オーストリア＝ハンガリー帝国";
+    updateFoundSelectionUI();
+    renderPeacetimeMap();
+  });
+
+  document.getElementById("btn-found-connect").addEventListener("click", () => {
+    const { capital, cities, provinces, selected } = getFoundSelection();
+    const connected = getFoundPaths(capital, provinces, (id) => selected.has(id));
+    const disconnected = cities.filter((id) => !connected.has(id));
+    const paths = getFoundPaths(capital, provinces, (id) => {
+      const province = provinces.get(id);
+      return province && !province.owner_id;
+    });
+    if (disconnected.some((id) => !paths.has(id))) {
+      document.getElementById("found-status").textContent =
+        "空き地だけで首都から両方の都市へつながる経路がありません。首都か都市を選び直してください。";
+      return;
+    }
+    for (const city of disconnected) {
+      for (let id = paths.get(city); id; id = paths.get(id)) {
+        if (selected.has(id)) continue;
+        selected.add(id);
+        FOUND_SELECTION.extra.push(id);
+      }
+    }
+    updateFoundSelectionUI();
+    renderPeacetimeMap();
+  });
+
+  const foundSubmit = document.getElementById("btn-submit-found");
+  foundSubmit.addEventListener("click", async () => {
+    const status = document.getElementById("found-status");
+    const name = document.getElementById("found-name").value.trim();
+    if (!name) {
+      status.textContent = "国名を入力してください。";
+      document.getElementById("found-name").focus();
+      return;
+    }
+    const readiness = getFoundReadiness(getFoundSelection());
+    if (!readiness.ready) {
+      status.textContent = readiness.message;
+      return;
+    }
+    foundSubmit.disabled = true;
     try {
       const res = await apiPost("/api/nation/found", {
-        name: document.getElementById("found-name").value,
+        name,
         flag: document.getElementById("found-flag").value,
         color: document.getElementById("found-color").value,
         leader: document.getElementById("found-leader").value,
@@ -3025,7 +3150,10 @@ function setupEventListeners() {
       showToast(`🎉 ${res.nation.flag}${res.nation.name} を建国しました！（初期資金5兆円交付）`);
       renderAll();
     } catch (err) {
+      status.textContent = err.message;
       showToast(err.message, true);
+    } finally {
+      foundSubmit.disabled = false;
     }
   });
 
@@ -3558,7 +3686,7 @@ function setupEventListeners() {
       APP_STATE = res.state;
       ACTIVE_WAR_ID = null;
       document.getElementById("modal-scenario").style.display = "none";
-      showToast("🌍 世界マップ（全1,505州）で初期化しました！白地プロビンスから建国してください。");
+      showToast("🌍 世界マップ（全1,527州）で初期化しました！白地プロビンスから建国してください。");
       renderAll();
     });
   }
@@ -3586,6 +3714,18 @@ function setupEventListeners() {
   });
 
   // PNGバケツ塗りツール操作
+  document.getElementById("btn-png-europe-1914").addEventListener("click", () => {
+    if (!pngWorldMap) return;
+    pngUndoStack.push({ colors: pngWorldMap.colors });
+    if (pngUndoStack.length > 15) pngUndoStack.shift();
+    pngWorldMap.colors = new Map([
+      ...pngWorldMap.colors,
+      ...Object.entries(window.WORLD_ADMIN1_MAP.europe1914),
+    ]);
+    const canvas = document.getElementById("png-paint-canvas");
+    drawPngWorldMap(canvas.getContext("2d"));
+  });
+
   document.getElementById("btn-png-world-map").addEventListener("click", () => {
     document.getElementById("png-file-input").value = "";
     loadPngWorldMap();
@@ -3608,6 +3748,7 @@ function setupEventListeners() {
       pngWorldMap = null;
       pngUndoStack = [];
       document.getElementById("png-tolerance").disabled = false;
+      document.getElementById("btn-png-europe-1914").hidden = true;
       showToast(`📂 白地図画像 (${img.width}×${img.height}) を読み込みました！クリックでバケツ塗りできます。`);
     };
     img.onerror = () => URL.revokeObjectURL(url);
@@ -3619,7 +3760,10 @@ function setupEventListeners() {
     const canvas = document.getElementById("png-paint-canvas");
     const ctx = canvas.getContext("2d");
     const previous = pngUndoStack.pop();
-    if (pngWorldMap) drawPngWorldMapAfterFill(ctx, previous.id, previous.color);
+    if (pngWorldMap && previous.colors) {
+      pngWorldMap.colors = previous.colors;
+      drawPngWorldMap(ctx);
+    } else if (pngWorldMap) drawPngWorldMapAfterFill(ctx, previous.id, previous.color);
     else ctx.putImageData(previous, 0, 0);
   });
 

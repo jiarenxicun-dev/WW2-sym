@@ -27,3 +27,10 @@ Discordの「AIWA」サーバーで行われている国家運営・軍備編成
    - 不可侵条約（1週間）、軍事同盟（1週間・合計4カ国上限）、軍事的通行権、講和条約（賠償金1.8兆→0.9兆→0.4兆・領土1/3割譲・週資金+100億/プロビ）の管理。
 5. **🪣 白地図PNGバケツ塗りツール**
    - 手元の白地図PNG画像を読み込んでブラウザ上でバケツ塗りし、PNGとしてダウンロード可能。
+
+## 歴史境界データ
+
+ゲーム用の区画は、歴史境界を既存の地図に合わせて簡略化・調整しています。
+
+- 1914年の欧州国境は Jack Kavanagh の [Map of Europe, c. 1914](https://doi.org/10.5281/zenodo.21341486)（[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)）を使用しています。
+- オーストリア＝ハンガリー帝国の境界は、Antonia Dückelmann と Peter Paul Marckhgott-Sanabria による HistoGIS の [Österreich-Ungarn](https://histogis.acdh.oeaw.ac.at/shapes/shape/detail/9950) を参照しています。原資料と OpenStreetMap への帰属表示は同ページに記載されています。

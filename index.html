@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AIWA Web Command — 欧州・地中海 国家運営＆戦術ウォーゲーム</title>
-  <link rel="stylesheet" href="/static/styles.css?v=20261110_painter_zoom" />
+  <link rel="stylesheet" href="/static/styles.css?v=20261110_europe1914" />
 </head>
 <body>
   <!-- トップヘッダー：国家切替・予算表示・週進行・モード切替 -->
@@ -39,7 +39,7 @@
 
     <div class="topbar-right">
       <select id="select-active-world" class="select-world-dropdown" title="ワールド切替">
-        <option value="world_admin1" selected>🌍 世界マップ (1,505州)</option>
+        <option value="world_admin1" selected>🌍 世界マップ (1,527州)</option>
         <option value="default">🇪🇺 欧州マップ (299州・現行戦役)</option>
       </select>
       <select id="select-game-mode" class="mode-select" title="まず1(ソロ/検証プロトタイプ) と のちに2(マルチプレイ国別ロック) を切り替え">
@@ -148,7 +148,7 @@
         <div id="peace-panel-found" class="card" style="display:none;">
           <h2>🏛️ 新規建国申請（#建国ルール 準拠）</h2>
           <p class="rule-note">
-            ・白地図の空いている場所ならどこでも建国可能<br/>
+            ・首都と主要都市は、選んだ白地の領土でつなげてください<br/>
             ・<strong>首都1つ＋主要都市2つ</strong>を設置（基本的に陸続き必須）<br/>
             ・建国時に<strong>初期資金5兆円（50,000億）</strong>を支給！
           </p>
@@ -166,9 +166,12 @@
               <input type="checkbox" id="found-is-ai" /> 🤖 この国をAI国家（CPU担当）にする
             </label>
             <div class="found-selection-box">
-              <div><strong>★ 首都 (1つ):</strong> <span id="found-cap-label" class="highlight-text">マップ上の空き地をクリック</span></div>
-              <div><strong>● 主要都市 (2つ):</strong> <span id="found-cities-label" class="highlight-text">未選択 (0/2)</span></div>
-              <div><strong>🗺️ 追加初期領土:</strong> <span id="found-provs-label" class="muted">なし</span></div>
+              <div><strong class="found-capital">★ 首都 (1つ):</strong> <span id="found-cap-label" class="highlight-text">マップ上の空き地をクリック</span></div>
+              <div><strong class="found-city">● 主要都市 (2つ):</strong> <span id="found-cities-label" class="highlight-text">未選択 (0/2)</span></div>
+              <div><strong class="found-extra">🗺️ 追加初期領土:</strong> <span id="found-provs-label" class="muted">なし</span></div>
+              <button type="button" id="btn-found-austria-1914" class="btn btn-xs btn-outline" hidden>1914年のオーストリア＝ハンガリー帝国領を選択</button>
+              <p id="found-status" role="status">白地の首都1つと主要都市2つを選んでください。</p>
+              <button type="button" id="btn-found-connect" class="btn btn-xs btn-outline" disabled>間の空き地を追加</button>
               <button type="button" id="btn-found-clear-sel" class="btn btn-xs btn-outline">選択プロビンスをクリア</button>
             </div>
             <label>国家設定・背景ストーリー <textarea id="found-lore" rows="2" placeholder="建国の経緯や政体など"></textarea></label>
@@ -541,6 +544,7 @@
           <p class="muted">世界マップと同じ区画をクリックで塗り、PNGで保存できます。手元の画像も読み込めます。</p>
         </div>
         <div class="tool-group">
+          <button id="btn-png-europe-1914" class="btn btn-sm btn-outline" hidden>1914年の欧州を色分け</button>
           <button id="btn-png-world-map" class="btn btn-sm btn-outline">🌍 白地図に戻す</button>
           <label class="btn btn-sm btn-primary" style="cursor:pointer;">
             📂 白地図PNG画像を読み込む <input type="file" id="png-file-input" accept="image/*" style="display:none;" />
@@ -646,7 +650,7 @@
       </div>
       <div class="form-grid">
         <button id="btn-reset-world" class="btn btn-primary btn-block" style="background:#0284c7;border-color:#38bdf8;">
-          🌍 シナリオ：世界マップ（全1,505州・世界規模建国）で初期化
+          🌍 シナリオ：世界マップ（全1,527州・世界規模建国）で初期化
         </button>
         <button id="btn-reset-aiwa" class="btn btn-primary btn-block">
           🌍 シナリオ①：AIWA 現行サーバー再現（欧州・地中海15カ国＋条約＋瑞西仏戦争）で初期化
@@ -659,9 +663,9 @@
   </div>
 
   <div id="toast-container" class="toast-container"></div>
-  <script src="/static/world_admin1_map.js?v=20261110_pomerania"></script>
+  <script src="/static/world_admin1_map.js?v=20261110_europe1914"></script>
   <script src="/static/realistic_map_data.js"></script>
   <script src="/static/standalone_data.js"></script>
-  <script src="/static/app.js?v=20261110_painter_hires"></script>
+  <script src="/static/app.js?v=20261110_europe1914"></script>
 </body>
 </html>

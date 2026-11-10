@@ -1,9 +1,13 @@
 """
-AIWA 統合Webゲーム - 世界マップ（1,505州・Natural Earth 1:10m Admin 1 ベース）
-第一次世界大戦・第二次世界大戦の主要国境を再現可能な全1,505州の定義、
+AIWA 統合Webゲーム - 世界マップ（1,527州・Natural Earth 1:10m Admin 1 ベース）
+第一次世界大戦・第二次世界大戦の主要国境を再現可能な全1,527州の定義、
 陸続き・海峡隣接グラフ、および沿岸判定データ。
 ダンツィヒとズデーテン地方の境界は Historical Basemaps の1930年・1938年版を参照。
 https://github.com/aourednik/historical-basemaps
+オーストリア＝ハンガリー帝国の1914年境界は HistoGIS を参照。
+https://histogis.acdh.oeaw.ac.at/shapes/shape/detail/9950
+1914年の欧州各国境は Jack Kavanagh, Map of Europe, c. 1914 を参照。
+https://doi.org/10.5281/zenodo.21341486
 """
 from typing import Any, Dict, List
 
@@ -7650,8 +7654,8 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
       "g-60c8db9d4223",
       "g-71d72600c6e8",
       "g-74fac170863f",
-      "g-b12dd2b9db3b",
-      "g-edca50c3e222"
+      "g-edca50c3e222",
+      "g-b12dd2b9db3b"
     ],
     "area_km2": 40141
   },
@@ -7704,12 +7708,12 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "neighbors": [
       "g-13a676e7f1dc",
       "g-73cfde3815fd",
-      "g-84d867cd5f0e",
       "g-a9e3731c3efb",
       "g-acf062113d82",
-      "g-b12dd2b9db3b",
       "g-deb6a05ba116",
-      "g-e566604f0a88"
+      "g-e566604f0a88",
+      "g-b12dd2b9db3b-1914-1",
+      "g-84d867cd5f0e-1914-1"
     ],
     "area_km2": 26878
   },
@@ -7762,8 +7766,8 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
       "g-675c4dafb84d",
       "g-702e66e9477b",
       "g-729f2faf3162",
-      "g-b12dd2b9db3b",
-      "g-edca50c3e222"
+      "g-edca50c3e222",
+      "g-b12dd2b9db3b"
     ],
     "area_km2": 26667
   },
@@ -7779,9 +7783,10 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "neighbors": [
       "g-74fac170863f",
       "g-8e5ddeacfaed",
-      "g-b12dd2b9db3b",
       "g-b9006740a698",
-      "g-e566604f0a88"
+      "g-e566604f0a88",
+      "g-b12dd2b9db3b-1914-1",
+      "g-b12dd2b9db3b"
     ],
     "area_km2": 21876
   },
@@ -7931,24 +7936,23 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
   },
   {
     "id": "g-b12dd2b9db3b",
-    "name": "Khmel'nyts'kyy・Chernivtsi・Ternopil'",
+    "name": "西ポジーリャ",
     "region": "UA",
     "country": "UA",
-    "x": 824.9,
-    "y": 163.4,
+    "x": 828.2523,
+    "y": 162.8654,
     "terrain": "coastal",
     "coastal": true,
     "neighbors": [
+      "g-b12dd2b9db3b-1914-1",
       "g-06d2e0e260ec",
       "g-13a676e7f1dc",
       "g-47625d79bf21",
       "g-84d867cd5f0e",
       "g-8e5ddeacfaed",
-      "g-acf062113d82",
-      "g-b9006740a698",
       "g-edca50c3e222"
     ],
-    "area_km2": 42596
+    "area_km2": 26234
   },
   {
     "id": "g-4c8235562181",
@@ -8852,21 +8856,22 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
       "g-0fa80d08136d",
       "g-27cb50e25978",
       "g-b27be3f64f87",
-      "g-ca9efadbe117",
-      "g-e77e34741f3b"
+      "g-e77e34741f3b",
+      "g-ca9efadbe117"
     ],
     "area_km2": 24595
   },
   {
     "id": "g-ca9efadbe117",
-    "name": "Kauno・Taurages・Marijampoles・Alytaus",
+    "name": "リトアニア南西部",
     "region": "LT",
     "country": "LT",
-    "x": 812.6,
-    "y": 139.4,
+    "x": 813.6294,
+    "y": 139.3993,
     "terrain": "coastal",
     "coastal": true,
     "neighbors": [
+      "g-ca9efadbe117-ww1",
       "g-13c83a53b29e",
       "g-27cb50e25978",
       "g-314581565b5a",
@@ -8874,7 +8879,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
       "g-b924a8a341c1",
       "g-e77e34741f3b"
     ],
-    "area_km2": 40211
+    "area_km2": 37928
   },
   {
     "id": "g-d09e2dd75f7c",
@@ -11088,6 +11093,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "neighbors": [
       "g-13c83a53b29e",
       "g-b924a8a341c1",
+      "g-ca9efadbe117-ww1",
       "g-ca9efadbe117"
     ],
     "area_km2": 13100
@@ -12565,11 +12571,12 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "terrain": "coastal",
     "coastal": true,
     "neighbors": [
-      "g-56bc4c59cd07",
       "sudeten-east",
       "g-824595d51bf6",
       "g-7db6a6e146af",
-      "g-dcbfd1c3e357"
+      "g-dcbfd1c3e357",
+      "g-56bc4c59cd07-1914-1",
+      "g-56bc4c59cd07-ww1"
     ],
     "area_km2": 2293
   },
@@ -12685,12 +12692,12 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
       "g-1ab40fcfe708",
       "g-1babde8b0c67",
       "g-23f3c7f4401a",
-      "g-32b9a5391f57",
       "g-4c83bbaabca8",
       "g-6be6bca002af",
       "g-ade21483678f",
       "g-c26368f10a6b",
-      "g-fd2a338e625f"
+      "g-fd2a338e625f",
+      "g-32b9a5391f57-ww1"
     ],
     "area_km2": 22751
   },
@@ -12704,9 +12711,9 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "terrain": "coastal",
     "coastal": true,
     "neighbors": [
-      "g-008e17e2a748",
       "g-3b680adde68a",
-      "g-5ee037ccbf68"
+      "g-5ee037ccbf68",
+      "g-008e17e2a748"
     ],
     "area_km2": 16210
   },
@@ -12744,13 +12751,13 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "coastal": false,
     "neighbors": [
       "g-1ab40fcfe708",
-      "g-32b9a5391f57",
       "g-3b680adde68a",
       "g-551df2d9bf86",
       "g-6be6bca002af",
       "g-e6ff7fa621cb",
       "g-f92ed1f0ff9c",
-      "g-fb21935eee7d"
+      "g-fb21935eee7d",
+      "g-32b9a5391f57-ww1"
     ],
     "area_km2": 34538
   },
@@ -13556,10 +13563,10 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "coastal": true,
     "neighbors": [
       "g-1babde8b0c67",
-      "g-32b9a5391f57",
       "g-a7b972e6459b",
       "g-c26368f10a6b",
-      "g-e6ff7fa621cb"
+      "g-e6ff7fa621cb",
+      "g-32b9a5391f57-ww1"
     ],
     "area_km2": 2608
   },
@@ -13576,32 +13583,31 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
       "g-08b32296a394",
       "g-1babde8b0c67",
       "g-23f3c7f4401a",
-      "g-32b9a5391f57",
       "g-52bff3cb5d5d",
       "g-64335a3c60aa",
       "g-a7b972e6459b",
-      "g-e6ff7fa621cb"
+      "g-e6ff7fa621cb",
+      "g-32b9a5391f57-ww1",
+      "g-32b9a5391f57"
     ],
     "area_km2": 8158
   },
   {
     "id": "g-32b9a5391f57",
-    "name": "Liege・Limburg",
+    "name": "リエージュ・リンブルフ",
     "region": "BE",
     "country": "BE",
-    "x": 742.1,
-    "y": 157.2,
+    "x": 741.6006,
+    "y": 156.89,
     "terrain": "coastal",
     "coastal": true,
     "neighbors": [
-      "g-23f3c7f4401a",
+      "g-32b9a5391f57-ww1",
       "g-64335a3c60aa",
-      "g-ade21483678f",
       "g-c26368f10a6b",
-      "g-e6ff7fa621cb",
       "g-f92ed1f0ff9c"
     ],
-    "area_km2": 6112
+    "area_km2": 5210
   },
   {
     "id": "g-64335a3c60aa",
@@ -13614,10 +13620,10 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "coastal": true,
     "neighbors": [
       "g-08b32296a394",
-      "g-32b9a5391f57",
       "g-52bff3cb5d5d",
       "g-c26368f10a6b",
-      "g-f92ed1f0ff9c"
+      "g-f92ed1f0ff9c",
+      "g-32b9a5391f57"
     ],
     "area_km2": 17224
   },
@@ -13671,8 +13677,9 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
       "g-10a810b7c5e7",
       "g-282067334459",
       "g-5b124fcb49a3",
-      "g-c123fd4f281c",
-      "g-ea0c2d7a2532"
+      "g-ea0c2d7a2532",
+      "g-c123fd4f281c-ww1",
+      "g-c123fd4f281c"
     ],
     "area_km2": 17639
   },
@@ -13686,12 +13693,12 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "terrain": "coastal",
     "coastal": true,
     "neighbors": [
-      "g-484c647b0567",
       "g-5242d3ab8eec",
       "g-567d6779d16e",
       "g-6ebd320ac94a",
       "g-ab29fff7b5af",
-      "g-d027c3a9c806"
+      "g-d027c3a9c806",
+      "g-484c647b0567"
     ],
     "area_km2": 24875
   },
@@ -13705,11 +13712,12 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "terrain": "coastal",
     "coastal": true,
     "neighbors": [
-      "g-484c647b0567",
-      "g-8846235b3d74",
       "g-ab29fff7b5af",
       "g-b5555b54bdba",
-      "g-f20d93f89d62"
+      "g-f20d93f89d62",
+      "g-8846235b3d74",
+      "g-484c647b0567-ww1",
+      "g-484c647b0567"
     ],
     "area_km2": 28032
   },
@@ -13750,40 +13758,40 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
   },
   {
     "id": "g-484c647b0567",
-    "name": "Priština・Obilić・Kosovo Polje",
+    "name": "プリシュティナ・セルビア領",
     "region": "XK",
     "country": "XK",
-    "x": 803.6,
-    "y": 189.7,
+    "x": 804.4674,
+    "y": 189.7711,
     "terrain": "coastal",
     "coastal": true,
     "neighbors": [
+      "g-484c647b0567-ww1",
       "g-6ebd320ac94a",
-      "g-8846235b3d74",
       "g-b5555b54bdba",
       "g-d027c3a9c806"
     ],
-    "area_km2": 10913
+    "area_km2": 9006
   },
   {
     "id": "g-c50285cf29f4",
-    "name": "Agri・Iğdir",
+    "name": "アール・オスマン領",
     "region": "TR",
     "country": "TR",
-    "x": 893.8,
-    "y": 201.8,
+    "x": 893.7174,
+    "y": 201.95,
     "terrain": "coastal",
     "coastal": true,
     "neighbors": [
+      "g-c50285cf29f4-ww1",
       "g-0b094f67191e",
-      "g-282067334459",
       "g-5b124fcb49a3",
       "g-6faa2327f774",
       "g-79fa4ebc0a08",
       "g-ac037271ae31",
       "g-c123fd4f281c"
     ],
-    "area_km2": 14006
+    "area_km2": 10664
   },
   {
     "id": "g-0b094f67191e",
@@ -13814,9 +13822,9 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "coastal": true,
     "neighbors": [
       "g-311f3128c0c8",
-      "g-75a45ddc110f",
       "g-bf7445f99a68",
       "g-ee5b7ac35c0a",
+      "g-75a45ddc110f",
       "g-f27c48a3b728"
     ],
     "area_km2": 23387
@@ -13834,8 +13842,10 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
       "g-10d51ce0f6b2",
       "g-282067334459",
       "g-ac037271ae31",
-      "g-c123fd4f281c",
-      "g-c50285cf29f4"
+      "g-c50285cf29f4-ww1",
+      "g-c50285cf29f4",
+      "g-c123fd4f281c-ww1",
+      "g-c123fd4f281c"
     ],
     "area_km2": 15646
   },
@@ -13940,9 +13950,9 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "neighbors": [
       "g-04e7cde9246a",
       "g-22247c258906",
-      "g-bb8c5b7d079b",
       "g-e70ba7f456f3",
-      "g-ee5b7ac35c0a"
+      "g-ee5b7ac35c0a",
+      "g-bb8c5b7d079b"
     ],
     "area_km2": 22967
   },
@@ -14177,9 +14187,9 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "coastal": true,
     "neighbors": [
       "g-22247c258906",
-      "g-bb8c5b7d079b",
       "g-bf7445f99a68",
-      "g-cd068844d35c"
+      "g-cd068844d35c",
+      "g-bb8c5b7d079b"
     ],
     "area_km2": 25830
   },
@@ -14196,9 +14206,9 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
       "g-6dea164c7283",
       "g-ac037271ae31",
       "g-af03d5d19c9a",
-      "g-c123fd4f281c",
       "g-d56f2938c577",
-      "g-ff771e5f43e5"
+      "g-ff771e5f43e5",
+      "g-c123fd4f281c"
     ],
     "area_km2": 18900
   },
@@ -14253,29 +14263,30 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
       "g-5b124fcb49a3",
       "g-6dea164c7283",
       "g-6faa2327f774",
-      "g-c123fd4f281c",
-      "g-c50285cf29f4"
+      "g-c50285cf29f4",
+      "g-c123fd4f281c"
     ],
     "area_km2": 27236
   },
   {
     "id": "g-c123fd4f281c",
-    "name": "Erzurum・Bayburt・Rize・Trabzon (2/3)",
+    "name": "エルズルム北東部・オスマン領",
     "region": "TR",
     "country": "TR",
-    "x": 885.6,
-    "y": 197.3,
+    "x": 884.3259,
+    "y": 197.2153,
     "terrain": "coastal",
     "coastal": true,
     "neighbors": [
+      "g-c50285cf29f4",
+      "g-c123fd4f281c-ww1",
       "g-10d51ce0f6b2",
       "g-328ad3a714ec",
       "g-5b124fcb49a3",
       "g-ac037271ae31",
-      "g-c50285cf29f4",
       "g-ff771e5f43e5"
     ],
-    "area_km2": 25623
+    "area_km2": 18606
   },
   {
     "id": "g-ff771e5f43e5",
@@ -14288,9 +14299,9 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "coastal": true,
     "neighbors": [
       "g-328ad3a714ec",
-      "g-c123fd4f281c",
       "g-d56f2938c577",
-      "g-f0fd366b339a"
+      "g-f0fd366b339a",
+      "g-c123fd4f281c"
     ],
     "area_km2": 20365
   },
@@ -14799,25 +14810,25 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
       "g-2bb6eab38fc9",
       "g-5b124fcb49a3",
       "g-79fa4ebc0a08",
-      "g-c50285cf29f4",
-      "g-ea0c2d7a2532"
+      "g-ea0c2d7a2532",
+      "g-c50285cf29f4-ww1"
     ],
     "area_km2": 32991
   },
   {
     "id": "g-008e17e2a748",
-    "name": "Syddanmark",
+    "name": "北シュレースヴィヒ",
     "region": "DK",
     "country": "DK",
-    "x": 756.5,
-    "y": 138.5,
+    "x": 756.3302,
+    "y": 139.4855,
     "terrain": "coastal",
     "coastal": true,
     "neighbors": [
-      "g-02423f854394",
-      "g-cf2b11780a2a"
+      "g-008e17e2a748-ww1",
+      "g-02423f854394"
     ],
-    "area_km2": 11879
+    "area_km2": 3866
   },
   {
     "id": "g-cf2b11780a2a",
@@ -14829,8 +14840,8 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "terrain": "coastal",
     "coastal": true,
     "neighbors": [
-      "g-008e17e2a748",
-      "g-a05ad72c9b6f"
+      "g-a05ad72c9b6f",
+      "g-008e17e2a748-ww1"
     ],
     "area_km2": 13191
   },
@@ -15000,10 +15011,10 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "neighbors": [
       "g-0f5cb3ed1485",
       "g-6ebd320ac94a",
-      "g-908cf304065c",
       "g-9854fff4cade",
       "g-b96f590db7c6",
-      "g-ecbcca2744f0"
+      "g-ecbcca2744f0",
+      "g-908cf304065c"
     ],
     "area_km2": 17255
   },
@@ -15017,12 +15028,12 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "terrain": "coastal",
     "coastal": true,
     "neighbors": [
-      "g-268b88a7fae8",
       "g-5796fb865f2d",
       "g-6ebd320ac94a",
       "g-7a3dbab3b2bc",
       "g-b96f590db7c6",
-      "g-e6842ec4dc66"
+      "g-e6842ec4dc66",
+      "g-268b88a7fae8"
     ],
     "area_km2": 28394
   },
@@ -15036,34 +15047,31 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "terrain": "coastal",
     "coastal": true,
     "neighbors": [
-      "g-268b88a7fae8",
       "g-5796fb865f2d",
-      "g-75a45ddc110f",
       "g-ec8480001de9",
-      "g-ecbcca2744f0"
+      "g-ecbcca2744f0",
+      "g-268b88a7fae8",
+      "g-75a45ddc110f-ww1"
     ],
     "area_km2": 27563
   },
   {
     "id": "g-84d867cd5f0e",
-    "name": "Iasi・Vaslui・Botosani・Suceava",
+    "name": "北モルダヴィア",
     "region": "RO",
     "country": "RO",
-    "x": 825.8,
-    "y": 171.5,
+    "x": 826.626,
+    "y": 171.47,
     "terrain": "coastal",
     "coastal": true,
     "neighbors": [
-      "g-268b88a7fae8",
+      "g-b12dd2b9db3b",
+      "g-84d867cd5f0e-1914-1",
       "g-47625d79bf21",
       "g-98e659a04a40",
-      "g-acf062113d82",
-      "g-b12dd2b9db3b",
-      "g-b9006740a698",
-      "g-b96f590db7c6",
       "g-ec8480001de9"
     ],
-    "area_km2": 50471
+    "area_km2": 30556
   },
   {
     "id": "g-acf062113d82",
@@ -15075,32 +15083,32 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "terrain": "coastal",
     "coastal": true,
     "neighbors": [
-      "g-84d867cd5f0e",
       "g-9854fff4cade",
       "g-a9e3731c3efb",
-      "g-b12dd2b9db3b",
       "g-b9006740a698",
-      "g-b96f590db7c6"
+      "g-b96f590db7c6",
+      "g-b12dd2b9db3b-1914-1",
+      "g-84d867cd5f0e-1914-1"
     ],
     "area_km2": 26880
   },
   {
     "id": "g-268b88a7fae8",
-    "name": "Arges・Dâmbovita・Prahova・Brasov・Covasna",
+    "name": "北ワラキア",
     "region": "RO",
     "country": "RO",
-    "x": 821.4,
-    "y": 178.7,
+    "x": 822.0661,
+    "y": 179.995,
     "terrain": "coastal",
     "coastal": true,
     "neighbors": [
-      "g-84d867cd5f0e",
+      "g-268b88a7fae8-1914-1",
       "g-b96f590db7c6",
       "g-e6842ec4dc66",
       "g-ec8480001de9",
       "g-ecbcca2744f0"
     ],
-    "area_km2": 24133
+    "area_km2": 15220
   },
   {
     "id": "g-ec8480001de9",
@@ -15113,10 +15121,11 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "coastal": true,
     "neighbors": [
       "g-23df997b428d",
-      "g-268b88a7fae8",
-      "g-84d867cd5f0e",
       "g-98e659a04a40",
-      "g-e6842ec4dc66"
+      "g-e6842ec4dc66",
+      "g-84d867cd5f0e",
+      "g-268b88a7fae8-1914-1",
+      "g-268b88a7fae8"
     ],
     "area_km2": 27407
   },
@@ -15130,12 +15139,13 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "terrain": "coastal",
     "coastal": true,
     "neighbors": [
-      "g-268b88a7fae8",
       "g-7a3dbab3b2bc",
-      "g-84d867cd5f0e",
       "g-9854fff4cade",
       "g-acf062113d82",
-      "g-ecbcca2744f0"
+      "g-ecbcca2744f0",
+      "g-84d867cd5f0e-1914-1",
+      "g-268b88a7fae8-1914-1",
+      "g-268b88a7fae8"
     ],
     "area_km2": 18840
   },
@@ -15174,11 +15184,11 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
       "g-63428c9a1953",
       "g-7a3dbab3b2bc",
       "g-85fa065ff297",
-      "g-908cf304065c",
       "g-9854fff4cade",
       "g-a9e3731c3efb",
       "g-ad8f13c3ca92",
-      "g-ed0fa527233e"
+      "g-ed0fa527233e",
+      "g-908cf304065c"
     ],
     "area_km2": 25379
   },
@@ -15232,13 +15242,13 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "terrain": "plains",
     "coastal": false,
     "neighbors": [
-      "g-56bc4c59cd07",
       "g-ad8f13c3ca92",
-      "g-ce3719cc0da8",
       "g-dcbfd1c3e357",
       "g-deb6a05ba116",
       "g-0ae1ebd51ebe",
-      "g-824595d51bf6"
+      "g-824595d51bf6",
+      "g-56bc4c59cd07-1914-1",
+      "g-ce3719cc0da8"
     ],
     "area_km2": 6635
   },
@@ -15256,8 +15266,8 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
       "g-7db6a6e146af",
       "g-ad8f13c3ca92",
       "g-b9006740a698",
-      "g-ce3719cc0da8",
-      "g-e566604f0a88"
+      "g-e566604f0a88",
+      "g-ce3719cc0da8"
     ],
     "area_km2": 8698
   },
@@ -15358,41 +15368,43 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
   },
   {
     "id": "g-56bc4c59cd07",
-    "name": "Silesian",
+    "name": "ドンブロヴァ・ロシア領ポーランド",
     "region": "PL",
     "country": "PL",
-    "x": 795.4,
-    "y": 159.1,
+    "x": 798.0544,
+    "y": 157.6128,
     "terrain": "coastal",
     "coastal": true,
     "neighbors": [
+      "g-56bc4c59cd07-ww1",
+      "g-56bc4c59cd07-1914-1",
       "g-78e3f9e239ca",
-      "g-7db6a6e146af",
       "g-ce3719cc0da8",
+      "g-ce3719cc0da8-1914-2",
       "g-cf3ab07d777d",
-      "g-ffbb21536a23",
-      "g-0ae1ebd51ebe",
-      "sudeten-east"
+      "g-ffbb21536a23"
     ],
-    "area_km2": 12249
+    "area_km2": 4576
   },
   {
     "id": "g-ce3719cc0da8",
-    "name": "Lesser Poland",
+    "name": "西ガリツィア（クラクフ）",
     "region": "PL",
     "country": "PL",
-    "x": 801.0,
-    "y": 160.7,
+    "x": 801.0134,
+    "y": 160.815,
     "terrain": "coastal",
     "coastal": true,
     "neighbors": [
-      "g-56bc4c59cd07",
+      "g-56bc4c59cd07-1914-1",
+      "g-ce3719cc0da8-1914-2",
       "g-78e3f9e239ca",
       "g-7db6a6e146af",
       "g-deb6a05ba116",
-      "g-e566604f0a88"
+      "g-e566604f0a88",
+      "g-56bc4c59cd07"
     ],
-    "area_km2": 15616
+    "area_km2": 13623
   },
   {
     "id": "g-e566604f0a88",
@@ -15408,8 +15420,8 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
       "g-74fac170863f",
       "g-78e3f9e239ca",
       "g-b9006740a698",
-      "g-ce3719cc0da8",
-      "g-deb6a05ba116"
+      "g-deb6a05ba116",
+      "g-ce3719cc0da8"
     ],
     "area_km2": 18009
   },
@@ -15443,11 +15455,12 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "terrain": "coastal",
     "coastal": true,
     "neighbors": [
-      "g-56bc4c59cd07",
       "g-79ed45b32ad0",
       "g-b123484bed4f",
       "g-cf3ab07d777d",
-      "sudeten-east"
+      "sudeten-east",
+      "g-56bc4c59cd07-ww1",
+      "g-56bc4c59cd07"
     ],
     "area_km2": 9201
   },
@@ -15484,9 +15497,10 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
       "g-103ece1edc54",
       "g-48797c72fcb9",
       "g-b924a8a341c1",
-      "g-ca9efadbe117",
+      "g-5ab577113390",
       "g-ed3e9ecc7504",
-      "g-5ab577113390"
+      "g-ed3e9ecc7504-ww1",
+      "g-ca9efadbe117"
     ],
     "area_km2": 24318
   },
@@ -15522,9 +15536,11 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
       "g-5ee037ccbf68",
       "g-b123484bed4f",
       "g-b22f5d54cae6",
-      "g-ed3e9ecc7504",
       "g-5256eb78831b",
-      "g-5ab577113390"
+      "g-5ab577113390",
+      "g-ed3e9ecc7504",
+      "g-580b8b836d9a",
+      "g-580b8b836d9a-ww1"
     ],
     "area_km2": 24920
   },
@@ -15559,8 +15575,8 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "coastal": true,
     "neighbors": [
       "g-3bc1a565bb93",
-      "g-580b8b836d9a",
-      "g-5ab577113390"
+      "g-5ab577113390",
+      "g-580b8b836d9a-ww1"
     ],
     "area_km2": 6424
   },
@@ -15578,8 +15594,9 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
       "danzig",
       "g-13c83a53b29e",
       "g-3bc1a565bb93",
+      "g-ed3e9ecc7504",
       "g-580b8b836d9a",
-      "g-ed3e9ecc7504"
+      "g-580b8b836d9a-ww1"
     ],
     "area_km2": 10573
   },
@@ -15599,7 +15616,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
       "g-78e3f9e239ca",
       "g-b924a8a341c1",
       "g-cf3ab07d777d",
-      "g-ed3e9ecc7504"
+      "g-ed3e9ecc7504-ww1"
     ],
     "area_km2": 34985
   },
@@ -15614,31 +15631,34 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "coastal": true,
     "neighbors": [
       "g-103ece1edc54",
-      "g-56bc4c59cd07",
       "g-78e3f9e239ca",
       "g-b123484bed4f",
-      "g-ed3e9ecc7504",
-      "g-ffbb21536a23"
+      "g-ffbb21536a23",
+      "g-56bc4c59cd07",
+      "g-ed3e9ecc7504-ww1",
+      "g-580b8b836d9a",
+      "g-580b8b836d9a-ww1"
     ],
     "area_km2": 18545
   },
   {
     "id": "g-ed3e9ecc7504",
-    "name": "Kuyavian-Pomeranian",
+    "name": "西プロイセン・クヤヴィ西部",
     "region": "PL",
     "country": "PL",
-    "x": 794.0,
-    "y": 148.1,
+    "x": 792.391,
+    "y": 147.6297,
     "terrain": "coastal",
     "coastal": true,
     "neighbors": [
-      "g-103ece1edc54",
+      "g-ed3e9ecc7504-ww1",
       "g-13c83a53b29e",
       "g-3bc1a565bb93",
-      "g-cf3ab07d777d",
-      "g-5ab577113390"
+      "g-5ab577113390",
+      "g-580b8b836d9a",
+      "g-580b8b836d9a-ww1"
     ],
-    "area_km2": 17796
+    "area_km2": 12320
   },
   {
     "id": "g-b123484bed4f",
@@ -15654,24 +15674,29 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
       "g-3bc1a565bb93",
       "g-79ed45b32ad0",
       "g-cf3ab07d777d",
-      "g-ffbb21536a23"
+      "g-ffbb21536a23",
+      "g-580b8b836d9a"
     ],
     "area_km2": 10450
   },
   {
     "id": "g-580b8b836d9a",
-    "name": "Greater Poland (Poland)",
+    "name": "ポーゼン東部",
     "region": "PL",
     "country": "PL",
-    "x": 720.0,
-    "y": 360.0,
+    "x": 788.4123,
+    "y": 150.3895,
     "terrain": "coastal",
     "coastal": true,
     "neighbors": [
-      "g-5256eb78831b",
-      "g-5ab577113390"
+      "g-580b8b836d9a-ww1",
+      "g-5ab577113390",
+      "g-ed3e9ecc7504",
+      "g-3bc1a565bb93",
+      "g-b123484bed4f",
+      "g-cf3ab07d777d"
     ],
-    "area_km2": 17889
+    "area_km2": 12449
   },
   {
     "id": "g-78e3f9e239ca",
@@ -15684,11 +15709,12 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "coastal": true,
     "neighbors": [
       "g-103ece1edc54",
-      "g-56bc4c59cd07",
       "g-74fac170863f",
-      "g-ce3719cc0da8",
       "g-cf3ab07d777d",
-      "g-e566604f0a88"
+      "g-e566604f0a88",
+      "g-ce3719cc0da8",
+      "g-ce3719cc0da8-1914-2",
+      "g-56bc4c59cd07"
     ],
     "area_km2": 11191
   },
@@ -16019,26 +16045,25 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
       "g-5242d3ab8eec",
       "g-ab29fff7b5af",
       "g-b5555b54bdba",
-      "g-f27c48a3b728"
+      "g-f27c48a3b728-ww1"
     ],
     "area_km2": 19571
   },
   {
     "id": "g-f27c48a3b728",
-    "name": "Anatoliki Makedonia kai Thraki",
+    "name": "西トラキア",
     "region": "GR",
     "country": "GR",
-    "x": 820.1,
-    "y": 195.1,
+    "x": 823.1581,
+    "y": 195.03,
     "terrain": "coastal",
     "coastal": true,
     "neighbors": [
+      "g-f27c48a3b728-ww1",
       "g-311f3128c0c8",
-      "g-5242d3ab8eec",
-      "g-567d6779d16e",
       "g-e70ba7f456f3"
     ],
-    "area_km2": 14078
+    "area_km2": 8379
   },
   {
     "id": "g-ab29fff7b5af",
@@ -16052,19 +16077,19 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "neighbors": [
       "g-567d6779d16e",
       "g-b5555b54bdba",
-      "g-bb8c5b7d079b",
       "g-d027c3a9c806",
-      "g-f20d93f89d62"
+      "g-f20d93f89d62",
+      "g-bb8c5b7d079b"
     ],
     "area_km2": 32531
   },
   {
     "id": "g-bb8c5b7d079b",
-    "name": "Stereá Elláda・Attiki・Kriti・Notio Aigaio・Voreio Aigaio",
+    "name": "中央ギリシャ・クレタ・エーゲ海諸島",
     "region": "GR",
     "country": "GR",
-    "x": 817.9,
-    "y": 218.8,
+    "x": 811.9882,
+    "y": 206.215,
     "terrain": "coastal",
     "coastal": true,
     "neighbors": [
@@ -16074,7 +16099,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
       "g-cd068844d35c",
       "g-f20d93f89d62"
     ],
-    "area_km2": 41517
+    "area_km2": 38996
   },
   {
     "id": "g-f20d93f89d62",
@@ -16087,8 +16112,8 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "coastal": true,
     "neighbors": [
       "g-ab29fff7b5af",
-      "g-bb8c5b7d079b",
-      "g-d027c3a9c806"
+      "g-d027c3a9c806",
+      "g-bb8c5b7d079b"
     ],
     "area_km2": 23622
   },
@@ -16628,10 +16653,10 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
       "g-44ae6d37e0e6",
       "g-4c83bbaabca8",
       "g-67e7ab517251",
-      "g-9b8ccdcae659",
       "g-c3c32d5219a3",
       "g-e08944243cf9",
-      "g-fd2a338e625f"
+      "g-fd2a338e625f",
+      "g-9b8ccdcae659-1914-1"
     ],
     "area_km2": 13197
   },
@@ -16648,9 +16673,9 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
       "g-44ae6d37e0e6",
       "g-9189536bedb8",
       "g-9760f7204c93",
-      "g-9b8ccdcae659",
       "g-c3c32d5219a3",
-      "g-f85aa2a9b6ec"
+      "g-f85aa2a9b6ec",
+      "g-9b8ccdcae659-1914-1"
     ],
     "area_km2": 7206
   },
@@ -16668,6 +16693,8 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
       "g-61fbd8a76c66",
       "g-9189536bedb8",
       "g-9760f7204c93",
+      "g-9b8ccdcae659-1914-1",
+      "g-9b8ccdcae659-1914-3",
       "g-9b8ccdcae659"
     ],
     "area_km2": 11743
@@ -16880,8 +16907,9 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "neighbors": [
       "g-01ac6de16823",
       "g-541ce0458844",
-      "g-9b8ccdcae659",
-      "g-b619b15ce52d"
+      "g-b619b15ce52d",
+      "g-9b8ccdcae659-1914-1",
+      "g-9b8ccdcae659"
     ],
     "area_km2": 23717
   },
@@ -16897,10 +16925,10 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "neighbors": [
       "g-1f377a563a2a",
       "g-541ce0458844",
-      "g-9b8ccdcae659",
       "g-dfaedf7f709a",
       "g-ebf3760514e5",
-      "g-eec9b1e84001"
+      "g-eec9b1e84001",
+      "g-9b8ccdcae659"
     ],
     "area_km2": 22524
   },
@@ -16923,24 +16951,23 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
   },
   {
     "id": "g-9b8ccdcae659",
-    "name": "Veneto・Trento・Friuli-Venezia Giulia",
+    "name": "ヴェネト・西フリウリ",
     "region": "IT",
     "country": "IT",
-    "x": 768.2,
-    "y": 176.3,
+    "x": 768.5391,
+    "y": 177.0747,
     "terrain": "coastal",
     "coastal": true,
     "neighbors": [
-      "g-01ac6de16823",
-      "g-261578d4a9df",
-      "g-3f9e0697a838",
+      "g-9b8ccdcae659-1914-1",
+      "g-9b8ccdcae659-1914-2",
+      "g-9b8ccdcae659-1914-3",
       "g-44ae6d37e0e6",
       "g-61fbd8a76c66",
-      "g-9189536bedb8",
       "g-b619b15ce52d",
       "g-dfaedf7f709a"
     ],
-    "area_km2": 38747
+    "area_km2": 23681
   },
   {
     "id": "g-669d672887f8",
@@ -17084,9 +17111,9 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
       "g-58f7b6cd1cb6",
       "g-67e7ab517251",
       "g-9189536bedb8",
-      "g-9b8ccdcae659",
       "g-dfaedf7f709a",
-      "g-e08944243cf9"
+      "g-e08944243cf9",
+      "g-9b8ccdcae659-1914-1"
     ],
     "area_km2": 9905
   },
@@ -17164,9 +17191,10 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
       "g-282067334459",
       "g-319ec794204a",
       "g-6669f1543400",
-      "g-c50285cf29f4",
       "g-d874919175a6",
-      "g-f28ed9e7bac9"
+      "g-f28ed9e7bac9",
+      "g-c50285cf29f4-ww1",
+      "g-c50285cf29f4"
     ],
     "area_km2": 36390
   },
@@ -17677,10 +17705,10 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "terrain": "coastal",
     "coastal": true,
     "neighbors": [
-      "g-32b9a5391f57",
       "g-551df2d9bf86",
       "g-64335a3c60aa",
-      "g-ade21483678f"
+      "g-ade21483678f",
+      "g-32b9a5391f57"
     ],
     "area_km2": 8368
   },
@@ -17764,14 +17792,15 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
   },
   {
     "id": "g-908cf304065c",
-    "name": "Srednje-Banatski・Severno-Banatski",
+    "name": "ヴォイヴォディナ（バチュカ・バナト・スレム）",
     "region": "RS",
     "country": "RS",
-    "x": 801.1,
-    "y": 179.6,
+    "x": 799.7921,
+    "y": 178.39,
     "terrain": "coastal",
     "coastal": true,
     "neighbors": [
+      "g-908cf304065c-1914-2",
       "g-0f5cb3ed1485",
       "g-63428c9a1953",
       "g-6ebd320ac94a",
@@ -17779,7 +17808,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
       "g-85fa065ff297",
       "g-efea21c862c0"
     ],
-    "area_km2": 30247
+    "area_km2": 22002
   },
   {
     "id": "g-6ebd320ac94a",
@@ -17791,15 +17820,17 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "terrain": "coastal",
     "coastal": true,
     "neighbors": [
-      "g-484c647b0567",
       "g-5242d3ab8eec",
       "g-5796fb865f2d",
       "g-7a3dbab3b2bc",
-      "g-8846235b3d74",
-      "g-908cf304065c",
       "g-b5555b54bdba",
       "g-ecbcca2744f0",
-      "g-efea21c862c0"
+      "g-efea21c862c0",
+      "g-908cf304065c",
+      "g-908cf304065c-1914-2",
+      "g-8846235b3d74",
+      "g-484c647b0567-ww1",
+      "g-484c647b0567"
     ],
     "area_km2": 47382
   },
@@ -18201,9 +18232,9 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
       "g-61fbd8a76c66",
       "g-63428c9a1953",
       "g-85fa065ff297",
-      "g-9b8ccdcae659",
       "g-a4e464256151",
-      "g-e19aabb624e2"
+      "g-e19aabb624e2",
+      "g-9b8ccdcae659-1914-2"
     ],
     "area_km2": 22859
   },
@@ -18235,9 +18266,9 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
       "g-0f5cb3ed1485",
       "g-3f9e0697a838",
       "g-63428c9a1953",
-      "g-908cf304065c",
       "g-e19aabb624e2",
-      "g-efea21c862c0"
+      "g-efea21c862c0",
+      "g-908cf304065c"
     ],
     "area_km2": 14925
   },
@@ -18256,6 +18287,8 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
       "g-3f9e0697a838",
       "g-44ae6d37e0e6",
       "g-9760f7204c93",
+      "g-9b8ccdcae659-1914-2",
+      "g-9b8ccdcae659-1914-3",
       "g-9b8ccdcae659"
     ],
     "area_km2": 20327
@@ -18696,26 +18729,26 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
       "g-5796fb865f2d",
       "g-6ebd320ac94a",
       "g-b5555b54bdba",
-      "g-f27c48a3b728"
+      "g-f27c48a3b728-ww1"
     ],
     "area_km2": 24944
   },
   {
     "id": "g-75a45ddc110f",
-    "name": "Silistra・Razgrad・Targovishte",
+    "name": "ブルガリア北東部",
     "region": "BG",
     "country": "BG",
-    "x": 825.6,
-    "y": 188.0,
+    "x": 825.5409,
+    "y": 188.14,
     "terrain": "coastal",
     "coastal": true,
     "neighbors": [
+      "g-75a45ddc110f-ww1",
       "g-311f3128c0c8",
       "g-5796fb865f2d",
-      "g-e6842ec4dc66",
       "g-e70ba7f456f3"
     ],
-    "area_km2": 45567
+    "area_km2": 37712
   },
   {
     "id": "g-5796fb865f2d",
@@ -18730,9 +18763,10 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
       "g-311f3128c0c8",
       "g-5242d3ab8eec",
       "g-6ebd320ac94a",
-      "g-75a45ddc110f",
       "g-e6842ec4dc66",
-      "g-ecbcca2744f0"
+      "g-ecbcca2744f0",
+      "g-75a45ddc110f-ww1",
+      "g-75a45ddc110f"
     ],
     "area_km2": 20064
   },
@@ -18748,9 +18782,10 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "neighbors": [
       "g-5242d3ab8eec",
       "g-5796fb865f2d",
-      "g-75a45ddc110f",
       "g-e70ba7f456f3",
-      "g-f27c48a3b728"
+      "g-75a45ddc110f",
+      "g-f27c48a3b728",
+      "g-f27c48a3b728-ww1"
     ],
     "area_km2": 22184
   },
@@ -19967,21 +20002,22 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
   },
   {
     "id": "g-8846235b3d74",
-    "name": "Podgorica・Danilovgrad・Kolašin",
+    "name": "モンテネグロ",
     "region": "ME",
     "country": "ME",
-    "x": 797.2,
-    "y": 189.2,
+    "x": 797.1905,
+    "y": 189.25,
     "terrain": "coastal",
     "coastal": true,
     "neighbors": [
-      "g-484c647b0567",
+      "g-8846235b3d74-1914-1",
       "g-6ebd320ac94a",
       "g-d027c3a9c806",
       "g-e19aabb624e2",
-      "g-efea21c862c0"
+      "g-efea21c862c0",
+      "g-484c647b0567-ww1"
     ],
-    "area_km2": 13556
+    "area_km2": 12797
   },
   {
     "id": "g-e19aabb624e2",
@@ -19995,9 +20031,10 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "neighbors": [
       "g-3f9e0697a838",
       "g-85fa065ff297",
-      "g-8846235b3d74",
       "g-a4e464256151",
-      "g-efea21c862c0"
+      "g-efea21c862c0",
+      "g-8846235b3d74-1914-1",
+      "g-8846235b3d74"
     ],
     "area_km2": 32626
   },
@@ -20013,9 +20050,10 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "neighbors": [
       "g-6ebd320ac94a",
       "g-85fa065ff297",
-      "g-8846235b3d74",
+      "g-e19aabb624e2",
       "g-908cf304065c",
-      "g-e19aabb624e2"
+      "g-908cf304065c-1914-2",
+      "g-8846235b3d74"
     ],
     "area_km2": 19950
   },
@@ -20796,8 +20834,8 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
       "g-23df997b428d",
       "g-47625d79bf21",
       "g-729f2faf3162",
-      "g-84d867cd5f0e",
-      "g-ec8480001de9"
+      "g-ec8480001de9",
+      "g-84d867cd5f0e"
     ],
     "area_km2": 18978
   },
@@ -20813,9 +20851,9 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "neighbors": [
       "g-06d2e0e260ec",
       "g-729f2faf3162",
-      "g-84d867cd5f0e",
       "g-98e659a04a40",
-      "g-b12dd2b9db3b"
+      "g-b12dd2b9db3b",
+      "g-84d867cd5f0e"
     ],
     "area_km2": 14228
   },
@@ -26587,10 +26625,379 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
       "g-180669b1eb0a",
       "g-824595d51bf6",
       "g-ffbb21536a23",
-      "g-56bc4c59cd07",
-      "g-79ed45b32ad0"
+      "g-79ed45b32ad0",
+      "g-56bc4c59cd07-ww1"
     ],
     "area_km2": 7920
+  },
+  {
+    "id": "g-b12dd2b9db3b-1914-1",
+    "name": "東ガリツィア・北ブコヴィナ",
+    "region": "UA",
+    "country": "UA",
+    "x": 823.3597,
+    "y": 164.68,
+    "terrain": "coastal",
+    "coastal": true,
+    "neighbors": [
+      "g-b12dd2b9db3b",
+      "g-13a676e7f1dc",
+      "g-84d867cd5f0e-1914-1",
+      "g-acf062113d82",
+      "g-b9006740a698"
+    ],
+    "area_km2": 16362
+  },
+  {
+    "id": "g-84d867cd5f0e-1914-1",
+    "name": "南ブコヴィナ・北トランシルヴァニア",
+    "region": "RO",
+    "country": "RO",
+    "x": 821.1768,
+    "y": 172.0011,
+    "terrain": "coastal",
+    "coastal": true,
+    "neighbors": [
+      "g-b12dd2b9db3b-1914-1",
+      "g-84d867cd5f0e",
+      "g-268b88a7fae8-1914-1",
+      "g-acf062113d82",
+      "g-b9006740a698",
+      "g-b96f590db7c6"
+    ],
+    "area_km2": 19915
+  },
+  {
+    "id": "g-268b88a7fae8-1914-1",
+    "name": "ブラショヴ・コヴァスナ",
+    "region": "RO",
+    "country": "RO",
+    "x": 822.2566,
+    "y": 176.545,
+    "terrain": "coastal",
+    "coastal": true,
+    "neighbors": [
+      "g-84d867cd5f0e-1914-1",
+      "g-268b88a7fae8",
+      "g-b96f590db7c6",
+      "g-ec8480001de9"
+    ],
+    "area_km2": 8913
+  },
+  {
+    "id": "g-56bc4c59cd07-1914-1",
+    "name": "オーストリア領シレジア東部・西ガリツィア西端",
+    "region": "PL",
+    "country": "PL",
+    "x": 795.545,
+    "y": 160.705,
+    "terrain": "coastal",
+    "coastal": true,
+    "neighbors": [
+      "g-0ae1ebd51ebe",
+      "g-7db6a6e146af",
+      "g-ce3719cc0da8",
+      "g-56bc4c59cd07-ww1",
+      "g-56bc4c59cd07"
+    ],
+    "area_km2": 2578
+  },
+  {
+    "id": "g-ce3719cc0da8-1914-2",
+    "name": "マウォポルスカ北部",
+    "region": "PL",
+    "country": "PL",
+    "x": 799.5994,
+    "y": 158.8,
+    "terrain": "coastal",
+    "coastal": true,
+    "neighbors": [
+      "g-ce3719cc0da8",
+      "g-78e3f9e239ca",
+      "g-56bc4c59cd07"
+    ],
+    "area_km2": 1993
+  },
+  {
+    "id": "g-9b8ccdcae659-1914-1",
+    "name": "南チロル・トレンティーノ",
+    "region": "IT",
+    "country": "IT",
+    "x": 764.7475,
+    "y": 174.5305,
+    "terrain": "coastal",
+    "coastal": true,
+    "neighbors": [
+      "g-9b8ccdcae659",
+      "g-01ac6de16823",
+      "g-261578d4a9df",
+      "g-44ae6d37e0e6",
+      "g-9189536bedb8",
+      "g-dfaedf7f709a"
+    ],
+    "area_km2": 13960
+  },
+  {
+    "id": "g-9b8ccdcae659-1914-2",
+    "name": "トリエステ・ゴリツィア沿岸",
+    "region": "IT",
+    "country": "IT",
+    "x": 773.6628,
+    "y": 176.835,
+    "terrain": "coastal",
+    "coastal": true,
+    "neighbors": [
+      "g-9b8ccdcae659",
+      "g-3f9e0697a838",
+      "g-61fbd8a76c66"
+    ],
+    "area_km2": 723
+  },
+  {
+    "id": "g-9b8ccdcae659-1914-3",
+    "name": "東フリウリ山地",
+    "region": "IT",
+    "country": "IT",
+    "x": 774.0296,
+    "y": 174.0261,
+    "terrain": "coastal",
+    "coastal": true,
+    "neighbors": [
+      "g-9b8ccdcae659",
+      "g-44ae6d37e0e6",
+      "g-61fbd8a76c66"
+    ],
+    "area_km2": 383
+  },
+  {
+    "id": "g-908cf304065c-1914-2",
+    "name": "ベオグラード・セルビア北部",
+    "region": "RS",
+    "country": "RS",
+    "x": 799.8651,
+    "y": 182.095,
+    "terrain": "coastal",
+    "coastal": true,
+    "neighbors": [
+      "g-908cf304065c",
+      "g-6ebd320ac94a",
+      "g-efea21c862c0"
+    ],
+    "area_km2": 8245
+  },
+  {
+    "id": "g-8846235b3d74-1914-1",
+    "name": "コトル湾（カッタロ）",
+    "region": "ME",
+    "country": "ME",
+    "x": 794.9352,
+    "y": 190.455,
+    "terrain": "coastal",
+    "coastal": true,
+    "neighbors": [
+      "g-8846235b3d74",
+      "g-e19aabb624e2"
+    ],
+    "area_km2": 759
+  },
+  {
+    "id": "g-56bc4c59cd07-ww1",
+    "name": "上シレジア・ドイツ領",
+    "region": "PL",
+    "country": "PL",
+    "x": 794.7493,
+    "y": 158.5536,
+    "terrain": "coastal",
+    "coastal": true,
+    "neighbors": [
+      "g-56bc4c59cd07",
+      "g-56bc4c59cd07-1914-1",
+      "g-0ae1ebd51ebe",
+      "g-ffbb21536a23",
+      "sudeten-east"
+    ],
+    "area_km2": 5095
+  },
+  {
+    "id": "g-ed3e9ecc7504-ww1",
+    "name": "クヤヴィ東部・ロシア領ポーランド",
+    "region": "PL",
+    "country": "PL",
+    "x": 796.1361,
+    "y": 148.9268,
+    "terrain": "coastal",
+    "coastal": true,
+    "neighbors": [
+      "g-ed3e9ecc7504",
+      "g-103ece1edc54",
+      "g-13c83a53b29e",
+      "g-cf3ab07d777d",
+      "g-580b8b836d9a-ww1"
+    ],
+    "area_km2": 5476
+  },
+  {
+    "id": "g-580b8b836d9a-ww1",
+    "name": "大ポーランド東部・ロシア領ポーランド",
+    "region": "PL",
+    "country": "PL",
+    "x": 793.67,
+    "y": 151.8691,
+    "terrain": "coastal",
+    "coastal": true,
+    "neighbors": [
+      "g-580b8b836d9a",
+      "g-5256eb78831b",
+      "g-5ab577113390",
+      "g-ed3e9ecc7504",
+      "g-ed3e9ecc7504-ww1",
+      "g-3bc1a565bb93",
+      "g-cf3ab07d777d"
+    ],
+    "area_km2": 5440
+  },
+  {
+    "id": "g-008e17e2a748-ww1",
+    "name": "南デンマーク",
+    "region": "DK",
+    "country": "DK",
+    "x": 755.8584,
+    "y": 137.585,
+    "terrain": "coastal",
+    "coastal": true,
+    "neighbors": [
+      "g-008e17e2a748",
+      "g-cf2b11780a2a"
+    ],
+    "area_km2": 8013
+  },
+  {
+    "id": "g-ca9efadbe117-ww1",
+    "name": "メーメル地方",
+    "region": "LT",
+    "country": "LT",
+    "x": 805.9756,
+    "y": 138.7264,
+    "terrain": "coastal",
+    "coastal": true,
+    "neighbors": [
+      "g-ca9efadbe117",
+      "g-48797c72fcb9"
+    ],
+    "area_km2": 2283
+  },
+  {
+    "id": "g-32b9a5391f57-ww1",
+    "name": "オイペン＝マルメディ",
+    "region": "BE",
+    "country": "BE",
+    "x": 744.6745,
+    "y": 158.3193,
+    "terrain": "coastal",
+    "coastal": true,
+    "neighbors": [
+      "g-32b9a5391f57",
+      "g-23f3c7f4401a",
+      "g-ade21483678f",
+      "g-c26368f10a6b",
+      "g-e6ff7fa621cb"
+    ],
+    "area_km2": 902
+  },
+  {
+    "id": "g-75a45ddc110f-ww1",
+    "name": "南ドブルジャ",
+    "region": "BG",
+    "country": "BG",
+    "x": 830.7735,
+    "y": 185.0439,
+    "terrain": "coastal",
+    "coastal": true,
+    "neighbors": [
+      "g-75a45ddc110f",
+      "g-5796fb865f2d",
+      "g-e6842ec4dc66"
+    ],
+    "area_km2": 7855
+  },
+  {
+    "id": "g-f27c48a3b728-ww1",
+    "name": "東マケドニア",
+    "region": "GR",
+    "country": "GR",
+    "x": 816.931,
+    "y": 195.3999,
+    "terrain": "coastal",
+    "coastal": true,
+    "neighbors": [
+      "g-f27c48a3b728",
+      "g-311f3128c0c8",
+      "g-5242d3ab8eec",
+      "g-567d6779d16e"
+    ],
+    "area_km2": 5699
+  },
+  {
+    "id": "g-484c647b0567-ww1",
+    "name": "ペーチ・モンテネグロ領",
+    "region": "XK",
+    "country": "XK",
+    "x": 801.2215,
+    "y": 189.6395,
+    "terrain": "coastal",
+    "coastal": true,
+    "neighbors": [
+      "g-484c647b0567",
+      "g-6ebd320ac94a",
+      "g-d027c3a9c806",
+      "g-8846235b3d74"
+    ],
+    "area_km2": 1907
+  },
+  {
+    "id": "g-c50285cf29f4-ww1",
+    "name": "スルマル・ロシア領",
+    "region": "TR",
+    "country": "TR",
+    "x": 895.9199,
+    "y": 200.4653,
+    "terrain": "coastal",
+    "coastal": true,
+    "neighbors": [
+      "g-c50285cf29f4",
+      "g-282067334459",
+      "g-5b124fcb49a3",
+      "g-79fa4ebc0a08"
+    ],
+    "area_km2": 3342
+  },
+  {
+    "id": "g-c123fd4f281c-ww1",
+    "name": "カルス方面・ロシア領",
+    "region": "TR",
+    "country": "TR",
+    "x": 888.3605,
+    "y": 196.4635,
+    "terrain": "coastal",
+    "coastal": true,
+    "neighbors": [
+      "g-c123fd4f281c",
+      "g-10d51ce0f6b2",
+      "g-5b124fcb49a3"
+    ],
+    "area_km2": 7017
+  },
+  {
+    "id": "g-bb8c5b7d079b-ww1",
+    "name": "ドデカネス諸島（イタリア統治）",
+    "region": "GR",
+    "country": "GR",
+    "x": 831.6189,
+    "y": 215.315,
+    "terrain": "coastal",
+    "coastal": true,
+    "neighbors": [],
+    "area_km2": 2521
   }
 ]
 
@@ -26606,5 +27013,65 @@ WORLD_PROVINCE_SPLITS = {
   ],
   "g-0ae1ebd51ebe": [
     "sudeten-east"
+  ],
+  "g-b12dd2b9db3b": [
+    "g-b12dd2b9db3b-1914-1"
+  ],
+  "g-84d867cd5f0e": [
+    "g-84d867cd5f0e-1914-1"
+  ],
+  "g-268b88a7fae8": [
+    "g-268b88a7fae8-1914-1"
+  ],
+  "g-56bc4c59cd07": [
+    "g-56bc4c59cd07-1914-1",
+    "g-56bc4c59cd07-ww1"
+  ],
+  "g-ce3719cc0da8": [
+    "g-ce3719cc0da8-1914-2"
+  ],
+  "g-9b8ccdcae659": [
+    "g-9b8ccdcae659-1914-1",
+    "g-9b8ccdcae659-1914-2",
+    "g-9b8ccdcae659-1914-3"
+  ],
+  "g-908cf304065c": [
+    "g-908cf304065c-1914-2"
+  ],
+  "g-8846235b3d74": [
+    "g-8846235b3d74-1914-1"
+  ],
+  "g-ed3e9ecc7504": [
+    "g-ed3e9ecc7504-ww1"
+  ],
+  "g-580b8b836d9a": [
+    "g-580b8b836d9a-ww1"
+  ],
+  "g-008e17e2a748": [
+    "g-008e17e2a748-ww1"
+  ],
+  "g-ca9efadbe117": [
+    "g-ca9efadbe117-ww1"
+  ],
+  "g-32b9a5391f57": [
+    "g-32b9a5391f57-ww1"
+  ],
+  "g-75a45ddc110f": [
+    "g-75a45ddc110f-ww1"
+  ],
+  "g-f27c48a3b728": [
+    "g-f27c48a3b728-ww1"
+  ],
+  "g-484c647b0567": [
+    "g-484c647b0567-ww1"
+  ],
+  "g-c50285cf29f4": [
+    "g-c50285cf29f4-ww1"
+  ],
+  "g-c123fd4f281c": [
+    "g-c123fd4f281c-ww1"
+  ],
+  "g-bb8c5b7d079b": [
+    "g-bb8c5b7d079b-ww1"
   ]
 }

@@ -170,7 +170,7 @@ async def handle_bootstrap(request: web.Request) -> web.Response:
     state = load_world_state(world_id)
     catalog = get_full_catalog()
     worlds = [
-        {"id": "world_admin1", "name": "🌍 世界マップ (1,505州)", "count": 1505},
+        {"id": "world_admin1", "name": "🌍 世界マップ (1,527州)", "count": 1527},
         {"id": "default", "name": "🇪🇺 欧州マップ (299州・現行戦役)", "count": 299},
     ]
     return web.json_response({

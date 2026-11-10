@@ -884,7 +884,7 @@ def init_game_db() -> None:
 
 def build_scenario_state(scenario_type: str = "world_admin1", world_id: str = "world_admin1") -> Dict[str, Any]:
     """
-    'world_admin1': 世界マップ（1,505州・Natural Earth 10m Admin 1）
+    'world_admin1': 世界マップ（1,527州・Natural Earth 10m Admin 1）
     'aiwa_current': Discordの現行AIWAサーバー再現シナリオ（欧州＋地中海沿岸299州）
     'blank_map': 欧州白地図からの新規建国シナリオ
     """
@@ -898,7 +898,7 @@ def build_scenario_state(scenario_type: str = "world_admin1", world_id: str = "w
             p["has_fort"] = False
         return {
             "world_id": "world_admin1",
-            "name": "世界マップ（1,505州・世界規模建国）",
+            "name": "世界マップ（1,527州・世界規模建国）",
             "scenario_type": "world_admin1",
             "week": 1,
             "mode": "sandbox",
@@ -913,8 +913,8 @@ def build_scenario_state(scenario_type: str = "world_admin1", world_id: str = "w
                     "week": 1,
                     "speaker": "AIWA 運営審判部",
                     "flag": "🌍",
-                    "title": "世界マップ（全1,505州）ワールド開設",
-                    "body": "第一次世界大戦・第二次世界大戦の主要国境を再現可能な全1,505州の世界マップが利用可能になりました。白地プロビンスから新規建国・軍備編成を行えます。",
+                    "title": "世界マップ（全1,527州）ワールド開設",
+                    "body": "第一次世界大戦・第二次世界大戦の主要国境を再現可能な全1,527州の世界マップが利用可能になりました。白地プロビンスから新規建国・軍備編成を行えます。",
                     "created_at": datetime.now(timezone.utc).isoformat(),
                 }
             ],
