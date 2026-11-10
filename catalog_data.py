@@ -125,46 +125,36 @@ BASE_REGIMENTS: List[Dict[str, Any]] = [
         "id": "reg_infantry",
         "name": "歩兵連隊",
         "cost": 60.0,
-        "speed_tier": 1,  # 1:徒歩, 2:自動車化, 3:機械化/装甲
-        "sa": 45, "ha": 12, "defense": 60, "breakthrough": 20, "armor": 0,
-        "terrain_bonus": {"urban": 1.1, "forest": 1.1},
-        "desc": "一般的な歩兵連隊。徒歩や鉄道で移動し、堅実な防衛力を持つ。"
+        "speed_tier": 1,
+        "desc": "一般的な歩兵連隊で、徒歩や鉄道などで移動します。"
     },
     {
         "id": "reg_cavalry",
         "name": "騎兵連隊",
         "cost": 70.0,
         "speed_tier": 2,
-        "sa": 42, "ha": 10, "defense": 45, "breakthrough": 32, "armor": 0,
-        "terrain_bonus": {"plains": 1.1, "forest": 1.05},
-        "desc": "長距離行動・速度・偵察に優れる。馬匹牽引の中型迫撃砲や重機関銃を装備。"
+        "desc": "長距離の行動や速度面で歩兵に優れ、偵察能力にも優れる。馬匹による牽引で中型迫撃砲や重機関銃などを装備しているが、撃たれ弱く使い方が難しい。"
     },
     {
         "id": "reg_motorized",
         "name": "自動車化歩兵連隊",
         "cost": 80.0,
         "speed_tier": 2,
-        "sa": 50, "ha": 16, "defense": 65, "breakthrough": 35, "armor": 5,
-        "terrain_bonus": {"plains": 1.15},
-        "desc": "歩兵連隊にトラックを配備。前線付近まで高速に展開可能。"
+        "desc": "一般的な歩兵連隊にトラックが配備されたもの、前線付近までトラックで移動出来るようになります。"
     },
     {
         "id": "reg_mechanized",
         "name": "機械化歩兵連隊",
         "cost": 120.0,
         "speed_tier": 3,
-        "sa": 68, "ha": 28, "defense": 80, "breakthrough": 55, "armor": 25,
-        "terrain_bonus": {"plains": 1.2},
-        "desc": "装甲兵員輸送車(APC/ハーフトラック)を装備し、最前線でも乗車機動が可能。"
+        "desc": "軽い装甲を有した装甲兵員輸送車を装備しています。最前線でも車に乗ったまま移動出来ます。"
     },
     {
         "id": "reg_adv_mechanized",
         "name": "先進型機械化歩兵連隊",
         "cost": 350.0,
         "speed_tier": 3,
-        "sa": 125, "ha": 75, "defense": 120, "breakthrough": 110, "armor": 55,
-        "terrain_bonus": {"plains": 1.25, "urban": 1.15},
-        "desc": "暗視照準器付M3カービン、M20バズーカ、装軌式APC、M4A3E8約20両＋自走迫撃砲を統合した冷戦先駆けの超精鋭連隊。"
+        "desc": "冷戦期の先駆けになるような、最新兵器をふんだんに盛り込んだ極めて先進的な機械化歩兵連隊。歩兵には暗視照準器M2付M3カービンやM20(T74)バズーカ、M1918A2LMGが配備されており、車両はM39やM44等の装軌式APC、更に約20両のM4A3E8と数両のM21 81mmMMCを装備している。圧倒的な展開力を誇るが、同時に圧倒的なコストも誇る。"
     },
     {
         "id": "reg_tank_bn",
@@ -175,91 +165,64 @@ BASE_REGIMENTS: List[Dict[str, Any]] = [
         "base_overhead": 10.0,
         "default_tank_id": "su_t34_85",
         "speed_tier": 3,
-        "sa": 90, "ha": 95, "defense": 60, "breakthrough": 115, "armor": 70,
-        "terrain_bonus": {"plains": 1.3, "mountain": 0.65, "amphibious": 0.5},
-        "desc": "戦車76両装備（デフォルト: M4(76) / T-34-85）。戦車車種を変更すると『76両×単価＋10億』で自動計算。"
+        "desc": "戦車76両装備（自作可：自作・変更する場合は『76両の値段＋10億』）。強力な火力と装甲と機動力を有しています。強力なユニットですが高価で、使い所が大切です。デフォルトではM4(76) or T-34-85が配備されています。"
     },
     {
         "id": "reg_airborne",
-        "name": "空挺連隊（輸送機・グライダー込）",
+        "name": "空挺連隊",
         "cost": 80.0,
         "speed_tier": 1,
         "can_paradrop": True,
-        "sa": 55, "ha": 18, "defense": 52, "breakthrough": 45, "armor": 0,
-        "terrain_bonus": {"urban": 1.15, "mountain": 1.1},
-        "desc": "落下傘やグライダーによる空挺降下作戦が可能（輸送機込み）。精鋭だが長期戦には増援が必要。"
+        "desc": "落下傘やグライダーを使った降下作戦を行えます。兵士は精鋭揃いで配備されている兵器も強力ですが火力が足りないのでモタモタしているとすぐ死にます。グライダーや落下傘降下用の輸送機込み込み。"
     },
     {
         "id": "reg_mountain_inf",
         "name": "山岳歩兵連隊",
         "cost": 60.0,
         "speed_tier": 1,
-        "sa": 40, "ha": 12, "defense": 62, "breakthrough": 28, "armor": 0,
-        "terrain_bonus": {"mountain": 1.45, "plains": 0.9},
-        "desc": "登山装備を持ち、山岳や丘陵に特化した歩兵連隊。平地では通常歩兵に劣る。"
+        "desc": "登山装備等を持ち、山岳や丘陵に適した歩兵、平地は苦手であり、普通の歩兵より火力が弱い。"
     },
     {
         "id": "reg_mountain_cav",
         "name": "山岳騎兵連隊",
         "cost": 70.0,
         "speed_tier": 2,
-        "sa": 38, "ha": 10, "defense": 50, "breakthrough": 35, "armor": 0,
-        "terrain_bonus": {"mountain": 1.4, "plains": 0.88},
-        "desc": "山岳馬主体の高機動騎兵。山岳・丘陵で高い機動力を発揮する。"
+        "desc": "カービン銃や狙撃銃、軽迫撃砲、軽機関銃を装備した山岳馬主体の騎兵、山岳や丘陵では高機動だが平地では普通の騎兵連隊より遅く、騎兵連隊や歩兵連隊に火力で劣る。"
     },
     {
         "id": "reg_marine",
-        "name": "海兵連隊（LVT・DUKW装備）",
+        "name": "海兵連隊",
         "cost": 150.0,
         "speed_tier": 2,
-        "sa": 75, "ha": 30, "defense": 75, "breakthrough": 75, "armor": 22,
-        "terrain_bonus": {"amphibious": 1.6, "coastal": 1.35, "river": 1.35},
-        "desc": "水陸両用戦に特化。LVTやDUKWを配備し、強襲上陸・島嶼戦闘・渡河作戦で無類の強さを発揮。"
+        "desc": "水陸両用戦に特化した部隊、LVTやDUKWなどの専用装備を配備し、強襲上陸や島嶼戦闘に必要な練度を有する（河川とかも得意）。LVTによって機械化されているがLVTは脚が遅いので脚が遅い。"
     },
     {
         "id": "reg_imperial_guard",
         "name": "帝国近衛兵連隊",
         "cost": 200.0,
         "speed_tier": 3,
-        "sa": 92, "ha": 42, "defense": 105, "breakthrough": 80, "armor": 28,
-        "terrain_bonus": {"urban": 1.25, "plains": 1.15},
-        "desc": "AVT-40、PPSh-41、PTRS-41、M3ハーフトラックを装備した忠誠心・練度極高の精鋭機械化歩兵連隊。"
+        "desc": "帝国の精鋭歩兵連隊。忠誠心の高い兵士を中心に編成された機械化歩兵部隊で、AVT-40やPPSh-41、PTRS-41、SG-43機関銃などの高火力な歩兵装備を備えている。M3ハーフトラックに乗車、士気と練度が高く、突撃や防衛でも効果を発揮する。"
     },
     {
         "id": "reg_mech_knight",
         "name": "機械化騎士連隊",
         "cost": 300.0,
         "speed_tier": 3,
-        "sa": 115, "ha": 85, "defense": 110, "breakthrough": 105, "armor": 60,
-        "terrain_bonus": {"plains": 1.25, "forest": 1.15},
-        "desc": "1945年独機械化歩兵ベース。赤外線暗視装置付StG44・Sd.Kfz.251/20・パンツァーファウスト250・暗視パンター中隊を配備。"
+        "desc": "1945年ドイツ機械化歩兵連隊がベース。アクティブ式暗視装置を装備したStG44やSd.Kfz.251/20などの暗視装置を備えており、試作のパンツァーファウスト250も装備。兵員もベテラン揃いで、暗視装置付きのパンター中隊も配備、強い。"
     },
     {
         "id": "reg_cossack",
         "name": "コサック連隊",
         "cost": 150.0,
         "speed_tier": 3,
-        "sa": 78, "ha": 40, "defense": 72, "breakthrough": 78, "armor": 25,
-        "terrain_bonus": {"plains": 1.25, "forest": 1.1},
-        "desc": "フェドロフ自動小銃やPPSh-41、支援戦車BT-7M中隊が付属する高速襲撃・偵察連隊。"
+        "desc": "ロシアに住むコサックたちを徴募し編成された騎兵連隊。フェドロフ自動小銃やPPSh-41などの歩兵火器や迫撃砲を持ち、支援戦車としてBT-7Mが1個中隊付属する。偵察から後方への襲撃などを得意とする。"
     },
     {
         "id": "reg_mech_assault",
         "name": "機械化突撃連隊",
         "cost": 300.0,
         "speed_tier": 3,
-        "sa": 118, "ha": 82, "defense": 100, "breakthrough": 112, "armor": 58,
-        "terrain_bonus": {"urban": 1.25, "plains": 1.2},
-        "desc": "T-34-85戦車中隊、ISU-122自走砲小隊、M3ハーフトラックを統合した重突撃機械化連隊。"
-    },
-    {
-        "id": "reg_artillery_breakthrough",
-        "name": "砲兵突破連隊",
-        "cost": 220.0,
-        "speed_tier": 2,
-        "sa": 130, "ha": 45, "defense": 65, "breakthrough": 95, "armor": 10,
-        "terrain_bonus": {"urban": 1.2, "fort": 1.35},
-        "desc": "大口径榴弾砲とロケット砲を高密度に集中運用し、敵陣地線を強行突破する専門連隊。"
+        "desc": "戦車中隊(T-34-85)や自走砲小隊ISU-122、M3ハーフトラックなどを装備した突撃部隊。戦車や突撃砲の支援の下、機械化歩兵を効果的に投入することができる。"
     },
 ]
 
@@ -273,57 +236,64 @@ ARTILLERY_REGIMENTS: List[Dict[str, Any]] = [
         "name": "なし（砲兵連隊なし）",
         "cost": 0.0,
         "max_speed_tier": 3,
-        "sa": 0, "ha": 0, "defense": 0, "breakthrough": 0, "armor": 0,
         "desc": "砲兵連隊を編成しない。"
     },
     {
         "id": "art_light",
-        "name": "軽砲兵連隊（105〜122mm野砲）",
+        "name": "軽砲兵連隊",
         "cost": 100.0,
-        "max_speed_tier": 2,  # 自動車化歩兵連隊まで追従可
-        "sa": 65, "ha": 15, "defense": 25, "breakthrough": 30, "armor": 0,
-        "desc": "一般的な師団砲兵。自動車化歩兵連隊まで追従可能（機械化・機甲には速度ペナルティ）。"
+        "max_speed_tier": 2,
+        "desc": "105〜122mmの野砲を主に装備しています。一般的な師団砲兵です。自動車化歩兵連隊までは追従できます。"
     },
     {
         "id": "art_heavy",
-        "name": "重砲兵連隊（150mm級重砲）",
+        "name": "重砲兵連隊",
         "cost": 200.0,
         "max_speed_tier": 2,
-        "sa": 115, "ha": 35, "defense": 35, "breakthrough": 55, "armor": 0,
-        "desc": "150mm級重砲による圧倒的な火力と射程。自動車化歩兵連隊まで追従可能。"
+        "desc": "150mm級の重砲を主に装備しています。火力と射程は圧倒的です。自動車化歩兵連隊まで追従出来ます。"
     },
     {
         "id": "art_sp_light",
         "name": "自走軽砲兵連隊",
         "cost": 150.0,
-        "max_speed_tier": 3,  # 全連隊に追従可能
-        "sa": 75, "ha": 22, "defense": 35, "breakthrough": 50, "armor": 20,
-        "desc": "自走化された軽砲兵。陣地転換が速く生存性に優れ、機甲・機械化を含む全ての連隊に追従可能。"
+        "max_speed_tier": 3,
+        "desc": "色々自走化された軽砲兵連隊です。ある程度の砲爆撃に耐えられ、すぐ陣地転換を行えるので生存性に優れています。全ての連隊に追従可能。"
     },
     {
         "id": "art_sp_heavy",
         "name": "自走重砲兵連隊",
         "cost": 250.0,
         "max_speed_tier": 3,
-        "sa": 130, "ha": 45, "defense": 45, "breakthrough": 75, "armor": 28,
-        "desc": "自走化された150mm級重砲兵。全ての連隊に追従可能で機甲師団の主力支援砲兵。"
+        "desc": "色々自走化された重砲兵連隊。全ての連隊に追従可能。"
     },
     {
         "id": "art_mountain",
-        "name": "山岳砲兵連隊（空挺降下可）",
+        "name": "山岳砲兵連隊",
         "cost": 90.0,
         "max_speed_tier": 2,
         "can_paradrop": True,
-        "sa": 52, "ha": 12, "defense": 25, "breakthrough": 28, "armor": 0,
-        "desc": "分解搬送可能な山砲を装備。急峻な地形や空挺降下作戦に追従可能。"
+        "desc": "山砲などを装備しています。火力は劣りますが急峻な地形でも展開出来ます。空挺降下可能。"
+    },
+    {
+        "id": "art_breakthrough",
+        "name": "砲兵突破連隊",
+        "cost": 250.0,
+        "max_speed_tier": 2,
+        "desc": "大口径榴弾砲・カノン砲・重迫撃砲・ロケット砲などを高密度に集中運用し、敵の強固な防衛陣地線を破砕・突破するための砲兵連隊。"
     },
     {
         "id": "art_rocket",
-        "name": "自走ロケット砲兵連隊（カチューシャ/ネーベルヴェルファー）",
-        "cost": 180.0,
+        "name": "自走ロケット砲兵連隊",
+        "cost": 150.0,
         "max_speed_tier": 3,
-        "sa": 120, "ha": 18, "defense": 20, "breakthrough": 68, "armor": 10,
-        "desc": "多連装ロケット砲による広域制圧射撃を行う（#追加お知らせ ロケット砲関連）。全連隊追従可。"
+        "desc": "約50両のBM-8/13やパンツァーヴェルファーを装備した自走式のロケット砲兵連隊。圧倒的な面制圧力を短時間で提供するが射程はやや短い。全ての連隊に追従可能。"
+    },
+    {
+        "id": "art_heavy_rocket",
+        "name": "重自走ロケット砲兵連隊",
+        "cost": 250.0,
+        "max_speed_tier": 3,
+        "desc": "約30両のBM-31やヴルフラーメン40を装備した自走式の大口径ロケット砲兵連隊。30cmクラスのロケット砲の面制圧力を提供出来るが投射量はやや少なめ。全ての連隊に追従可能。"
     },
 ]
 
@@ -334,56 +304,55 @@ ARTILLERY_REGIMENTS: List[Dict[str, Any]] = [
 SUPPORT_BATTALIONS: List[Dict[str, Any]] = [
     {
         "id": "sup_aa",
-        "name": "高射砲大隊（75〜90mm高射砲＋機関砲）",
+        "name": "高射砲大隊",
         "cost": 120.0,
-        "sa": 20, "ha": 35, "aa": 65, "defense": 25, "breakthrough": 15, "armor": 0,
-        "desc": "敵航空機の迎撃に加え、高初速砲による一定の対戦車戦闘も可能。"
+        "desc": "75〜90mmまでの高射砲と高射機関砲を装備した大隊です。ある程度の対戦車戦闘も行えます。"
     },
     {
         "id": "sup_at",
-        "name": "対戦車砲大隊（75〜90mm対戦車砲）",
+        "name": "対戦車砲大隊",
         "cost": 100.0,
-        "sa": 12, "ha": 65, "aa": 0, "defense": 35, "breakthrough": 15, "armor": 0,
-        "desc": "強力な対戦車待ち伏せ火力を付与する。"
+        "desc": "強力な75〜90mmの対戦車砲を装備した大隊です。対空射撃は行えませんが、待ち伏せは強力です。"
     },
     {
         "id": "sup_spg",
-        "name": "自走砲大隊（SU-85/駆逐戦車等 76両）",
+        "name": "自走砲大隊（76両）",
         "cost": 220.0,
-        "sa": 45, "ha": 88, "aa": 0, "defense": 45, "breakthrough": 55, "armor": 45,
-        "desc": "76両装備。機動力と装甲を備えた対戦車砲大隊の上位互換。"
+        "desc": "76両装備。足と装甲と値段が追加された、対戦車砲大隊の上位互換です。SU-85とか。"
     },
     {
         "id": "sup_tank_co",
-        "name": "戦車中隊（22両・車種変更可）",
+        "name": "戦車中隊（22両・自作可）",
         "cost": 65.0,
         "is_tank_unit": True,
         "tank_count": 22,
         "base_overhead": 0.0,
         "default_tank_id": "su_t34_85",
-        "sa": 30, "ha": 32, "aa": 0, "defense": 20, "breakthrough": 38, "armor": 30,
-        "desc": "22両装備（デフォルト: T-34-85 / M4(76)）。歩兵師団等に装甲と火力を添える。自作時は22両×単価。"
+        "desc": "22両装備（自作可：上記の戦車値段表参照、変更時は22両×単価）。歩兵師団などに火力を添えたい時にどうぞ。デフォルトはT-34-85 or M4(76)装備。"
     },
     {
         "id": "sup_armored_recon",
-        "name": "装甲偵察大隊（プーマ等装甲車）",
+        "name": "装甲偵察大隊",
         "cost": 150.0,
-        "sa": 32, "ha": 28, "aa": 10, "defense": 35, "breakthrough": 45, "armor": 20, "recon": 40,
-        "desc": "重装甲車を装備した豪華な偵察大隊。作戦地域の索敵と機動戦ボーナスを付与。"
+        "desc": "プーマなどの装甲車を装備している、普通の偵察大隊よりも豪華な偵察大隊です。"
     },
     {
-        "id": "sup_jager_knight",
-        "name": "対戦車猟化騎士大隊（ヤークトティーガー中隊＋暗視歩兵）",
-        "cost": 350.0,
-        "sa": 65, "ha": 125, "aa": 15, "defense": 70, "breakthrough": 75, "armor": 85, "recon": 25,
-        "desc": "1945年ドイツ式機械化装備とヤークトティーガー中隊を備えた精鋭対戦車特化大隊。"
+        "id": "sup_armored_car",
+        "name": "装甲車大隊",
+        "cost": 100.0,
+        "desc": "60両程のBA-64やkfz.234のような装甲車から成る大隊。戦車未満ではあるものの手軽な突破力を持ち合わせる。"
     },
     {
         "id": "sup_rocket_bn",
-        "name": "ロケット砲大隊",
-        "cost": 110.0,
-        "sa": 58, "ha": 10, "aa": 0, "defense": 15, "breakthrough": 35, "armor": 0,
-        "desc": "師団支援用の牽引・車載ロケット砲大隊。瞬間的な対人制圧火力を強化。"
+        "name": "ロケット砲兵大隊",
+        "cost": 100.0,
+        "desc": "24基程の15cmネーベルヴェルファーやランドマットレスを装備した牽引式ロケット砲兵。大隊級として柔軟な火力の提供が出来る。"
+    },
+    {
+        "id": "sup_jager_knight",
+        "name": "対戦車猟化騎士大隊",
+        "cost": 350.0,
+        "desc": "1945年ドイツ式の機械化歩兵装備とヤークトティーガー中隊などを装備した精鋭対戦車特化大隊、基本的にゲリラ戦を得意とするが普通の戦闘もかなりできる。"
     },
 ]
 
@@ -681,7 +650,8 @@ def calculate_division_spec(
 ) -> Dict[str, Any]:
     """
     師団の構成（基幹連隊3〜4個、砲兵連隊0〜1個、補助大隊0〜4個）から
-    合計金額（億円）、戦力ステータス、速度・追従性チェックを算出します。
+    合計金額（億円）、内訳、説明文リスト、追従性・空挺可否チェックを算出します。
+    （※独自設定の火力等の架空ステータスは一切使用しません）
     """
     tank_map = {t["id"]: t for t in TANKS}
     if custom_tanks:
@@ -692,28 +662,20 @@ def calculate_division_spec(
     sup_map = {s["id"]: s for s in SUPPORT_BATTALIONS}
 
     total_cost = 0.0
-    sa = 0.0
-    ha = 0.0
-    defense = 0.0
-    breakthrough = 0.0
-    armor_sum = 0.0
-    aa = 10.0  # 基本大隊のデフォルト対空
-    recon = 10.0
     min_speed_tier = 3
     can_paradrop = True
-    unit_count = 0
     warnings: List[str] = []
     breakdown: List[str] = []
+    unit_descriptions: List[Dict[str, Any]] = []
 
     if len(regiments) < 3 or len(regiments) > 4:
         warnings.append(f"基幹連隊は3〜4個が基本ルールです（現在: {len(regiments)}個）")
 
-    for item in regiments:
+    for idx, item in enumerate(regiments):
         rid = item.get("regiment_id")
         r = reg_map.get(rid)
         if not r:
             continue
-        unit_count += 1
         min_speed_tier = min(min_speed_tier, r.get("speed_tier", 1))
         if not r.get("can_paradrop", False):
             can_paradrop = False
@@ -727,32 +689,36 @@ def calculate_division_spec(
             else:
                 c = round(tank["cost"] * r["tank_count"] + r.get("base_overhead", 10.0), 1)
             total_cost += c
-            sa += tank["sa"] * 1.4
-            ha += tank["ha"] * 1.5
-            defense += 55
-            breakthrough += (tank["ha"] + tank["armor"]) * 0.9
-            armor_sum += tank["armor"]
-            breakdown.append(f"{r['name']}[{tank['name']}×76]: {c:.1f}億")
+            label_name = f"{r['name']}[{tank['name']}×76両]"
+            breakdown.append(f"{label_name}: {c:g}億")
+            unit_descriptions.append({
+                "slot": f"基幹連隊#{idx+1}",
+                "name": label_name,
+                "cost": c,
+                "desc": f"{r['desc']} （選択車両: {tank['name']} / 単価 {tank['cost']}億 × 76両 ＋ 諸経費10億）",
+            })
         else:
             c = r["cost"]
             total_cost += c
-            sa += r["sa"]
-            ha += r["ha"]
-            defense += r["defense"]
-            breakthrough += r["breakthrough"]
-            armor_sum += r["armor"]
-            breakdown.append(f"{r['name']}: {c:.0f}億")
+            breakdown.append(f"{r['name']}: {c:g}億")
+            unit_descriptions.append({
+                "slot": f"基幹連隊#{idx+1}",
+                "name": r["name"],
+                "cost": c,
+                "desc": r["desc"],
+            })
 
     # 砲兵連隊
     art = art_map.get(artillery_id or "art_none", art_map["art_none"])
     if art and art["id"] != "art_none":
         total_cost += art["cost"]
-        sa += art["sa"]
-        ha += art["ha"]
-        defense += art["defense"]
-        breakthrough += art["breakthrough"]
-        armor_sum += art["armor"]
-        breakdown.append(f"{art['name']}: {art['cost']:.0f}億")
+        breakdown.append(f"{art['name']}: {art['cost']:g}億")
+        unit_descriptions.append({
+            "slot": "砲兵連隊",
+            "name": art["name"],
+            "cost": art["cost"],
+            "desc": art["desc"],
+        })
         if art.get("max_speed_tier", 3) < min_speed_tier:
             warnings.append(f"⚠️ {art['name']}は機械化・機甲部隊に追従できないため機動力が低下します（自走砲兵を推奨）")
             min_speed_tier = art.get("max_speed_tier", 2)
@@ -763,7 +729,7 @@ def calculate_division_spec(
     if len(supports) > 4:
         warnings.append(f"補助大隊は最大4個までです（現在: {len(supports)}個）")
 
-    for s_item in supports[:4]:
+    for idx, s_item in enumerate(supports[:4]):
         sid = s_item.get("support_id")
         s = sup_map.get(sid)
         if not s:
@@ -776,41 +742,33 @@ def calculate_division_spec(
             else:
                 c = round(tank["cost"] * s["tank_count"], 1)
             total_cost += c
-            sa += tank["sa"] * 0.5
-            ha += tank["ha"] * 0.55
-            defense += 20
-            breakthrough += (tank["ha"] + tank["armor"]) * 0.35
-            armor_sum += tank["armor"] * 0.4
-            breakdown.append(f"{s['name']}[{tank['name']}×22]: {c:.1f}億")
+            label_name = f"{s['name']}[{tank['name']}×22両]"
+            breakdown.append(f"{label_name}: {c:g}億")
+            unit_descriptions.append({
+                "slot": f"補助大隊#{idx+1}",
+                "name": label_name,
+                "cost": c,
+                "desc": f"{s['desc']} （選択車両: {tank['name']} / 単価 {tank['cost']}億 × 22両）",
+            })
         else:
             c = s["cost"]
             total_cost += c
-            sa += s.get("sa", 0)
-            ha += s.get("ha", 0)
-            aa += s.get("aa", 0)
-            recon += s.get("recon", 0)
-            defense += s.get("defense", 0)
-            breakthrough += s.get("breakthrough", 0)
-            armor_sum += s.get("armor", 0) * 0.3
-            breakdown.append(f"{s['name']}: {c:.0f}億")
+            breakdown.append(f"{s['name']}: {c:g}億")
+            unit_descriptions.append({
+                "slot": f"補助大隊#{idx+1}",
+                "name": s["name"],
+                "cost": c,
+                "desc": s["desc"],
+            })
 
     final_cost = override_cost if override_cost is not None else round(total_cost, 1)
-    avg_armor = round(armor_sum / max(1, unit_count), 1)
-    combat_power = round((sa * 0.35) + (ha * 0.35) + (defense * 0.15) + (breakthrough * 0.25) + (avg_armor * 0.4) + (aa * 0.1) + (recon * 0.1), 1)
 
     return {
         "cost": final_cost,
         "raw_cost": round(total_cost, 1),
-        "sa": round(sa, 1),
-        "ha": round(ha, 1),
-        "defense": round(defense, 1),
-        "breakthrough": round(breakthrough, 1),
-        "armor": avg_armor,
-        "aa": round(aa, 1),
-        "recon": round(recon, 1),
         "speed_tier": min_speed_tier,
         "can_paradrop": can_paradrop,
-        "combat_power": combat_power,
         "breakdown": breakdown,
+        "unit_descriptions": unit_descriptions,
         "warnings": warnings,
     }

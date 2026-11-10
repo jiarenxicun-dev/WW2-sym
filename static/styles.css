@@ -213,13 +213,33 @@ body {
 .svg-viewport {
   flex: 1;
   position: relative;
-  background: radial-gradient(circle at 50% 45%, #0c2340 0%, #071324 100%);
+  background: radial-gradient(circle at 50% 45%, #486766 0%, #273f43 100%);
+  box-shadow: inset 0 0 0 3px #4c5140, inset 0 0 0 4px #999276;
   overflow: hidden;
   user-select: none;
 }
 
+#hoi4-state-tooltip {
+  position: absolute;
+  z-index: 5;
+  max-width: min(280px, 90%);
+  padding: 9px 12px;
+  color: #f8f4df;
+  background: rgba(20, 28, 26, 0.96);
+  border: 1px solid #aa9a67;
+  border-radius: 4px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6);
+  pointer-events: none;
+  white-space: pre-line;
+  font-size: 12px;
+}
+
+.state-search label { display: block; margin-bottom: 6px; }
+.state-search input, .state-search select { width: 100%; }
+.state-search select[size] { min-height: 100px; }
+
 .war-viewport {
-  background: radial-gradient(circle at 50% 50%, #1a2433 0%, #0d131d 100%);
+  background: radial-gradient(circle at 50% 50%, #506e6a 0%, #293f40 100%);
 }
 
 #peacetime-svg, #wartime-svg {
@@ -680,16 +700,21 @@ input[type="color"] {
   border-radius: 8px;
   overflow: auto;
   max-height: calc(100vh - 210px);
-  display: flex;
-  justify-content: center;
   padding: 10px;
 }
 
 #png-paint-canvas {
   background: #fff;
   cursor: crosshair;
-  max-width: 100%;
+  display: block;
+  width: 100%;
+  touch-action: none;
+  user-select: none;
   height: auto;
+}
+
+#png-paint-canvas.is-panning {
+  cursor: grabbing;
 }
 
 /* Modals & Toasts */
@@ -736,4 +761,161 @@ input[type="color"] {
 
 .toast.error {
   border-left-color: var(--danger);
+}
+
+
+/* Budget Dashboard & Full Descriptions & Saved Division Templates */
+.budget-dashboard-card {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  border: 1px solid #3b82f6;
+  border-radius: 10px;
+  padding: 10px 14px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.budget-metrics-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.budget-metric-box {
+  background: rgba(15, 23, 42, 0.72);
+  border: 1px solid #334155;
+  border-radius: 8px;
+  padding: 6px 12px;
+  min-width: 145px;
+}
+
+.budget-metric-box .bm-label {
+  display: block;
+  font-size: 11px;
+  color: #94a3b8;
+}
+
+.budget-metric-box .bm-val {
+  font-size: 14.5px;
+  font-weight: 800;
+  color: #f8fafc;
+}
+
+.user-template-box {
+  background: rgba(245, 158, 11, 0.08);
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  border-radius: 8px;
+  padding: 8px 10px;
+  margin-bottom: 10px;
+}
+
+.user-templates-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 6px;
+  max-height: 190px;
+  overflow-y: auto;
+}
+
+.user-tpl-item {
+  background: var(--bg-input);
+  border: 1px solid #475569;
+  border-radius: 6px;
+  padding: 6px 9px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.reg-card-row {
+  background: rgba(15, 23, 42, 0.65);
+  border: 1px solid #334155;
+  border-radius: 7px;
+  padding: 7px 9px;
+  margin-bottom: 7px;
+}
+
+.reg-card-top {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.unit-full-desc {
+  margin-top: 5px;
+  padding: 6px 8px;
+  background: rgba(30, 41, 59, 0.75);
+  border-left: 3px solid #38bdf8;
+  border-radius: 4px;
+  font-size: 11.8px;
+  line-height: 1.5;
+  color: #e2e8f0;
+  white-space: pre-wrap;
+}
+
+.catalog-reference-details {
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 10px;
+}
+
+.catalog-reference-details summary {
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 12.5px;
+  color: #38bdf8;
+}
+
+.catalog-reference-body {
+  margin-top: 8px;
+  max-height: 360px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+
+/* Island markers on world map */
+.island-marker {
+  fill: none;
+  stroke: #ffe071;
+  stroke-width: 1.1;
+  stroke-dasharray: 2.2, 2.2;
+  vector-effect: non-scaling-stroke;
+  cursor: pointer;
+  opacity: 0.88;
+}
+
+.island-marker:hover {
+  stroke: #ffffff;
+  stroke-width: 2.2;
+  opacity: 1;
+}
+
+.prov-path {
+  transition: fill 0.15s ease, stroke 0.15s ease;
+}
+
+.prov-path:hover {
+  stroke: #ffe071 !important;
+  stroke-width: 1.8 !important;
+}
+
+.select-world-dropdown {
+  background: #0f172a;
+  border: 1.5px solid #38bdf8;
+  color: #f8fafc;
+  font-weight: 700;
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 12.5px;
+  cursor: pointer;
 }

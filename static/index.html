@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AIWA Web Command — 欧州・地中海 国家運営＆戦術ウォーゲーム</title>
-  <link rel="stylesheet" href="/static/styles.css" />
+  <link rel="stylesheet" href="/static/styles.css?v=20261110_painter_zoom" />
 </head>
 <body>
   <!-- トップヘッダー：国家切替・予算表示・週進行・モード切替 -->
@@ -12,8 +12,8 @@
     <div class="brand">
       <span class="brand-badge">AIWA WEB</span>
       <div>
-        <h1>欧州・地中海 統合戦略＆戦術システム</h1>
-        <p class="subtitle">平時プロビンス運営マップ × 戦時分離型戦術作戦ボード (ソロ/AI・マルチ対応)</p>
+        <h1>欧州・地中海 国家運営＆軍備編成システム</h1>
+        <p class="subtitle">平時プロビンス領土管理 × 師団編成・値段表シミュレーター (ソロ/マルチ対応)</p>
       </div>
     </div>
 
@@ -38,6 +38,10 @@
     </div>
 
     <div class="topbar-right">
+      <select id="select-active-world" class="select-world-dropdown" title="ワールド切替">
+        <option value="world_admin1" selected>🌍 世界マップ (1,505州)</option>
+        <option value="default">🇪🇺 欧州マップ (299州・現行戦役)</option>
+      </select>
       <select id="select-game-mode" class="mode-select" title="まず1(ソロ/検証プロトタイプ) と のちに2(マルチプレイ国別ロック) を切り替え">
         <option value="sandbox">🛠️ モード1: ソロ/プロトタイプ(全国家操作・AI対戦)</option>
         <option value="multiplayer">🌐 モード2: マルチプレイ(国別パスコード保護)</option>
@@ -47,23 +51,23 @@
     </div>
   </header>
 
-  <!-- メインナビゲーションタブ（平時マップと戦時マップを明確に分離！） -->
+  <!-- メインナビゲーションタブ（宣戦布告以降の戦時マップは一旦切り離し） -->
   <nav class="main-tabs">
     <button class="tab-btn active" data-tab="tab-peacetime-map">
-      🌍 1. 平時マップ（欧州・地中海 領土・建国・ワープ）
+      🌍 1. 平時マップ（State / HoI4規模・299州）
     </button>
-    <button class="tab-btn tab-war-highlight" data-tab="tab-wartime-map">
-      ⚔️ 2. 戦時マップ（分離型・戦術作戦ボード ＆ AI審判）
+    <button class="tab-btn tab-war-highlight" data-tab="tab-wartime-map" style="display:none;">
+      ⚔️ 戦時マップ（分離型・戦術作戦ボード ＆ AI審判）
       <span id="badge-active-wars" class="tab-counter">1</span>
     </button>
     <button class="tab-btn" data-tab="tab-military">
-      🛡️ 3. 軍備編成・師団ビルダー・値段表ショップ
+      🛡️ 2. 軍備編成・マイ師団保存・値段表ショップ
     </button>
     <button class="tab-btn" data-tab="tab-diplomacy">
-      📜 4. 外交条約・講和・国際ニュース ＆ Discordログ
+      📜 3. 外交条約・国際ニュース ＆ Discordログ
     </button>
     <button class="tab-btn" data-tab="tab-png-painter">
-      🪣 5. 白地図PNGバケツ塗りツール（Discord投稿用）
+      🪣 4. 白地図PNGバケツ塗りツール（Discord投稿用）
     </button>
   </nav>
 
@@ -82,11 +86,22 @@
             <button class="btn btn-sm map-tool-btn" data-ptool="bucket">🪣 バケツ塗り (領土即時変更)</button>
           </div>
           <div class="tool-group">
+            <select id="select-peace-map-style" class="mode-select" style="font-size:12px;padding:3px 6px;">
+              <option value="political">🗺️ 政治・領土地図 (リアル海岸線)</option>
+              <option value="terrain">⛰️ 自然地形アトラス (山岳・河川強調)</option>
+              <option value="hq_dark">📡 参謀本部ブリーフィング図</option>
+            </select>
             <label class="checkbox-label">
-              <input type="checkbox" id="chk-show-adj" checked /> 隣接線
+              <input type="checkbox" id="chk-show-terrain" checked /> 河川・山脈
             </label>
             <label class="checkbox-label">
-              <input type="checkbox" id="chk-show-units" checked /> 配備師団表示
+              <input type="checkbox" id="chk-show-adj" /> 隣接線
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" id="chk-show-units" checked /> 配備師団
+            </label>
+            <label class="checkbox-label" id="label-chk-island-markers">
+              <input type="checkbox" id="chk-show-island-markers" checked /> 島マーカー
             </label>
             <button id="btn-peace-zoom-in" class="btn btn-xs">＋</button>
             <button id="btn-peace-zoom-out" class="btn btn-xs">－</button>
@@ -96,6 +111,7 @@
 
         <div id="peacetime-map-viewport" class="svg-viewport">
           <svg id="peacetime-svg" viewBox="150 40 1120 920" xmlns="http://www.w3.org/2000/svg"></svg>
+          <div id="hoi4-state-tooltip" role="tooltip" hidden></div>
         </div>
 
         <div class="map-legend">
@@ -114,11 +130,17 @@
 
       <!-- 右：選択プロビンス詳細 / 建国フォーム / バケツ塗りパレット -->
       <aside class="side-panel">
+        <div class="card state-search">
+          <h2>🔎 地域・州検索（State / HoI4規模・299州）</h2>
+          <label>州名・ID <input id="state-search" type="search" placeholder="州名またはIDを入力" /></label>
+          <label>地域 <select id="state-region-filter"><option value="">すべての地域</option></select></label>
+          <select id="state-search-results" size="5" aria-label="検索結果"></select>
+        </div>
         <!-- パネルA: プロビンス詳細＆白地購入＆平時ワープ -->
         <div id="peace-panel-inspect" class="card">
-          <h2 id="prov-detail-title">📍 プロビンスを選択してください</h2>
+          <h2 id="prov-detail-title">📍 州を選択（State / HoI4規模・299州）</h2>
           <div id="prov-detail-body" class="card-body">
-            <p class="muted">左の欧州・地中海マップ上のプロビンスをクリックすると、領有国・地形・駐屯師団の確認や、白地購入（100億）、同盟国への平時ワープが行えます。</p>
+            <p class="muted">マップまたは検索結果から州を選ぶと、領有国・地形・駐屯師団の確認や、白地購入（100億）、同盟国への平時ワープが行えます。</p>
           </div>
         </div>
 
@@ -326,26 +348,38 @@
   <!-- TAB 3: 軍備編成・師団設計ビルダー＆値段表ショップ -->
   <!-- ====================================================================== -->
   <main id="tab-military" class="tab-panel">
+    <!-- 上部：残資金・軍事費内訳・週次予算ダッシュボード -->
+    <div id="military-budget-dashboard" class="budget-dashboard-card"></div>
+
     <div class="military-grid">
       <!-- 左カラム：陸軍オリジナル師団ビルダー＆戦車車種カスタム -->
       <section class="card">
         <div class="card-header-flex">
-          <h2>🪖 陸軍 師団編成ビルダー（#陸軍値段表 / #テンプレ編成）</h2>
+          <h2>🪖 陸軍 師団編成ビルダー（#陸軍値段表 / #陸軍_連隊編成）</h2>
           <button id="btn-open-custom-tank" class="btn btn-xs btn-amber">🔧 架空・カスタム戦車開発</button>
         </div>
         <p class="rule-note">
-          ・<strong>基幹連隊（3〜4個）＋ 砲兵連隊（1個まで）＋ 補助大隊（4個まで）</strong>を組み合わせて編成<br/>
+          ・<strong>①基幹連隊（3〜4個）＋ ②砲兵連隊（1個まで・砲兵突破連隊含む）＋ ③補助大隊（4個まで）</strong>を組み合わせて編成<br/>
           ・戦車大隊(76両)の戦車を変更すると<strong>「76両×単価＋10億」</strong>、戦車中隊(22両)は<strong>「22両×単価」</strong>で自動計算！<br/>
-          ・戦争が始まるまでは<strong>いつでも解体して全額返金</strong>されます。
+          ・各連隊・大隊の<strong>公式説明文（全文）</strong>を確認でき、作成した編成は<strong>「自分用の師団」</strong>として保存できます。
         </p>
 
         <!-- 公式テンプレート1クリック読込 -->
         <div class="template-bar">
-          <span>公式テンプレ読込:</span>
+          <span>📌 公式テンプレ読込:</span>
           <button class="btn btn-xs btn-outline tpl-load-btn" data-tpl="tpl_infantry_div">歩兵師団 (380億)</button>
           <button class="btn btn-xs btn-outline tpl-load-btn" data-tpl="tpl_motorized_div">自動車化歩兵師団 (440億)</button>
           <button class="btn btn-xs btn-outline tpl-load-btn" data-tpl="tpl_mechanized_div">機械化歩兵師団 (740億)</button>
           <button class="btn btn-xs btn-outline tpl-load-btn" data-tpl="tpl_armored_div">機甲師団 (1240億)</button>
+        </div>
+
+        <!-- 自分用の師団（保存済みマイ師団テンプレート）一覧・読込・保存 -->
+        <div class="user-template-box">
+          <div class="sec-title">
+            <strong>⭐ 自分用の師団（マイ師団テンプレート保存・読込）</strong>
+            <button type="button" id="btn-save-user-template" class="btn btn-xs btn-amber">💾 現在の編成を「自分用の師団」に保存</button>
+          </div>
+          <div id="user-templates-list" class="user-templates-list"></div>
         </div>
 
         <div class="builder-form">
@@ -364,10 +398,11 @@
             <div id="builder-regiments-list"></div>
           </div>
 
-          <!-- 砲兵連隊 (0〜1個) -->
+          <!-- 砲兵連隊 (0〜1個：軽砲・重砲・自走砲・山岳砲・砲兵突破連隊・自走ロケット砲) -->
           <div class="builder-section">
-            <div class="sec-title"><strong>② 砲兵連隊（各師団に1個まで・戦場の神）</strong></div>
+            <div class="sec-title"><strong>② 砲兵連隊（各師団に1個まで・砲兵突破連隊もここ）</strong></div>
             <select id="builder-artillery"></select>
+            <div id="builder-artillery-desc" class="unit-full-desc"></div>
           </div>
 
           <!-- 補助大隊 (0〜4個) -->
@@ -379,12 +414,24 @@
             <div id="builder-supports-list"></div>
           </div>
 
-          <!-- リアルタイム試算プレビュー -->
+          <!-- リアルタイム試算・残資金プレビュー＆構成部隊説明文 -->
           <div id="div-preview-box" class="spec-preview-box"></div>
 
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:6px;">
+            <label class="checkbox-label" style="font-size:12px;">
+              <input type="checkbox" id="chk-also-save-tpl" /> 配備と同時に「自分用の師団」にも保存する
+            </label>
+          </div>
+
           <button id="btn-buy-division" class="btn btn-primary btn-block">
-            🪖 この師団を編成・購入する
+            🪖 この師団を編成・購入して配備する
           </button>
+
+          <!-- 全連隊・砲兵・補助大隊の公式説明文カタログ辞典（全文表示） -->
+          <details class="catalog-reference-details" style="margin-top:10px;">
+            <summary>📖 全連隊・砲兵連隊・補助大隊 公式説明文一覧（クリックで全文表示）</summary>
+            <div id="army-catalog-full-reference" class="catalog-reference-body"></div>
+          </details>
         </div>
       </section>
 
@@ -490,18 +537,25 @@
     <div class="card">
       <div class="card-header-flex">
         <div>
-          <h2>🪣 白地図PNG バケツ塗りツール（画像フラッドフィル機能）</h2>
-          <p class="muted">手元の白地図画像（<code>Blank_state_map.png</code> 等）を読み込み、国家カラーでワンクリックバケツ塗りしてPNG保存できます。</p>
+          <h2>🪣 世界地図バケツ塗りツール</h2>
+          <p class="muted">世界マップと同じ区画をクリックで塗り、PNGで保存できます。手元の画像も読み込めます。</p>
         </div>
         <div class="tool-group">
+          <button id="btn-png-world-map" class="btn btn-sm btn-outline">🌍 白地図に戻す</button>
           <label class="btn btn-sm btn-primary" style="cursor:pointer;">
             📂 白地図PNG画像を読み込む <input type="file" id="png-file-input" accept="image/*" style="display:none;" />
           </label>
           <label>塗り色: <input type="color" id="png-fill-color" value="#e11d48" /></label>
-          <label>許容誤差: <input type="number" id="png-tolerance" value="32" min="1" max="120" style="width:60px;" /></label>
+          <label>許容誤差（画像のみ）: <input type="number" id="png-tolerance" value="32" min="1" max="120" style="width:60px;" /></label>
           <button id="btn-png-undo" class="btn btn-sm btn-outline">↩️ 元に戻す</button>
           <button id="btn-png-download" class="btn btn-sm btn-amber">💾 塗った地図をPNG保存</button>
         </div>
+      </div>
+      <div class="tool-group" role="group" aria-label="バケツ塗り地図の表示">
+        <button id="btn-png-zoom-in" class="btn btn-sm btn-outline" aria-label="地図を拡大">＋</button>
+        <button id="btn-png-zoom-out" class="btn btn-sm btn-outline" aria-label="地図を縮小">−</button>
+        <button id="btn-png-zoom-reset" class="btn btn-sm btn-outline">全体表示</button>
+        <span class="muted">ホイールで拡大・縮小、ドラッグで移動</span>
       </div>
       <div class="png-canvas-wrapper">
         <canvas id="png-paint-canvas" width="1280" height="720"></canvas>
@@ -559,14 +613,9 @@
           <label>ベース車体 <input type="text" id="ct-hull" placeholder="例: M4A3シャーマン車体" /></label>
           <label>搭載主砲 <input type="text" id="ct-gun" placeholder="例: 122mm A-19 / D-25T" /></label>
         </div>
-        <div class="row-3">
-          <label>1両単価(億) <input type="number" id="ct-cost" value="4.2" step="0.1" min="0.5" /></label>
-          <label>対戦車火力 <input type="number" id="ct-ha" value="84" min="10" max="140" /></label>
-          <label>対人火力 <input type="number" id="ct-sa" value="78" min="10" max="140" /></label>
-        </div>
         <div class="row-2">
-          <label>装甲値 <input type="number" id="ct-armor" value="68" min="5" max="180" /></label>
-          <label>最高速度(km/h) <input type="number" id="ct-speed" value="38" min="10" max="70" /></label>
+          <label>1両単価(億) <input type="number" id="ct-cost" value="4.2" step="0.1" min="0.5" /></label>
+          <label>車両説明・備考 <input type="text" id="ct-desc" placeholder="例: M4車体に122mm砲を搭載した火力支援戦車" /></label>
         </div>
         <button id="btn-submit-custom-tank" class="btn btn-amber btn-block">🔧 カスタム戦車を値段表に登録する</button>
       </div>
@@ -596,6 +645,9 @@
         <button class="btn btn-xs btn-outline modal-close" data-close="modal-scenario">✕</button>
       </div>
       <div class="form-grid">
+        <button id="btn-reset-world" class="btn btn-primary btn-block" style="background:#0284c7;border-color:#38bdf8;">
+          🌍 シナリオ：世界マップ（全1,505州・世界規模建国）で初期化
+        </button>
         <button id="btn-reset-aiwa" class="btn btn-primary btn-block">
           🌍 シナリオ①：AIWA 現行サーバー再現（欧州・地中海15カ国＋条約＋瑞西仏戦争）で初期化
         </button>
@@ -607,6 +659,9 @@
   </div>
 
   <div id="toast-container" class="toast-container"></div>
-  <script src="/static/app.js"></script>
+  <script src="/static/world_admin1_map.js?v=20261110_pomerania"></script>
+  <script src="/static/realistic_map_data.js"></script>
+  <script src="/static/standalone_data.js"></script>
+  <script src="/static/app.js?v=20261110_painter_hires"></script>
 </body>
 </html>

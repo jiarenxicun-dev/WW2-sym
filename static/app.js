@@ -12,7 +12,8 @@ let PEACE_TOOL = "inspect"; // inspect | found | bucket
 let FOUND_SELECTION = { capital: null, cities: [], extra: [] };
 
 // 平時マップ ズーム・パン状態
-let PEACE_VB = { x: 150, y: 40, w: 1120, h: 920 };
+let ACTIVE_WORLD_ID = localStorage.getItem("aiwa_active_world_id") || "world_admin1";
+let PEACE_VB = ACTIVE_WORLD_ID === "world_admin1" ? { x: 0, y: 0, w: 1440, h: 720 } : { x: 45, y: 35, w: 1510, h: 930 };
 let isPeacePanning = false;
 let peacePanStart = { x: 0, y: 0 };
 
@@ -38,6 +39,7 @@ let ACTIVE_SHOP_DOMAIN = "navy"; // navy | air | facility
 
 // PNGバケツ塗りキャンバス履歴
 let pngUndoStack = [];
+let pngWorldMap = null;
 
 // ============================================================================
 // ユーティリティ
@@ -51,13 +53,414 @@ function showToast(msg, isError = false) {
   setTimeout(() => el.remove(), 4200);
 }
 
+function escapeMapText(value) {
+  return String(value ?? "").replace(/[&<>"']/g, (ch) => ({
+    "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+  })[ch]);
+}
+
 function formatOku(oku) {
   const val = Number(oku || 0);
   const cho = (val / 10000).toFixed(2);
   return `${cho}兆円 (${val.toLocaleString()}億)`;
 }
 
+let IS_STANDALONE_MODE = false;
+
+function saveStandaloneState() {
+  if (!IS_STANDALONE_MODE || !APP_STATE) return;
+  try {
+    localStorage.setItem("aiwa_web_standalone_state_v2", JSON.stringify(APP_STATE));
+  } catch (e) {}
+}
+
+function calcStandaloneDivisionSpec(regiments, artilleryId, supports, overrideCost) {
+  const allTanks = getAllTanks();
+  const tankMap = {};
+  for (const t of allTanks) tankMap[t.id] = t;
+  const regMap = {};
+  for (const r of CATALOG.base_regiments) regMap[r.id] = r;
+  const artMap = {};
+  for (const a of CATALOG.artillery_regiments) artMap[a.id] = a;
+  const supMap = {};
+  for (const s of CATALOG.support_battalions) supMap[s.id] = s;
+
+  let totalCost = 0;
+  let minSpeed = 3;
+  let canParadrop = true;
+  const warnings = [];
+  const breakdown = [];
+  const unitDescriptions = [];
+
+  (regiments || []).forEach((item, idx) => {
+    const r = regMap[item.regiment_id];
+    if (!r) return;
+    minSpeed = Math.min(minSpeed, r.speed_tier || 1);
+    if (!r.can_paradrop) canParadrop = false;
+    if (r.is_tank_unit) {
+      const tid = item.tank_id || r.default_tank_id || "su_t34_85";
+      const tk = tankMap[tid] || tankMap["su_t34_85"];
+      const c = !item.custom_calc && (tid === "su_t34_85" || tid === "us_m4_76") ? r.cost : +(tk.cost * 76 + 10).toFixed(1);
+      totalCost += c;
+      const label = `${r.name}[${tk.name}×76両]`;
+      breakdown.push(`${label}: ${c}億`);
+      unitDescriptions.push({ slot: `基幹連隊#${idx + 1}`, name: label, cost: c, desc: `${r.desc} （選択車両: ${tk.name} / 単価 ${tk.cost}億 × 76両 ＋ 諸経費10億）` });
+    } else {
+      totalCost += r.cost;
+      breakdown.push(`${r.name}: ${r.cost}億`);
+      unitDescriptions.push({ slot: `基幹連隊#${idx + 1}`, name: r.name, cost: r.cost, desc: r.desc });
+    }
+  });
+
+  const art = artMap[artilleryId || "art_none"] || artMap["art_none"];
+  if (art && art.id !== "art_none") {
+    totalCost += art.cost;
+    breakdown.push(`${art.name}: ${art.cost}億`);
+    unitDescriptions.push({ slot: "砲兵連隊", name: art.name, cost: art.cost, desc: art.desc });
+    if ((art.max_speed_tier || 3) < minSpeed) {
+      warnings.push(`⚠️ ${art.name}は機械化・機甲部隊に追従できないため機動力が低下します`);
+    }
+    if (!art.can_paradrop) canParadrop = false;
+  }
+
+  (supports || []).slice(0, 4).forEach((sItem, idx) => {
+    const s = supMap[sItem.support_id];
+    if (!s) return;
+    if (s.is_tank_unit) {
+      const tid = sItem.tank_id || s.default_tank_id || "su_t34_85";
+      const tk = tankMap[tid] || tankMap["su_t34_85"];
+      const c = !sItem.custom_calc && (tid === "su_t34_85" || tid === "us_m4_76") ? s.cost : +(tk.cost * 22).toFixed(1);
+      totalCost += c;
+      const label = `${s.name}[${tk.name}×22両]`;
+      breakdown.push(`${label}: ${c}億`);
+      unitDescriptions.push({ slot: `補助大隊#${idx + 1}`, name: label, cost: c, desc: `${s.desc} （選択車両: ${tk.name} / 単価 ${tk.cost}億 × 22両）` });
+    } else {
+      totalCost += s.cost;
+      breakdown.push(`${s.name}: ${s.cost}億`);
+      unitDescriptions.push({ slot: `補助大隊#${idx + 1}`, name: s.name, cost: s.cost, desc: s.desc });
+    }
+  });
+
+  const finalCost = overrideCost !== null && overrideCost !== undefined ? overrideCost : +totalCost.toFixed(1);
+  return {
+    cost: finalCost,
+    raw_cost: +totalCost.toFixed(1),
+    speed_tier: minSpeed,
+    can_paradrop: canParadrop,
+    breakdown,
+    unit_descriptions: unitDescriptions,
+    warnings,
+  };
+}
+
+function handleStandaloneApi(url, data = {}) {
+  const state = APP_STATE;
+  const findNat = (id) => (state.nations || []).find((n) => n.id === id);
+
+  if (url === "/api/mode") {
+    if (data.mode) state.mode = data.mode;
+    if (data.active_nation_id) state.active_nation_id = data.active_nation_id;
+    saveStandaloneState();
+    return { ok: true, state };
+  }
+
+  if (url === "/api/scenario/reset") {
+    const base = data.scenario_type === "blank_map" ? window.STANDALONE_BOOTSTRAP.state_blank : window.STANDALONE_BOOTSTRAP.state_aiwa;
+    const savedTpls = state?.saved_division_templates || [];
+    APP_STATE = JSON.parse(JSON.stringify(base));
+    APP_STATE.saved_division_templates = savedTpls;
+    saveStandaloneState();
+    return { ok: true, state: APP_STATE };
+  }
+
+  if (url === "/api/advance_week") {
+    state.week = Number(state.week || 1) + 1;
+    for (const nat of state.nations || []) {
+      const bonus = Math.min(1000, Number(nat.war_prov_bonus_oku || 0));
+      nat.budget = +(Number(nat.budget || 0) + Number(nat.weekly_income || 5000) + bonus).toFixed(1);
+    }
+    state.treaties = (state.treaties || []).filter((t) => Number(t.expires_week || 999) >= state.week);
+    saveStandaloneState();
+    return { ok: true, state };
+  }
+
+  if (url === "/api/nation/found") {
+    const name = (data.name || "").trim();
+    const capId = data.capital_id;
+    const cityIds = (data.city_ids || []).filter((c) => c && c !== capId);
+    if (!name || !capId || cityIds.length < 2) {
+      throw new Error("国名、首都1つ、および都市2つを指定してください（建国ルール）。");
+    }
+    const provIds = Array.from(new Set([capId, ...cityIds, ...(data.province_ids || [])]));
+    const provMap = {};
+    for (const p of state.provinces) provMap[p.id] = p;
+    for (const pid of provIds) {
+      if (provMap[pid]?.owner_id) throw new Error(`プロビンス『${provMap[pid].name}』は既に領有されています。`);
+    }
+    const nid = "nat_" + Date.now();
+    for (const pid of provIds) provMap[pid].owner_id = nid;
+    provMap[capId].is_capital = true;
+    for (const cid of cityIds.slice(0, 2)) provMap[cid].is_city = true;
+    const newNat = {
+      id: nid,
+      name,
+      flag: data.flag || "🏳️",
+      color: data.color || "#06b6d4",
+      leader: data.leader || "プレイヤー",
+      capital_id: capId,
+      city_ids: cityIds.slice(0, 2),
+      province_ids: provIds,
+      initial_province_count: provIds.length,
+      white_prov_bought: 0,
+      cede_count: 0,
+      war_prov_bonus_oku: 0,
+      budget: 50000.0,
+      weekly_income: 5000.0,
+      is_ai: !!data.is_ai,
+      lore: data.lore || "",
+      facilities: [],
+      divisions: [],
+      naval_units: [],
+      air_units: [],
+    };
+    state.nations.push(newNat);
+    state.active_nation_id = nid;
+    saveStandaloneState();
+    return { ok: true, state, nation: newNat };
+  }
+
+  if (url === "/api/province/action") {
+    const prov = state.provinces.find((p) => p.id === data.province_id);
+    if (!prov) throw new Error("プロビンスが見つかりません。");
+    if (data.action === "buy_white") {
+      const nat = findNat(data.nation_id);
+      if (!nat) throw new Error("国家を選択してください。");
+      if (prov.owner_id) throw new Error("既に領有されています。");
+      if ((nat.white_prov_bought || 0) >= 10) throw new Error("白地購入は最大10プロビンスまでです。");
+      if (nat.budget < 100) throw new Error("資金不足です（100億円）。");
+      nat.budget = +(nat.budget - 100).toFixed(1);
+      nat.white_prov_bought = (nat.white_prov_bought || 0) + 1;
+      nat.province_ids.push(prov.id);
+      prov.owner_id = nat.id;
+    } else if (data.action === "bucket_paint") {
+      const target = data.target_owner_id || null;
+      if (prov.owner_id && prov.owner_id !== target) {
+        const oldN = findNat(prov.owner_id);
+        if (oldN) oldN.province_ids = oldN.province_ids.filter((x) => x !== prov.id);
+      }
+      prov.owner_id = target;
+      if (target) {
+        const newN = findNat(target);
+        if (newN && !newN.province_ids.includes(prov.id)) newN.province_ids.push(prov.id);
+      }
+    } else if (data.action === "warp_unit") {
+      const nat = findNat(data.nation_id);
+      const div = (nat?.divisions || []).find((d) => d.id === data.division_id);
+      if (!div) throw new Error("師団が見つかりません。");
+      div.province_id = prov.id;
+    }
+    saveStandaloneState();
+    return { ok: true, state };
+  }
+
+  if (url === "/api/military/division") {
+    state.saved_division_templates = state.saved_division_templates || [];
+    if (data.action === "save_template") {
+      const spec = calcStandaloneDivisionSpec(data.regiments, data.artillery_id, data.supports, data.override_cost);
+      const tpl = {
+        id: "utpl_" + Date.now(),
+        name: (data.name || "マイ師団").trim(),
+        nation_id: data.nation_id || "",
+        regiments: data.regiments,
+        artillery_id: data.artillery_id,
+        supports: data.supports,
+        override_cost: data.override_cost,
+        official_cost: spec.cost,
+        desc: spec.breakdown.join(" ＋ ") + `（計 ${spec.cost}億）`,
+        spec,
+      };
+      state.saved_division_templates.push(tpl);
+      saveStandaloneState();
+      return { ok: true, state, template: tpl };
+    }
+    if (data.action === "delete_template") {
+      state.saved_division_templates = state.saved_division_templates.filter((t) => t.id !== data.template_id);
+      saveStandaloneState();
+      return { ok: true, state };
+    }
+    const nat = findNat(data.nation_id);
+    if (!nat) throw new Error("国家を選択してください。");
+    if (data.action === "create") {
+      const count = Math.max(1, Number(data.count || 1));
+      const spec = calcStandaloneDivisionSpec(data.regiments, data.artillery_id, data.supports, data.override_cost);
+      const totalCost = +(spec.cost * count).toFixed(1);
+      if (nat.budget < totalCost) throw new Error(`予算不足です（必要: ${totalCost}億 / 残資金: ${nat.budget}億）`);
+      nat.budget = +(nat.budget - totalCost).toFixed(1);
+      nat.divisions.push({
+        id: "div_" + Date.now(),
+        name: (data.name || "新編師団").trim(),
+        regiments: data.regiments,
+        artillery_id: data.artillery_id,
+        supports: data.supports,
+        override_cost: data.override_cost,
+        count,
+        province_id: data.province_id || nat.capital_id,
+        spec,
+      });
+      if (data.also_save_template) {
+        state.saved_division_templates.push({
+          id: "utpl_" + Date.now(),
+          name: (data.name || "マイ師団").trim(),
+          nation_id: nat.id,
+          regiments: data.regiments,
+          artillery_id: data.artillery_id,
+          supports: data.supports,
+          override_cost: data.override_cost,
+          official_cost: spec.cost,
+          desc: spec.breakdown.join(" ＋ ") + `（計 ${spec.cost}億）`,
+          spec,
+        });
+      }
+    } else if (data.action === "adjust_count") {
+      const target = (nat.divisions || []).find((d) => d.id === data.division_id);
+      if (!target) throw new Error("対象の師団が見つかりません。");
+      const delta = Number(data.delta || 0);
+      const unitCost = Number(target.spec?.cost || 0);
+      if (delta > 0) {
+        const need = +(unitCost * delta).toFixed(1);
+        if (nat.budget < need) throw new Error(`追加配備の予算が不足しています（必要: ${need}億 / 残資金: ${nat.budget}億）`);
+        nat.budget = +(nat.budget - need).toFixed(1);
+        target.count += delta;
+      } else if (delta < 0) {
+        const rem = Math.min(target.count, Math.abs(delta));
+        nat.budget = +(nat.budget + unitCost * rem).toFixed(1);
+        target.count -= rem;
+        if (target.count <= 0) nat.divisions = nat.divisions.filter((d) => d.id !== data.division_id);
+      }
+    } else if (data.action === "disband") {
+      const target = (nat.divisions || []).find((d) => d.id === data.division_id);
+      if (!target) throw new Error("解体する師団が見つかりません。");
+      const refund = +(Number(target.spec?.cost || 0) * Number(target.count || 1)).toFixed(1);
+      nat.budget = +(nat.budget + refund).toFixed(1);
+      nat.divisions = nat.divisions.filter((d) => d.id !== data.division_id);
+    }
+    saveStandaloneState();
+    return { ok: true, state };
+  }
+
+  if (url === "/api/military/custom_tank") {
+    const checkStr = `${data.name || ""} ${data.base_hull || ""} ${data.main_gun || ""}`.toLowerCase();
+    if (["t-54", "t54", "is-4", "is4"].some((f) => checkStr.includes(f))) {
+      throw new Error("【架空兵器ルール違反】T-54試作およびIS-4は強過ぎるため出禁です！");
+    }
+    const newTk = {
+      id: "custom_tk_" + Date.now(),
+      name: data.base_hull ? `${data.name} (${data.base_hull}+${data.main_gun})` : data.name,
+      country: "独自開発",
+      type: "架空/カスタム戦車",
+      cost: Math.max(0.5, Number(data.cost || 3.5)),
+      desc: data.desc || "",
+    };
+    state.custom_tanks = state.custom_tanks || [];
+    state.custom_tanks.push(newTk);
+    saveStandaloneState();
+    return { ok: true, state, tank: newTk };
+  }
+
+  if (url === "/api/military/procure") {
+    const nat = findNat(data.nation_id);
+    if (!nat) throw new Error("国家を選択してください。");
+    const count = Math.max(1, Number(data.count || 1));
+    if (data.domain === "navy") {
+      const u = CATALOG.naval_units.find((x) => x.id === data.unit_id);
+      const total = +(u.cost * count).toFixed(1);
+      if (data.action === "buy") {
+        if (nat.budget < total) throw new Error(`予算不足です（必要: ${total}億）`);
+        nat.budget = +(nat.budget - total).toFixed(1);
+        const ex = nat.naval_units.find((x) => x.unit_id === data.unit_id);
+        if (ex) ex.count += count;
+        else nat.naval_units.push({ unit_id: data.unit_id, count });
+      } else {
+        nat.budget = +(nat.budget + total).toFixed(1);
+        nat.naval_units = nat.naval_units.filter((x) => x.unit_id !== data.unit_id);
+      }
+    } else if (data.domain === "air") {
+      const u = CATALOG.air_units.find((x) => x.id === data.unit_id);
+      if (u.is_nuke && data.action === "buy") {
+        const hasB29 = (nat.air_units || []).some((x) => x.unit_id === "air_us_b29" && x.count > 0);
+        if (!hasB29) throw new Error("核兵器は『B-29 スーパーフォートレス』にのみ搭載可能です。");
+      }
+      const total = +(u.cost * count).toFixed(1);
+      if (data.action === "buy") {
+        if (nat.budget < total) throw new Error(`予算不足です（必要: ${total}億）`);
+        nat.budget = +(nat.budget - total).toFixed(1);
+        const ex = nat.air_units.find((x) => x.unit_id === data.unit_id);
+        if (ex) ex.count += count;
+        else nat.air_units.push({ unit_id: data.unit_id, count });
+      } else {
+        nat.budget = +(nat.budget + total).toFixed(1);
+        nat.air_units = nat.air_units.filter((x) => x.unit_id !== data.unit_id);
+      }
+    } else if (data.domain === "facility") {
+      const f = CATALOG.facilities.find((x) => x.id === data.unit_id);
+      if (data.action === "buy") {
+        if (nat.budget < f.cost) throw new Error(`予算不足です（必要: ${f.cost}億）`);
+        nat.budget = +(nat.budget - f.cost).toFixed(1);
+        if (!nat.facilities.includes(f.id)) nat.facilities.push(f.id);
+      } else {
+        nat.facilities = nat.facilities.filter((x) => x !== f.id);
+        nat.budget = +(nat.budget + f.cost).toFixed(1);
+      }
+    }
+    saveStandaloneState();
+    return { ok: true, state };
+  }
+
+  if (url === "/api/diplomacy/treaty") {
+    if (data.action === "delete") {
+      state.treaties = (state.treaties || []).filter((t) => t.id !== data.treaty_id);
+      saveStandaloneState();
+      return { ok: true, state };
+    }
+    const tr = {
+      id: "tr_" + Date.now(),
+      name: data.name || "二国間条約",
+      type: data.type || "nap",
+      nation_a: data.nation_a,
+      nation_b: data.nation_b,
+      expires_week: data.type === "transit" ? 999 : state.week + 1,
+      desc: data.desc || "",
+    };
+    state.treaties.push(tr);
+    saveStandaloneState();
+    return { ok: true, state, treaty: tr };
+  }
+
+  if (url === "/api/news/post") {
+    const nat = findNat(data.nation_id);
+    state.news.unshift({
+      id: "news_" + Date.now(),
+      week: state.week,
+      speaker: nat ? `${nat.flag}${nat.name} 外務省` : "国際通信社",
+      flag: nat?.flag || "📰",
+      title: data.title || "公式声明",
+      body: data.body || "",
+    });
+    saveStandaloneState();
+    return { ok: true, state };
+  }
+
+  saveStandaloneState();
+  return { ok: true, state };
+}
+
 async function apiPost(url, data = {}) {
+  if (IS_STANDALONE_MODE) {
+    return handleStandaloneApi(url, data);
+  }
+  if (!data.world_id && APP_STATE && APP_STATE.world_id) {
+    data.world_id = APP_STATE.world_id;
+  }
   const res = await fetch(url, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -96,7 +499,8 @@ function getAllTanks() {
 // ============================================================================
 async function initApp() {
   try {
-    const res = await fetch("/api/bootstrap");
+    const res = await fetch(`/api/bootstrap?world=${ACTIVE_WORLD_ID}`);
+    if (!res.ok) throw new Error("Static web mode");
     const data = await res.json();
     CATALOG = data.catalog;
     APP_STATE = data.state;
@@ -105,10 +509,31 @@ async function initApp() {
     }
     setupEventListeners();
     initPngPainterCanvas();
+    ACTIVE_WORLD_ID = data.active_world_id || APP_STATE.world_id || ACTIVE_WORLD_ID;
+    localStorage.setItem("aiwa_active_world_id", ACTIVE_WORLD_ID);
+    const selWorld = document.getElementById("select-active-world");
+    if (selWorld) selWorld.value = ACTIVE_WORLD_ID;
     renderAll();
     connectWebSocket();
     fetchDiscordLogs();
   } catch (err) {
+    if (window.STANDALONE_BOOTSTRAP) {
+      IS_STANDALONE_MODE = true;
+      CATALOG = window.STANDALONE_BOOTSTRAP.catalog;
+      let saved = null;
+      try {
+        saved = JSON.parse(localStorage.getItem("aiwa_web_standalone_state_v2") || "null");
+      } catch (e) {}
+      APP_STATE = saved || JSON.parse(JSON.stringify(window.STANDALONE_BOOTSTRAP.state_aiwa));
+      if (APP_STATE.wars && APP_STATE.wars.length > 0) {
+        ACTIVE_WAR_ID = APP_STATE.wars[0].id;
+      }
+      setupEventListeners();
+      initPngPainterCanvas();
+      renderAll();
+      showToast("🌐 Webブラウザ完結モード（自動保存有効）で起動しました！");
+      return;
+    }
     showToast("初期データの読み込みに失敗しました: " + err.message, true);
   }
 }
@@ -135,6 +560,7 @@ function renderAll() {
   if (!APP_STATE || !CATALOG) return;
   renderTopbar();
   renderPeacetimeMap();
+  renderStateSearch();
   renderProvinceInspectPanel();
   renderPeacetimeNationList();
   renderWartimeTab();
@@ -188,19 +614,18 @@ function renderTopbar() {
 }
 
 // ============================================================================
-// TAB 1: 平時マップ（欧州・地中海プロビンスSVGマップ）
+// TAB 1: 平時マップ（欧州・地中海 リアル地理プロビンスSVGマップ）
 // ============================================================================
 const TERRAIN_COLORS = {
-  plains: "#1e3a2f",
-  urban: "#334155",
-  mountain: "#3b2f2f",
-  forest: "#143326",
-  coastal: "#1c3545",
-  desert: "#4a3b22",
+  plains: "#777d58",
+  urban: "#777365",
+  mountain: "#77705e",
+  forest: "#596b4b",
+  coastal: "#79836a",
+  desert: "#a89970",
 };
 
 function generateProvincePolygonPoints(prov, allProvs) {
-  // 各プロビンスの中心(x,y)の周囲に8角形の有機的な領土ポリゴンを生成し、隣接プロビンスとの中点でクリップする
   const angles = 10;
   const baseRadius = 34;
   const pts = [];
@@ -209,8 +634,6 @@ function generateProvincePolygonPoints(prov, allProvs) {
     const dx = Math.cos(ang);
     const dy = Math.sin(ang);
     let r = baseRadius;
-
-    // 近隣プロビンスとの重なりを抑えるボロノイ風クリッピング
     for (const other of allProvs) {
       if (other.id === prov.id) continue;
       const vx = other.x - prov.x;
@@ -228,19 +651,278 @@ function generateProvincePolygonPoints(prov, allProvs) {
   return pts.join(" ");
 }
 
+
+async function switchWorld(worldId) {
+  const container = document.getElementById("world-admin1-container");
+  if (container) container.remove();
+  WORLD_ADMIN1_RENDERED = false;
+  WORLD_PATH_MAP = {};
+  ACTIVE_WORLD_ID = worldId;
+  localStorage.setItem("aiwa_active_world_id", worldId);
+  if (ACTIVE_WORLD_ID === "world_admin1") {
+    PEACE_VB = { x: 0, y: 0, w: 1440, h: 720 };
+  } else {
+    PEACE_VB = { x: 45, y: 35, w: 1510, h: 930 };
+  }
+  SELECTED_PROV_ID = null;
+  FOUND_SELECTION = { capital: null, cities: [], extra: [] };
+  try {
+    const res = await fetch(`/api/bootstrap?world=${ACTIVE_WORLD_ID}`);
+    if (res.ok) {
+      const data = await res.json();
+      APP_STATE = data.state;
+      const selWorld = document.getElementById("select-active-world");
+      if (selWorld) selWorld.value = ACTIVE_WORLD_ID;
+      renderAll();
+      showToast(`ワールドを『${APP_STATE.name || worldId}』に切り替えました。`);
+    }
+  } catch (err) {
+    showToast("ワールド切替に失敗しました: " + err.message, true);
+  }
+}
+
+let WORLD_ADMIN1_RENDERED = false;
+let WORLD_PATH_MAP = {};
+let WORLD_MARKER_GROUP = null;
+let WORLD_ADJ_GROUP = null;
+let WORLD_BADGES_GROUP = null;
+
+function renderWorldAdmin1Map(svg, tooltip, provs, provById, nationsById, divCountByProv) {
+  const wMap = window.WORLD_ADMIN1_MAP || null;
+  const showAdj = document.getElementById("chk-show-adj")?.checked ?? false;
+  const showUnits = document.getElementById("chk-show-units")?.checked ?? true;
+  const showIslandMarkers = document.getElementById("chk-show-island-markers")?.checked ?? true;
+  const mapStyle = document.getElementById("select-peace-map-style")?.value || "political";
+
+  svg.setAttribute("viewBox", `${PEACE_VB.x} ${PEACE_VB.y} ${PEACE_VB.w} ${PEACE_VB.h}`);
+
+  const container = document.getElementById("world-admin1-container");
+  if (!container) {
+    // 初回ビルド
+    WORLD_ADMIN1_RENDERED = false;
+    WORLD_PATH_MAP = {};
+    svg.innerHTML = `
+      <defs>
+        <radialGradient id="worldOceanGrad" cx="50%" cy="45%" r="70%">
+          <stop offset="0%" stop-color="#1b2a3a" />
+          <stop offset="100%" stop-color="#0c1520" />
+        </radialGradient>
+        <pattern id="worldSeaGrid" width="60" height="60" patternUnits="userSpaceOnUse">
+          <path d="M 60 0 L 0 0 0 60" fill="none" stroke="rgba(255,255,255,0.02)" stroke-width="0.8"/>
+        </pattern>
+      </defs>
+      <g id="world-admin1-container">
+        <rect x="-100" y="-100" width="1640" height="920" fill="url(#worldOceanGrad)" />
+        <rect x="-100" y="-100" width="1640" height="920" fill="url(#worldSeaGrid)" />
+        <g id="world-provs-layer"></g>
+        <g id="world-adj-layer"></g>
+        <g id="world-island-markers-layer"></g>
+        <g id="world-badges-layer"></g>
+      </g>
+    `;
+
+    const provsLayer = document.getElementById("world-provs-layer");
+    const frag = document.createDocumentFragment();
+
+    for (const p of provs) {
+      const pData = wMap?.provinces?.[p.id];
+      if (!pData || !pData.path) continue;
+      const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
+      g.classList.add("prov-node");
+      g.setAttribute("data-prov-id", p.id);
+      g.style.cursor = "pointer";
+
+      const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+      path.classList.add("prov-path");
+      path.setAttribute("d", pData.path);
+      path.setAttribute("fill-rule", "evenodd");
+      path.setAttribute("vector-effect", "non-scaling-stroke");
+      g.appendChild(path);
+      frag.appendChild(g);
+
+      WORLD_PATH_MAP[p.id] = path;
+    }
+    provsLayer.appendChild(frag);
+
+    // Island markers
+    const markerGroup = document.getElementById("world-island-markers-layer");
+    if (wMap?.island_markers) {
+      const mFrag = document.createDocumentFragment();
+      for (const m of wMap.island_markers) {
+        const c = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+        c.classList.add("island-marker");
+        c.setAttribute("data-prov-id", m.id);
+        c.setAttribute("cx", m.cx);
+        c.setAttribute("cy", m.cy);
+        c.setAttribute("r", m.r);
+        mFrag.appendChild(c);
+      }
+      markerGroup.appendChild(mFrag);
+    }
+    WORLD_MARKER_GROUP = markerGroup;
+
+    // Adjacent connections
+    const adjGroup = document.getElementById("world-adj-layer");
+    const drawnPairs = new Set();
+    const adjFrag = document.createDocumentFragment();
+    for (const p of provs) {
+      const p1 = wMap?.provinces?.[p.id];
+      if (!p1) continue;
+      for (const nbId of p.neighbors || []) {
+        const pairKey = [p.id, nbId].sort().join("--");
+        if (drawnPairs.has(pairKey)) continue;
+        drawnPairs.add(pairKey);
+        const p2 = wMap?.provinces?.[nbId];
+        if (!p2) continue;
+        const dist = Math.hypot(p1.cx - p2.cx, p1.cy - p2.cy);
+        if (dist > 180) continue;
+        const isSea = dist > 45;
+        const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+        line.setAttribute("x1", p1.cx);
+        line.setAttribute("y1", p1.cy);
+        line.setAttribute("x2", p2.cx);
+        line.setAttribute("y2", p2.cy);
+        line.setAttribute("stroke", isSea ? "rgba(56,189,248,0.5)" : "rgba(255,255,255,0.22)");
+        line.setAttribute("stroke-width", isSea ? "1.1" : "0.9");
+        if (isSea) line.setAttribute("stroke-dasharray", "3,3");
+        line.setAttribute("pointer-events", "none");
+        adjFrag.appendChild(line);
+      }
+    }
+    adjGroup.appendChild(adjFrag);
+    WORLD_ADJ_GROUP = adjGroup;
+
+    // Tooltip and Click events (登録は初回のみ！)
+    svg.querySelectorAll(".prov-node, .island-marker").forEach((node) => {
+      const pid = node.getAttribute("data-prov-id");
+      const showTooltip = (e) => {
+        const p = provById[pid];
+        if (!p) return;
+        const owner = nationsById[p.owner_id];
+        tooltip.textContent = `${p.name} (${p.id})
+国/地域: ${p.region || "不明"}
+面積: ${p.area_km2 ? p.area_km2.toLocaleString() + " km²" : "不明"}
+${p.coastal ? "沿岸" : "内陸"}
+領有国: ${owner ? `${owner.flag || ""} ${owner.name}` : "未領有（白地）"}
+駐屯師団: ${divCountByProv[p.id]?.count || 0}`;
+        tooltip.hidden = false;
+        const rect = tooltip.parentElement.getBoundingClientRect();
+        const x = e.clientX - rect.left + 14;
+        const y = e.clientY - rect.top + 14;
+        tooltip.style.left = `${Math.max(0, Math.min(x, rect.width - tooltip.offsetWidth))}px`;
+        tooltip.style.top = `${Math.max(0, Math.min(y, rect.height - tooltip.offsetHeight))}px`;
+      };
+      node.addEventListener("mouseenter", showTooltip);
+      node.addEventListener("mousemove", showTooltip);
+      node.addEventListener("mouseleave", () => { tooltip.hidden = true; });
+      node.addEventListener("click", (e) => {
+        e.stopPropagation();
+        if (window.peaceDragMoved) return; // ドラッグ後の誤クリックを防止
+        onPeacetimeProvinceClick(pid);
+      });
+    });
+
+    WORLD_ADMIN1_RENDERED = true;
+  }
+
+  // 2回目以降：属性の高速差分更新（DOM再生成ゼロ！）
+  if (WORLD_MARKER_GROUP) {
+    WORLD_MARKER_GROUP.style.display = showIslandMarkers ? "" : "none";
+  }
+  if (WORLD_ADJ_GROUP) {
+    WORLD_ADJ_GROUP.style.display = showAdj ? "" : "none";
+  }
+
+  for (const p of provs) {
+    const path = WORLD_PATH_MAP[p.id];
+    if (!path) continue;
+    const owner = p.owner_id ? nationsById[p.owner_id] : null;
+
+    let fill = "#f1f0eb";
+    let fillOpacity = "0.90";
+    let stroke = "rgba(71,85,105,0.45)";
+    let strokeW = "0.45";
+
+    if (owner) {
+      fill = owner.color;
+      fillOpacity = "0.75";
+      stroke = "rgba(15,23,42,0.85)";
+      strokeW = "0.65";
+    } else if (mapStyle === "hq_dark") {
+      fill = "#1e293b";
+      fillOpacity = "0.92";
+      stroke = "#334155";
+      strokeW = "0.45";
+    }
+
+    const isSelected = p.id === SELECTED_PROV_ID;
+    const isFoundCap = FOUND_SELECTION.capital === p.id;
+    const isFoundCity = FOUND_SELECTION.cities.includes(p.id);
+    const isFoundExtra = FOUND_SELECTION.extra.includes(p.id);
+
+    if (isSelected || isFoundCap || isFoundCity || isFoundExtra) {
+      stroke = "#facc15";
+      strokeW = "1.8";
+    }
+
+    path.setAttribute("fill", fill);
+    path.setAttribute("fill-opacity", fillOpacity);
+    path.setAttribute("stroke", stroke);
+    path.setAttribute("stroke-width", strokeW);
+  }
+
+  // Badges Layer (首都・都市・港・砦・師団バッジ)
+  let badgesGroup = document.getElementById("world-badges-layer");
+  if (!badgesGroup) {
+    badgesGroup = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    badgesGroup.id = "world-badges-layer";
+    container.appendChild(badgesGroup);
+  }
+  let bHtml = "";
+  for (const p of provs) {
+    const pData = wMap?.provinces?.[p.id];
+    if (!pData) continue;
+    const cx = pData.cx;
+    const cy = pData.cy;
+    const isFoundCap = FOUND_SELECTION.capital === p.id;
+    const isFoundCity = FOUND_SELECTION.cities.includes(p.id);
+
+    if (p.is_capital || isFoundCap) {
+      bHtml += `<text x="${cx}" y="${cy}" font-size="11" fill="#fbbf24" text-anchor="middle" dominant-baseline="central" pointer-events="none" filter="drop-shadow(0 1px 2px rgba(0,0,0,0.8))">★</text>`;
+    } else if (p.is_city || isFoundCity) {
+      bHtml += `<text x="${cx}" y="${cy}" font-size="8.5" fill="#f8fafc" text-anchor="middle" dominant-baseline="central" pointer-events="none" filter="drop-shadow(0 1px 2px rgba(0,0,0,0.8))">●</text>`;
+    }
+    if (p.has_port) {
+      bHtml += `<text x="${cx + 6}" y="${cy - 6}" font-size="8" fill="#38bdf8" text-anchor="middle" dominant-baseline="central" pointer-events="none">⚓</text>`;
+    }
+    if (p.has_fort) {
+      bHtml += `<text x="${cx - 6}" y="${cy - 6}" font-size="8" fill="#e2e8f0" text-anchor="middle" dominant-baseline="central" pointer-events="none">🏰</text>`;
+    }
+    if (showUnits && divCountByProv[p.id]) {
+      const dc = divCountByProv[p.id];
+      bHtml += `
+        <g transform="translate(${cx}, ${cy - 10})" pointer-events="none">
+          <rect x="-14" y="-6.5" width="28" height="13" rx="2.5" fill="rgba(15,23,42,0.92)" stroke="${dc.color || '#3b82f6'}" stroke-width="1.1" />
+          <text x="0" y="1" text-anchor="middle" dominant-baseline="central" fill="#fde047" font-size="7.5" font-weight="700">${dc.flag || ''}${dc.count}師</text>
+        </g>
+      `;
+    }
+  }
+  badgesGroup.innerHTML = bHtml;
+}
+
 function renderPeacetimeMap() {
   const svg = document.getElementById("peacetime-svg");
-  svg.setAttribute("viewBox", `${PEACE_VB.x} ${PEACE_VB.y} ${PEACE_VB.w} ${PEACE_VB.h}`);
-  const showAdj = document.getElementById("chk-show-adj").checked;
-  const showUnits = document.getElementById("chk-show-units").checked;
+  const tooltip = document.getElementById("hoi4-state-tooltip");
+  tooltip.hidden = true;
 
+  const isWorldAdmin1 = (APP_STATE.world_id === "world_admin1" || APP_STATE.scenario_type === "world_admin1");
   const nationsById = {};
   for (const n of APP_STATE.nations) nationsById[n.id] = n;
   const provs = APP_STATE.provinces;
   const provById = {};
   for (const p of provs) provById[p.id] = p;
 
-  // プロビンスごとの配備師団数を集計
   const divCountByProv = {};
   for (const n of APP_STATE.nations) {
     for (const d of n.divisions || []) {
@@ -250,60 +932,200 @@ function renderPeacetimeMap() {
     }
   }
 
+  if (isWorldAdmin1) {
+    return renderWorldAdmin1Map(svg, tooltip, provs, provById, nationsById, divCountByProv);
+  }
+
+  svg.setAttribute("viewBox", `${PEACE_VB.x} ${PEACE_VB.y} ${PEACE_VB.w} ${PEACE_VB.h}`);
+  const showAdj = document.getElementById("chk-show-adj")?.checked ?? false;
+  const showUnits = document.getElementById("chk-show-units")?.checked ?? true;
+  const showTerrain = document.getElementById("chk-show-terrain")?.checked ?? true;
+  const mapStyle = document.getElementById("select-peace-map-style")?.value || "political";
+  const rmap = window.REALISTIC_MAP_DATA || null;
+  const seaBgColor = mapStyle === "hq_dark" ? "#15262a" : "#273f43";
+
   let html = `
     <defs>
+      <radialGradient id="oceanGrad" cx="48%" cy="45%" r="65%">
+        <stop offset="0%" stop-color="${mapStyle === "hq_dark" ? "#253c3d" : "#486766"}" />
+        <stop offset="100%" stop-color="${seaBgColor}" />
+      </radialGradient>
       <pattern id="seaGrid" width="40" height="40" patternUnits="userSpaceOnUse">
-        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(148,163,184,0.06)" stroke-width="1"/>
+        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(220,218,181,0.025)" stroke-width="0.8"/>
       </pattern>
+      <filter id="landDropShadow" x="-5%" y="-5%" width="110%" height="110%">
+        <feDropShadow dx="0" dy="1.5" stdDeviation="2.5" flood-color="#000000" flood-opacity="0.55" />
+      </filter>
     </defs>
-    <rect x="0" y="0" width="1600" height="1000" fill="url(#seaGrid)" />
-    <!-- 海域名ラベル -->
-    <text x="190" y="490" fill="rgba(148,163,184,0.25)" font-size="18" font-style="italic">大 西 洋 (ATLANTIC)</text>
-    <text x="485" y="290" fill="rgba(148,163,184,0.25)" font-size="14" font-style="italic">北海</text>
-    <text x="740" y="255" fill="rgba(148,163,184,0.25)" font-size="13" font-style="italic">バルト海</text>
-    <text x="510" y="650" fill="rgba(148,163,184,0.28)" font-size="14" font-style="italic">リオン湾</text>
-    <text x="730" y="810" fill="rgba(148,163,184,0.3)" font-size="17" font-style="italic">地 中 海 (MEDITERRANEAN SEA)</text>
-    <text x="980" y="575" fill="rgba(148,163,184,0.25)" font-size="14" font-style="italic">黒海 (BLACK SEA)</text>
+
+    <!-- 1. 海洋ベース＆経緯度グリッド -->
+    <rect x="-100" y="-100" width="1800" height="1200" fill="url(#oceanGrad)" />
+    <rect x="-100" y="-100" width="1800" height="1200" fill="url(#seaGrid)" />
   `;
 
-  // 1. 隣接ネットワーク線
+  if (rmap) {
+    // 大陸棚（浅瀬グラデーション）
+    if (rmap.shelf_outer_path) {
+      html += `<path d="${rmap.shelf_outer_path}" fill="${mapStyle === "hq_dark" ? "rgba(112,146,137,0.10)" : "rgba(149,177,159,0.14)"}" stroke="none" pointer-events="none" />`;
+    }
+    if (rmap.shelf_inner_path) {
+      html += `<path d="${rmap.shelf_inner_path}" fill="${mapStyle === "hq_dark" ? "rgba(143,171,151,0.10)" : "rgba(166,190,166,0.16)"}" stroke="none" pointer-events="none" />`;
+    }
+    // 経緯度線 (Graticules)
+    if (rmap.graticules_path) {
+      html += `<path d="${rmap.graticules_path}" fill="none" stroke="rgba(222,220,189,0.08)" stroke-width="0.7" stroke-dasharray="3,4" pointer-events="none" />`;
+    }
+    // 大陸全体のドロップシャドウ＆隙間防止アンダーレイ
+    if (rmap.land_base_path) {
+      html += `<path d="${rmap.land_base_path}" fill="#686d52" filter="url(#landDropShadow)" pointer-events="none" />`;
+    }
+    // 周辺中立陸地（イラン・カザフ・アラビア内陸・フェロー等）
+    if (rmap.neutral_land_path) {
+      html += `<path d="${rmap.neutral_land_path}" fill="#696f56" stroke="#4c5547" stroke-width="0.8" pointer-events="none" />`;
+    }
+  }
+
+  // 2. プロビンス領土ポリゴン描画（Natural Earth 50m 精密海岸線＋有機的州境）
+  for (const p of provs) {
+    const owner = p.owner_id ? nationsById[p.owner_id] : null;
+    const rProv = rmap?.provinces?.[p.id];
+    const cx = rProv ? rProv.cx : p.x;
+    const cy = rProv ? rProv.cy : p.y;
+    const terrainCol = TERRAIN_COLORS[p.terrain] || "#1e293b";
+
+    let fill = terrainCol;
+    let fillOpacity = "0.90";
+    let stroke = "rgba(148,163,184,0.35)";
+    let strokeW = "0.75";
+
+    if (mapStyle === "political") {
+      if (owner) {
+        fill = owner.color;
+        fillOpacity = "0.55";
+        stroke = "rgba(36,43,35,0.65)";
+        strokeW = "0.8";
+      } else {
+        fill = terrainCol;
+        fillOpacity = "0.86";
+        stroke = "rgba(40,48,38,0.55)";
+        strokeW = "0.75";
+      }
+    } else if (mapStyle === "terrain") {
+      fill = terrainCol;
+      fillOpacity = "0.94";
+      stroke = owner ? owner.color : "rgba(148,163,184,0.35)";
+      strokeW = owner ? "1.6" : "0.7";
+    } else if (mapStyle === "hq_dark") {
+      fill = owner ? owner.color : "#0f172a";
+      fillOpacity = owner ? "0.38" : "0.88";
+      stroke = owner ? owner.color : "#1e293b";
+      strokeW = owner ? "1.4" : "0.8";
+    }
+
+    const isSelected = p.id === SELECTED_PROV_ID;
+    const isFoundCap = FOUND_SELECTION.capital === p.id;
+    const isFoundCity = FOUND_SELECTION.cities.includes(p.id);
+    const isFoundExtra = FOUND_SELECTION.extra.includes(p.id);
+
+    if (isSelected || isFoundCap || isFoundCity || isFoundExtra) {
+      stroke = "#facc15";
+      strokeW = "2.6";
+    }
+
+    html += `<g class="prov-node" data-prov-id="${p.id}" style="cursor:pointer;">`;
+
+    if (rProv && rProv.path) {
+      // 下地に自然地形色を敷き、その上に領有国カラーを重ねることで重厚な地図質感を出す
+      html += `<path d="${rProv.path}" fill="${terrainCol}" fill-opacity="0.92" stroke="none" />`;
+      if (owner && mapStyle === "terrain") {
+        html += `<path d="${rProv.path}" fill="${owner.color}" fill-opacity="0.26" stroke="${stroke}" stroke-width="${strokeW}" stroke-linejoin="round" />`;
+      } else {
+        html += `<path d="${rProv.path}" fill="${fill}" fill-opacity="${fillOpacity}" stroke="${stroke}" stroke-width="${strokeW}" stroke-linejoin="round" />`;
+      }
+    } else {
+      const polyPts = generateProvincePolygonPoints(p, provs);
+      html += `<polygon points="${polyPts}" fill="${fill}" fill-opacity="${fillOpacity}" stroke="${stroke}" stroke-width="${strokeW}" />`;
+    }
+
+    html += `</g>`;
+  }
+
+  // 3. 湖沼レイヤー
+  if (rmap && showTerrain) {
+    if (rmap.lakes_path) {
+      html += `<path d="${rmap.lakes_path}" fill="#557b78" stroke="#9bbcb0" stroke-opacity="0.65" stroke-width="0.65" pointer-events="none" />`;
+    }
+  }
+
+  // 海岸線シャープ輪郭オーバーレイ
+  if (rmap && rmap.land_base_path) {
+    html += `<path d="${rmap.land_base_path}" fill="none" stroke="rgba(33, 48, 42, 0.75)" stroke-width="1.2" stroke-linejoin="round" pointer-events="none" />`;
+  }
+
+  // 海域名ラベル（地図帳風の優雅な配置）
+  html += `
+    <g pointer-events="none" opacity="0.48" font-family="Georgia, serif">
+      <text x="145" y="495" fill="#d0ded0" font-size="15" font-style="italic" letter-spacing="3">ATLANTIC OCEAN (大西洋)</text>
+      <text x="455" y="305" fill="#d0ded0" font-size="11.5" font-style="italic" letter-spacing="2">北海 (NORTH SEA)</text>
+      <text x="765" y="295" fill="#d0ded0" font-size="11" font-style="italic" letter-spacing="1.5">バルト海 (BALTIC)</text>
+      <text x="475" y="625" fill="#d0ded0" font-size="10.5" font-style="italic">リオン湾</text>
+      <text x="695" y="758" fill="#d0ded0" font-size="14" font-style="italic" letter-spacing="3">MEDITERRANEAN SEA (地中海)</text>
+      <text x="1115" y="568" fill="#d0ded0" font-size="12" font-style="italic" letter-spacing="2">黒海 (BLACK SEA)</text>
+    </g>
+  `;
+
+  // 4. 隣接ネットワーク線（ON時）
   if (showAdj) {
     const drawnPairs = new Set();
     for (const p of provs) {
+      const rp1 = rmap?.provinces?.[p.id];
+      const x1 = rp1 ? rp1.cx : p.x;
+      const y1 = rp1 ? rp1.cy : p.y;
       for (const nbId of p.neighbors || []) {
         const pairKey = [p.id, nbId].sort().join("--");
         if (drawnPairs.has(pairKey)) continue;
         drawnPairs.add(pairKey);
         const nb = provById[nbId];
         if (!nb) continue;
-        const isSeaLink = Math.hypot(p.x - nb.x, p.y - nb.y) > 95;
-        html += `<line x1="${p.x}" y1="${p.y}" x2="${nb.x}" y2="${nb.y}"
-          stroke="${isSeaLink ? "rgba(56,189,248,0.28)" : "rgba(148,163,184,0.22)"}"
-          stroke-width="${isSeaLink ? "1.2" : "1.5"}"
-          ${isSeaLink ? 'stroke-dasharray="4,4"' : ""} />`;
+        const rp2 = rmap?.provinces?.[nbId];
+        const x2 = rp2 ? rp2.cx : nb.x;
+        const y2 = rp2 ? rp2.cy : nb.y;
+        const isSeaLink = Math.hypot(x1 - x2, y1 - y2) > 95;
+        html += `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}"
+          stroke="${isSeaLink ? "rgba(56,189,248,0.45)" : "rgba(226,232,240,0.28)"}"
+          stroke-width="${isSeaLink ? "1.3" : "1.2"}"
+          ${isSeaLink ? 'stroke-dasharray="4,4"' : ""} pointer-events="none" />`;
       }
     }
   }
 
-  // 2. プロビンス領土ポリゴン描画
+  const zoomedOut = PEACE_VB.w > 980;
+  if (zoomedOut) {
+    const centroids = {};
+    for (const p of provs) {
+      if (!p.owner_id || !nationsById[p.owner_id]) continue;
+      const rp = rmap?.provinces?.[p.id];
+      const point = centroids[p.owner_id] ||= { x: 0, y: 0, count: 0 };
+      point.x += rp?.cx ?? p.x;
+      point.y += rp?.cy ?? p.y;
+      point.count++;
+    }
+    for (const [id, point] of Object.entries(centroids)) {
+      const nation = nationsById[id];
+      html += `<text class="nation-label" x="${point.x / point.count}" y="${point.y / point.count}" text-anchor="middle" fill="#fff4cf" font-size="15" font-weight="800" paint-order="stroke" stroke="#17201c" stroke-width="3" stroke-linejoin="round" pointer-events="none">${escapeMapText(nation.flag)} ${escapeMapText(nation.name)}</text>`;
+    }
+  }
+
+  // 5. 都市・首都ポイント・ラベル・駐屯師団バッジ（最前面レイヤー）
   for (const p of provs) {
-    const owner = p.owner_id ? nationsById[p.owner_id] : null;
-    const fill = owner ? owner.color : (TERRAIN_COLORS[p.terrain] || "#1e293b");
-    const fillOpacity = owner ? "0.68" : "0.75";
-    const isSelected = p.id === SELECTED_PROV_ID;
+    const rProv = rmap?.provinces?.[p.id];
+    const cx = rProv ? rProv.cx : p.x;
+    const cy = rProv ? rProv.cy : p.y;
     const isFoundCap = FOUND_SELECTION.capital === p.id;
     const isFoundCity = FOUND_SELECTION.cities.includes(p.id);
-    const isFoundExtra = FOUND_SELECTION.extra.includes(p.id);
-
-    let stroke = owner ? "#f8fafc" : "#475569";
-    let strokeW = owner ? "1.4" : "1";
-    if (isSelected || isFoundCap || isFoundCity || isFoundExtra) {
-      stroke = "#facc15";
-      strokeW = "3";
-    }
-
-    const polyPts = generateProvincePolygonPoints(p, provs);
+    if (!p.is_capital && !p.is_city && !isFoundCap && !isFoundCity && !divCountByProv[p.id]) continue;
     const shortName = p.name.split("(")[0];
+    const labelFontSize = zoomedOut ? 8.4 : Math.max(5.2, Math.min(8.5, (PEACE_VB.w / 1500) * 8.8));
 
     let badges = "";
     if (p.is_capital || isFoundCap) badges += "★";
@@ -311,21 +1133,23 @@ function renderPeacetimeMap() {
     if (p.has_port) badges += "⚓";
     if (p.has_fort) badges += "🏰";
 
+    const dotR = (p.is_capital || isFoundCap) ? 4.6 : ((p.is_city || isFoundCity) ? 3.4 : 2.1);
+    const dotCol = (p.is_capital || isFoundCap) ? "#fde047" : ((p.is_city || isFoundCity) ? "#f8fafc" : "rgba(226,232,240,0.85)");
+
     html += `
-      <g class="prov-node" data-prov-id="${p.id}" style="cursor:pointer;">
-        <polygon points="${polyPts}" fill="${fill}" fill-opacity="${fillOpacity}" stroke="${stroke}" stroke-width="${strokeW}" />
-        <circle cx="${p.x}" cy="${p.y}" r="${p.is_capital ? 5 : (p.is_city ? 3.8 : 2.5)}" fill="${p.is_capital ? "#fde047" : "#f8fafc"}" />
-        <text x="${p.x}" y="${p.y - 7}" text-anchor="middle" fill="#ffffff" font-size="9.5" font-weight="700" style="text-shadow: 0 1px 3px #000;">
-          ${badges ? badges + " " : ""}${shortName}
+      <g class="prov-label-node" data-prov-id="${p.id}" style="cursor:pointer;">
+        <circle cx="${cx}" cy="${cy}" r="${dotR}" fill="${dotCol}" stroke="#0f172a" stroke-width="1" />
+        <text x="${cx}" y="${cy - 6}" text-anchor="middle" fill="#ffffff" font-size="${labelFontSize}" font-weight="700" style="text-shadow: 0 1px 3px #000, 0 0 2px #000;">
+          ${badges ? badges + " " : ""}${escapeMapText(shortName)}
         </text>
     `;
 
     if (showUnits && divCountByProv[p.id]) {
       const dc = divCountByProv[p.id];
       html += `
-        <g transform="translate(${p.x - 16}, ${p.y + 4})">
-          <rect x="0" y="0" width="32" height="13" rx="3" fill="#0f172a" stroke="${dc.color}" stroke-width="1.2" />
-          <text x="16" y="9.8" text-anchor="middle" fill="#fde047" font-size="8.5" font-weight="700">${dc.flag}${dc.count}師</text>
+        <g transform="translate(${cx - 15}, ${cy + 3.5})">
+          <rect x="0" y="0" width="30" height="12" rx="2.5" fill="rgba(15,23,42,0.92)" stroke="${dc.color}" stroke-width="1.1" />
+          <text x="15" y="9" text-anchor="middle" fill="#fde047" font-size="8" font-weight="700">${dc.flag}${dc.count}師</text>
         </g>
       `;
     }
@@ -335,13 +1159,41 @@ function renderPeacetimeMap() {
   svg.innerHTML = html;
 
   // プロビンスクリックイベント登録
-  svg.querySelectorAll(".prov-node").forEach((node) => {
+  svg.querySelectorAll(".prov-node, .prov-label-node").forEach((node) => {
+    const p = provById[node.getAttribute("data-prov-id")];
+    const showTooltip = (e) => {
+      const owner = nationsById[p.owner_id];
+      tooltip.textContent = `${p.name} (${p.id})\n地域: ${p.region || "不明"}\n地形: ${p.terrain || "不明"}\n${p.coastal ? "沿岸" : "内陸"}\n領有国: ${owner ? `${owner.flag || ""} ${owner.name}` : "未領有"}\n駐屯師団: ${divCountByProv[p.id]?.count || 0}`;
+      tooltip.hidden = false;
+      const rect = tooltip.parentElement.getBoundingClientRect();
+      const x = e.clientX - rect.left + 14;
+      const y = e.clientY - rect.top + 14;
+      tooltip.style.left = `${Math.max(0, Math.min(x, rect.width - tooltip.offsetWidth))}px`;
+      tooltip.style.top = `${Math.max(0, Math.min(y, rect.height - tooltip.offsetHeight))}px`;
+    };
+    node.addEventListener("mouseenter", showTooltip);
+    node.addEventListener("mousemove", showTooltip);
+    node.addEventListener("mouseleave", () => { tooltip.hidden = true; });
     node.addEventListener("click", (e) => {
       e.stopPropagation();
       const pid = node.getAttribute("data-prov-id");
       onPeacetimeProvinceClick(pid);
     });
   });
+}
+
+function renderStateSearch() {
+  const region = document.getElementById("state-region-filter");
+  const query = document.getElementById("state-search").value.trim().toLocaleLowerCase();
+  const selectedRegion = region.value;
+  const regions = [...new Set(APP_STATE.provinces.map((p) => p.region).filter(Boolean))].sort();
+  region.replaceChildren(new Option("すべての地域", ""), ...regions.map((name) => new Option(name, name)));
+  region.value = regions.includes(selectedRegion) ? selectedRegion : "";
+  const results = document.getElementById("state-search-results");
+  results.replaceChildren(...APP_STATE.provinces.filter((p) =>
+    (!region.value || p.region === region.value) &&
+    `${p.name} ${p.id}`.toLocaleLowerCase().includes(query)
+  ).map((p) => new Option(`${p.name} (${p.id}) — ${p.region || "不明"}`, p.id)));
 }
 
 async function onPeacetimeProvinceClick(provId) {
@@ -424,7 +1276,7 @@ function renderProvinceInspectPanel() {
     .filter(Boolean)
     .join("、");
 
-  titleEl.textContent = `📍 ${prov.name} [${prov.region}]`;
+  titleEl.textContent = `📍 ${prov.name} [${prov.region}] — 州 (State)`;
 
   let html = `
     <div style="display:flex;flex-direction:column;gap:8px;">
@@ -647,13 +1499,30 @@ function renderTacticalWarSvg(war) {
   const theater = theaters[war.theater_id] || Object.values(theaters)[0];
   if (!theater) return;
 
+  const rmap = window.REALISTIC_MAP_DATA || null;
+  const thGeo = rmap?.theaters?.[theater.id] || null;
   const layerView = document.getElementById("select-war-layer-view").value; // both | attacker | defender
+
+  const nationsById = {};
+  for (const n of APP_STATE.nations) nationsById[n.id] = n;
+  const provById = {};
+  for (const p of APP_STATE.provinces) provById[p.id] = p;
+
+  const atkSet = new Set(war.attackers || []);
+  const dfnSet = new Set(war.defenders || []);
 
   let html = `
     <defs>
+      <radialGradient id="tacOceanGrad" cx="50%" cy="55%" r="70%">
+        <stop offset="0%" stop-color="#506e6a" />
+        <stop offset="100%" stop-color="#293f40" />
+      </radialGradient>
       <pattern id="tacGrid" width="54" height="54" patternUnits="userSpaceOnUse">
-        <path d="M 54 0 L 0 0 0 54" fill="none" stroke="rgba(148,163,184,0.11)" stroke-width="1"/>
+        <path d="M 54 0 L 0 0 0 54" fill="none" stroke="rgba(231,226,191,0.06)" stroke-width="0.9"/>
       </pattern>
+      <filter id="tacLandShadow" x="-5%" y="-5%" width="110%" height="110%">
+        <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000000" flood-opacity="0.65" />
+      </filter>
       <marker id="arrowAtk" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
         <path d="M 0 1 L 10 5 L 0 9 z" fill="#ef4444" />
       </marker>
@@ -665,29 +1534,81 @@ function renderTacticalWarSvg(war) {
       </marker>
     </defs>
 
-    <!-- 背景・戦術グリッド -->
-    <rect x="0" y="0" width="1080" height="860" fill="#111a27" />
+    <!-- 1. 海洋ベース＆戦術グリッド -->
+    <rect x="0" y="0" width="1080" height="860" fill="url(#tacOceanGrad)" />
     <rect x="0" y="0" width="1080" height="860" fill="url(#tacGrid)" />
-
-    <!-- 海域ゾーン背景 -->
-    <rect x="0" y="675" width="1080" height="185" fill="rgba(14, 116, 144, 0.22)" />
-    <line x1="0" y1="675" x2="1080" y2="675" stroke="rgba(56, 189, 248, 0.35)" stroke-width="2" stroke-dasharray="8,6" />
-
-    <!-- 戦域タイトル透かし -->
-    <text x="24" y="36" fill="rgba(248,250,252,0.85)" font-size="18" font-weight="800">🗺️ 戦時戦術作戦マップ：${theater.name}</text>
-    <text x="24" y="56" fill="rgba(148,163,184,0.75)" font-size="12">${theater.description}</text>
   `;
 
-  // 河川描画
-  for (const riv of theater.rivers || []) {
-    const pts = riv.map((pt) => `${pt[0]},${pt[1]}`).join(" ");
-    html += `<polyline points="${pts}" fill="none" stroke="rgba(56,189,248,0.45)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />`;
+  if (thGeo) {
+    // 2. 実在の大陸棚・浅瀬と陸地ベース
+    if (thGeo.shelf_path) {
+      html += `<path d="${thGeo.shelf_path}" fill="rgba(160,185,164,0.18)" stroke="rgba(183,200,174,0.16)" stroke-width="0.8" />`;
+    }
+    if (thGeo.land_path) {
+      html += `<path d="${thGeo.land_path}" fill="#6f7859" filter="url(#tacLandShadow)" />`;
+    }
+
+    // 3. 戦域内プロビンスの実形状ポリゴン＆陣営支配色
+    for (const tp of thGeo.provinces || []) {
+      const p = provById[tp.id];
+      if (!p || !tp.path) continue;
+      const owner = p.owner_id ? nationsById[p.owner_id] : null;
+      const baseTerrainCol = TERRAIN_COLORS[p.terrain] || "#1e293b";
+
+      let overlayFill = owner ? owner.color : baseTerrainCol;
+      let overlayOp = owner ? "0.28" : "0.15";
+      let borderCol = "rgba(35,43,34,0.58)";
+      let borderW = "0.9";
+
+      if (p.owner_id && atkSet.has(p.owner_id)) {
+        overlayFill = "#dc2626";
+        overlayOp = "0.34";
+        borderCol = "rgba(248,113,113,0.65)";
+        borderW = "1.3";
+      } else if (p.owner_id && dfnSet.has(p.owner_id)) {
+        overlayFill = "#2563eb";
+        overlayOp = "0.34";
+        borderCol = "rgba(96,165,250,0.65)";
+        borderW = "1.3";
+      }
+
+      html += `
+        <path d="${tp.path}" fill="${baseTerrainCol}" fill-opacity="0.88" stroke="none" />
+        <path d="${tp.path}" fill="${overlayFill}" fill-opacity="${overlayOp}" stroke="${borderCol}" stroke-width="${borderW}" stroke-linejoin="round" />
+      `;
+    }
+
+    // 4. 湖沼・海岸線輪郭
+    if (thGeo.lakes_path) {
+      html += `<path d="${thGeo.lakes_path}" fill="#557b78" stroke="#9bbcb0" stroke-width="0.9" />`;
+    }
+    if (thGeo.land_path) {
+      html += `<path d="${thGeo.land_path}" fill="none" stroke="rgba(35,48,40,0.75)" stroke-width="1.2" stroke-linejoin="round" />`;
+    }
+
+    // 5. 幹線鉄道網（参謀地図スタイル）
+    for (const rline of thGeo.railways || []) {
+      const rpts = rline.map((pt) => `${pt[0]},${pt[1]}`).join(" ");
+      html += `
+        <polyline points="${rpts}" fill="none" stroke="rgba(15,23,42,0.75)" stroke-width="2.6" />
+        <polyline points="${rpts}" fill="none" stroke="rgba(203,213,225,0.45)" stroke-width="1.4" stroke-dasharray="5,5" />
+      `;
+    }
   }
+
+  // 戦域タイトルヘッダーボックス
+  html += `
+    <g pointer-events="none">
+      <rect x="14" y="12" width="680" height="52" rx="6" fill="rgba(15,23,42,0.82)" stroke="rgba(148,163,184,0.28)" stroke-width="1" />
+      <text x="26" y="34" fill="#f8fafc" font-size="16" font-weight="800">🗺️ 戦時戦術作戦マップ：${theater.name}</text>
+      <text x="26" y="53" fill="#94a3b8" font-size="11">${theater.description}</text>
+    </g>
+  `;
 
   // デフォルト前線ライン
   if (theater.frontline_default) {
     const fpts = theater.frontline_default.map((pt) => `${pt[0]},${pt[1]}`).join(" ");
-    html += `<polyline points="${fpts}" fill="none" stroke="rgba(250,204,21,0.35)" stroke-width="3" stroke-dasharray="10,8" />`;
+    html += `<polyline points="${fpts}" fill="none" stroke="rgba(250,204,21,0.55)" stroke-width="3" stroke-dasharray="10,7" />`;
   }
 
   // 戦術ランドマーク（都市・要塞・峠・軍港・海域）
@@ -837,19 +1758,221 @@ async function saveWarPlanSilent(war) {
 }
 
 // ============================================================================
-// TAB 3: 軍備編成・師団ビルダー・ショップ
+// TAB 3: 軍備編成・師団ビルダー・ショップ（火力ステータス廃止・説明文全文・マイ師団保存・残資金詳細）
 // ============================================================================
+function computeNationSpentBreakdown(nat) {
+  if (!nat || !CATALOG) {
+    return { armySpent: 0, navySpent: 0, airSpent: 0, facSpent: 0, totalSpent: 0, remaining: 0, totalAsset: 0 };
+  }
+  const navMap = {};
+  for (const u of CATALOG.naval_units) navMap[u.id] = u;
+  const airMap = {};
+  for (const u of CATALOG.air_units) airMap[u.id] = u;
+  const facMap = {};
+  for (const f of CATALOG.facilities) facMap[f.id] = f;
+
+  let armySpent = 0;
+  for (const d of nat.divisions || []) {
+    armySpent += Number(d.spec?.cost || 0) * Number(d.count || 1);
+  }
+  let navySpent = 0;
+  for (const item of nat.naval_units || []) {
+    const u = navMap[item.unit_id];
+    if (u) navySpent += u.cost * Number(item.count || 0);
+  }
+  let airSpent = 0;
+  for (const item of nat.air_units || []) {
+    const u = airMap[item.unit_id];
+    if (u) airSpent += u.cost * Number(item.count || 0);
+  }
+  let facSpent = 0;
+  for (const fid of nat.facilities || []) {
+    const f = facMap[fid];
+    if (f) facSpent += f.cost;
+  }
+
+  armySpent = +armySpent.toFixed(1);
+  navySpent = +navySpent.toFixed(1);
+  airSpent = +airSpent.toFixed(1);
+  facSpent = +facSpent.toFixed(1);
+  const totalSpent = +(armySpent + navySpent + airSpent + facSpent).toFixed(1);
+  const remaining = +Number(nat.budget || 0).toFixed(1);
+  const totalAsset = +(remaining + totalSpent).toFixed(1);
+
+  return { armySpent, navySpent, airSpent, facSpent, totalSpent, remaining, totalAsset };
+}
+
+function renderMilitaryBudgetDashboard(nat) {
+  const dash = document.getElementById("military-budget-dashboard");
+  if (!dash || !nat) return;
+  const b = computeNationSpentBreakdown(nat);
+  const weeklyBonus = Math.min(1000, Number(nat.war_prov_bonus_oku || 0));
+  const weeklyTotal = Number(nat.weekly_income || 5000) + weeklyBonus;
+
+  dash.innerHTML = `
+    <div style="display:flex;align-items:center;gap:10px;">
+      <span style="font-size:24px;">${nat.flag}</span>
+      <div>
+        <div style="font-size:15px;font-weight:800;color:#f8fafc;">${nat.name} — 国家予算・残資金・軍備使用額</div>
+        <div class="muted" style="font-size:11.5px;">兵器・施設は平時いつでも解体して<strong>100%全額返金</strong>されます（配備の組み替え自由）</div>
+      </div>
+    </div>
+    <div class="budget-metrics-row">
+      <div class="budget-metric-box" style="border-color:#10b981;">
+        <span class="bm-label">💰 現在の残資金（使用可能）</span>
+        <span class="bm-val" style="color:#34d399;">${b.remaining.toLocaleString()}億円 <small style="font-weight:400;color:#94a3b8;">(${(b.remaining / 10000).toFixed(2)}兆)</small></span>
+      </div>
+      <div class="budget-metric-box">
+        <span class="bm-label">📊 配備済み軍備・施設総額</span>
+        <span class="bm-val" style="color:#fbbf24;">${b.totalSpent.toLocaleString()}億円 <small style="font-weight:400;color:#94a3b8;">(${(b.totalSpent / 10000).toFixed(2)}兆)</small></span>
+      </div>
+      <div class="budget-metric-box">
+        <span class="bm-label">🪖 陸 / ⚓ 海 / ✈️ 空 / 🏰 施設 内訳</span>
+        <span class="bm-val" style="font-size:12.5px;color:#e2e8f0;">
+          陸 ${b.armySpent.toLocaleString()}億 / 海 ${b.navySpent.toLocaleString()}億 / 空 ${b.airSpent.toLocaleString()}億 / 施 ${b.facSpent.toLocaleString()}億
+        </span>
+      </div>
+      <div class="budget-metric-box">
+        <span class="bm-label">🏦 国家総予算規模（残＋配備） / 週収</span>
+        <span class="bm-val" style="font-size:13px;color:#38bdf8;">
+          計 ${(b.totalAsset / 10000).toFixed(2)}兆円 <small style="color:#fde047;">(+${weeklyTotal.toLocaleString()}億/週)</small>
+        </span>
+      </div>
+    </div>
+  `;
+}
+
+function getMergedUserTemplates() {
+  const serverTpls = APP_STATE?.saved_division_templates || [];
+  let localTpls = [];
+  try {
+    localTpls = JSON.parse(localStorage.getItem("aiwa_saved_div_templates") || "[]");
+  } catch (e) {}
+  const map = new Map();
+  for (const t of [...serverTpls, ...localTpls]) {
+    if (t && t.id) map.set(t.id, t);
+  }
+  return Array.from(map.values());
+}
+
+function syncUserTemplatesToLocal(tpls) {
+  try {
+    localStorage.setItem("aiwa_saved_div_templates", JSON.stringify(tpls || []));
+  } catch (e) {}
+}
+
+function renderUserSavedTemplates() {
+  const listEl = document.getElementById("user-templates-list");
+  if (!listEl) return;
+  const tpls = getMergedUserTemplates();
+  if (tpls.length === 0) {
+    listEl.innerHTML = `<div class="muted" style="font-size:11.5px;">まだ保存された「自分用の師団」はありません。下のビルダーで編成を作って『💾 現在の編成を「自分用の師団」に保存』を押すとここに登録され、いつでも1クリックで呼び出せます。</div>`;
+    return;
+  }
+
+  listEl.innerHTML = "";
+  for (const tpl of tpls) {
+    const cost = tpl.spec?.cost ?? tpl.official_cost ?? 0;
+    const breakdownText = (tpl.spec?.breakdown || []).join(" ＋ ") || tpl.desc || "";
+    const item = document.createElement("div");
+    item.className = "user-tpl-item";
+    item.innerHTML = `
+      <div style="flex:1;min-width:0;">
+        <div style="font-weight:700;font-size:12.5px;color:#fde047;">⭐ ${tpl.name} <span class="price-tag">（単価 ${cost}億）</span></div>
+        <div class="muted" style="font-size:11px;white-space:normal;">${breakdownText}</div>
+      </div>
+      <div style="display:flex;gap:5px;flex-shrink:0;">
+        <button type="button" class="btn btn-xs btn-primary" data-load-utpl="${tpl.id}">📥 ビルダーに読込</button>
+        <button type="button" class="btn btn-xs btn-outline" data-del-utpl="${tpl.id}">🗑️</button>
+      </div>
+    `;
+
+    item.querySelector("[data-load-utpl]").addEventListener("click", () => {
+      document.getElementById("div-name").value = tpl.name;
+      BUILDER_REGIMENTS = (tpl.regiments || []).map((r) => ({ ...r }));
+      BUILDER_ARTILLERY = tpl.artillery_id || "art_none";
+      BUILDER_SUPPORTS = (tpl.supports || []).map((s) => ({ ...s }));
+      BUILDER_OVERRIDE_COST = tpl.override_cost !== undefined ? tpl.override_cost : null;
+      renderDivisionBuilderRows();
+      renderDivisionSpecPreview();
+      showToast(`⭐ 自分用の師団『${tpl.name}』を読み込みました！`);
+    });
+
+    item.querySelector("[data-del-utpl]").addEventListener("click", async () => {
+      try {
+        const res = await apiPost("/api/military/division", {
+          action: "delete_template",
+          template_id: tpl.id,
+        });
+        APP_STATE = res.state;
+        const remain = getMergedUserTemplates().filter((x) => x.id !== tpl.id);
+        syncUserTemplatesToLocal(remain);
+        renderUserSavedTemplates();
+        showToast(`『${tpl.name}』をマイ師団から削除しました。`);
+      } catch (err) {
+        showToast(err.message, true);
+      }
+    });
+
+    listEl.appendChild(item);
+  }
+}
+
+function renderArmyCatalogFullReference() {
+  const refEl = document.getElementById("army-catalog-full-reference");
+  if (!refEl || !CATALOG) return;
+
+  let html = `<div style="font-weight:700;color:#fbbf24;margin-top:2px;">■ ① 基幹連隊（各師団に3〜4個）</div>`;
+  for (const r of CATALOG.base_regiments) {
+    html += `
+      <div class="unit-full-desc">
+        <strong>${r.name}</strong> — <span class="price-tag">${r.cost}億</span>${r.can_paradrop ? " <span class='badge badge-ok'>🪂空挺可</span>" : ""}
+        <div style="margin-top:3px;">${r.desc}</div>
+      </div>
+    `;
+  }
+
+  html += `<div style="font-weight:700;color:#fbbf24;margin-top:8px;">■ ② 砲兵連隊（各師団に1個まで・砲兵突破連隊含む）</div>`;
+  for (const a of CATALOG.artillery_regiments) {
+    if (a.id === "art_none") continue;
+    html += `
+      <div class="unit-full-desc">
+        <strong>${a.name}</strong> — <span class="price-tag">${a.cost}億</span>${a.can_paradrop ? " <span class='badge badge-ok'>🪂空挺可</span>" : ""}
+        <div style="margin-top:3px;">${a.desc}</div>
+      </div>
+    `;
+  }
+
+  html += `<div style="font-weight:700;color:#fbbf24;margin-top:8px;">■ ③ 補助大隊（各師団に最大4個まで）</div>`;
+  for (const s of CATALOG.support_battalions) {
+    html += `
+      <div class="unit-full-desc">
+        <strong>${s.name}</strong> — <span class="price-tag">${s.cost}億</span>
+        <div style="margin-top:3px;">${s.desc}</div>
+      </div>
+    `;
+  }
+
+  refEl.innerHTML = html;
+}
+
 function renderMilitaryTab() {
   const activeNat = getActiveNation();
   if (!activeNat) return;
 
+  renderMilitaryBudgetDashboard(activeNat);
+  renderUserSavedTemplates();
+  renderArmyCatalogFullReference();
+
   // 配備プロビンスセレクト
   const provSel = document.getElementById("div-prov");
+  const prevProv = provSel.value;
   provSel.innerHTML = "";
   for (const pid of activeNat.province_ids || []) {
     const p = APP_STATE.provinces.find((x) => x.id === pid);
     if (p) {
-      provSel.innerHTML += `<option value="${pid}" ${pid === activeNat.capital_id ? "selected" : ""}>${p.name}</option>`;
+      const selected = prevProv ? pid === prevProv : pid === activeNat.capital_id;
+      provSel.innerHTML += `<option value="${pid}" ${selected ? "selected" : ""}>${p.name}</option>`;
     }
   }
 
@@ -867,66 +1990,98 @@ function renderDivisionBuilderRows() {
   BUILDER_REGIMENTS.forEach((item, idx) => {
     const regDef = CATALOG.base_regiments.find((r) => r.id === item.regiment_id) || CATALOG.base_regiments[0];
     const row = document.createElement("div");
-    row.className = "reg-row";
+    row.className = "reg-card-row";
 
     const regSelectHtml = `
-      <select data-reg-idx="${idx}" class="sel-reg-type">
+      <select data-reg-idx="${idx}" class="sel-reg-type" style="flex:1;">
         ${CATALOG.base_regiments.map((r) => `<option value="${r.id}" ${r.id === item.regiment_id ? "selected" : ""}>${r.name} (${r.cost}億)</option>`).join("")}
       </select>
     `;
 
-    let tankSelectHtml = `<span class="muted" style="font-size:11px;">${regDef.desc.slice(0, 26)}...</span>`;
+    let tankSelectHtml = "";
+    let unitCostNote = `${regDef.cost}億`;
     if (regDef.is_tank_unit) {
       const curTank = item.tank_id || regDef.default_tank_id || "su_t34_85";
+      const tkObj = allTanks.find((t) => t.id === curTank) || allTanks[0];
+      const calcCost = !item.custom_calc && (curTank === "su_t34_85" || curTank === "us_m4_76") ? regDef.cost : +(tkObj.cost * 76 + 10).toFixed(1);
+      unitCostNote = `${calcCost}億`;
       tankSelectHtml = `
-        <select data-tank-reg-idx="${idx}" class="sel-reg-tank">
-          ${allTanks.map((t) => `<option value="${t.id}" ${t.id === curTank ? "selected" : ""}>[${t.country}] ${t.name} (${t.cost}億/両 → 大隊${(t.cost * 76 + 10).toFixed(0)}億)</option>`).join("")}
-        </select>
+        <div style="margin-top:5px;">
+          <label style="font-size:11px;color:#fde047;">配備戦車選択（76両×単価＋諸経費10億）:</label>
+          <select data-tank-reg-idx="${idx}" class="sel-reg-tank" style="margin-top:2px;">
+            ${allTanks.map((t) => `<option value="${t.id}" ${t.id === curTank ? "selected" : ""}>[${t.country}] ${t.name} （単価 ${t.cost}億/両 → 76両大隊: ${(t.cost * 76 + 10).toFixed(1)}億）</option>`).join("")}
+          </select>
+        </div>
       `;
     }
 
     row.innerHTML = `
-      ${regSelectHtml}
+      <div class="reg-card-top">
+        <span class="badge badge-ok" style="white-space:nowrap;">連隊#${idx + 1}</span>
+        ${regSelectHtml}
+        <span class="price-tag">${unitCostNote}</span>
+        <button type="button" class="btn btn-xs btn-outline" data-del-reg="${idx}" ${BUILDER_REGIMENTS.length <= 3 ? "disabled" : ""} title="この連隊枠を削除">✕</button>
+      </div>
       ${tankSelectHtml}
-      <button type="button" class="btn btn-xs btn-outline" data-del-reg="${idx}" ${BUILDER_REGIMENTS.length <= 3 ? "disabled" : ""}>✕</button>
+      <div class="unit-full-desc">${regDef.desc}</div>
     `;
     regListEl.appendChild(row);
   });
 
-  // 砲兵セレクト
+  // ② 砲兵連隊セレクト＆全文説明文（砲兵突破連隊・自走ロケット砲兵連隊含む）
   const artSel = document.getElementById("builder-artillery");
   artSel.innerHTML = CATALOG.artillery_regiments
     .map((a) => `<option value="${a.id}" ${a.id === BUILDER_ARTILLERY ? "selected" : ""}>${a.name} (${a.cost}億)</option>`)
     .join("");
+  const selectedArt = CATALOG.artillery_regiments.find((a) => a.id === BUILDER_ARTILLERY) || CATALOG.artillery_regiments[0];
+  const artDescEl = document.getElementById("builder-artillery-desc");
+  if (artDescEl && selectedArt) {
+    artDescEl.innerHTML = `<strong>${selectedArt.name}（${selectedArt.cost}億）:</strong> ${selectedArt.desc}`;
+  }
 
-  // 補助大隊リスト
+  // ③ 補助大隊リスト＆全文説明文
   const supListEl = document.getElementById("builder-supports-list");
   supListEl.innerHTML = "";
+  if (BUILDER_SUPPORTS.length === 0) {
+    supListEl.innerHTML = `<div class="muted" style="font-size:11.5px;padding:4px;">補助大隊なし（『＋ 補助大隊を追加』から最大4個まで追加できます）</div>`;
+  }
   BUILDER_SUPPORTS.forEach((item, idx) => {
     const supDef = CATALOG.support_battalions.find((s) => s.id === item.support_id) || CATALOG.support_battalions[0];
     const row = document.createElement("div");
-    row.className = "reg-row";
+    row.className = "reg-card-row";
 
     const supSelectHtml = `
-      <select data-sup-idx="${idx}" class="sel-sup-type">
+      <select data-sup-idx="${idx}" class="sel-sup-type" style="flex:1;">
         ${CATALOG.support_battalions.map((s) => `<option value="${s.id}" ${s.id === item.support_id ? "selected" : ""}>${s.name} (${s.cost}億)</option>`).join("")}
       </select>
     `;
 
-    let tankSelectHtml = `<span class="muted" style="font-size:11px;">${supDef.desc.slice(0, 24)}...</span>`;
+    let tankSelectHtml = "";
+    let supCostNote = `${supDef.cost}億`;
     if (supDef.is_tank_unit) {
       const curTank = item.tank_id || supDef.default_tank_id || "su_t34_85";
+      const tkObj = allTanks.find((t) => t.id === curTank) || allTanks[0];
+      const calcCost = !item.custom_calc && (curTank === "su_t34_85" || curTank === "us_m4_76") ? supDef.cost : +(tkObj.cost * 22).toFixed(1);
+      supCostNote = `${calcCost}億`;
       tankSelectHtml = `
-        <select data-tank-sup-idx="${idx}" class="sel-sup-tank">
-          ${allTanks.map((t) => `<option value="${t.id}" ${t.id === curTank ? "selected" : ""}>[${t.country}] ${t.name} (${t.cost}億/両 → 中隊${(t.cost * 22).toFixed(0)}億)</option>`).join("")}
-        </select>
+        <div style="margin-top:5px;">
+          <label style="font-size:11px;color:#fde047;">配備戦車選択（22両×単価）:</label>
+          <select data-tank-sup-idx="${idx}" class="sel-sup-tank" style="margin-top:2px;">
+            ${allTanks.map((t) => `<option value="${t.id}" ${t.id === curTank ? "selected" : ""}>[${t.country}] ${t.name} （単価 ${t.cost}億/両 → 22両中隊: ${(t.cost * 22).toFixed(1)}億）</option>`).join("")}
+          </select>
+        </div>
       `;
     }
 
     row.innerHTML = `
-      ${supSelectHtml}
+      <div class="reg-card-top">
+        <span class="badge badge-warn" style="white-space:nowrap;">補助#${idx + 1}</span>
+        ${supSelectHtml}
+        <span class="price-tag">${supCostNote}</span>
+        <button type="button" class="btn btn-xs btn-outline" data-del-sup="${idx}" title="この補助大隊を削除">✕</button>
+      </div>
       ${tankSelectHtml}
-      <button type="button" class="btn btn-xs btn-outline" data-del-sup="${idx}">✕</button>
+      <div class="unit-full-desc">${supDef.desc}</div>
     `;
     supListEl.appendChild(row);
   });
@@ -948,6 +2103,7 @@ function renderDivisionBuilderRows() {
       BUILDER_REGIMENTS[i].tank_id = el.value;
       BUILDER_REGIMENTS[i].custom_calc = true;
       BUILDER_OVERRIDE_COST = null;
+      renderDivisionBuilderRows();
       renderDivisionSpecPreview();
     });
   });
@@ -980,6 +2136,7 @@ function renderDivisionBuilderRows() {
       BUILDER_SUPPORTS[i].tank_id = el.value;
       BUILDER_SUPPORTS[i].custom_calc = true;
       BUILDER_OVERRIDE_COST = null;
+      renderDivisionBuilderRows();
       renderDivisionSpecPreview();
     });
   });
@@ -1007,43 +2164,35 @@ function computeClientDivisionSpec() {
   for (const s of CATALOG.support_battalions) supMap[s.id] = s;
 
   let cost = 0;
-  let sa = 0, ha = 0, def = 0, brk = 0, armorSum = 0, aa = 10, recon = 10;
   let minSpeed = 3;
+  let canParadrop = true;
   const warnings = [];
+  const breakdown = [];
 
   for (const item of BUILDER_REGIMENTS) {
     const r = regMap[item.regiment_id];
     if (!r) continue;
     minSpeed = Math.min(minSpeed, r.speed_tier || 1);
+    if (!r.can_paradrop) canParadrop = false;
     if (r.is_tank_unit) {
       const tk = tankMap[item.tank_id || "su_t34_85"] || tankMap["su_t34_85"];
       const c = !item.custom_calc && (tk.id === "su_t34_85" || tk.id === "us_m4_76") ? r.cost : +(tk.cost * 76 + 10).toFixed(1);
       cost += c;
-      sa += tk.sa * 1.4;
-      ha += tk.ha * 1.5;
-      def += 55;
-      brk += (tk.ha + tk.armor) * 0.9;
-      armorSum += tk.armor;
+      breakdown.push(`${r.name}[${tk.name}×76両]: ${c}億`);
     } else {
       cost += r.cost;
-      sa += r.sa;
-      ha += r.ha;
-      def += r.defense;
-      brk += r.breakthrough;
-      armorSum += r.armor;
+      breakdown.push(`${r.name}: ${r.cost}億`);
     }
   }
 
   const art = artMap[BUILDER_ARTILLERY] || artMap["art_none"];
   if (art && art.id !== "art_none") {
     cost += art.cost;
-    sa += art.sa;
-    ha += art.ha;
-    def += art.defense;
-    brk += art.breakthrough;
+    breakdown.push(`${art.name}: ${art.cost}億`);
     if ((art.max_speed_tier || 3) < minSpeed) {
-      warnings.push(`⚠️ ${art.name}は機械化・機甲部隊に追従できないため速度が低下します（自走砲兵を推奨）`);
+      warnings.push(`⚠️ ${art.name}は機械化・機甲部隊に追従できないため機動力が低下します（自走砲兵または自走ロケット砲兵を推奨）`);
     }
+    if (!art.can_paradrop) canParadrop = false;
   }
 
   for (const sItem of BUILDER_SUPPORTS) {
@@ -1053,20 +2202,10 @@ function computeClientDivisionSpec() {
       const tk = tankMap[sItem.tank_id || "su_t34_85"] || tankMap["su_t34_85"];
       const c = !sItem.custom_calc && (tk.id === "su_t34_85" || tk.id === "us_m4_76") ? s.cost : +(tk.cost * 22).toFixed(1);
       cost += c;
-      sa += tk.sa * 0.5;
-      ha += tk.ha * 0.55;
-      def += 20;
-      brk += (tk.ha + tk.armor) * 0.35;
-      armorSum += tk.armor * 0.4;
+      breakdown.push(`${s.name}[${tk.name}×22両]: ${c}億`);
     } else {
       cost += s.cost;
-      sa += s.sa || 0;
-      ha += s.ha || 0;
-      aa += s.aa || 0;
-      recon += s.recon || 0;
-      def += s.defense || 0;
-      brk += s.breakthrough || 0;
-      armorSum += (s.armor || 0) * 0.3;
+      breakdown.push(`${s.name}: ${s.cost}億`);
     }
   }
 
@@ -1074,31 +2213,35 @@ function computeClientDivisionSpec() {
   const count = Math.max(1, Number(document.getElementById("div-count")?.value || 1));
   return {
     unitCost: finalCost,
+    rawCost: +cost.toFixed(1),
     totalCost: +(finalCost * count).toFixed(1),
     count,
-    sa: Math.round(sa),
-    ha: Math.round(ha),
-    def: Math.round(def),
-    brk: Math.round(brk),
-    armor: Math.round(armorSum / Math.max(1, BUILDER_REGIMENTS.length)),
-    aa: Math.round(aa),
+    canParadrop,
+    breakdown,
     warnings,
   };
 }
 
 function renderDivisionSpecPreview() {
   const spec = computeClientDivisionSpec();
+  const activeNat = getActiveNation();
+  const curBudget = Number(activeNat?.budget || 0);
+  const afterBudget = +(curBudget - spec.totalCost).toFixed(1);
+  const isShort = afterBudget < 0;
+
   const box = document.getElementById("div-preview-box");
   box.innerHTML = `
-    <div style="display:flex;justify-content:space-between;align-items:center;">
-      <span><strong>1個師団単価:</strong> <span class="price-tag">${spec.unitCost}億円</span></span>
-      <span><strong>${spec.count}個師団 合計費用:</strong> <span class="price-tag" style="font-size:15px;">${spec.totalCost.toLocaleString()}億円 (${(spec.totalCost / 10000).toFixed(2)}兆円)</span></span>
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;">
+      <span><strong>1個師団単価:</strong> <span class="price-tag">${spec.unitCost.toLocaleString()}億円</span>${BUILDER_OVERRIDE_COST !== null && BUILDER_OVERRIDE_COST !== spec.rawCost ? ` <small class="muted">(公式テンプレ価格適用 / 通常合算:${spec.rawCost}億)</small>` : ""}</span>
+      <span><strong>${spec.count}個師団 編成費用:</strong> <span class="price-tag" style="font-size:15px;">${spec.totalCost.toLocaleString()}億円 (${(spec.totalCost / 10000).toFixed(2)}兆円)</span></span>
     </div>
-    <div class="spec-stats-grid">
-      <div class="stat-box"><span>対人火力</span><strong>${spec.sa}</strong></div>
-      <div class="stat-box"><span>対戦車火力</span><strong>${spec.ha}</strong></div>
-      <div class="stat-box"><span>突破力</span><strong>${spec.brk}</strong></div>
-      <div class="stat-box"><span>防衛・装甲</span><strong>${spec.def} / 装${spec.armor}</strong></div>
+    <div style="margin-top:6px;padding:6px 8px;background:rgba(15,23,42,0.75);border-radius:6px;font-size:12px;">
+      <div><strong>📋 編成内訳:</strong> ${spec.breakdown.join(" ＋ ")}</div>
+      <div style="margin-top:4px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;">
+        <span>💰 <strong>現在残資金:</strong> ${curBudget.toLocaleString()}億円 ➔ <strong>購入後の予想残資金:</strong> <strong style="color:${isShort ? "#f87171" : "#34d399"};">${afterBudget.toLocaleString()}億円 (${(afterBudget / 10000).toFixed(2)}兆円)</strong></span>
+        ${spec.canParadrop ? `<span class="badge badge-ok">🪂 全連隊が空挺降下に対応</span>` : ""}
+      </div>
+      ${isShort ? `<div style="color:#f87171;font-weight:700;margin-top:4px;">⚠️ 残資金が ${Math.abs(afterBudget).toLocaleString()}億円 不足しています（編成師団数を減らすか、既存兵器を解体してください）</div>` : ""}
     </div>
     ${spec.warnings.map((w) => `<div style="color:#fbbf24;font-size:11.5px;margin-top:5px;">${w}</div>`).join("")}
   `;
@@ -1125,7 +2268,7 @@ function renderProcurementShop() {
 
   const filtered = items.filter((item) => {
     if (activeCountry !== "ALL" && item.country && item.country !== activeCountry) return false;
-    if (searchVal && !`${item.name} ${item.country || ""} ${item.category || ""}`.toLowerCase().includes(searchVal)) return false;
+    if (searchVal && !`${item.name} ${item.country || ""} ${item.category || ""} ${item.desc || ""}`.toLowerCase().includes(searchVal)) return false;
     return true;
   });
 
@@ -1137,19 +2280,25 @@ function renderProcurementShop() {
     row.className = "shop-item";
     let subInfo = "";
     if (ACTIVE_SHOP_DOMAIN === "navy") {
-      subInfo = `[${item.country} / ${item.category}] 砲雷撃:${item.naval_atk} 防御:${item.naval_def} 対空:${item.aa}${item.carrier_air ? ` 艦載機:${item.carrier_air}機込` : ""}`;
+      const extra = [];
+      if (item.carrier_air) extra.push(`艦載機 ${item.carrier_air}機込（空母の艦載機は値段に含まれます）`);
+      if (item.transport_cap) extra.push(item.amphibious ? `1個師団を港のない沿岸へ強襲揚陸可能` : `港から港へ1個師団を海上輸送可能`);
+      subInfo = `[${item.country} / ${item.category}]${extra.length ? " — " + extra.join("・") : ""}`;
     } else if (ACTIVE_SHOP_DOMAIN === "air") {
-      subInfo = `[${item.country} / ${item.category}] 制空:${item.air_atk} 対地CAS:${item.cas} 戦略爆撃:${item.strat}`;
+      const extra = [];
+      if (item.can_carry_nuke) extra.push(`核兵器搭載可能`);
+      if (item.is_nuke) extra.push(`B-29 スーパーフォートレスにのみ搭載可能（1発/月）`);
+      subInfo = `[${item.country} / ${item.category}]${extra.length ? " — " + extra.join("・") : ""}`;
     } else {
-      subInfo = item.desc;
+      subInfo = item.desc || "";
     }
 
     row.innerHTML = `
-      <div>
+      <div style="flex:1;min-width:0;">
         <div class="shop-item-title">${item.name}</div>
-        <div class="shop-item-sub">${subInfo}</div>
+        <div class="shop-item-sub" style="white-space:normal;line-height:1.4;">${subInfo}</div>
       </div>
-      <div style="display:flex;align-items:center;gap:6px;">
+      <div style="display:flex;align-items:center;gap:6px;flex-shrink:0;">
         <span class="price-tag">${item.cost}億</span>
         ${ACTIVE_SHOP_DOMAIN !== "facility" ? `<input type="number" value="${ACTIVE_SHOP_DOMAIN === "air" && !item.is_nuke ? 10 : 1}" min="1" max="500" style="width:58px;" class="shop-qty-input" />` : ""}
         <button class="btn btn-xs btn-primary btn-buy-item">購入</button>
@@ -1192,9 +2341,17 @@ function renderNationInventory(nat) {
   const facMap = {};
   for (const f of CATALOG.facilities) facMap[f.id] = f;
 
+  const b = computeNationSpentBreakdown(nat);
+
   banner.innerHTML = `
     <div class="sub-box" style="border-color:${hasPort ? "#10b981" : "#f59e0b"};">
-      <div><strong>${nat.flag} ${nat.name} 軍備ステータス</strong></div>
+      <div style="display:flex;justify-content:space-between;align-items:center;">
+        <strong>${nat.flag} ${nat.name} 保有戦力・残資金サマリー</strong>
+        <span class="price-tag" style="color:#34d399;">残資金: ${b.remaining.toLocaleString()}億円</span>
+      </div>
+      <div style="font-size:11.5px;margin-top:4px;color:#cbd5e1;">
+        使用済み合計: <strong>${b.totalSpent.toLocaleString()}億円</strong> （陸軍 ${b.armySpent.toLocaleString()}億 / 海軍 ${b.navySpent.toLocaleString()}億 / 空軍 ${b.airSpent.toLocaleString()}億 / 施設 ${b.facSpent.toLocaleString()}億）
+      </div>
       <div style="font-size:11.5px;margin-top:3px;">
         ⚓ 軍港(500億): ${hasPort ? "<strong style='color:#34d399;'>設置済み（海軍補給・修理有効）</strong>" : "<strong style='color:#fbbf24;'>⚠️ 未設置（海軍を運用する場合は必ず軍港を購入してください！）</strong>"}
       </div>
@@ -1210,9 +2367,9 @@ function renderNationInventory(nat) {
     const el = document.createElement("div");
     el.className = "inv-item";
     el.innerHTML = `
-      <div>
+      <div style="flex:1;">
         <div class="shop-item-title">🏰 [施設] ${f.name}</div>
-        <div class="shop-item-sub">解体にすると ${f.cost}億円 返金</div>
+        <div class="shop-item-sub" style="white-space:normal;">${f.desc} （解体すると ${f.cost}億円 返金）</div>
       </div>
       <button class="btn btn-xs btn-outline">解体(+${f.cost}億)</button>
     `;
@@ -1231,20 +2388,82 @@ function renderNationInventory(nat) {
     listEl.appendChild(el);
   }
 
-  // 2. 陸軍師団
+  // 2. 陸軍師団（構成部隊の説明文全文表示・増減・マイ師団保存・全額返金解体）
   for (const div of nat.divisions || []) {
-    const refund = +(Number(div.spec?.cost || 380) * Number(div.count || 1)).toFixed(1);
+    const unitCost = Number(div.spec?.cost || 380);
+    const refund = +(unitCost * Number(div.count || 1)).toFixed(1);
     const provName = APP_STATE.provinces.find((p) => p.id === div.province_id)?.name.split("(")[0] || "首都";
+    const unitDescs = div.spec?.unit_descriptions || [];
+
     const el = document.createElement("div");
     el.className = "inv-item";
+    el.style.flexDirection = "column";
+    el.style.alignItems = "stretch";
     el.innerHTML = `
-      <div>
-        <div class="shop-item-title">🪖 ${div.name} × ${div.count}個師団 <span class="badge badge-ok">📍${provName}</span></div>
-        <div class="shop-item-sub">${(div.spec?.breakdown || []).join(" / ")}</div>
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;">
+        <div style="flex:1;">
+          <div class="shop-item-title">🪖 ${div.name} × ${div.count}個師団 <span class="badge badge-ok">📍${provName}</span></div>
+          <div class="shop-item-sub" style="margin-top:2px;">1個師団単価: <strong>${unitCost}億</strong> / 小計: <strong style="color:#fbbf24;">${refund.toLocaleString()}億</strong></div>
+          <div class="shop-item-sub" style="white-space:normal;margin-top:2px;color:#e2e8f0;">内訳: ${(div.spec?.breakdown || []).join(" ＋ ")}</div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:4px;justify-content:flex-end;">
+          <button class="btn btn-xs btn-outline" data-adj-div="-1" title="1個師団削減 (+${unitCost}億返金)">-1師団</button>
+          <button class="btn btn-xs btn-outline" data-adj-div="1" title="1個師団追加配備 (-${unitCost}億)">+1師団</button>
+          <button class="btn btn-xs btn-outline" data-adj-div="5" title="5個師団追加配備 (-${unitCost * 5}億)">+5師団</button>
+          <button class="btn btn-xs btn-amber" data-save-div-tpl="${div.id}" title="この師団を『自分用の師団』に保存">💾 マイ師団保存</button>
+          <button class="btn btn-xs btn-outline" data-disband-div="${div.id}">全解体(+${refund}億)</button>
+        </div>
       </div>
-      <button class="btn btn-xs btn-outline">解体(+${refund}億)</button>
+      ${unitDescs.length > 0 ? `
+        <details style="margin-top:5px;font-size:11.5px;">
+          <summary style="cursor:pointer;color:#38bdf8;">📖 この師団の各連隊・補助大隊の説明文（全文）を見る</summary>
+          <div style="margin-top:4px;display:flex;flex-direction:column;gap:4px;">
+            ${unitDescs.map((ud) => `<div class="unit-full-desc"><strong>[${ud.slot}] ${ud.name} (${ud.cost}億):</strong> ${ud.desc}</div>`).join("")}
+          </div>
+        </details>
+      ` : ""}
     `;
-    el.querySelector("button").addEventListener("click", async () => {
+
+    el.querySelectorAll("[data-adj-div]").forEach((btn) => {
+      btn.addEventListener("click", async () => {
+        const delta = Number(btn.getAttribute("data-adj-div"));
+        try {
+          const res = await apiPost("/api/military/division", {
+            nation_id: nat.id,
+            action: "adjust_count",
+            division_id: div.id,
+            delta,
+          });
+          APP_STATE = res.state;
+          showToast(`${div.name} の師団数を ${delta > 0 ? "+" + delta : delta} 変更しました。`);
+          renderAll();
+        } catch (err) {
+          showToast(err.message, true);
+        }
+      });
+    });
+
+    el.querySelector("[data-save-div-tpl]").addEventListener("click", async () => {
+      try {
+        const res = await apiPost("/api/military/division", {
+          action: "save_template",
+          nation_id: nat.id,
+          name: div.name,
+          regiments: div.regiments,
+          artillery_id: div.artillery_id,
+          supports: div.supports,
+          override_cost: div.override_cost,
+        });
+        APP_STATE = res.state;
+        syncUserTemplatesToLocal(APP_STATE.saved_division_templates);
+        showToast(`⭐ 『${div.name}』を自分用の師団（マイ師団）に保存しました！`);
+        renderAll();
+      } catch (err) {
+        showToast(err.message, true);
+      }
+    });
+
+    el.querySelector("[data-disband-div]").addEventListener("click", async () => {
       const res = await apiPost("/api/military/division", {
         nation_id: nat.id,
         action: "disband",
@@ -1267,7 +2486,7 @@ function renderNationInventory(nat) {
     el.innerHTML = `
       <div>
         <div class="shop-item-title">⚓ ${u.name} × ${item.count}隻</div>
-        <div class="shop-item-sub">単価 ${u.cost}億 / 合計 ${refund}億</div>
+        <div class="shop-item-sub">[${u.country} / ${u.category}] 単価 ${u.cost}億 / 合計 ${refund.toLocaleString()}億</div>
       </div>
       <button class="btn btn-xs btn-outline">全解体(+${refund}億)</button>
     `;
@@ -1296,7 +2515,7 @@ function renderNationInventory(nat) {
     el.innerHTML = `
       <div>
         <div class="shop-item-title">✈️ ${u.name} × ${item.count}${u.is_nuke ? "発" : "機"}</div>
-        <div class="shop-item-sub">単価 ${u.cost}億 / 合計 ${refund}億</div>
+        <div class="shop-item-sub">[${u.country} / ${u.category}] 単価 ${u.cost}億 / 合計 ${refund.toLocaleString()}億</div>
       </div>
       <button class="btn btn-xs btn-outline">全解体(+${refund}億)</button>
     `;
@@ -1430,48 +2649,159 @@ async function fetchDiscordLogs() {
 // ============================================================================
 // TAB 5: 白地図PNG バケツ塗りツール（フラッドフィル）
 // ============================================================================
+function loadPngWorldMap() {
+  const map = window.WORLD_ADMIN1_MAP;
+  if (!map) return;
+  const canvas = document.getElementById("png-paint-canvas");
+  const [, , width, height] = map.viewBox.split(" ").map(Number);
+  canvas.width = width * 2;
+  canvas.height = height * 2;
+  resetPngViewport(canvas);
+  pngUndoStack = [];
+  pngWorldMap = {
+    paths: Object.values(map.provinces)
+      .filter((province) => province.path)
+      .map((province) => ({ id: province.id, path: new Path2D(province.path) })),
+    markers: map.island_markers || [],
+    colors: new Map(),
+    width,
+    height,
+  };
+  document.getElementById("png-tolerance").disabled = true;
+  drawPngWorldMap(canvas.getContext("2d"));
+}
+
+function drawPngWorldMap(ctx) {
+  const { width, height, paths, markers, colors } = pngWorldMap;
+  ctx.save();
+  ctx.scale(ctx.canvas.width / width, ctx.canvas.height / height);
+  ctx.fillStyle = "#182635";
+  ctx.fillRect(0, 0, width, height);
+  for (const { id, path } of paths) {
+    ctx.fillStyle = colors.get(id) || "#f1f0eb";
+    ctx.fill(path, "evenodd");
+  }
+  ctx.strokeStyle = "#64748b";
+  ctx.lineWidth = 0.45;
+  ctx.lineJoin = "round";
+  for (const { path } of paths) ctx.stroke(path);
+  ctx.strokeStyle = "#facc15";
+  ctx.setLineDash([2, 2]);
+  for (const marker of markers) {
+    ctx.beginPath();
+    ctx.arc(marker.cx, marker.cy, marker.r, 0, 2 * Math.PI);
+    ctx.stroke();
+  }
+  ctx.restore();
+}
+
+function resetPngViewport(canvas) {
+  canvas.style.width = "";
+  canvas.parentElement.scrollTo(0, 0);
+}
+
+function setupPngViewport(canvas) {
+  const viewport = canvas.parentElement;
+  const zoomAt = (factor, clientX, clientY) => {
+    const before = canvas.getBoundingClientRect();
+    const zoom = (Number.parseFloat(canvas.style.width) || 100) / 100;
+    const next = Math.max(1, Math.min(24, zoom * factor));
+    if (next === zoom || !before.width || !before.height) return;
+    const xRatio = (clientX - before.left) / before.width;
+    const yRatio = (clientY - before.top) / before.height;
+    canvas.style.width = `${next * 100}%`;
+    const after = canvas.getBoundingClientRect();
+    viewport.scrollLeft += after.left + xRatio * after.width - clientX;
+    viewport.scrollTop += after.top + yRatio * after.height - clientY;
+  };
+  const zoomFromCenter = (factor) => {
+    const rect = viewport.getBoundingClientRect();
+    zoomAt(factor, rect.left + viewport.clientWidth / 2, rect.top + viewport.clientHeight / 2);
+  };
+  document.getElementById("btn-png-zoom-in").addEventListener("click", () => zoomFromCenter(1.5));
+  document.getElementById("btn-png-zoom-out").addEventListener("click", () => zoomFromCenter(1 / 1.5));
+  document.getElementById("btn-png-zoom-reset").addEventListener("click", () => resetPngViewport(canvas));
+  canvas.addEventListener("wheel", (event) => {
+    if (event.ctrlKey || event.metaKey || !event.deltaY) return;
+    event.preventDefault();
+    zoomAt(event.deltaY < 0 ? 1.25 : 1 / 1.25, event.clientX, event.clientY);
+  }, { passive: false });
+
+  let drag = null;
+  let didPan = false;
+  canvas.addEventListener("pointerdown", (event) => {
+    if (!event.isPrimary || event.button !== 0) return;
+    didPan = false;
+    drag = {
+      id: event.pointerId,
+      x: event.clientX,
+      y: event.clientY,
+      left: viewport.scrollLeft,
+      top: viewport.scrollTop,
+    };
+  });
+  canvas.addEventListener("pointermove", (event) => {
+    if (drag?.id !== event.pointerId || !(event.buttons & 1)) return;
+    const dx = event.clientX - drag.x;
+    const dy = event.clientY - drag.y;
+    if (!didPan) {
+      if (Math.hypot(dx, dy) < 5) return;
+      didPan = true;
+      canvas.setPointerCapture(event.pointerId);
+      canvas.classList.add("is-panning");
+    }
+    viewport.scrollLeft = drag.left - dx;
+    viewport.scrollTop = drag.top - dy;
+  });
+  const stopDragging = (event) => {
+    if (drag?.id !== event.pointerId) return;
+    drag = null;
+    canvas.classList.remove("is-panning");
+  };
+  canvas.addEventListener("pointerup", stopDragging);
+  canvas.addEventListener("pointercancel", stopDragging);
+  canvas.addEventListener("lostpointercapture", stopDragging);
+  canvas.addEventListener("click", (event) => {
+    if (didPan) event.stopImmediatePropagation();
+  }, true);
+}
+
 function initPngPainterCanvas() {
   const canvas = document.getElementById("png-paint-canvas");
   const ctx = canvas.getContext("2d");
-
-  // 初期状態として欧州・地中海の白地図アウトラインをキャンバスに描画しておく
-  ctx.fillStyle = "#bcd4e6";
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-  if (APP_STATE && APP_STATE.provinces) {
-    for (const p of APP_STATE.provinces) {
-      const pts = generateProvincePolygonPoints(p, APP_STATE.provinces)
-        .split(" ")
-        .map((pair) => pair.split(",").map(Number));
-      ctx.beginPath();
-      pts.forEach((pt, idx) => {
-        const cx = (pt[0] - 150) * 0.95;
-        const cy = (pt[1] - 40) * 0.75;
-        if (idx === 0) ctx.moveTo(cx, cy);
-        else ctx.lineTo(cx, cy);
-      });
-      ctx.closePath();
-      ctx.fillStyle = "#ffffff";
-      ctx.fill();
-      ctx.lineWidth = 2;
-      ctx.strokeStyle = "#1e293b";
-      ctx.stroke();
-    }
-  }
+  setupPngViewport(canvas);
+  loadPngWorldMap();
 
   canvas.addEventListener("click", (e) => {
     const rect = canvas.getBoundingClientRect();
-    const scaleX = canvas.width / rect.width;
-    const scaleY = canvas.height / rect.height;
-    const x = Math.floor((e.clientX - rect.left) * scaleX);
-    const y = Math.floor((e.clientY - rect.top) * scaleY);
     const hexColor = document.getElementById("png-fill-color").value;
-    const tol = Number(document.getElementById("png-tolerance").value || 32);
-
-    pngUndoStack.push(ctx.getImageData(0, 0, canvas.width, canvas.height));
+    const xRatio = (e.clientX - rect.left) / rect.width;
+    const yRatio = (e.clientY - rect.top) / rect.height;
+    if (pngWorldMap) {
+      const { width, height, paths, markers, colors } = pngWorldMap;
+      const x = xRatio * width;
+      const y = yRatio * height;
+      const province = paths.findLast(({ path }) => ctx.isPointInPath(path, x, y, "evenodd"));
+      const marker = province ? null : markers.find((m) => Math.hypot(x - m.cx, y - m.cy) <= m.r);
+      const id = (province || marker)?.id;
+      if (!id || colors.get(id) === hexColor) return;
+      pngUndoStack.push({ id, color: colors.get(id) });
+      drawPngWorldMapAfterFill(ctx, id, hexColor);
+    } else {
+      const x = Math.floor(xRatio * canvas.width);
+      const y = Math.floor(yRatio * canvas.height);
+      const tol = Number(document.getElementById("png-tolerance").value || 32);
+      pngUndoStack.push(ctx.getImageData(0, 0, canvas.width, canvas.height));
+      floodFillCanvas(ctx, x, y, hexToRgb(hexColor), tol);
+    }
     if (pngUndoStack.length > 15) pngUndoStack.shift();
-    floodFillCanvas(ctx, x, y, hexToRgb(hexColor), tol);
   });
+}
+
+function drawPngWorldMapAfterFill(ctx, id, color) {
+  if (color) pngWorldMap.colors.set(id, color);
+  else pngWorldMap.colors.delete(id);
+  drawPngWorldMap(ctx);
 }
 
 function hexToRgb(hex) {
@@ -1569,39 +2899,102 @@ function setupEventListeners() {
 
   document.getElementById("chk-show-adj").addEventListener("change", renderPeacetimeMap);
   document.getElementById("chk-show-units").addEventListener("change", renderPeacetimeMap);
+  document.getElementById("chk-show-terrain")?.addEventListener("change", renderPeacetimeMap);
+  document.getElementById("select-peace-map-style")?.addEventListener("change", renderPeacetimeMap);
+  document.getElementById("state-search").addEventListener("input", renderStateSearch);
+  document.getElementById("state-region-filter").addEventListener("change", renderStateSearch);
+  document.getElementById("state-search-results").addEventListener("change", (e) => {
+    const p = APP_STATE.provinces.find((state) => state.id === e.target.value);
+    if (!p) return;
+    document.querySelector('.map-tool-btn[data-ptool="inspect"]').click();
+    const rp = window.REALISTIC_MAP_DATA?.provinces?.[p.id];
+    PEACE_VB.w = 600;
+    PEACE_VB.h = 370;
+    PEACE_VB.x = (rp?.cx ?? p.x) - PEACE_VB.w / 2;
+    PEACE_VB.y = (rp?.cy ?? p.y) - PEACE_VB.h / 2;
+    onPeacetimeProvinceClick(p.id);
+  });
 
   // 平時マップ ズーム・パン
   document.getElementById("btn-peace-zoom-in").addEventListener("click", () => {
+    PEACE_VB.x += PEACE_VB.w * 0.1;
+    PEACE_VB.y += PEACE_VB.h * 0.1;
     PEACE_VB.w *= 0.8;
     PEACE_VB.h *= 0.8;
     renderPeacetimeMap();
   });
   document.getElementById("btn-peace-zoom-out").addEventListener("click", () => {
-    PEACE_VB.w = Math.min(1500, PEACE_VB.w * 1.25);
-    PEACE_VB.h = Math.min(1100, PEACE_VB.h * 1.25);
+    PEACE_VB.x = Math.max(0, PEACE_VB.x - PEACE_VB.w * 0.125);
+    PEACE_VB.y = Math.max(0, PEACE_VB.y - PEACE_VB.h * 0.125);
+    PEACE_VB.w = Math.min(1600, PEACE_VB.w * 1.25);
+    PEACE_VB.h = Math.min(1000, PEACE_VB.h * 1.25);
     renderPeacetimeMap();
   });
   document.getElementById("btn-peace-zoom-reset").addEventListener("click", () => {
-    PEACE_VB = { x: 150, y: 40, w: 1120, h: 920 };
+    if (APP_STATE && (APP_STATE.world_id === "world_admin1" || APP_STATE.scenario_type === "world_admin1")) {
+      PEACE_VB = { x: 0, y: 0, w: 1440, h: 720 };
+    } else {
+      PEACE_VB = { x: 45, y: 35, w: 1510, h: 930 };
+    }
     renderPeacetimeMap();
   });
 
   const peaceSvg = document.getElementById("peacetime-svg");
-  peaceSvg.addEventListener("mousedown", (e) => {
-    if (e.target.closest(".prov-node")) return;
+  window.peaceDragMoved = false;
+
+  peaceSvg.addEventListener("wheel", (e) => {
+    e.preventDefault();
+    const isWorld = (APP_STATE.world_id === "world_admin1" || APP_STATE.scenario_type === "world_admin1");
+    const rect = peaceSvg.getBoundingClientRect();
+    const factor = e.deltaY < 0 ? 0.82 : 1.22;
+
+    if (isWorld) {
+      const minW = 60;
+      const maxW = 1600;
+      const newW = Math.max(minW, Math.min(maxW, PEACE_VB.w * factor));
+      const f = newW / PEACE_VB.w;
+      const xRatio = (e.clientX - rect.left) / (rect.width || 1);
+      const yRatio = (e.clientY - rect.top) / (rect.height || 1);
+      PEACE_VB.x += PEACE_VB.w * xRatio * (1 - f);
+      PEACE_VB.y += PEACE_VB.h * yRatio * (1 - f);
+      PEACE_VB.w = newW;
+      PEACE_VB.h = 720 * (newW / 1440);
+      peaceSvg.setAttribute("viewBox", `${PEACE_VB.x} ${PEACE_VB.y} ${PEACE_VB.w} ${PEACE_VB.h}`);
+    } else {
+      const newW = Math.max(260, Math.min(1600, PEACE_VB.w * factor));
+      const newH = Math.max(170, Math.min(1000, PEACE_VB.h * factor));
+      PEACE_VB.x += (PEACE_VB.w - newW) * 0.5;
+      PEACE_VB.y += (PEACE_VB.h - newH) * 0.5;
+      PEACE_VB.w = newW;
+      PEACE_VB.h = newH;
+      renderPeacetimeMap();
+    }
+  }, { passive: false });
+
+  peaceSvg.addEventListener("pointerdown", (e) => {
     isPeacePanning = true;
-    peacePanStart = { x: e.clientX, y: e.clientY };
+    window.peaceDragMoved = false;
+    peacePanStart = { x: e.clientX, y: e.clientY, bx: PEACE_VB.x, by: PEACE_VB.y };
   });
-  window.addEventListener("mousemove", (e) => {
+
+  window.addEventListener("pointermove", (e) => {
     if (!isPeacePanning) return;
-    const dx = (e.clientX - peacePanStart.x) * (PEACE_VB.w / 900);
-    const dy = (e.clientY - peacePanStart.y) * (PEACE_VB.h / 700);
-    PEACE_VB.x -= dx;
-    PEACE_VB.y -= dy;
-    peacePanStart = { x: e.clientX, y: e.clientY };
-    renderPeacetimeMap();
+    const dx = e.clientX - peacePanStart.x;
+    const dy = e.clientY - peacePanStart.y;
+    if (Math.hypot(dx, dy) > 4) {
+      window.peaceDragMoved = true;
+    }
+    if (window.peaceDragMoved) {
+      const rect = peaceSvg.getBoundingClientRect();
+      const rw = rect.width || 900;
+      const rh = rect.height || 700;
+      PEACE_VB.x = peacePanStart.bx - dx * (PEACE_VB.w / rw);
+      PEACE_VB.y = peacePanStart.by - dy * (PEACE_VB.h / rh);
+      peaceSvg.setAttribute("viewBox", `${PEACE_VB.x} ${PEACE_VB.y} ${PEACE_VB.w} ${PEACE_VB.h}`);
+    }
   });
-  window.addEventListener("mouseup", () => {
+
+  window.addEventListener("pointerup", () => {
     isPeacePanning = false;
   });
 
@@ -1915,6 +3308,7 @@ function setupEventListeners() {
   document.getElementById("builder-artillery").addEventListener("change", (e) => {
     BUILDER_ARTILLERY = e.target.value;
     BUILDER_OVERRIDE_COST = null;
+    renderDivisionBuilderRows();
     renderDivisionSpecPreview();
   });
 
@@ -1931,9 +3325,33 @@ function setupEventListeners() {
 
   document.getElementById("div-count").addEventListener("input", renderDivisionSpecPreview);
 
+  // 自分用の師団（マイ師団テンプレート）として保存
+  document.getElementById("btn-save-user-template")?.addEventListener("click", async () => {
+    const activeNat = getActiveNation();
+    const divName = (document.getElementById("div-name").value || "マイ師団").trim();
+    try {
+      const res = await apiPost("/api/military/division", {
+        action: "save_template",
+        nation_id: activeNat?.id || "",
+        name: divName,
+        regiments: BUILDER_REGIMENTS,
+        artillery_id: BUILDER_ARTILLERY,
+        supports: BUILDER_SUPPORTS,
+        override_cost: BUILDER_OVERRIDE_COST,
+      });
+      APP_STATE = res.state;
+      syncUserTemplatesToLocal(APP_STATE.saved_division_templates);
+      showToast(`⭐ 『${divName}』を自分用の師団（マイ師団）として保存しました！`);
+      renderAll();
+    } catch (err) {
+      showToast(err.message, true);
+    }
+  });
+
   document.getElementById("btn-buy-division").addEventListener("click", async () => {
     const activeNat = getActiveNation();
     if (!activeNat) return;
+    const alsoSave = document.getElementById("chk-also-save-tpl")?.checked || false;
     try {
       const res = await apiPost("/api/military/division", {
         action: "create",
@@ -1945,8 +3363,12 @@ function setupEventListeners() {
         artillery_id: BUILDER_ARTILLERY,
         supports: BUILDER_SUPPORTS,
         override_cost: BUILDER_OVERRIDE_COST,
+        also_save_template: alsoSave,
       });
       APP_STATE = res.state;
+      if (alsoSave) {
+        syncUserTemplatesToLocal(APP_STATE.saved_division_templates);
+      }
       showToast("🪖 新規師団を編成・配備しました！");
       renderAll();
     } catch (err) {
@@ -1966,10 +3388,7 @@ function setupEventListeners() {
         base_hull: document.getElementById("ct-hull").value,
         main_gun: document.getElementById("ct-gun").value,
         cost: Number(document.getElementById("ct-cost").value),
-        ha: Number(document.getElementById("ct-ha").value),
-        sa: Number(document.getElementById("ct-sa").value),
-        armor: Number(document.getElementById("ct-armor").value),
-        speed: Number(document.getElementById("ct-speed").value),
+        desc: document.getElementById("ct-desc")?.value || "",
       });
       APP_STATE = res.state;
       document.getElementById("modal-custom-tank").style.display = "none";
@@ -2117,6 +3536,33 @@ function setupEventListeners() {
   });
 
   // シナリオ初期化モーダル
+  const selActiveWorld = document.getElementById("select-active-world");
+  if (selActiveWorld) {
+    selActiveWorld.value = ACTIVE_WORLD_ID;
+    selActiveWorld.addEventListener("change", (e) => {
+      switchWorld(e.target.value);
+    });
+  }
+
+  const chkIslandMarkers = document.getElementById("chk-show-island-markers");
+  if (chkIslandMarkers) {
+    chkIslandMarkers.addEventListener("change", () => {
+      renderPeacetimeMap();
+    });
+  }
+
+  const btnResetWorld = document.getElementById("btn-reset-world");
+  if (btnResetWorld) {
+    btnResetWorld.addEventListener("click", async () => {
+      const res = await apiPost("/api/scenario/reset", { scenario_type: "world_admin1", world_id: "world_admin1" });
+      APP_STATE = res.state;
+      ACTIVE_WAR_ID = null;
+      document.getElementById("modal-scenario").style.display = "none";
+      showToast("🌍 世界マップ（全1,505州）で初期化しました！白地プロビンスから建国してください。");
+      renderAll();
+    });
+  }
+
   document.getElementById("btn-scenario-menu").addEventListener("click", () => {
     document.getElementById("modal-scenario").style.display = "flex";
   });
@@ -2140,35 +3586,63 @@ function setupEventListeners() {
   });
 
   // PNGバケツ塗りツール操作
+  document.getElementById("btn-png-world-map").addEventListener("click", () => {
+    document.getElementById("png-file-input").value = "";
+    loadPngWorldMap();
+  });
+
   document.getElementById("png-file-input").addEventListener("change", (e) => {
     const file = e.target.files[0];
     if (!file) return;
     const img = new Image();
+    const url = URL.createObjectURL(file);
     img.onload = () => {
+      URL.revokeObjectURL(url);
+      if (e.target.files[0] !== file) return;
       const canvas = document.getElementById("png-paint-canvas");
       canvas.width = img.width;
       canvas.height = img.height;
+      resetPngViewport(canvas);
       const ctx = canvas.getContext("2d");
       ctx.drawImage(img, 0, 0);
+      pngWorldMap = null;
       pngUndoStack = [];
+      document.getElementById("png-tolerance").disabled = false;
       showToast(`📂 白地図画像 (${img.width}×${img.height}) を読み込みました！クリックでバケツ塗りできます。`);
     };
-    img.src = URL.createObjectURL(file);
+    img.onerror = () => URL.revokeObjectURL(url);
+    img.src = url;
   });
 
   document.getElementById("btn-png-undo").addEventListener("click", () => {
     if (pngUndoStack.length === 0) return;
     const canvas = document.getElementById("png-paint-canvas");
     const ctx = canvas.getContext("2d");
-    ctx.putImageData(pngUndoStack.pop(), 0, 0);
+    const previous = pngUndoStack.pop();
+    if (pngWorldMap) drawPngWorldMapAfterFill(ctx, previous.id, previous.color);
+    else ctx.putImageData(previous, 0, 0);
   });
 
   document.getElementById("btn-png-download").addEventListener("click", () => {
-    const canvas = document.getElementById("png-paint-canvas");
-    const a = document.createElement("a");
-    a.href = canvas.toDataURL("image/png");
-    a.download = `aiwa_map_${Date.now()}.png`;
-    a.click();
+    let canvas = document.getElementById("png-paint-canvas");
+    if (pngWorldMap) {
+      canvas = document.createElement("canvas");
+      canvas.width = pngWorldMap.width * 4;
+      canvas.height = pngWorldMap.height * 4;
+      drawPngWorldMap(canvas.getContext("2d"));
+    }
+    canvas.toBlob((blob) => {
+      if (!blob) {
+        showToast("PNGの保存に失敗しました。", true);
+        return;
+      }
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `aiwa_map_${Date.now()}.png`;
+      a.click();
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+    }, "image/png");
   });
 
   // モーダル閉じるボタン共通

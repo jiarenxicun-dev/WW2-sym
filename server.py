@@ -15,7 +15,7 @@ import sqlite3
 import uuid
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Dict, List, Set
+from typing import Any, Dict, List, Optional, Set
 
 from aiohttp import WSMsgType, web
 
@@ -41,13 +41,21 @@ from game_db import (
 STATIC_DIR = Path(__file__).parent / "static"
 DISCORD_DB_PATH = Path(__file__).parent.parent / "discord-antigravity-bot" / "data" / "discord_messages.db"
 
+
+def _get_world_id(request: web.Request, body: Optional[Dict[str, Any]] = None) -> str:
+    if body and isinstance(body, dict) and body.get("world_id"):
+        return str(body["world_id"])
+    w = request.query.get("world")
+    return w if w in ("world_admin1", "default") else "world_admin1"
+
 ws_clients: Set[web.WebSocketResponse] = set()
 
 
-async def broadcast_state(state: Dict[str, Any], event_type: str = "state_updated") -> None:
+async def broadcast_state(state: Dict[str, Any], event_type: str = "state_updated", world_id: Optional[str] = None) -> None:
     if not ws_clients:
         return
-    payload = json.dumps({"type": event_type, "state": state}, ensure_ascii=False)
+    wid = world_id or state.get("world_id") or "world_admin1"
+    payload = json.dumps({"type": event_type, "state": state, "world_id": wid}, ensure_ascii=False)
     dead: List[web.WebSocketResponse] = []
     for ws in ws_clients:
         try:
@@ -156,9 +164,21 @@ async def handle_index(request: web.Request) -> web.FileResponse:
 
 
 async def handle_bootstrap(request: web.Request) -> web.Response:
-    state = load_world_state("default")
+    world_id = request.query.get("world", "world_admin1")
+    if world_id not in ("world_admin1", "default"):
+        world_id = "world_admin1"
+    state = load_world_state(world_id)
     catalog = get_full_catalog()
-    return web.json_response({"state": state, "catalog": catalog})
+    worlds = [
+        {"id": "world_admin1", "name": "🌍 世界マップ (1,505州)", "count": 1505},
+        {"id": "default", "name": "🇪🇺 欧州マップ (299州・現行戦役)", "count": 299},
+    ]
+    return web.json_response({
+        "state": state,
+        "catalog": catalog,
+        "worlds": worlds,
+        "active_world_id": world_id,
+    })
 
 
 async def handle_websocket(request: web.Request) -> web.WebSocketResponse:
@@ -177,16 +197,18 @@ async def handle_websocket(request: web.Request) -> web.WebSocketResponse:
 
 async def handle_reset_scenario(request: web.Request) -> web.Response:
     body = await request.json()
-    scenario_type = body.get("scenario_type", "aiwa_current")
-    state = build_scenario_state(scenario_type)
-    save_world_state(state, "default")
-    await broadcast_state(state, "scenario_reset")
+    world_id = _get_world_id(request, body)
+    scenario_type = body.get("scenario_type") or world_id
+    state = build_scenario_state(scenario_type, world_id=world_id)
+    save_world_state(state, world_id)
+    await broadcast_state(state, "scenario_reset", world_id=world_id)
     return web.json_response({"ok": True, "state": state})
 
 
 async def handle_set_mode(request: web.Request) -> web.Response:
     body = await request.json()
-    state = load_world_state("default")
+    world_id = _get_world_id(request, body if "body" in locals() else None)
+    state = load_world_state(world_id)
     if "mode" in body and body["mode"] in ("sandbox", "multiplayer"):
         state["mode"] = body["mode"]
     if "active_nation_id" in body:
@@ -199,7 +221,7 @@ async def handle_set_mode(request: web.Request) -> web.Response:
         nat = _find_nation(state, body["nation_id"])
         if nat:
             nat["is_ai"] = bool(body["is_ai"])
-    save_world_state(state, "default")
+    save_world_state(state, world_id if "world_id" in locals() else "world_admin1")
     await broadcast_state(state)
     return web.json_response({"ok": True, "state": state})
 
@@ -209,7 +231,8 @@ async def handle_advance_week(request: web.Request) -> web.Response:
     毎週木曜日の週資金配布（5,000億＋戦争割譲プロビンスボーナス最大1,000億）、
     1週間期限の条約（不可侵・軍事同盟）の期限処理、およびAI国家の自律軍拡・外交を実行します。
     """
-    state = load_world_state("default")
+    world_id = _get_world_id(request, body if "body" in locals() else None)
+    state = load_world_state(world_id)
     state["week"] = int(state.get("week", 1)) + 1
     current_week = state["week"]
 
@@ -250,7 +273,7 @@ async def handle_advance_week(request: web.Request) -> web.Response:
         "created_at": datetime.now(timezone.utc).isoformat(),
     })
 
-    save_world_state(state, "default")
+    save_world_state(state, world_id if "world_id" in locals() else "world_admin1")
     await broadcast_state(state, "week_advanced")
     return web.json_response({"ok": True, "state": state})
 
@@ -260,7 +283,8 @@ async def handle_found_nation(request: web.Request) -> web.Response:
     平時マップ上での新規建国（初期資金5兆円＝50,000億円、首都＋都市×2の陸続き検証）。
     """
     body = await request.json()
-    state = load_world_state("default")
+    world_id = _get_world_id(request, body if "body" in locals() else None)
+    state = load_world_state(world_id)
 
     name = (body.get("name") or "").strip()
     flag = (body.get("flag") or "🏳️").strip()
@@ -337,7 +361,7 @@ async def handle_found_nation(request: web.Request) -> web.Response:
         "created_at": datetime.now(timezone.utc).isoformat(),
     })
 
-    save_world_state(state, "default")
+    save_world_state(state, world_id if "world_id" in locals() else "world_admin1")
     await broadcast_state(state, "nation_founded")
     return web.json_response({"ok": True, "state": state, "nation": new_nation})
 
@@ -354,7 +378,8 @@ async def handle_province_action(request: web.Request) -> web.Response:
     province_id = body.get("province_id")
     nation_id = body.get("nation_id")
 
-    state = load_world_state("default")
+    world_id = _get_world_id(request, body if "body" in locals() else None)
+    state = load_world_state(world_id)
     prov_by_id = {p["id"]: p for p in state["provinces"]}
     prov = prov_by_id.get(province_id)
     if not prov:
@@ -436,20 +461,61 @@ async def handle_province_action(request: web.Request) -> web.Response:
             "created_at": datetime.now(timezone.utc).isoformat(),
         })
 
-    save_world_state(state, "default")
+    save_world_state(state, world_id if "world_id" in locals() else "world_admin1")
     await broadcast_state(state)
     return web.json_response({"ok": True, "state": state})
 
 
 async def handle_division_action(request: web.Request) -> web.Response:
     """
-    陸軍師団の設計・新規編成購入・追加配備・解体（全額返金）。
+    陸軍師団の設計・新規編成購入・追加配備/削減・解体（全額返金）・自分用師団テンプレ保存/削除。
     """
     body = await request.json()
-    action = body.get("action")  # create / disband / update_count
+    action = body.get("action")  # create / disband / adjust_count / save_template / delete_template
     nation_id = body.get("nation_id")
 
-    state = load_world_state("default")
+    world_id = _get_world_id(request, body if "body" in locals() else None)
+    state = load_world_state(world_id)
+
+    if action == "save_template":
+        tpl_name = (body.get("name") or "マイ師団").strip()
+        regiments = body.get("regiments", [])
+        artillery_id = body.get("artillery_id", "art_none")
+        supports = body.get("supports", [])
+        override_cost = body.get("override_cost")
+        spec = calculate_division_spec(
+            regiments,
+            artillery_id,
+            supports,
+            override_cost=override_cost,
+            custom_tanks=state.get("custom_tanks", []),
+        )
+        new_tpl = {
+            "id": f"utpl_{uuid.uuid4().hex[:8]}",
+            "name": tpl_name,
+            "nation_id": nation_id or "",
+            "regiments": regiments,
+            "artillery_id": artillery_id,
+            "supports": supports,
+            "override_cost": override_cost,
+            "official_cost": spec["cost"],
+            "desc": " ＋ ".join(spec["breakdown"]) + f"（計 {spec['cost']:g}億）",
+            "spec": spec,
+        }
+        state.setdefault("saved_division_templates", []).append(new_tpl)
+        save_world_state(state, world_id if "world_id" in locals() else "world_admin1")
+        await broadcast_state(state)
+        return web.json_response({"ok": True, "state": state, "template": new_tpl})
+
+    if action == "delete_template":
+        tpl_id = body.get("template_id")
+        state["saved_division_templates"] = [
+            t for t in state.get("saved_division_templates", []) if t.get("id") != tpl_id
+        ]
+        save_world_state(state, world_id if "world_id" in locals() else "world_admin1")
+        await broadcast_state(state)
+        return web.json_response({"ok": True, "state": state})
+
     nat = _find_nation(state, nation_id)
     if not nat:
         return web.json_response({"ok": False, "error": "国家を選択してください。"}, status=400)
@@ -491,6 +557,45 @@ async def handle_division_action(request: web.Request) -> web.Response:
         }
         nat["divisions"].append(new_div)
 
+        if body.get("also_save_template"):
+            new_tpl = {
+                "id": f"utpl_{uuid.uuid4().hex[:8]}",
+                "name": div_name,
+                "nation_id": nation_id or "",
+                "regiments": regiments,
+                "artillery_id": artillery_id,
+                "supports": supports,
+                "override_cost": override_cost,
+                "official_cost": spec["cost"],
+                "desc": " ＋ ".join(spec["breakdown"]) + f"（計 {spec['cost']:g}億）",
+                "spec": spec,
+            }
+            state.setdefault("saved_division_templates", []).append(new_tpl)
+
+    elif action == "adjust_count":
+        div_id = body.get("division_id")
+        delta = int(body.get("delta", 0))
+        target = next((d for d in nat["divisions"] if d["id"] == div_id), None)
+        if not target:
+            return web.json_response({"ok": False, "error": "対象の師団が見つかりません。"}, status=404)
+        unit_cost = float(target["spec"]["cost"])
+        if delta > 0:
+            need = round(unit_cost * delta, 1)
+            if float(nat["budget"]) < need:
+                return web.json_response({
+                    "ok": False,
+                    "error": f"追加配備の予算が不足しています（必要: {need:.1f}億 / 残資金: {nat['budget']:.1f}億）。"
+                }, status=400)
+            nat["budget"] = round(float(nat["budget"]) - need, 1)
+            target["count"] = int(target.get("count", 1)) + delta
+        elif delta < 0:
+            remove_cnt = min(int(target.get("count", 1)), abs(delta))
+            refund = round(unit_cost * remove_cnt, 1)
+            nat["budget"] = round(float(nat["budget"]) + refund, 1)
+            target["count"] = int(target.get("count", 1)) - remove_cnt
+            if target["count"] <= 0:
+                nat["divisions"] = [d for d in nat["divisions"] if d["id"] != div_id]
+
     elif action == "disband":
         # 戦争ルール「兵器を解体した場合、全額返ってきます」
         div_id = body.get("division_id")
@@ -505,7 +610,7 @@ async def handle_division_action(request: web.Request) -> web.Response:
         nat["budget"] = round(float(nat["budget"]) + refund, 1)
         nat["divisions"] = [d for d in nat["divisions"] if d["id"] != div_id]
 
-    save_world_state(state, "default")
+    save_world_state(state, world_id if "world_id" in locals() else "world_admin1")
     await broadcast_state(state)
     return web.json_response({"ok": True, "state": state})
 
@@ -520,10 +625,7 @@ async def handle_custom_tank(request: web.Request) -> web.Response:
     base_hull = (body.get("base_hull") or "").strip()
     main_gun = (body.get("main_gun") or "").strip()
     cost = max(0.5, float(body.get("cost", 3.5)))
-    ha = max(10, int(body.get("ha", 70)))
-    sa = max(10, int(body.get("sa", 65)))
-    armor = max(10, int(body.get("armor", 65)))
-    speed = max(10, int(body.get("speed", 42)))
+    desc = (body.get("desc") or "").strip()
 
     forbidden = ("t-54", "t54", "is-4", "is4")
     check_str = f"{name} {base_hull} {main_gun}".lower()
@@ -533,20 +635,18 @@ async def handle_custom_tank(request: web.Request) -> web.Response:
             "error": "【架空兵器ルール違反】T-54試作およびIS-4は強過ぎるため出禁（使用禁止）です！1945年9月15日までに走行可能な車体と主砲の組み合わせを使用してください。"
         }, status=400)
 
-    state = load_world_state("default")
+    world_id = _get_world_id(request, body if "body" in locals() else None)
+    state = load_world_state(world_id)
     new_tank = {
         "id": f"custom_tk_{uuid.uuid4().hex[:6]}",
         "name": f"{name} ({base_hull}+{main_gun})" if base_hull else name,
         "country": country,
         "type": "架空/カスタム戦車",
         "cost": round(cost, 2),
-        "ha": ha,
-        "sa": sa,
-        "armor": armor,
-        "speed": speed,
+        "desc": desc or f"車体: {base_hull or '独自'} / 主砲: {main_gun or '独自'}（1945年9月15日基準準拠）",
     }
     state.setdefault("custom_tanks", []).append(new_tank)
-    save_world_state(state, "default")
+    save_world_state(state, world_id if "world_id" in locals() else "world_admin1")
     await broadcast_state(state)
     return web.json_response({"ok": True, "state": state, "tank": new_tank})
 
@@ -562,7 +662,8 @@ async def handle_procure(request: web.Request) -> web.Response:
     unit_id = body.get("unit_id")
     count = max(1, int(body.get("count", 1)))
 
-    state = load_world_state("default")
+    world_id = _get_world_id(request, body if "body" in locals() else None)
+    state = load_world_state(world_id)
     nat = _find_nation(state, nation_id)
     if not nat:
         return web.json_response({"ok": False, "error": "国家を選択してください。"}, status=400)
@@ -644,7 +745,7 @@ async def handle_procure(request: web.Request) -> web.Response:
                 nat["facilities"].remove(unit_id)
                 nat["budget"] = round(float(nat["budget"]) + f["cost"], 1)
 
-    save_world_state(state, "default")
+    save_world_state(state, world_id if "world_id" in locals() else "world_admin1")
     await broadcast_state(state)
     return web.json_response({"ok": True, "state": state})
 
@@ -658,12 +759,13 @@ async def handle_treaty(request: web.Request) -> web.Response:
     """
     body = await request.json()
     action = body.get("action", "create")
-    state = load_world_state("default")
+    world_id = _get_world_id(request, body if "body" in locals() else None)
+    state = load_world_state(world_id)
 
     if action == "delete":
         tid = body.get("treaty_id")
         state["treaties"] = [t for t in state["treaties"] if t["id"] != tid]
-        save_world_state(state, "default")
+        save_world_state(state, world_id if "world_id" in locals() else "world_admin1")
         await broadcast_state(state)
         return web.json_response({"ok": True, "state": state})
 
@@ -759,14 +861,15 @@ async def handle_treaty(request: web.Request) -> web.Response:
         "created_at": datetime.now(timezone.utc).isoformat(),
     })
 
-    save_world_state(state, "default")
+    save_world_state(state, world_id if "world_id" in locals() else "world_admin1")
     await broadcast_state(state)
     return web.json_response({"ok": True, "state": state, "treaty": new_tr})
 
 
 async def handle_news_post(request: web.Request) -> web.Response:
     body = await request.json()
-    state = load_world_state("default")
+    world_id = _get_world_id(request, body if "body" in locals() else None)
+    state = load_world_state(world_id)
     nat = _find_nation(state, body.get("nation_id", ""))
     speaker = body.get("speaker") or (f"{nat['flag']}{nat['name']} 外務省" if nat else "国際通信社")
     flag = nat["flag"] if nat else "📰"
@@ -784,7 +887,7 @@ async def handle_news_post(request: web.Request) -> web.Response:
         "body": content,
         "created_at": datetime.now(timezone.utc).isoformat(),
     })
-    save_world_state(state, "default")
+    save_world_state(state, world_id if "world_id" in locals() else "world_admin1")
     await broadcast_state(state)
     return web.json_response({"ok": True, "state": state})
 
@@ -796,7 +899,8 @@ async def handle_war_declare(request: web.Request) -> web.Response:
     - 攻撃側最大3カ国・防衛側最大3カ国（合計6カ国まで、両陣営の参戦国数の差は1以下）
     """
     body = await request.json()
-    state = load_world_state("default")
+    world_id = _get_world_id(request, body if "body" in locals() else None)
+    state = load_world_state(world_id)
 
     attackers = list(dict.fromkeys(body.get("attackers", [])))
     defenders = list(dict.fromkeys(body.get("defenders", [])))
@@ -870,7 +974,7 @@ async def handle_war_declare(request: web.Request) -> web.Response:
         "created_at": datetime.now(timezone.utc).isoformat(),
     })
 
-    save_world_state(state, "default")
+    save_world_state(state, world_id if "world_id" in locals() else "world_admin1")
     await broadcast_state(state, "war_declared")
     return web.json_response({"ok": True, "state": state, "war": new_war})
 
@@ -884,7 +988,8 @@ async def handle_war_tactical_plan(request: web.Request) -> web.Response:
     war_id = body.get("war_id")
     action = body.get("action", "save")  # save / ai_plan / change_theater
 
-    state = load_world_state("default")
+    world_id = _get_world_id(request, body if "body" in locals() else None)
+    state = load_world_state(world_id)
     war = next((w for w in state["wars"] if w["id"] == war_id), None)
     if not war:
         return web.json_response({"ok": False, "error": "対象の戦争が見つかりません。"}, status=404)
@@ -929,7 +1034,7 @@ async def handle_war_tactical_plan(request: web.Request) -> web.Response:
         if "defender_submitted" in body:
             war["defender_submitted"] = bool(body["defender_submitted"])
 
-    save_world_state(state, "default")
+    save_world_state(state, world_id if "world_id" in locals() else "world_admin1")
     await broadcast_state(state, "war_plan_updated")
     return web.json_response({"ok": True, "state": state, "war": war})
 
@@ -943,7 +1048,8 @@ async def handle_war_resolve(request: web.Request) -> web.Response:
     use_ai_llm = bool(body.get("use_ai_llm", False))
     apply_territory = bool(body.get("apply_territory", True))
 
-    state = load_world_state("default")
+    world_id = _get_world_id(request, body if "body" in locals() else None)
+    state = load_world_state(world_id)
     war = next((w for w in state["wars"] if w["id"] == war_id), None)
     if not war:
         return web.json_response({"ok": False, "error": "対象の戦争が見つかりません。"}, status=404)
@@ -990,7 +1096,7 @@ async def handle_war_resolve(request: web.Request) -> web.Response:
         "created_at": datetime.now(timezone.utc).isoformat(),
     })
 
-    save_world_state(state, "default")
+    save_world_state(state, world_id if "world_id" in locals() else "world_admin1")
     await broadcast_state(state, "war_resolved")
     return web.json_response({"ok": True, "state": state, "war": war, "result": sim})
 
@@ -1052,7 +1158,7 @@ def create_app() -> web.Application:
 
 
 if __name__ == "__main__":
-    port = int(os.environ.get("AIWA_WEB_PORT", "8085"))
+    port = int(os.environ.get("PORT", os.environ.get("AIWA_WEB_PORT", "8085")))
     print(f"============================================================")
     print(f" 🌍 AIWA 統合Webゲーム (欧州・地中海シアター) サーバー起動")
     print(f" 👉 ブラウザで http://localhost:{port} を開いてください")
