@@ -286,7 +286,20 @@ function handleStandaloneApi(url, data = {}) {
         const oldN = findNat(prov.owner_id);
         if (oldN) {
           oldN.province_ids = oldN.province_ids.filter((x) => x !== prov.id);
-          oldN.facilities = (oldN.facilities || []).filter((x) => !(typeof x === "object" && x.province_id === prov.id));
+          const facMap = {};
+          for (const f of CATALOG.facilities) facMap[f.id] = f;
+          const keepFacs = [];
+          for (const item of (oldN.facilities || [])) {
+            const pid = typeof item === "object" ? item.province_id : oldN.capital_id;
+            const fid = typeof item === "object" ? item.facility_id : item;
+            if (pid === prov.id) {
+              const cost = Number(facMap[fid]?.cost || 0);
+              oldN.budget = +(oldN.budget + cost).toFixed(1);
+            } else {
+              keepFacs.push(item);
+            }
+          }
+          oldN.facilities = keepFacs;
         }
       }
       prov.owner_id = target;
@@ -444,6 +457,9 @@ function handleStandaloneApi(url, data = {}) {
         const pid = data.province_id || nat.capital_id || (nat.province_ids || [])[0];
         const prov = state.provinces.find((p) => p.id === pid);
         if (!prov || prov.owner_id !== nat.id) throw new Error("施設は自国が領有するプロビンスにのみ配備できます。");
+        if (["fac_naval_port", "fac_coastal_gun"].includes(f.id) && !prov.coastal) {
+          throw new Error(`『${f.name}』は沿岸プロビンスにのみ配備可能です（『${prov.name}』は内陸です）。`);
+        }
         if ((nat.facilities || []).some((x) => x.facility_id === f.id && x.province_id === pid)) {
           throw new Error(`『${prov.name}』には既に『${f.name}』が配備されています。`);
         }
@@ -1404,6 +1420,67 @@ function renderProvinceInspectPanel() {
       <div><strong>陸続き隣接:</strong> <span class="muted">${nbNames || "なし"}</span></div>
   `;
 
+  // 自国領プロビンスの場合：施設の直接配備・管理（白地図配備）
+  if (owner && activeNat && owner.id === activeNat.id) {
+    html += `
+      <div class="sub-box" style="margin-top:6px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+          <strong>🏗️ 施設の直接配備・管理（白地図配備）</strong>
+          <span class="price-tag" style="font-size:11px;">残資金: ${formatOku(activeNat.budget)}</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:5px;">
+    `;
+    const facDefs = CATALOG?.facilities || [];
+    for (const f of facDefs) {
+      const isDeployed = (prov.facilities || []).includes(f.id) ||
+        (f.id === "fac_naval_port" && prov.has_port) ||
+        (f.id === "fac_radar" && prov.has_radar) ||
+        (f.id === "fac_fortress" && prov.has_fort) ||
+        (f.id === "fac_coastal_gun" && prov.has_coastal_gun);
+
+      const isCoastalReq = ["fac_naval_port", "fac_coastal_gun"].includes(f.id);
+      const isCoastalBlocked = isCoastalReq && !prov.coastal;
+
+      html += `
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:5px 7px;background:rgba(15,23,42,0.6);border-radius:4px;gap:6px;">
+          <div style="flex:1;min-width:0;">
+            <div style="font-size:12px;font-weight:700;color:#f8fafc;">${f.name} <span class="price-tag" style="font-size:10.5px;">(${f.cost}億)</span></div>
+            <div class="muted" style="font-size:10.5px;line-height:1.3;">${f.desc}</div>
+          </div>
+          <div style="flex-shrink:0;">
+      `;
+
+      if (isDeployed) {
+        html += `
+          <button class="btn btn-xs btn-outline btn-disband-prov-fac" data-fac-id="${f.id}" title="解体して全額返金">
+            🗑️ 解体(+${f.cost}億)
+          </button>
+        `;
+      } else if (isCoastalBlocked) {
+        html += `
+          <button class="btn btn-xs btn-outline" disabled title="内陸プロビンスのため配備できません" style="opacity:0.45;cursor:not-allowed;">
+            ⚠️ 内陸不可
+          </button>
+        `;
+      } else {
+        html += `
+          <button class="btn btn-xs btn-primary btn-deploy-prov-fac" data-fac-id="${f.id}">
+            💰 配備
+          </button>
+        `;
+      }
+
+      html += `
+          </div>
+        </div>
+      `;
+    }
+    html += `
+        </div>
+      </div>
+    `;
+  }
+
   // 白地購入ボタン（未領有プロビンスの場合）
   if (!owner && activeNat) {
     html += `
@@ -1419,6 +1496,51 @@ function renderProvinceInspectPanel() {
 
   html += `</div>`;
   bodyEl.innerHTML = html;
+
+  // 施設直接配備・解体イベント
+  bodyEl.querySelectorAll(".btn-deploy-prov-fac").forEach((btn) => {
+    btn.addEventListener("click", async () => {
+      const facId = btn.getAttribute("data-fac-id");
+      try {
+        const res = await apiPost("/api/military/procure", {
+          nation_id: activeNat.id,
+          domain: "facility",
+          action: "buy",
+          unit_id: facId,
+          province_id: prov.id,
+          count: 1,
+        });
+        APP_STATE = res.state;
+        const fDef = CATALOG?.facilities?.find((x) => x.id === facId);
+        showToast(`『${prov.name}』に『${fDef?.name || facId}』を配備しました！`);
+        renderAll();
+      } catch (err) {
+        showToast(err.message, true);
+      }
+    });
+  });
+
+  bodyEl.querySelectorAll(".btn-disband-prov-fac").forEach((btn) => {
+    btn.addEventListener("click", async () => {
+      const facId = btn.getAttribute("data-fac-id");
+      try {
+        const res = await apiPost("/api/military/procure", {
+          nation_id: activeNat.id,
+          domain: "facility",
+          action: "disband",
+          unit_id: facId,
+          province_id: prov.id,
+          count: 1,
+        });
+        APP_STATE = res.state;
+        const fDef = CATALOG?.facilities?.find((x) => x.id === facId);
+        showToast(`『${prov.name}』の『${fDef?.name || facId}』を解体し全額返金しました。`);
+        renderAll();
+      } catch (err) {
+        showToast(err.message, true);
+      }
+    });
+  });
 
   const buyBtn = document.getElementById("btn-buy-white-prov");
   if (buyBtn) {
@@ -2394,8 +2516,14 @@ function renderProcurementShop() {
     row.querySelector(".btn-buy-item").addEventListener("click", async () => {
       if (!activeNat) return;
       const qtyInput = row.querySelector(".shop-qty-input");
-      const qty = qtyInput ? Math.max(1, Number(qtyInput.value || 1)) : 1;
       const facProvId = document.getElementById("shop-facility-prov")?.value || activeNat.capital_id;
+      if (ACTIVE_SHOP_DOMAIN === "facility") {
+        const targetP = APP_STATE?.provinces?.find((p) => p.id === facProvId);
+        if (["fac_naval_port", "fac_coastal_gun"].includes(item.id) && targetP && !targetP.coastal) {
+          showToast(`『${item.name}』は沿岸プロビンスにのみ配備可能です（『${targetP.name}』は内陸です）。`, true);
+          return;
+        }
+      }
       try {
         const payload = {
           nation_id: activeNat.id,

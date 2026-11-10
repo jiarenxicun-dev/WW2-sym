@@ -73,6 +73,34 @@ def _find_nation(state: Dict[str, Any], nation_id: str) -> Dict[str, Any] | None
     return None
 
 
+def _refund_province_facilities(state: Dict[str, Any], nation: Dict[str, Any], province_id: str) -> float:
+    """
+    指定プロビンスに配備されていた施設を国家の保有リストから削除し、
+    その施設コストの合計金額を nation['budget'] に自動返金します。
+    返金総額を返します。
+    """
+    fac_map = {f["id"]: f for f in FACILITIES}
+    keep_facs: List[Any] = []
+    refund_total = 0.0
+    cap_id = nation.get("capital_id")
+    for item in nation.get("facilities", []):
+        if isinstance(item, dict):
+            pid = item.get("province_id")
+            fid = item.get("facility_id") or item.get("unit_id")
+        else:
+            pid = cap_id
+            fid = item
+        if pid == province_id:
+            cost = float(fac_map.get(fid, {}).get("cost", 0.0))
+            refund_total += cost
+        else:
+            keep_facs.append(item)
+    if refund_total > 0:
+        nation["facilities"] = keep_facs
+        nation["budget"] = round(float(nation.get("budget", 0.0)) + refund_total, 1)
+    return refund_total
+
+
 def _check_passcode(state: Dict[str, Any], nation: Dict[str, Any], passcode: str) -> bool:
     if state.get("mode") != "multiplayer":
         return True
@@ -370,8 +398,7 @@ async def handle_province_action(request: web.Request) -> web.Response:
     """
     平時マップでのプロビンス操作:
     - buy_white: 白地購入ルール（1プロビ100億、10プロビまで）
-    - bucket_paint: GM/サンドボックス用バケツ塗り（領有権変更・白地化）
-    - warp_unit: 平時のワープ（自国・同盟国・軍事通行権保有国のプロビンスへ師団移動）
+    - bucket_paint: GM/サンドボックス用バケツ塗り（領有権変更・白地化・旧所有国への施設自動返金）
     """
     body = await request.json()
     action = body.get("action")
@@ -409,57 +436,24 @@ async def handle_province_action(request: web.Request) -> web.Response:
         old_owner_id = prov.get("owner_id")
         if old_owner_id and old_owner_id != target_owner:
             old_nat = _find_nation(state, old_owner_id)
-            if old_nat and province_id in old_nat["province_ids"]:
-                old_nat["province_ids"].remove(province_id)
+            if old_nat:
+                if province_id in old_nat.get("province_ids", []):
+                    old_nat["province_ids"].remove(province_id)
+                # 旧所有国が配備していた施設を全額自動返金
+                _refund_province_facilities(state, old_nat, province_id)
         prov["owner_id"] = target_owner
         if not target_owner:
             prov["is_capital"] = False
             prov["is_city"] = False
             prov["has_port"] = False
             prov["has_fort"] = False
+            prov["has_radar"] = False
+            prov["has_coastal_gun"] = False
+            prov["facilities"] = []
         else:
             new_nat = _find_nation(state, target_owner)
-            if new_nat and province_id not in new_nat["province_ids"]:
+            if new_nat and province_id not in new_nat.get("province_ids", []):
                 new_nat["province_ids"].append(province_id)
-
-    elif action == "warp_unit":
-        # 平時のワープ（同盟国または軍事通行権を持つ国の領土へワープ可能）
-        nat = _find_nation(state, nation_id)
-        div_id = body.get("division_id")
-        if not nat:
-            return web.json_response({"ok": False, "error": "国家が見つかりません。"}, status=400)
-        dest_owner = prov.get("owner_id")
-        allowed_owners = {nat["id"]}
-        for tr in state.get("treaties", []):
-            if tr["type"] in ("alliance", "transit"):
-                if tr["nation_a"] == nat["id"]:
-                    allowed_owners.add(tr["nation_b"])
-                elif tr["nation_b"] == nat["id"]:
-                    allowed_owners.add(tr["nation_a"])
-        if dest_owner not in allowed_owners:
-            return web.json_response({
-                "ok": False,
-                "error": "【平時ワープルール】ワープ先は自国領土、または『軍事同盟』『軍事的通行権』を締結している国の領土・港である必要があります。"
-            }, status=400)
-
-        target_div = None
-        for d in nat.get("divisions", []):
-            if d["id"] == div_id:
-                target_div = d
-                break
-        if not target_div:
-            return web.json_response({"ok": False, "error": "対象の師団が見つかりません。"}, status=404)
-
-        target_div["province_id"] = province_id
-        state["news"].insert(0, {
-            "id": f"news_{uuid.uuid4().hex[:8]}",
-            "week": state["week"],
-            "speaker": f"{nat['flag']}{nat['name']} 統帥部",
-            "flag": nat["flag"],
-            "title": f"【平時部隊展開(ワープ)】{prov['name']}へ部隊移動",
-            "body": f"{nat['name']}の『{target_div['name']}（{target_div.get('count', 1)}個師団）』が {prov['name']} へ展開しました。",
-            "created_at": datetime.now(timezone.utc).isoformat(),
-        })
 
     save_world_state(state, world_id if "world_id" in locals() else "world_admin1")
     await broadcast_state(state)
@@ -527,7 +521,6 @@ async def handle_division_action(request: web.Request) -> web.Response:
         supports = body.get("supports", [])
         override_cost = body.get("override_cost")
         count = max(1, int(body.get("count", 1)))
-        province_id = body.get("province_id") or nat.get("capital_id")
 
         spec = calculate_division_spec(
             regiments,
@@ -552,7 +545,6 @@ async def handle_division_action(request: web.Request) -> web.Response:
             "supports": supports,
             "override_cost": override_cost,
             "count": count,
-            "province_id": province_id,
             "spec": spec,
         }
         nat["divisions"].append(new_div)
@@ -736,6 +728,11 @@ async def handle_procure(request: web.Request) -> web.Response:
             target_prov = prov_by_id[province_id]
             if target_prov.get("owner_id") != nat["id"]:
                 return web.json_response({"ok": False, "error": "施設は自国が領有するプロビンスにのみ配備できます。"}, status=400)
+            if unit_id in ("fac_naval_port", "fac_coastal_gun") and not target_prov.get("coastal", False):
+                return web.json_response({
+                    "ok": False,
+                    "error": f"『{f['name']}』は沿岸プロビンスにのみ配備可能です（『{target_prov['name']}』は内陸プロビンスです）。"
+                }, status=400)
             already = any(
                 (x.get("facility_id") == unit_id and x.get("province_id") == province_id)
                 if isinstance(x, dict) else (x == unit_id and province_id == nat.get("capital_id"))
@@ -857,6 +854,8 @@ async def handle_treaty(request: web.Request) -> web.Response:
             p = prov_by_id.get(pid)
             if p and pid in nat_b["province_ids"]:
                 nat_b["province_ids"].remove(pid)
+                # 割譲されたプロビンスの施設を旧領有国に全額自動返金
+                _refund_province_facilities(state, nat_b, pid)
                 if pid not in nat_a["province_ids"]:
                     nat_a["province_ids"].append(pid)
                 p["owner_id"] = nat_a["id"]
@@ -1111,8 +1110,11 @@ async def handle_war_resolve(request: web.Request) -> web.Response:
                 p = provinces_by_id.get(pid)
                 if p:
                     old_owner = nations_by_id.get(p.get("owner_id", ""))
-                    if old_owner and pid in old_owner["province_ids"]:
-                        old_owner["province_ids"].remove(pid)
+                    if old_owner:
+                        if pid in old_owner.get("province_ids", []):
+                            old_owner["province_ids"].remove(pid)
+                        # 占領されたプロビンスの施設を旧領有国に全額自動返金
+                        _refund_province_facilities(state, old_owner, pid)
                     if pid not in lead_atk["province_ids"]:
                         lead_atk["province_ids"].append(pid)
                     p["owner_id"] = lead_atk["id"]
