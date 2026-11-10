@@ -12,7 +12,7 @@ let PEACE_TOOL = "inspect"; // inspect | found | bucket
 let FOUND_SELECTION = { capital: null, cities: [], extra: [] };
 
 // 平時マップ ズーム・パン状態
-let ACTIVE_WORLD_ID = localStorage.getItem("aiwa_active_world_id") || "world_admin1";
+let ACTIVE_WORLD_ID = "world_admin1";
 let PEACE_VB = ACTIVE_WORLD_ID === "world_admin1" ? { x: 0, y: 0, w: 1440, h: 720 } : { x: 45, y: 35, w: 1510, h: 930 };
 let isPeacePanning = false;
 let peacePanStart = { x: 0, y: 0 };
@@ -625,13 +625,11 @@ async function initApp() {
     initPngPainterCanvas();
     ACTIVE_WORLD_ID = data.active_world_id || APP_STATE.world_id || ACTIVE_WORLD_ID;
     localStorage.setItem("aiwa_active_world_id", ACTIVE_WORLD_ID);
-    const selWorld = document.getElementById("select-active-world");
-    if (selWorld) selWorld.value = ACTIVE_WORLD_ID;
     renderAll();
     connectWebSocket();
     fetchDiscordLogs();
   } catch (err) {
-    if (window.STANDALONE_BOOTSTRAP) {
+    if (location.protocol === "file:" && window.STANDALONE_BOOTSTRAP) {
       IS_STANDALONE_MODE = true;
       CATALOG = window.STANDALONE_BOOTSTRAP.catalog;
       let saved = null;
@@ -639,6 +637,38 @@ async function initApp() {
         saved = JSON.parse(localStorage.getItem("aiwa_web_standalone_state_v2") || "null");
       } catch (e) {}
       APP_STATE = saved || JSON.parse(JSON.stringify(window.STANDALONE_BOOTSTRAP.state_aiwa));
+      if (saved) {
+        const geography = new Map(window.STANDALONE_BOOTSTRAP.state_aiwa.provinces.map((p) => [p.id, p]));
+        const provinces = new Map(APP_STATE.provinces.map((p) => [p.id, p]));
+        const splits = window.STANDALONE_BOOTSTRAP.province_splits || {};
+        for (const [parentId, childIds] of Object.entries(splits)) {
+          const parent = provinces.get(parentId);
+          if (!parent) continue;
+          for (const childId of childIds) {
+            if (provinces.has(childId)) continue;
+            const child = structuredClone(geography.get(childId));
+            child.owner_id = parent.owner_id;
+            APP_STATE.provinces.push(child);
+            provinces.set(childId, child);
+            const owner = APP_STATE.nations.find((nation) => nation.id === child.owner_id);
+            if (owner && !owner.province_ids.includes(childId)) owner.province_ids.push(childId);
+            for (const neighborId of child.neighbors) {
+              const neighbor = provinces.get(neighborId);
+              if (neighbor && !neighbor.neighbors.includes(childId)) neighbor.neighbors.push(childId);
+            }
+          }
+        }
+        for (const province of APP_STATE.provinces) {
+          const definition = geography.get(province.id);
+          if (definition) {
+            province.coastal = definition.coastal;
+            province.terrain = definition.terrain;
+            if (Object.hasOwn(splits, province.id) || province.id === "ire_belfast") {
+              province.name = definition.name;
+            }
+          }
+        }
+      }
       if (APP_STATE.wars && APP_STATE.wars.length > 0) {
         ACTIVE_WAR_ID = APP_STATE.wars[0].id;
       }
@@ -776,35 +806,6 @@ function generateProvincePolygonPoints(prov, allProvs) {
   return pts.join(" ");
 }
 
-
-async function switchWorld(worldId) {
-  const container = document.getElementById("world-admin1-container");
-  if (container) container.remove();
-  WORLD_ADMIN1_RENDERED = false;
-  WORLD_PATH_MAP = {};
-  ACTIVE_WORLD_ID = worldId;
-  localStorage.setItem("aiwa_active_world_id", worldId);
-  if (ACTIVE_WORLD_ID === "world_admin1") {
-    PEACE_VB = { x: 0, y: 0, w: 1440, h: 720 };
-  } else {
-    PEACE_VB = { x: 45, y: 35, w: 1510, h: 930 };
-  }
-  SELECTED_PROV_ID = null;
-  FOUND_SELECTION = { capital: null, cities: [], extra: [] };
-  try {
-    const res = await fetch(`/api/bootstrap?world=${ACTIVE_WORLD_ID}`);
-    if (res.ok) {
-      const data = await res.json();
-      APP_STATE = data.state;
-      const selWorld = document.getElementById("select-active-world");
-      if (selWorld) selWorld.value = ACTIVE_WORLD_ID;
-      renderAll();
-      showToast(`ワールドを『${APP_STATE.name || worldId}』に切り替えました。`);
-    }
-  } catch (err) {
-    showToast("ワールド切替に失敗しました: " + err.message, true);
-  }
-}
 
 let WORLD_ADMIN1_RENDERED = false;
 let WORLD_PATH_MAP = {};
@@ -1193,6 +1194,9 @@ function renderPeacetimeMap() {
     } else {
       const polyPts = generateProvincePolygonPoints(p, provs);
       html += `<polygon points="${polyPts}" fill="${fill}" fill-opacity="${fillOpacity}" stroke="${stroke}" stroke-width="${strokeW}" />`;
+    }
+    if (rProv?.marker_r) {
+      html += `<circle cx="${cx}" cy="${rProv.marker_y ?? cy}" r="${rProv.marker_r}" fill="${fill}" stroke="${stroke}" stroke-width="${strokeW}" />`;
     }
 
     html += `</g>`;
@@ -4087,14 +4091,6 @@ function setupEventListeners() {
   });
 
   // シナリオ初期化モーダル
-  const selActiveWorld = document.getElementById("select-active-world");
-  if (selActiveWorld) {
-    selActiveWorld.value = ACTIVE_WORLD_ID;
-    selActiveWorld.addEventListener("change", (e) => {
-      switchWorld(e.target.value);
-    });
-  }
-
   const chkIslandMarkers = document.getElementById("chk-show-island-markers");
   if (chkIslandMarkers) {
     chkIslandMarkers.addEventListener("change", () => {
@@ -4109,31 +4105,13 @@ function setupEventListeners() {
       APP_STATE = res.state;
       ACTIVE_WAR_ID = null;
       document.getElementById("modal-scenario").style.display = "none";
-      showToast("🌍 世界マップ（全1,527州）で初期化しました！白地プロビンスから建国してください。");
+      showToast(`🌍 世界マップ（全${APP_STATE.provinces.length.toLocaleString("ja-JP")}州）で初期化しました！白地プロビンスから建国してください。`);
       renderAll();
     });
   }
 
   document.getElementById("btn-scenario-menu").addEventListener("click", () => {
     document.getElementById("modal-scenario").style.display = "flex";
-  });
-
-  document.getElementById("btn-reset-aiwa").addEventListener("click", async () => {
-    const res = await apiPost("/api/scenario/reset", { scenario_type: "aiwa_current" });
-    APP_STATE = res.state;
-    ACTIVE_WAR_ID = APP_STATE.wars[0]?.id || null;
-    document.getElementById("modal-scenario").style.display = "none";
-    showToast("🌍 AIWA 現行サーバー再現シナリオで初期化しました！");
-    renderAll();
-  });
-
-  document.getElementById("btn-reset-blank").addEventListener("click", async () => {
-    const res = await apiPost("/api/scenario/reset", { scenario_type: "blank_map" });
-    APP_STATE = res.state;
-    ACTIVE_WAR_ID = null;
-    document.getElementById("modal-scenario").style.display = "none";
-    showToast("🏳️ 白地図から新規スタートしました！『新規建国』モードで建国してください。");
-    renderAll();
   });
 
   // PNGバケツ塗りツール操作

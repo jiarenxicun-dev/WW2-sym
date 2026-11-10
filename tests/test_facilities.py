@@ -1,9 +1,34 @@
 import asyncio
+import sqlite3
 import unittest
-from unittest.mock import MagicMock
+from contextlib import closing
+from unittest.mock import MagicMock, patch
 from aiohttp import web
 import game_db
 import server
+
+
+class TestCoastalGeography(unittest.TestCase):
+    def test_existing_saves_use_corrected_geography(self):
+        cases = (
+            ("world_admin1", "g-a52852c7ed1d", False),
+            ("world_admin1", "g-1b8e8fd24ea3", True),
+            ("default", "su_baku", False),
+            ("default", "bk_sarajevo", True),
+        )
+        with closing(sqlite3.connect(":memory:")) as conn, patch.object(game_db, "get_conn", return_value=conn):
+            conn.row_factory = sqlite3.Row
+            for world_id, province_id, expected in cases:
+                with self.subTest(province_id=province_id):
+                    state = game_db.load_world_state(world_id)
+                    province = next(p for p in state["provinces"] if p["id"] == province_id)
+                    self.assertIs(province["coastal"], expected)
+                    province.update(coastal=not expected, terrain="outdated", owner_id="test_owner")
+                    game_db.save_world_state(state, world_id)
+                    loaded = next(p for p in game_db.load_world_state(world_id)["provinces"] if p["id"] == province_id)
+                    self.assertIs(loaded["coastal"], expected)
+                    self.assertNotEqual(loaded["terrain"], "outdated")
+                    self.assertEqual(loaded["owner_id"], "test_owner")
 
 
 class MockRequest:
@@ -67,6 +92,22 @@ class TestFacilities(unittest.TestCase):
 
         self.state["nations"] = [self.nat_a, self.nat_b]
         game_db.sync_province_facilities(self.state)
+
+    def test_import_requires_owned_coast_for_coastal_facilities(self):
+        with patch.object(server, "load_world_state", return_value=self.state), patch.object(server, "save_world_state") as save:
+            for province in (self.p_inland, self.p_other):
+                request = MockRequest({
+                    "nation_id": "nat_a",
+                    "data": {"facilities": [{"facility_id": "fac_naval_port", "province_id": province["id"]}]},
+                })
+                self.assertEqual(asyncio.run(server.handle_military_import(request)).status, 400)
+            save.assert_not_called()
+
+            self.nat_a["capital_id"] = self.p_inland["id"]
+            request = MockRequest({"nation_id": "nat_a", "data": {"facilities": ["fac_naval_port"]}})
+            self.assertEqual(asyncio.run(server.handle_military_import(request)).status, 200)
+            self.assertEqual(self.nat_a["facilities"][0]["province_id"], self.p_coast["id"])
+            save.assert_called_once()
 
     def test_sync_province_facilities(self):
         """施設データがプロビンスのフラグに正しく同期されるか"""

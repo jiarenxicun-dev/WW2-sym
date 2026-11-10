@@ -23,6 +23,7 @@ from world_map_data import (
     AIWA_SCENARIO_NEWS,
     AIWA_SCENARIO_TREATIES,
     AIWA_SCENARIO_WARS,
+    EUROPE_PROVINCE_SPLITS,
     PROVINCES,
 )
 
@@ -884,8 +885,8 @@ def init_game_db() -> None:
 
 def build_scenario_state(scenario_type: str = "world_admin1", world_id: str = "world_admin1") -> Dict[str, Any]:
     """
-    'world_admin1': 世界マップ（1,527州・Natural Earth 10m Admin 1）
-    'aiwa_current': Discordの現行AIWAサーバー再現シナリオ（欧州＋地中海沿岸299州）
+    'world_admin1': 世界マップ（Natural Earth 10m Admin 1）
+    'aiwa_current': Discordの現行AIWAサーバー再現シナリオ（欧州＋地中海沿岸）
     'blank_map': 欧州白地図からの新規建国シナリオ
     """
     if world_id == "world_admin1" or scenario_type == "world_admin1":
@@ -901,7 +902,7 @@ def build_scenario_state(scenario_type: str = "world_admin1", world_id: str = "w
             p["facilities"] = []
         return {
             "world_id": "world_admin1",
-            "name": "世界マップ（1,527州・世界規模建国）",
+            "name": f"世界マップ（{len(provinces):,}州・世界規模建国）",
             "scenario_type": "world_admin1",
             "week": 1,
             "mode": "sandbox",
@@ -916,8 +917,8 @@ def build_scenario_state(scenario_type: str = "world_admin1", world_id: str = "w
                     "week": 1,
                     "speaker": "AIWA 運営審判部",
                     "flag": "🌍",
-                    "title": "世界マップ（全1,527州）ワールド開設",
-                    "body": "第一次世界大戦・第二次世界大戦の主要国境を再現可能な全1,527州の世界マップが利用可能になりました。白地プロビンスから新規建国・軍備編成を行えます。",
+                    "title": f"世界マップ（全{len(provinces):,}州）ワールド開設",
+                    "body": f"第一次世界大戦・第二次世界大戦の主要国境を再現可能な全{len(provinces):,}州の世界マップが利用可能になりました。白地プロビンスから新規建国・軍備編成を行えます。",
                     "created_at": datetime.now(timezone.utc).isoformat(),
                 }
             ],
@@ -950,6 +951,7 @@ def build_scenario_state(scenario_type: str = "world_admin1", world_id: str = "w
             cap_id = raw_n["capital_id"]
             cids = list(raw_n["city_ids"])
             pids = list(raw_n["province_ids"])
+            pids.extend(child for parent in pids[:] for child in EUROPE_PROVINCE_SPLITS.get(parent, []) if child not in pids)
 
             for pid in pids:
                 if pid in prov_by_id:
@@ -1327,44 +1329,47 @@ def load_world_state(world_id: str = "world_admin1") -> Dict[str, Any]:
         state.setdefault("world_id", world_id)
         state["tactical_theaters"] = TACTICAL_THEATERS
         state.setdefault("saved_division_templates", [])
-        # プロビンスの最新地理座標を同期
-        if world_id == "world_admin1":
-            geography = {p["id"]: p for p in WORLD_ADMIN1_PROVINCES}
-            provinces = state["provinces"]
-            saved = {p["id"]: p for p in provinces}
-            nations = {nation["id"]: nation for nation in state["nations"]}
-            for parent_id, child_ids in WORLD_PROVINCE_SPLITS.items():
-                if parent_id not in saved:
+        # 地理データを更新し、セーブ済みの領有権や施設は引き継ぐ。
+        is_world_map = world_id == "world_admin1"
+        geography = {p["id"]: p for p in (WORLD_ADMIN1_PROVINCES if is_world_map else PROVINCES)}
+        splits = WORLD_PROVINCE_SPLITS if is_world_map else EUROPE_PROVINCE_SPLITS
+        provinces = state["provinces"]
+        saved = {p["id"]: p for p in provinces}
+        nations = {nation["id"]: nation for nation in state["nations"]}
+        for parent_id, child_ids in splits.items():
+            if parent_id not in saved:
+                continue
+            owner_id = saved[parent_id].get("owner_id")
+            for child_id in child_ids:
+                if child_id in saved:
                     continue
-                owner_id = saved[parent_id].get("owner_id")
-                for child_id in child_ids:
-                    if child_id in saved:
-                        continue
-                    child = {
-                        **copy.deepcopy(geography[child_id]),
-                        "owner_id": owner_id,
-                        "is_capital": False,
-                        "is_city": False,
-                        "has_port": False,
-                        "has_fort": False,
-                        "has_radar": False,
-                        "has_coastal_gun": False,
-                        "facilities": [],
-                    }
-                    provinces.append(child)
-                    saved[child_id] = child
-                    if owner_id in nations and child_id not in nations[owner_id]["province_ids"]:
-                        nations[owner_id]["province_ids"].append(child_id)
+                child = {
+                    **copy.deepcopy(geography[child_id]),
+                    "owner_id": owner_id,
+                    "is_capital": False,
+                    "is_city": False,
+                }
+                provinces.append(child)
+                saved[child_id] = child
+                if owner_id in nations and child_id not in nations[owner_id]["province_ids"]:
+                    nations[owner_id]["province_ids"].append(child_id)
+                for neighbor_id in child["neighbors"]:
+                    if neighbor_id in saved and child_id not in saved[neighbor_id]["neighbors"]:
+                        saved[neighbor_id]["neighbors"].append(child_id)
+        if is_world_map:
+            state["name"] = f"世界マップ（{len(provinces):,}州・世界規模建国）"
             for pid in saved.keys() & geography.keys():
                 definition = geography[pid]
                 for key in ("name", "neighbors", "area_km2"):
                     saved[pid][key] = copy.deepcopy(definition[key])
-            latest_coords = {p["id"]: (p["x"], p["y"]) for p in WORLD_ADMIN1_PROVINCES}
         else:
-            latest_coords = {p["id"]: (p["x"], p["y"]) for p in PROVINCES}
+            for pid in (set(splits) | {"ire_belfast"}) & saved.keys():
+                saved[pid]["name"] = geography[pid]["name"]
         for sp in state.get("provinces", []):
-            if sp["id"] in latest_coords:
-                sp["x"], sp["y"] = latest_coords[sp["id"]]
+            definition = geography.get(sp["id"])
+            if definition is not None:
+                for key in ("x", "y", "coastal", "terrain"):
+                    sp[key] = definition[key]
         sync_province_facilities(state)
         # 師団スペック（説明文・内訳・コスト）を最新カタログ定義で同期
         custom_tanks = state.get("custom_tanks", [])

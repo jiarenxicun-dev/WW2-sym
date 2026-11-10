@@ -30,7 +30,9 @@ from catalog_data import (
     get_full_catalog,
 )
 from game_db import (
+    PROVINCES,
     TACTICAL_THEATERS,
+    WORLD_ADMIN1_PROVINCES,
     build_scenario_state,
     check_land_connectivity,
     init_game_db,
@@ -40,6 +42,7 @@ from game_db import (
 
 STATIC_DIR = Path(__file__).parent / "static"
 DISCORD_DB_PATH = Path(__file__).parent.parent / "discord-antigravity-bot" / "data" / "discord_messages.db"
+COASTAL_FACILITIES = {"fac_naval_port", "fac_coastal_gun"}
 
 
 def _get_world_id(request: web.Request, body: Optional[Dict[str, Any]] = None) -> str:
@@ -197,9 +200,11 @@ async def handle_bootstrap(request: web.Request) -> web.Response:
         world_id = "world_admin1"
     state = load_world_state(world_id)
     catalog = get_full_catalog()
+    world_count = len(WORLD_ADMIN1_PROVINCES)
+    europe_count = len(PROVINCES)
     worlds = [
-        {"id": "world_admin1", "name": "🌍 世界マップ (1,527州)", "count": 1527},
-        {"id": "default", "name": "🇪🇺 欧州マップ (299州・現行戦役)", "count": 299},
+        {"id": "world_admin1", "name": f"🌍 世界マップ ({world_count:,}州)", "count": world_count},
+        {"id": "default", "name": f"🇪🇺 欧州マップ ({europe_count:,}州・現行戦役)", "count": europe_count},
     ]
     return web.json_response({
         "state": state,
@@ -687,13 +692,28 @@ async def handle_military_import(request: web.Request) -> web.Response:
                 nat["air_units"].append(dict(au))
 
     # 施設
+    prov_map = {p["id"]: p for p in state.get("provinces", [])}
     if "facilities" in data and isinstance(data["facilities"], list):
         for fac in data["facilities"]:
             fid = fac if isinstance(fac, str) else fac.get("facility_id")
+            province_id = fac.get("province_id") if isinstance(fac, dict) else None
+            province = prov_map.get(province_id or nat.get("capital_id"))
+            if fid in COASTAL_FACILITIES:
+                if not province_id and (not province or not province.get("coastal") or province.get("owner_id") != nation_id):
+                    province = next(
+                        (p for p in prov_map.values() if p.get("owner_id") == nation_id and p.get("coastal")),
+                        None,
+                    )
+                if not province or province.get("owner_id") != nation_id or not province.get("coastal"):
+                    return web.json_response({
+                        "ok": False,
+                        "error": "軍港・海岸砲要塞のインポートには、自国の沿岸プロビンスを指定してください。",
+                    }, status=400)
+                province_id = province["id"]
             inst = {
                 "id": f"inst_{uuid.uuid4().hex[:6]}",
                 "facility_id": fid,
-                "province_id": fac.get("province_id", nat.get("capital_id", "")) if isinstance(fac, dict) else nat.get("capital_id", ""),
+                "province_id": province_id or nat.get("capital_id", ""),
             }
             nat.setdefault("facilities", []).append(inst)
 
@@ -706,7 +726,6 @@ async def handle_military_import(request: web.Request) -> web.Response:
             state.setdefault("saved_division_templates", []).append(tpl_copy)
 
     # プロビンス側の facilities リストにも同期
-    prov_map = {p["id"]: p for p in state.get("provinces", [])}
     for fac in nat.get("facilities", []):
         pid = fac.get("province_id") if isinstance(fac, dict) else nat.get("capital_id")
         fid = fac.get("facility_id") if isinstance(fac, dict) else fac
@@ -804,7 +823,7 @@ async def handle_procure(request: web.Request) -> web.Response:
             target_prov = prov_by_id[province_id]
             if target_prov.get("owner_id") != nat["id"]:
                 return web.json_response({"ok": False, "error": "施設は自国が領有するプロビンスにのみ配備できます。"}, status=400)
-            if unit_id in ("fac_naval_port", "fac_coastal_gun") and not target_prov.get("coastal", False):
+            if unit_id in COASTAL_FACILITIES and not target_prov.get("coastal", False):
                 return web.json_response({
                     "ok": False,
                     "error": f"『{f['name']}』は沿岸プロビンスにのみ配備可能です（『{target_prov['name']}』は内陸プロビンスです）。"

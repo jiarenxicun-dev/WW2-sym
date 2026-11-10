@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AIWA Web Command — 欧州・地中海 国家運営＆戦術ウォーゲーム</title>
-  <link rel="stylesheet" href="/static/styles.css?v=20261110_europe1914" />
+  <link rel="stylesheet" href="/static/styles.css?v=20261110_region_splits" />
 </head>
 <body>
   <!-- トップヘッダー：国家切替・予算表示・週進行・モード切替 -->
@@ -38,10 +38,6 @@
     </div>
 
     <div class="topbar-right">
-      <select id="select-active-world" class="select-world-dropdown" title="ワールド切替">
-        <option value="world_admin1" selected>🌍 世界マップ (1,527州)</option>
-        <option value="default">🇪🇺 欧州マップ (299州・現行戦役)</option>
-      </select>
       <select id="select-game-mode" class="mode-select" title="まず1(ソロ/検証プロトタイプ) と のちに2(マルチプレイ国別ロック) を切り替え">
         <option value="sandbox">🛠️ モード1: ソロ/プロトタイプ(全国家操作・AI対戦)</option>
         <option value="multiplayer">🌐 モード2: マルチプレイ(国別パスコード保護)</option>
@@ -54,7 +50,7 @@
   <!-- メインナビゲーションタブ（宣戦布告以降の戦時マップは一旦切り離し） -->
   <nav class="main-tabs">
     <button class="tab-btn active" data-tab="tab-peacetime-map">
-      🌍 1. 平時マップ（State / HoI4規模・299州）
+      🌍 1. 平時マップ
     </button>
     <button class="tab-btn tab-war-highlight" data-tab="tab-wartime-map" style="display:none;">
       ⚔️ 戦時マップ（分離型・戦術作戦ボード ＆ AI審判）
@@ -144,14 +140,14 @@
       <!-- 右：選択プロビンス詳細 / 建国フォーム / バケツ塗りパレット -->
       <aside class="side-panel">
         <div class="card state-search">
-          <h2>🔎 地域・州検索（State / HoI4規模・299州）</h2>
+          <h2>🔎 地域・州検索</h2>
           <label>州名・ID <input id="state-search" type="search" placeholder="州名またはIDを入力" /></label>
           <label>地域 <select id="state-region-filter"><option value="">すべての地域</option></select></label>
           <select id="state-search-results" size="5" aria-label="検索結果"></select>
         </div>
         <!-- パネルA: プロビンス詳細＆白地購入＆平時ワープ -->
         <div id="peace-panel-inspect" class="card">
-          <h2 id="prov-detail-title">📍 州を選択（State / HoI4規模・299州）</h2>
+          <h2 id="prov-detail-title">📍 州を選択</h2>
           <div id="prov-detail-body" class="card-body">
             <p class="muted">マップまたは検索結果から州を選ぶと、領有国・地形・駐屯師団の確認や、白地購入（100億）、同盟国への平時ワープが行えます。</p>
           </div>
@@ -697,13 +693,7 @@
       </div>
       <div class="form-grid">
         <button id="btn-reset-world" class="btn btn-primary btn-block" style="background:#0284c7;border-color:#38bdf8;">
-          🌍 シナリオ：世界マップ（全1,527州・世界規模建国）で初期化
-        </button>
-        <button id="btn-reset-aiwa" class="btn btn-primary btn-block">
-          🌍 シナリオ①：AIWA 現行サーバー再現（欧州・地中海15カ国＋条約＋瑞西仏戦争）で初期化
-        </button>
-        <button id="btn-reset-blank" class="btn btn-amber btn-block">
-          🏳️ シナリオ②：完全な白地図から新規スタート（ゼロから建国・ソロ/マルチ用）
+          🌍 シナリオ：世界マップ（全1,531州・世界規模建国）で初期化
         </button>
       </div>
     </div>
@@ -756,9 +746,9 @@
   </div>
 
   <div id="toast-container" class="toast-container"></div>
-  <script src="/static/world_admin1_map.js?v=20261110_europe1914"></script>
-  <script src="/static/realistic_map_data.js"></script>
+  <script src="/static/world_admin1_map.js?v=20261111_gibraltar_large"></script>
+  <script src="/static/realistic_map_data.js?v=20261111_gibraltar_large"></script>
   <script src="/static/standalone_data.js"></script>
-  <script src="/static/app.js?v=20261110_europe1914"></script>
+  <script src="/static/app.js?v=20261111_world_only"></script>
 </body>
 </html>
