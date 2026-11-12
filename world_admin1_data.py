@@ -3620,7 +3620,9 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
       "g-a55c15e237e5",
       "g-dfcba81bc6c8",
       "g-ebd60376b526",
-      "inner-mongol-ejina"
+      "inner-mongol-ejina",
+      "inner-mongol-yabrai",
+      "suiyuan-ordos-west"
     ],
     "area_km2": 286027
   },
@@ -4021,7 +4023,8 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
       "g-585b4d6fe2e6",
       "g-9aa5b53a1baa",
       "g-c1aaf25649dd",
-      "g-e259e850f4af"
+      "g-e259e850f4af",
+      "inner-mongol-harqin"
     ],
     "area_km2": 59419
   },
@@ -4652,7 +4655,8 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
       "g-41a7ff4adbdf",
       "g-443ff0aec3d8",
       "g-8de5d954a170",
-      "g-fa976b6e64d2"
+      "g-fa976b6e64d2",
+      "inner-mongol-harqin"
     ],
     "area_km2": 25843
   },
@@ -5503,40 +5507,40 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
   },
   {
     "id": "g-e259e850f4af",
-    "name": "Tongliao / Horqin・Jirim (通遼・ホルチン・哲里木盟)",
+    "name": "Tongliao / Horqin Central (通遼・科爾沁・ホルチン南部)",
     "region": "CN",
     "country": "CN",
-    "x": 1206.6,
-    "y": 185.3,
+    "x": 1207.1,
+    "y": 187.3,
     "terrain": "plains",
     "coastal": False,
     "neighbors": [
       "g-2ca40b5cd436",
-      "g-3f1f91341497",
-      "g-585b4d6fe2e6",
       "g-fa976b6e64d2",
-      "inner-mongol-hinggan"
+      "inner-mongol-harqin",
+      "inner-mongol-jarud"
     ],
-    "area_km2": 59411
+    "area_km2": 30000
   },
   {
     "id": "g-2ca40b5cd436",
-    "name": "South Chifeng / Harqin・Hongshan (赤峰南部・喀喇沁・紅山)",
+    "name": "Chifeng / Ongniud・Hongshan (赤峰・翁牛特・紅山)",
     "region": "CN",
     "country": "CN",
-    "x": 1195.0,
-    "y": 187.7,
+    "x": 1194.6,
+    "y": 182.4,
     "terrain": "plains",
     "coastal": False,
     "neighbors": [
       "g-3ce79d82da2b",
-      "g-41a7ff4adbdf",
-      "g-c1aaf25649dd",
+      "g-a99432eb5498",
       "g-e259e850f4af",
-      "g-fa976b6e64d2",
-      "inner-mongol-chifeng-north"
+      "inner-mongol-chifeng-north",
+      "inner-mongol-harqin",
+      "inner-mongol-hinggan",
+      "inner-mongol-jarud"
     ],
-    "area_km2": 45000
+    "area_km2": 30000
   },
   {
     "id": "g-41a7ff4adbdf",
@@ -5553,7 +5557,8 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
       "g-8de5d954a170",
       "g-bbfd96efb8d9",
       "g-c1aaf25649dd",
-      "g-d5569c59d8a1"
+      "g-d5569c59d8a1",
+      "inner-mongol-harqin"
     ],
     "area_km2": 31274
   },
@@ -5570,7 +5575,8 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
       "g-2ca40b5cd436",
       "g-41a7ff4adbdf",
       "g-a99432eb5498",
-      "g-d5569c59d8a1"
+      "g-d5569c59d8a1",
+      "inner-mongol-harqin"
     ],
     "area_km2": 34396
   },
@@ -5608,7 +5614,8 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
       "g-bbfd96efb8d9",
       "g-df4fd20516dd",
       "g-ebd60376b526",
-      "suiyuan-guisui"
+      "suiyuan-guisui",
+      "suiyuan-ordos-east"
     ],
     "area_km2": 21861
   },
@@ -5663,7 +5670,8 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
       "g-3ce79d82da2b",
       "g-8141968ee2ce",
       "g-aa27af1a9ae6",
-      "g-d5569c59d8a1"
+      "g-d5569c59d8a1",
+      "inner-mongol-chifeng-north"
     ],
     "area_km2": 28601
   },
@@ -5685,41 +5693,42 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
   },
   {
     "id": "g-ebd60376b526",
-    "name": "Ordos / Ih Ju (オルドス・伊克昭盟 / 東勝・准格爾)",
+    "name": "North Ordos / Dongsheng・Dalad (オルドス北部・東勝・達拉特)",
     "region": "CN",
     "country": "CN",
-    "x": 1151.5,
-    "y": 202.2,
+    "x": 1152.9,
+    "y": 199.5,
     "terrain": "plains",
     "coastal": False,
     "neighbors": [
       "g-a55c15e237e5",
       "g-be675e00d850",
-      "g-df4fd20516dd",
-      "g-dfcba81bc6c8",
-      "g-f20dab38b1cc",
+      "inner-mongol-alxa-north",
+      "suiyuan-baotou",
       "suiyuan-bayan-nur",
-      "suiyuan-guisui"
+      "suiyuan-guisui",
+      "suiyuan-ordos-east",
+      "suiyuan-ordos-west"
     ],
-    "area_km2": 128240
+    "area_km2": 48240
   },
   {
     "id": "g-a55c15e237e5",
-    "name": "Alxa Left / Bayanhot (阿拉善左旗・バヤンホト / 賀蘭山)",
+    "name": "South Alxa Left / Bayanhot・Helan (阿拉善左旗南部・バヤンホト・賀蘭山)",
     "region": "CN",
     "country": "CN",
-    "x": 1136.6,
-    "y": 200.7,
+    "x": 1137.2,
+    "y": 205.2,
     "terrain": "desert",
     "coastal": False,
     "neighbors": [
-      "g-06bd25adcf51",
       "g-ebd60376b526",
       "g-f20dab38b1cc",
-      "inner-mongol-alxa-right",
-      "suiyuan-bayan-nur"
+      "inner-mongol-alxa-north",
+      "inner-mongol-yabrai",
+      "suiyuan-ordos-west"
     ],
-    "area_km2": 63900
+    "area_km2": 32000
   },
   {
     "id": "g-53721116ca07",
@@ -10709,7 +10718,8 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
       "g-3a47d966a622",
       "g-70dd838f7c1a",
       "g-8141968ee2ce",
-      "g-a99432eb5498"
+      "g-a99432eb5498",
+      "inner-mongol-chifeng-north"
     ],
     "area_km2": 122092
   },
@@ -10805,9 +10815,14 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
       "g-a55c15e237e5",
       "g-ebd60376b526",
       "g-f4223eeed54f",
+      "inner-mongol-alxa-north",
+      "inner-mongol-alxa-right",
       "inner-mongol-ejina",
+      "inner-mongol-juyan",
+      "suiyuan-baotou",
       "suiyuan-bayan-nur",
-      "suiyuan-guisui"
+      "suiyuan-guisui",
+      "suiyuan-urad"
     ],
     "area_km2": 241307
   },
@@ -27060,59 +27075,56 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
   },
   {
     "id": "inner-mongol-ejina",
-    "name": "Ejina / Juyan (額済納・居延 / エチナ)",
+    "name": "Ejina / Dalaihob (額済納・達来呼布 / エチナ川)",
     "region": "CN",
     "country": "CN",
-    "x": 1118.1,
-    "y": 194.2,
+    "x": 1121.0,
+    "y": 198.8,
     "terrain": "desert",
     "coastal": False,
     "neighbors": [
-      "g-06bd25adcf51",
-      "g-13706735ee84",
-      "g-1558027b669f",
-      "g-73c89a387cce",
       "g-f20dab38b1cc",
-      "inner-mongol-alxa-right"
+      "inner-mongol-alxa-right",
+      "inner-mongol-juyan",
+      "inner-mongol-yabrai"
     ],
-    "area_km2": 70997
+    "area_km2": 35000
   },
   {
     "id": "suiyuan-bayan-nur",
-    "name": "Bayan Nur / Hetao (巴彦淖爾・河套・後套・五原)",
+    "name": "Hetao / Linhe・Wuyuan (河套・後套・臨河・五原)",
     "region": "CN",
     "country": "CN",
-    "x": 1146.5,
-    "y": 194.4,
+    "x": 1145.7,
+    "y": 195.7,
     "terrain": "plains",
     "coastal": False,
     "neighbors": [
       "g-06bd25adcf51",
-      "g-a55c15e237e5",
       "g-ebd60376b526",
-      "suiyuan-guisui"
+      "inner-mongol-alxa-north",
+      "suiyuan-baotou",
+      "suiyuan-urad"
     ],
-    "area_km2": 42720
+    "area_km2": 21000
   },
   {
     "id": "suiyuan-guisui",
-    "name": "Guisui / Hohhot・Baotou (帰綏・呼和浩特・包頭 / 綏遠省都)",
+    "name": "Guisui / Hohhot・Tumed Left (帰綏・呼和浩特 / 綏遠省都)",
     "region": "CN",
     "country": "CN",
-    "x": 1159.6,
-    "y": 193.2,
+    "x": 1162.7,
+    "y": 192.6,
     "terrain": "plains",
     "coastal": False,
     "neighbors": [
-      "g-06bd25adcf51",
       "g-724d7c938273",
       "g-bbfd96efb8d9",
       "g-be675e00d850",
       "g-ebd60376b526",
-      "g-f4223eeed54f",
-      "suiyuan-bayan-nur"
+      "suiyuan-baotou"
     ],
-    "area_km2": 69280
+    "area_km2": 35280
   },
   {
     "id": "inner-mongol-hinggan",
@@ -27125,50 +27137,206 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "coastal": False,
     "neighbors": [
       "g-01bcf445f3e6",
+      "g-2ca40b5cd436",
       "g-3a47d966a622",
       "g-3f1f91341497",
       "g-e259e850f4af",
       "g-f74336262089",
-      "inner-mongol-chifeng-north"
+      "inner-mongol-chifeng-north",
+      "inner-mongol-jarud"
     ],
     "area_km2": 41970
   },
   {
     "id": "inner-mongol-alxa-right",
-    "name": "Alxa Right / Badain Jaran (阿拉善右旗・額肯呼都格 / バダンジリン)",
+    "name": "North Alxa Right / Badain Jaran (阿拉善右旗北部・バダンジリン)",
     "region": "CN",
     "country": "CN",
     "x": 1128.0,
-    "y": 197.4,
+    "y": 193.9,
     "terrain": "desert",
     "coastal": False,
     "neighbors": [
       "g-06bd25adcf51",
-      "g-a55c15e237e5",
-      "g-f20dab38b1cc",
-      "inner-mongol-ejina"
+      "inner-mongol-alxa-north",
+      "inner-mongol-ejina",
+      "inner-mongol-juyan",
+      "inner-mongol-yabrai"
     ],
-    "area_km2": 65200
+    "area_km2": 33000
   },
   {
     "id": "inner-mongol-chifeng-north",
-    "name": "North Chifeng / Hexigten・Shira Muren (赤峰北部・克什克騰・シラムレン)",
+    "name": "North Chifeng / Hexigten・Ar Horqin (赤峰北部・克什克騰・阿魯科爾沁)",
     "region": "CN",
     "country": "CN",
     "x": 1195.0,
-    "y": 177.9,
+    "y": 175.8,
     "terrain": "plains",
     "coastal": False,
     "neighbors": [
       "g-2ca40b5cd436",
       "g-3a47d966a622",
-      "g-3ce79d82da2b",
       "g-a99432eb5498",
       "g-aa27af1a9ae6",
+      "inner-mongol-hinggan"
+    ],
+    "area_km2": 30000
+  },
+  {
+    "id": "inner-mongol-juyan",
+    "name": "Juyan / Khara-Khoto (居延・黒城・居延海)",
+    "region": "CN",
+    "country": "CN",
+    "x": 1117.0,
+    "y": 192.6,
+    "terrain": "desert",
+    "coastal": False,
+    "neighbors": [
+      "g-06bd25adcf51",
+      "inner-mongol-alxa-right",
+      "inner-mongol-ejina"
+    ],
+    "area_km2": 36000
+  },
+  {
+    "id": "inner-mongol-yabrai",
+    "name": "South Alxa Right / Yabrai (阿拉善右旗南部・雅布頼)",
+    "region": "CN",
+    "country": "CN",
+    "x": 1128.0,
+    "y": 200.6,
+    "terrain": "desert",
+    "coastal": False,
+    "neighbors": [
+      "g-a55c15e237e5",
+      "g-f20dab38b1cc",
+      "inner-mongol-alxa-north",
+      "inner-mongol-alxa-right",
+      "inner-mongol-ejina"
+    ],
+    "area_km2": 32200
+  },
+  {
+    "id": "inner-mongol-alxa-north",
+    "name": "North Alxa Left / Jilantai (阿拉善左旗北部・吉蘭泰)",
+    "region": "CN",
+    "country": "CN",
+    "x": 1136.0,
+    "y": 196.8,
+    "terrain": "desert",
+    "coastal": False,
+    "neighbors": [
+      "g-06bd25adcf51",
+      "g-a55c15e237e5",
+      "g-ebd60376b526",
+      "inner-mongol-alxa-right",
+      "inner-mongol-yabrai",
+      "suiyuan-bayan-nur"
+    ],
+    "area_km2": 31900
+  },
+  {
+    "id": "suiyuan-urad",
+    "name": "Urad / Yin Mountains (烏拉特・ウラド旗・陰山山脈)",
+    "region": "CN",
+    "country": "CN",
+    "x": 1147.3,
+    "y": 192.5,
+    "terrain": "plains",
+    "coastal": False,
+    "neighbors": [
+      "g-06bd25adcf51",
+      "suiyuan-baotou",
+      "suiyuan-bayan-nur"
+    ],
+    "area_km2": 21720
+  },
+  {
+    "id": "suiyuan-baotou",
+    "name": "Baotou / Tumed Right (包頭・土黙特右旗 / 綏遠西部)",
+    "region": "CN",
+    "country": "CN",
+    "x": 1155.6,
+    "y": 193.8,
+    "terrain": "plains",
+    "coastal": False,
+    "neighbors": [
+      "g-06bd25adcf51",
+      "g-ebd60376b526",
+      "suiyuan-bayan-nur",
+      "suiyuan-guisui",
+      "suiyuan-urad"
+    ],
+    "area_km2": 34000
+  },
+  {
+    "id": "suiyuan-ordos-west",
+    "name": "West Ordos / Otog・Uxin (オルドス西部・鄂托克・烏審旗)",
+    "region": "CN",
+    "country": "CN",
+    "x": 1147.0,
+    "y": 204.8,
+    "terrain": "plains",
+    "coastal": False,
+    "neighbors": [
+      "g-a55c15e237e5",
+      "g-ebd60376b526",
+      "g-f20dab38b1cc",
+      "suiyuan-ordos-east"
+    ],
+    "area_km2": 40000
+  },
+  {
+    "id": "suiyuan-ordos-east",
+    "name": "East Ordos / Jungar・Ejin Horo (オルドス東部・准格爾・伊金霍洛)",
+    "region": "CN",
+    "country": "CN",
+    "x": 1156.7,
+    "y": 204.3,
+    "terrain": "plains",
+    "coastal": False,
+    "neighbors": [
+      "g-be675e00d850",
+      "g-ebd60376b526",
+      "suiyuan-ordos-west"
+    ],
+    "area_km2": 40000
+  },
+  {
+    "id": "inner-mongol-harqin",
+    "name": "Harqin / Ningcheng・Kalaqin (喀喇沁・寧城・建平)",
+    "region": "CN",
+    "country": "CN",
+    "x": 1195.5,
+    "y": 189.7,
+    "terrain": "plains",
+    "coastal": False,
+    "neighbors": [
+      "g-2ca40b5cd436",
+      "g-3ce79d82da2b",
+      "g-41a7ff4adbdf",
+      "g-c1aaf25649dd",
+      "g-e259e850f4af",
+      "g-fa976b6e64d2"
+    ],
+    "area_km2": 30000
+  },
+  {
+    "id": "inner-mongol-jarud",
+    "name": "Jarud / Kailu・Horqin North (扎魯特・開魯・ホルチン北部)",
+    "region": "CN",
+    "country": "CN",
+    "x": 1206.1,
+    "y": 183.0,
+    "terrain": "plains",
+    "coastal": False,
+    "neighbors": [
+      "g-2ca40b5cd436",
       "g-e259e850f4af",
       "inner-mongol-hinggan"
     ],
-    "area_km2": 45000
+    "area_km2": 29411
   }
 ]
 
@@ -27255,16 +27423,25 @@ WORLD_PROVINCE_SPLITS: Dict[str, List[str]] = {
   ],
   "g-a55c15e237e5": [
     "inner-mongol-ejina",
-    "inner-mongol-alxa-right"
+    "inner-mongol-juyan",
+    "inner-mongol-alxa-right",
+    "inner-mongol-yabrai",
+    "inner-mongol-alxa-north"
   ],
   "g-ebd60376b526": [
     "suiyuan-bayan-nur",
-    "suiyuan-guisui"
+    "suiyuan-urad",
+    "suiyuan-baotou",
+    "suiyuan-guisui",
+    "suiyuan-ordos-west",
+    "suiyuan-ordos-east"
   ],
   "g-e259e850f4af": [
-    "inner-mongol-hinggan"
+    "inner-mongol-hinggan",
+    "inner-mongol-jarud"
   ],
   "g-2ca40b5cd436": [
-    "inner-mongol-chifeng-north"
+    "inner-mongol-chifeng-north",
+    "inner-mongol-harqin"
   ]
 }
