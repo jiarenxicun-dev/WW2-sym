@@ -191,7 +191,10 @@ def _build_initial_tactical_units(
 # API ハンドラ群
 # ==============================================================================
 async def handle_index(request: web.Request) -> web.FileResponse:
-    return web.FileResponse(STATIC_DIR / "index.html")
+    return web.FileResponse(
+        STATIC_DIR / "index.html",
+        headers={"Cache-Control": "no-cache, no-store, must-revalidate"},
+    )
 
 
 async def handle_bootstrap(request: web.Request) -> web.Response:
@@ -1261,9 +1264,17 @@ async def handle_discord_sync(request: web.Request) -> web.Response:
         return web.json_response({"ok": False, "messages": [], "error": str(e)})
 
 
+@web.middleware
+async def cache_control_middleware(request: web.Request, handler):
+    resp = await handler(request)
+    if isinstance(resp, (web.Response, web.FileResponse)):
+        resp.headers.setdefault("Cache-Control", "no-cache, must-revalidate")
+    return resp
+
+
 def create_app() -> web.Application:
     init_game_db()
-    app = web.Application(client_max_size=20 * 1024 * 1024)
+    app = web.Application(client_max_size=20 * 1024 * 1024, middlewares=[cache_control_middleware])
     app.router.add_get("/", handle_index)
     app.router.add_get("/ws", handle_websocket)
     app.router.add_get("/api/bootstrap", handle_bootstrap)
