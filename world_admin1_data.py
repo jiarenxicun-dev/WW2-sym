@@ -25,7 +25,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 482.3,
     "y": 488.3,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-4c851ed04302",
       "g-5a3620d12f46",
@@ -45,7 +45,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 451.7,
     "y": 459.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-479885a761d8",
       "g-79b45cf8094e",
@@ -63,7 +63,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 463.2,
     "y": 460.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-090808be2665",
       "g-0f01ccd7af73",
@@ -83,7 +83,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 465.3,
     "y": 452.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-208c26ba372f",
       "g-479885a761d8",
@@ -102,7 +102,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 455.8,
     "y": 452.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-090808be2665",
       "g-14a76a00ead9",
@@ -121,7 +121,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 479.8,
     "y": 458.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-208c26ba372f",
       "g-30a876897072",
@@ -141,7 +141,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 502.4,
     "y": 467.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-148f2ad4772b",
       "g-2c70ec73ec80",
@@ -160,7 +160,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 479.9,
     "y": 465.9,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-30a876897072",
       "g-808d91ad8eda",
@@ -178,7 +178,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 474.8,
     "y": 463.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0f01ccd7af73",
       "g-4eb7a08e29ff",
@@ -198,7 +198,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 486.2,
     "y": 475.9,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1add9ac0b00d",
       "g-2c70ec73ec80",
@@ -218,7 +218,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 492.6,
     "y": 474.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-148f2ad4772b",
       "g-30a876897072",
@@ -238,7 +238,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 453.8,
     "y": 466.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-090808be2665",
       "g-0f01ccd7af73",
@@ -257,7 +257,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 457.1,
     "y": 475.1,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0f01ccd7af73",
       "g-4e33f4e28c23",
@@ -277,7 +277,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 449.2,
     "y": 475.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-3dc9d977fc52",
       "g-79b45cf8094e",
@@ -294,7 +294,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 454.4,
     "y": 483.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-3dc9d977fc52",
       "g-4e33f4e28c23",
@@ -312,7 +312,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 444.9,
     "y": 481.5,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-00953d0611c0",
       "g-4f57b7fd4f76",
@@ -332,7 +332,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 446.1,
     "y": 494.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-00953d0611c0",
       "g-172ddfd0647a",
@@ -350,7 +350,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 442.7,
     "y": 504.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-3e7951a99238",
       "g-4f57b7fd4f76",
@@ -370,7 +370,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 441.8,
     "y": 514.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-172ddfd0647a",
       "g-7a5e016400cd",
@@ -389,7 +389,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 441.1,
     "y": 536.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-67374974afed",
       "g-7a5e016400cd",
@@ -408,7 +408,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 454.1,
     "y": 536.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-14121575aa70",
       "g-a97630618527",
@@ -425,7 +425,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 446.7,
     "y": 519.1,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-14121575aa70",
       "g-172ddfd0647a",
@@ -445,7 +445,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 458.7,
     "y": 519.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-7db62873394d",
       "g-7df742d0058a",
@@ -463,7 +463,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 436.8,
     "y": 556.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-14121575aa70",
       "g-39c18d8a29c9",
@@ -480,7 +480,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 450.5,
     "y": 552.2,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-14121575aa70",
       "g-67374974afed",
@@ -496,7 +496,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 484.9,
     "y": 511.5,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-4c851ed04302",
       "g-c8428114f332",
@@ -512,7 +512,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 475.3,
     "y": 515.4,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-7df742d0058a",
       "g-c62bcb08d03a",
@@ -529,7 +529,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 473.1,
     "y": 504.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-4c851ed04302",
       "g-79f5d70733df",
@@ -547,7 +547,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 476.7,
     "y": 496.9,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1add9ac0b00d",
       "g-4c851ed04302",
@@ -566,7 +566,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 485.3,
     "y": 501.4,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-1add9ac0b00d",
       "g-5a3620d12f46",
@@ -584,7 +584,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 476.7,
     "y": 478.9,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1add9ac0b00d",
       "g-431963dcdda0",
@@ -604,7 +604,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 474.8,
     "y": 490.5,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1add9ac0b00d",
       "g-431963dcdda0",
@@ -622,7 +622,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 467.2,
     "y": 467.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-846d698a5301",
       "g-8b1f89ef0086",
@@ -640,7 +640,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 466.1,
     "y": 475.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0f01ccd7af73",
       "g-431963dcdda0",
@@ -659,7 +659,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 456.2,
     "y": 495.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-172ddfd0647a",
       "g-3dc9d977fc52",
@@ -680,7 +680,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 461.7,
     "y": 508.5,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-4f57b7fd4f76",
       "g-79f5d70733df",
@@ -700,7 +700,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 451.9,
     "y": 508.5,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-172ddfd0647a",
       "g-3e7951a99238",
@@ -719,7 +719,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 468.6,
     "y": 484.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-4e33f4e28c23",
       "g-7e14a25626ca",
@@ -737,7 +737,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 461.0,
     "y": 483.5,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-431963dcdda0",
       "g-4f57b7fd4f76",
@@ -756,7 +756,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 465.2,
     "y": 494.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-431963dcdda0",
       "g-4e33f4e28c23",
@@ -775,7 +775,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 494.9,
     "y": 487.1,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-0071de80d917",
       "g-1add9ac0b00d",
@@ -795,7 +795,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 492.5,
     "y": 494.7,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-0071de80d917",
       "g-1add9ac0b00d",
@@ -812,7 +812,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 502.6,
     "y": 493.3,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-018a62922ad0",
       "g-5a3620d12f46",
@@ -829,7 +829,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1188.8,
     "y": 349.9,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-0eec40dfba70",
       "g-17f23570cdde",
@@ -845,7 +845,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1183.4,
     "y": 349.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-17f23570cdde",
       "g-d9e80ddb620b",
@@ -864,7 +864,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1185.6,
     "y": 361.9,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-0eec40dfba70",
       "g-2a9d7250d19c",
@@ -883,7 +883,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1202.4,
     "y": 394.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-7bc1e42f3b71"
     ],
@@ -897,7 +897,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1161.0,
     "y": 357.3,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-69fd77349d33",
       "g-7056487e976a",
@@ -913,7 +913,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1170.9,
     "y": 357.9,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0eec40dfba70",
       "g-37481e111a2e",
@@ -933,7 +933,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1162.1,
     "y": 366.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-37481e111a2e",
       "g-d9e80ddb620b",
@@ -950,7 +950,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1277.2,
     "y": 375.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1717f8bfd473",
       "g-451350f11a69",
@@ -968,7 +968,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1275.4,
     "y": 369.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-1717f8bfd473",
       "g-57c37d075469",
@@ -984,7 +984,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1267.1,
     "y": 373.2,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-451350f11a69",
       "g-57c37d075469",
@@ -1001,7 +1001,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1278.3,
     "y": 383.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-1717f8bfd473",
       "g-57c37d075469",
@@ -1019,7 +1019,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1278.2,
     "y": 391.6,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-7e066702454b",
       "g-b747d0e51011",
@@ -1035,7 +1035,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1169.1,
     "y": 391.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-1b7e39cabfe8"
     ],
@@ -1049,7 +1049,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1226.6,
     "y": 373.7,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 44948
   },
@@ -1061,7 +1061,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1198.5,
     "y": 373.1,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-41b80611df98",
       "g-87e1b36836b8"
@@ -1076,7 +1076,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1159.6,
     "y": 389.3,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-5844a041b176",
       "g-6b9591381fe0"
@@ -1091,7 +1091,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1149.9,
     "y": 387.4,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-1b7e39cabfe8"
     ],
@@ -1105,7 +1105,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1207.6,
     "y": 375.4,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-41b80611df98",
       "g-d494c768cd3c"
@@ -1120,7 +1120,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1254.4,
     "y": 371.1,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-10cb3e059a1b",
       "g-b3749b89bd21"
@@ -1135,7 +1135,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1250.7,
     "y": 364.2,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-7f58e6355b0e"
     ],
@@ -1149,7 +1149,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1212.8,
     "y": 363.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-87e1b36836b8",
       "g-d494c768cd3c"
@@ -1164,7 +1164,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1219.3,
     "y": 367.2,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 31364
   },
@@ -1176,7 +1176,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1125.5,
     "y": 357.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-44a9417b9136",
       "g-611e7200f765",
@@ -1193,7 +1193,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1130.9,
     "y": 367.1,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-46afa41b7657",
       "g-6cd87a9f4ddc",
@@ -1209,7 +1209,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1135.4,
     "y": 373.2,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-08c0452aa113",
       "g-6cd87a9f4ddc",
@@ -1225,7 +1225,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1140.4,
     "y": 379.4,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-46afa41b7657"
     ],
@@ -1239,7 +1239,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1123.3,
     "y": 363.3,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-46afa41b7657",
       "g-611e7200f765",
@@ -1256,7 +1256,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1116.8,
     "y": 351.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-65ba9219fecf",
       "g-6cd87a9f4ddc",
@@ -1272,7 +1272,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1108.6,
     "y": 344.2,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-611e7200f765"
     ],
@@ -1286,7 +1286,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1176.0,
     "y": 369.4,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-caa73ecf10cb",
       "g-d9e80ddb620b",
@@ -1303,7 +1303,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1168.6,
     "y": 369.1,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-2a9d7250d19c",
       "g-7056487e976a",
@@ -1319,7 +1319,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1177.2,
     "y": 361.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0eec40dfba70",
       "g-2a9d7250d19c",
@@ -1339,7 +1339,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1182.0,
     "y": 371.2,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-2a9d7250d19c",
       "g-d9e80ddb620b",
@@ -1355,7 +1355,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1188.9,
     "y": 337.6,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-0eec40dfba70",
       "g-f7e3392d6da2",
@@ -1371,7 +1371,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1124.0,
     "y": 341.4,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-7fd03e20cde9",
       "g-e109a0cfa4b4",
@@ -1387,7 +1387,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1176.5,
     "y": 347.6,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-0eec40dfba70",
       "g-17f23570cdde",
@@ -1405,7 +1405,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1167.7,
     "y": 352.2,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-37481e111a2e",
       "g-ebae251b761d",
@@ -1421,7 +1421,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1129.7,
     "y": 340.5,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-15926774430d",
       "g-e109a0cfa4b4",
@@ -1437,7 +1437,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1131.0,
     "y": 349.5,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-15926774430d",
       "g-44a9417b9136",
@@ -1453,7 +1453,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 442.5,
     "y": 438.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-14a76a00ead9",
       "g-22ebadee7217",
@@ -1472,7 +1472,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 443.6,
     "y": 449.2,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-479885a761d8",
       "g-ad7df3d16e8a",
@@ -1489,7 +1489,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 442.0,
     "y": 458.2,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-090808be2665",
       "g-14a76a00ead9",
@@ -1507,7 +1507,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 440.1,
     "y": 470.1,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-00953d0611c0",
       "g-090808be2665",
@@ -1527,7 +1527,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 436.1,
     "y": 482.4,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-3dc9d977fc52",
       "g-79b45cf8094e",
@@ -1544,7 +1544,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 437.1,
     "y": 494.1,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-00953d0611c0",
       "g-172ddfd0647a",
@@ -1562,7 +1562,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 433.9,
     "y": 502.5,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-172ddfd0647a",
       "g-3e7951a99238",
@@ -1579,7 +1579,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 428.4,
     "y": 523.2,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-14121575aa70",
       "g-3e7951a99238",
@@ -1597,7 +1597,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 430.3,
     "y": 509.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-3e7951a99238",
       "g-7a5e016400cd",
@@ -1613,7 +1613,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 428.5,
     "y": 545.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-14121575aa70",
       "g-39c18d8a29c9",
@@ -1630,7 +1630,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 427.9,
     "y": 565.2,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-67374974afed",
       "g-b74f1336ca85",
@@ -1647,7 +1647,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 449.0,
     "y": 425.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-284c5738c258",
       "g-6fbb1a90b628",
@@ -1667,7 +1667,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 447.2,
     "y": 414.5,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-5c5153c2a350",
       "g-70cf28cd66db",
@@ -1686,7 +1686,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 448.8,
     "y": 434.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-22ebadee7217",
       "g-b08cb16414e0",
@@ -1703,7 +1703,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 456.7,
     "y": 436.9,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-284c5738c258",
       "g-a461ffbba1fd",
@@ -1721,7 +1721,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 452.8,
     "y": 445.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-14a76a00ead9",
       "g-22ebadee7217",
@@ -1740,7 +1740,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 720.0,
     "y": 360.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [],
     "area_km2": 36673
   },
@@ -1752,7 +1752,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 481.8,
     "y": 436.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-11a830861b09",
       "g-1789caa15e53",
@@ -1771,7 +1771,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 482.4,
     "y": 430.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-031130557f90",
       "g-11a830861b09",
@@ -1791,7 +1791,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 470.4,
     "y": 437.5,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-031130557f90",
       "g-11a830861b09",
@@ -1811,7 +1811,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 468.9,
     "y": 430.5,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-031130557f90",
       "g-1789caa15e53",
@@ -1831,7 +1831,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 469.0,
     "y": 421.5,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-11a830861b09",
       "g-1e2f66c5d684",
@@ -1850,7 +1850,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 476.0,
     "y": 421.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-11a830861b09",
       "g-2037d3fe2304",
@@ -1870,7 +1870,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 462.6,
     "y": 439.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-11a830861b09",
       "g-1789caa15e53",
@@ -1889,7 +1889,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 450.5,
     "y": 404.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-5c5153c2a350",
       "g-6fbb1a90b628",
@@ -1907,7 +1907,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 456.7,
     "y": 408.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-4a70aacacbe2",
       "g-6fbb1a90b628",
@@ -1925,7 +1925,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 463.7,
     "y": 418.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1e2f66c5d684",
       "g-544071fa2008",
@@ -1944,7 +1944,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 456.2,
     "y": 419.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-4a70aacacbe2",
       "g-544071fa2008",
@@ -1963,7 +1963,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 457.6,
     "y": 428.9,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-11a830861b09",
       "g-1789caa15e53",
@@ -1985,7 +1985,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 421.2,
     "y": 365.5,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-8a11259ff454",
       "g-9d6966b39b47",
@@ -2005,7 +2005,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 416.8,
     "y": 374.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-4a391e5956f6",
       "g-552616e785c8",
@@ -2026,7 +2026,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 425.7,
     "y": 368.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-552616e785c8",
       "g-63801e7cc984",
@@ -2043,7 +2043,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 431.4,
     "y": 373.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-84a65d58f633",
       "g-8a11259ff454",
@@ -2061,7 +2061,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 424.7,
     "y": 380.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-552616e785c8",
       "g-7c5d58ba2a2a",
@@ -2079,7 +2079,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 414.9,
     "y": 381.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-7589fd595416",
       "g-8c3f9f5144cb",
@@ -2097,7 +2097,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 418.6,
     "y": 389.5,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-58e7b0981525",
       "g-7c5d58ba2a2a",
@@ -2117,7 +2117,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 407.3,
     "y": 380.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-4a391e5956f6",
       "g-7c5d58ba2a2a",
@@ -2136,7 +2136,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 405.6,
     "y": 387.2,
     "terrain": "plains",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-466a873c895a",
       "g-58e7b0981525",
@@ -2155,7 +2155,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 398.9,
     "y": 381.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-d5a2f4c89eae",
       "g-d6afa6d17e78"
@@ -2170,7 +2170,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 430.1,
     "y": 401.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-58e7b0981525",
       "g-6fbb1a90b628",
@@ -2192,7 +2192,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 439.6,
     "y": 420.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-6fbb1a90b628",
       "g-afda58258c99",
@@ -2210,7 +2210,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 434.7,
     "y": 426.0,
     "terrain": "plains",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-70cf28cd66db",
       "g-b3ff30d62e79",
@@ -2228,7 +2228,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 426.2,
     "y": 422.7,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-091e83392321",
       "g-0d05c5ed2306",
@@ -2245,7 +2245,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 413.3,
     "y": 407.2,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-0d05c5ed2306",
       "g-58e7b0981525",
@@ -2262,7 +2262,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 409.4,
     "y": 397.6,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-1041f53ce9aa",
       "g-58e7b0981525",
@@ -2278,7 +2278,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 432.5,
     "y": 413.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-091e83392321",
       "g-70cf28cd66db",
@@ -2297,7 +2297,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 426.3,
     "y": 415.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0d05c5ed2306",
       "g-78f47c040554",
@@ -2314,7 +2314,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 418.0,
     "y": 415.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-091e83392321",
       "g-1041f53ce9aa",
@@ -2331,7 +2331,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 412.4,
     "y": 388.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-58e7b0981525",
       "g-7589fd595416",
@@ -2350,7 +2350,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 416.9,
     "y": 398.9,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1041f53ce9aa",
       "g-78f47c040554",
@@ -2370,7 +2370,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 420.3,
     "y": 406.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-091e83392321",
       "g-0d05c5ed2306",
@@ -2389,7 +2389,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 855.1,
     "y": 219.9,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-2f5fe1cacf49",
       "g-75b901132260"
@@ -2404,7 +2404,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 851.9,
     "y": 220.4,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-2f5fe1cacf49",
       "g-b1543ba6dcd8",
@@ -2420,7 +2420,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1100.1,
     "y": 247.9,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-00af7bf756f9",
       "g-520a8ec3c5f8",
@@ -2440,7 +2440,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1077.7,
     "y": 254.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-00af7bf756f9",
       "g-0197f2a1876f",
@@ -2462,7 +2462,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1069.6,
     "y": 267.1,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-06a28e477cb4",
       "g-17e372ce432e",
@@ -2480,7 +2480,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1086.0,
     "y": 257.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-17e372ce432e",
       "g-269379846d8d",
@@ -2499,7 +2499,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1095.9,
     "y": 256.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-00af7bf756f9",
       "g-269379846d8d",
@@ -2518,7 +2518,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1091.4,
     "y": 267.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-00af7bf756f9",
       "g-832f30872173",
@@ -2535,7 +2535,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1011.6,
     "y": 247.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-3a323d72eda9",
       "g-453d4dc2fca7",
@@ -2555,7 +2555,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1009.5,
     "y": 259.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-3a323d72eda9",
       "g-5846e3b80981",
@@ -2573,7 +2573,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1018.2,
     "y": 243.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-453d4dc2fca7",
       "g-4e990a805169",
@@ -2590,7 +2590,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1023.5,
     "y": 251.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-45c4b342ee14",
       "g-48868e270748",
@@ -2610,7 +2610,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1024.3,
     "y": 260.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-453d4dc2fca7",
       "g-4daef3dea9d8",
@@ -2630,7 +2630,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1003.3,
     "y": 269.4,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-3a323d72eda9",
       "g-4e23ef730661",
@@ -2646,7 +2646,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1011.9,
     "y": 268.7,
     "terrain": "plains",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-3a323d72eda9",
       "g-4daef3dea9d8",
@@ -2665,7 +2665,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1013.0,
     "y": 274.7,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-4daef3dea9d8",
       "g-5846e3b80981",
@@ -2683,7 +2683,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1026.7,
     "y": 233.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-445b53772565",
       "g-453d4dc2fca7",
@@ -2708,7 +2708,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1067.8,
     "y": 258.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0197f2a1876f",
       "g-06a28e477cb4",
@@ -2726,7 +2726,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1060.6,
     "y": 256.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0197f2a1876f",
       "g-06a28e477cb4",
@@ -2745,7 +2745,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1045.5,
     "y": 248.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0197f2a1876f",
       "g-1d5ccd773a3d",
@@ -2764,7 +2764,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1035.5,
     "y": 245.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-453d4dc2fca7",
       "g-748edaa3a72f",
@@ -2783,7 +2783,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1050.3,
     "y": 257.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-06a28e477cb4",
       "g-3089e0bed69a",
@@ -2803,7 +2803,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1040.8,
     "y": 256.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1d5ccd773a3d",
       "g-453d4dc2fca7",
@@ -2822,7 +2822,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1036.5,
     "y": 305.6,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-7367d58f92e7",
       "g-75948ae5202a",
@@ -2839,7 +2839,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1034.4,
     "y": 299.1,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-481b041a096d",
       "g-7367d58f92e7",
@@ -2856,7 +2856,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1048.2,
     "y": 290.6,
     "terrain": "plains",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-37c855a89991",
       "g-481b041a096d",
@@ -2874,7 +2874,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1063.1,
     "y": 276.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-06a28e477cb4",
       "g-5741860dcad0",
@@ -2891,7 +2891,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1053.6,
     "y": 279.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-06a28e477cb4",
       "g-379388ec19ef",
@@ -2911,7 +2911,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1012.0,
     "y": 279.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-975bcbe63bad",
       "g-d315c7111c08"
@@ -2926,7 +2926,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1015.4,
     "y": 293.7,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-1beb11a88ae3",
       "g-481b041a096d",
@@ -2942,7 +2942,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1019.7,
     "y": 287.5,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-481b041a096d",
       "g-4c6e61b736fe",
@@ -2959,7 +2959,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1018.5,
     "y": 282.4,
     "terrain": "plains",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-4c6e61b736fe",
       "g-6f99f75521a6",
@@ -2977,7 +2977,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1021.5,
     "y": 275.9,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-4c6e61b736fe",
       "g-4daef3dea9d8",
@@ -2994,7 +2994,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1030.9,
     "y": 279.5,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-379388ec19ef",
       "g-481b041a096d",
@@ -3015,7 +3015,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1038.3,
     "y": 279.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-379388ec19ef",
       "g-4c6e61b736fe",
@@ -3034,7 +3034,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1016.4,
     "y": 298.7,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-481b041a096d",
       "g-7367d58f92e7",
@@ -3050,7 +3050,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1025.4,
     "y": 309.4,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-45146cba16d5",
       "g-7367d58f92e7",
@@ -3067,7 +3067,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1022.6,
     "y": 302.7,
     "terrain": "plains",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-1beb11a88ae3",
       "g-481b041a096d",
@@ -3085,7 +3085,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1023.3,
     "y": 293.9,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1beb11a88ae3",
       "g-379388ec19ef",
@@ -3107,7 +3107,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1025.7,
     "y": 317.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-75948ae5202a",
       "g-9ca46289e790"
@@ -3122,7 +3122,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1033.4,
     "y": 316.7,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-45146cba16d5",
       "g-859d119fda83",
@@ -3138,7 +3138,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 720.0,
     "y": 360.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 34
   },
@@ -3150,7 +3150,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1091.4,
     "y": 309.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 7106
   },
@@ -3162,7 +3162,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1060.5,
     "y": 265.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-17e372ce432e",
       "g-1d5ccd773a3d",
@@ -3184,7 +3184,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1031.3,
     "y": 258.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-453d4dc2fca7",
       "g-48868e270748",
@@ -3203,7 +3203,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1025.8,
     "y": 271.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-4c6e61b736fe",
       "g-5846e3b80981",
@@ -3224,7 +3224,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1025.2,
     "y": 264.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-4daef3dea9d8",
       "g-6f1a52c23f79",
@@ -3242,7 +3242,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1043.4,
     "y": 262.5,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1d5ccd773a3d",
       "g-558d9207c822",
@@ -3261,7 +3261,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1039.6,
     "y": 270.1,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-4c6e61b736fe",
       "g-4daef3dea9d8",
@@ -3280,7 +3280,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1049.9,
     "y": 270.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-06a28e477cb4",
       "g-1d5ccd773a3d",
@@ -3300,7 +3300,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1045.9,
     "y": 282.1,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-379388ec19ef",
       "g-37c855a89991",
@@ -3318,7 +3318,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1035.7,
     "y": 285.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-37c855a89991",
       "g-481b041a096d",
@@ -3337,7 +3337,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1034.9,
     "y": 292.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-379388ec19ef",
       "g-481b041a096d",
@@ -3355,7 +3355,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1029.3,
     "y": 208.9,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0c9922004c66",
       "g-226a27e4d2ea",
@@ -3378,7 +3378,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1050.2,
     "y": 209.1,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-272932fb279b",
       "g-445b53772565",
@@ -3396,7 +3396,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1052.0,
     "y": 185.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-226a27e4d2ea",
       "g-464972d13efc",
@@ -3417,7 +3417,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1070.0,
     "y": 180.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-04deb57b0b14",
       "g-105d3810be7b",
@@ -3438,7 +3438,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1091.4,
     "y": 184.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-04deb57b0b14",
       "g-13706735ee84",
@@ -3455,7 +3455,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1086.5,
     "y": 197.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-464972d13efc",
       "g-4c7a9cf8b851",
@@ -3473,7 +3473,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1068.3,
     "y": 203.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-04deb57b0b14",
       "g-226a27e4d2ea",
@@ -3493,7 +3493,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1045.3,
     "y": 231.1,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-226a27e4d2ea",
       "g-81b536866129",
@@ -3512,7 +3512,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1065.9,
     "y": 225.1,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-226a27e4d2ea",
       "g-445b53772565",
@@ -3530,7 +3530,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1066.4,
     "y": 240.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0197f2a1876f",
       "g-445b53772565",
@@ -3549,7 +3549,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1085.4,
     "y": 232.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-4c7a9cf8b851",
       "g-520a8ec3c5f8",
@@ -3571,7 +3571,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1104.2,
     "y": 238.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-3a180ee18d62",
       "g-3eebf03f8cf2",
@@ -3591,15 +3591,15 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1107.0,
     "y": 198.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-04deb57b0b14",
       "g-13706735ee84",
       "g-7895a91f8dcc",
       "g-8fbf38b297bd",
-      "g-a55c15e237e5",
       "g-e37647adbfe0",
-      "g-f20dab38b1cc"
+      "g-f20dab38b1cc",
+      "inner-mongol-ejina"
     ],
     "area_km2": 171663
   },
@@ -3611,7 +3611,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1143.3,
     "y": 215.9,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-3a180ee18d62",
       "g-3e4cb43d966e",
@@ -3619,7 +3619,8 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
       "g-8fbf38b297bd",
       "g-a55c15e237e5",
       "g-dfcba81bc6c8",
-      "g-ebd60376b526"
+      "g-ebd60376b526",
+      "inner-mongol-ejina"
     ],
     "area_km2": 286027
   },
@@ -3631,7 +3632,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1131.7,
     "y": 264.1,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-297ea17d3d5e",
       "g-61daecc369db",
@@ -3651,7 +3652,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1139.8,
     "y": 264.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-01086db19465",
       "g-29e5e6b8069d",
@@ -3671,7 +3672,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1121.8,
     "y": 270.5,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-01086db19465",
       "g-1f3cf2ca2e91",
@@ -3690,7 +3691,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1119.0,
     "y": 262.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-01086db19465",
       "g-297ea17d3d5e",
@@ -3709,7 +3710,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1120.1,
     "y": 255.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-01086db19465",
       "g-3a180ee18d62",
@@ -3728,7 +3729,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1116.5,
     "y": 248.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-297ea17d3d5e",
       "g-3a180ee18d62",
@@ -3745,7 +3746,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1133.5,
     "y": 253.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-01086db19465",
       "g-297ea17d3d5e",
@@ -3765,7 +3766,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1226.3,
     "y": 156.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-01bcf445f3e6",
       "g-03430977f3b9",
@@ -3784,15 +3785,15 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1221.4,
     "y": 174.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-3f1f91341497",
       "g-4ce131d5d7bb",
       "g-4fee3d3cf632",
       "g-5bb6c7df19b0",
-      "g-e259e850f4af",
       "g-e691ee1d3200",
-      "g-f74336262089"
+      "g-f74336262089",
+      "inner-mongol-hinggan"
     ],
     "area_km2": 130236
   },
@@ -3804,7 +3805,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1237.6,
     "y": 174.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-01bcf445f3e6",
       "g-4fee3d3cf632",
@@ -3824,7 +3825,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1249.9,
     "y": 176.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-8855026f107a",
       "g-e691ee1d3200",
@@ -3840,7 +3841,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1239.0,
     "y": 187.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-4553acf83fcf",
       "g-4fee3d3cf632",
@@ -3860,7 +3861,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1229.7,
     "y": 189.9,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-41a1774fbd16",
       "g-4553acf83fcf",
@@ -3880,7 +3881,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1228.8,
     "y": 183.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-01bcf445f3e6",
       "g-4ce131d5d7bb",
@@ -3899,7 +3900,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1224.3,
     "y": 191.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-2b8fef05261c",
       "g-3f1f91341497",
@@ -3920,7 +3921,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1221.5,
     "y": 181.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-01bcf445f3e6",
       "g-2b8fef05261c",
@@ -3939,14 +3940,15 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1212.7,
     "y": 181.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-01bcf445f3e6",
       "g-2b8fef05261c",
       "g-4ce131d5d7bb",
       "g-585b4d6fe2e6",
       "g-a019e8a767f5",
-      "g-e259e850f4af"
+      "g-e259e850f4af",
+      "inner-mongol-hinggan"
     ],
     "area_km2": 41091
   },
@@ -3958,7 +3960,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1214.5,
     "y": 198.6,
     "terrain": "plains",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-2b8fef05261c",
       "g-41a1774fbd16",
@@ -3976,7 +3978,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1212.6,
     "y": 191.1,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-2b8fef05261c",
       "g-3f1f91341497",
@@ -3994,7 +3996,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1218.5,
     "y": 191.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-3f1f91341497",
       "g-4ce131d5d7bb",
@@ -4012,7 +4014,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1199.7,
     "y": 196.9,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-2ca40b5cd436",
       "g-3748d096fc5d",
@@ -4031,7 +4033,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1149.7,
     "y": 270.0,
     "terrain": "plains",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-12351a8e4a43",
       "g-50780022df20",
@@ -4049,7 +4051,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1143.8,
     "y": 263.5,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-29e5e6b8069d",
       "g-6164b3d74457",
@@ -4066,7 +4068,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1149.9,
     "y": 262.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-12351a8e4a43",
       "g-29e5e6b8069d",
@@ -4085,7 +4087,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1156.5,
     "y": 260.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-12351a8e4a43",
       "g-1a7d069a69aa",
@@ -4104,7 +4106,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1162.1,
     "y": 260.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-03047a813670",
       "g-1a7d069a69aa",
@@ -4123,7 +4125,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1162.1,
     "y": 268.9,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-12351a8e4a43",
       "g-442e45abb5b5",
@@ -4141,7 +4143,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1155.9,
     "y": 270.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-1a7d069a69aa",
       "g-6164b3d74457",
@@ -4159,7 +4161,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1177.2,
     "y": 264.4,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-442e45abb5b5",
       "g-4745c3607e68",
@@ -4178,7 +4180,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1184.3,
     "y": 264.4,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-2f8aaa45f80d",
       "g-59b5e74fb110",
@@ -4194,7 +4196,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1163.4,
     "y": 273.2,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-12351a8e4a43",
       "g-1a7d069a69aa",
@@ -4211,7 +4213,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1170.6,
     "y": 270.7,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-105202b9caf5",
       "g-2f8aaa45f80d",
@@ -4229,7 +4231,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1170.5,
     "y": 263.6,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-1a7d069a69aa",
       "g-2f8aaa45f80d",
@@ -4248,7 +4250,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1158.3,
     "y": 283.4,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 33841
   },
@@ -4260,7 +4262,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1197.3,
     "y": 251.7,
     "terrain": "plains",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-3ba20437a2fd",
       "g-45433270b9d4",
@@ -4278,7 +4280,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1190.2,
     "y": 252.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-3ba20437a2fd",
       "g-59b5e74fb110",
@@ -4298,7 +4300,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1194.0,
     "y": 258.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-59b5e74fb110",
       "g-c165c7af80a9",
@@ -4314,7 +4316,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1187.9,
     "y": 260.5,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-4745c3607e68",
       "g-7f95ffa2980e",
@@ -4332,7 +4334,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1204.3,
     "y": 241.3,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-45433270b9d4",
       "g-54ac8dd2b948"
@@ -4347,7 +4349,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1198.5,
     "y": 239.8,
     "terrain": "plains",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-18be35a3ae6a",
       "g-2d9b81a1a1dc",
@@ -4367,7 +4369,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1201.7,
     "y": 246.9,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-3ba20437a2fd",
       "g-54ac8dd2b948",
@@ -4384,7 +4386,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1196.8,
     "y": 246.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-18be35a3ae6a",
       "g-45433270b9d4",
@@ -4403,7 +4405,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1205.6,
     "y": 235.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-54ac8dd2b948",
       "g-c68b433e1000"
@@ -4418,7 +4420,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1193.7,
     "y": 224.3,
     "terrain": "plains",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-4c6fa60c555b",
       "g-5f5ef90b3feb",
@@ -4438,7 +4440,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1199.2,
     "y": 225.2,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-41ec5fe5864d",
       "g-c68b433e1000"
@@ -4453,7 +4455,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1198.5,
     "y": 232.5,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-2d9b81a1a1dc",
       "g-41ec5fe5864d",
@@ -4472,7 +4474,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1191.5,
     "y": 211.5,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-5f5ef90b3feb",
       "g-73efd0872463",
@@ -4489,7 +4491,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1191.6,
     "y": 217.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-41ec5fe5864d",
       "g-6670d6009ade",
@@ -4506,7 +4508,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1184.7,
     "y": 215.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-41ec5fe5864d",
       "g-42a926280310",
@@ -4526,7 +4528,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1198.5,
     "y": 213.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-0cf44116430e",
       "g-41ec5fe5864d",
@@ -4543,7 +4545,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1205.8,
     "y": 211.7,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-a964e0f7f866"
     ],
@@ -4557,7 +4559,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1186.2,
     "y": 208.2,
     "terrain": "plains",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-443ff0aec3d8",
       "g-6670d6009ade",
@@ -4575,7 +4577,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1178.7,
     "y": 212.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-11e6eb2af9a6",
       "g-42a926280310",
@@ -4594,7 +4596,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1178.5,
     "y": 205.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-11e6eb2af9a6",
       "g-73efd0872463",
@@ -4611,7 +4613,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 720.0,
     "y": 360.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [],
     "area_km2": 20596
   },
@@ -4623,7 +4625,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1181.8,
     "y": 194.9,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-3748d096fc5d",
       "g-41a7ff4adbdf",
@@ -4643,7 +4645,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1190.2,
     "y": 193.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-2ca40b5cd436",
       "g-3748d096fc5d",
@@ -4662,7 +4664,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1195.2,
     "y": 200.1,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-443ff0aec3d8",
       "g-8de5d954a170",
@@ -4679,7 +4681,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 720.0,
     "y": 360.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 5
   },
@@ -4691,7 +4693,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1186.1,
     "y": 200.7,
     "terrain": "urban",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-3748d096fc5d",
       "g-73efd0872463",
@@ -4708,7 +4710,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1142.5,
     "y": 236.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-29e5e6b8069d",
       "g-3a180ee18d62",
@@ -4727,7 +4729,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1123.8,
     "y": 238.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-297ea17d3d5e",
       "g-3e4cb43d966e",
@@ -4747,7 +4749,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1151.6,
     "y": 247.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-29e5e6b8069d",
       "g-39f8a398ba83",
@@ -4767,7 +4769,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1151.5,
     "y": 255.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-29e5e6b8069d",
       "g-4f3cd7df83ec",
@@ -4785,7 +4787,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1141.6,
     "y": 253.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-3e4cb43d966e",
       "g-50780022df20",
@@ -4806,7 +4808,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1162.0,
     "y": 243.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1807f4801e4b",
       "g-39f8a398ba83",
@@ -4825,7 +4827,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1162.1,
     "y": 248.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-03047a813670",
       "g-4f3cd7df83ec",
@@ -4845,7 +4847,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1170.8,
     "y": 243.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1807f4801e4b",
       "g-31ea9b92a9f6",
@@ -4865,7 +4867,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1170.8,
     "y": 248.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-03047a813670",
       "g-31ea9b92a9f6",
@@ -4885,7 +4887,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1170.7,
     "y": 253.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-31ea9b92a9f6",
       "g-39f8a398ba83",
@@ -4906,7 +4908,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1169.0,
     "y": 258.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-03047a813670",
       "g-2f8aaa45f80d",
@@ -4926,7 +4928,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1159.9,
     "y": 255.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-03047a813670",
       "g-39f8a398ba83",
@@ -4946,7 +4948,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1154.1,
     "y": 224.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1807f4801e4b",
       "g-29e5e6b8069d",
@@ -4972,7 +4974,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1094.9,
     "y": 211.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-04deb57b0b14",
       "g-4c7a9cf8b851",
@@ -4991,7 +4993,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1093.1,
     "y": 225.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-7895a91f8dcc",
       "g-8fbf38b297bd",
@@ -5008,7 +5010,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1117.3,
     "y": 218.1,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-3a180ee18d62",
       "g-5f9fb5064f30",
@@ -5027,7 +5029,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1172.8,
     "y": 203.9,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-11e6eb2af9a6",
       "g-8db5dd38392a",
@@ -5046,7 +5048,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1167.3,
     "y": 205.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-11e6eb2af9a6",
       "g-a744d359bd07",
@@ -5065,7 +5067,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1171.6,
     "y": 213.9,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-42a926280310",
       "g-535ac9536441",
@@ -5085,7 +5087,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1165.2,
     "y": 214.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-11e6eb2af9a6",
       "g-535ac9536441",
@@ -5102,7 +5104,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1181.2,
     "y": 258.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-03047a813670",
       "g-2f8aaa45f80d",
@@ -5122,7 +5124,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1180.8,
     "y": 253.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-03047a813670",
       "g-31ea9b92a9f6",
@@ -5143,7 +5145,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1178.9,
     "y": 249.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-03047a813670",
       "g-692e14c667c2",
@@ -5162,7 +5164,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1179.7,
     "y": 243.9,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-18be35a3ae6a",
       "g-31ea9b92a9f6",
@@ -5183,7 +5185,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1189.4,
     "y": 243.1,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-3ba20437a2fd",
       "g-54ac8dd2b948",
@@ -5203,7 +5205,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1187.1,
     "y": 248.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-18be35a3ae6a",
       "g-31ea9b92a9f6",
@@ -5223,7 +5225,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1177.2,
     "y": 220.1,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-11e6eb2af9a6",
       "g-3219da2f6ad7",
@@ -5243,7 +5245,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1177.3,
     "y": 229.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-3306fff493cb",
       "g-42a926280310",
@@ -5263,7 +5265,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1169.6,
     "y": 227.1,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-3219da2f6ad7",
       "g-42a926280310",
@@ -5282,7 +5284,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1168.8,
     "y": 221.1,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-11e6eb2af9a6",
       "g-3219da2f6ad7",
@@ -5301,7 +5303,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1161.7,
     "y": 239.1,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-4469150e294f",
       "g-69fb973ccb32",
@@ -5320,7 +5322,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1163.7,
     "y": 231.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1807f4801e4b",
       "g-3306fff493cb",
@@ -5337,7 +5339,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1172.7,
     "y": 234.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1807f4801e4b",
       "g-3219da2f6ad7",
@@ -5356,7 +5358,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1172.3,
     "y": 239.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1807f4801e4b",
       "g-61e1eee52faa",
@@ -5374,7 +5376,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1179.4,
     "y": 237.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-18be35a3ae6a",
       "g-3219da2f6ad7",
@@ -5393,7 +5395,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1194.1,
     "y": 236.9,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-18be35a3ae6a",
       "g-54ac8dd2b948",
@@ -5411,7 +5413,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1186.8,
     "y": 236.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-18be35a3ae6a",
       "g-3219da2f6ad7",
@@ -5431,7 +5433,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1184.7,
     "y": 227.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-3219da2f6ad7",
       "g-41ec5fe5864d",
@@ -5450,7 +5452,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1190.5,
     "y": 228.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-41ec5fe5864d",
       "g-a5de4fb524e8",
@@ -5462,13 +5464,13 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
   },
   {
     "id": "g-3a47d966a622",
-    "name": "East Inner Mongol / Hulunbuir (東部内モンゴル / 呼倫貝爾・興安) (1/4)",
+    "name": "North Hulunbuir / Manzhouli・Hailar (呼倫貝爾北部・満洲里・海拉爾)",
     "region": "CN",
     "country": "CN",
     "x": 1202.0,
     "y": 159.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-03430977f3b9",
       "g-2ca40b5cd436",
@@ -5476,56 +5478,56 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
       "g-70dd838f7c1a",
       "g-aa27af1a9ae6",
       "g-e259e850f4af",
-      "g-f74336262089"
+      "g-f74336262089",
+      "inner-mongol-hinggan"
     ],
     "area_km2": 121882
   },
   {
     "id": "g-f74336262089",
-    "name": "East Inner Mongol / Hulunbuir (東部内モンゴル / 呼倫貝爾・興安) (2/4)",
+    "name": "East Hulunbuir / Zhalantun・Greater Khingan (呼倫貝爾東部・扎蘭屯・大興安嶺)",
     "region": "CN",
     "country": "CN",
     "x": 1212.9,
     "y": 161.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-01bcf445f3e6",
       "g-3a47d966a622",
       "g-5bb6c7df19b0",
-      "g-e259e850f4af"
+      "g-e259e850f4af",
+      "inner-mongol-hinggan"
     ],
     "area_km2": 119752
   },
   {
     "id": "g-e259e850f4af",
-    "name": "East Inner Mongol / Hulunbuir (東部内モンゴル / 呼倫貝爾・興安) (3/4)",
+    "name": "Tongliao / Horqin・Jirim (通遼・ホルチン・哲里木盟)",
     "region": "CN",
     "country": "CN",
-    "x": 1205.1,
-    "y": 180.4,
+    "x": 1206.6,
+    "y": 185.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
-      "g-01bcf445f3e6",
       "g-2ca40b5cd436",
-      "g-3a47d966a622",
       "g-3f1f91341497",
       "g-585b4d6fe2e6",
-      "g-f74336262089",
-      "g-fa976b6e64d2"
+      "g-fa976b6e64d2",
+      "inner-mongol-hinggan"
     ],
-    "area_km2": 101381
+    "area_km2": 59411
   },
   {
     "id": "g-2ca40b5cd436",
-    "name": "East Inner Mongol / Hulunbuir (東部内モンゴル / 呼倫貝爾・興安) (4/4)",
+    "name": "Chifeng / Ju Ud (赤峰・昭烏達・シラムレン)",
     "region": "CN",
     "country": "CN",
     "x": 1194.5,
     "y": 182.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-3a47d966a622",
       "g-3ce79d82da2b",
@@ -5534,7 +5536,8 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
       "g-aa27af1a9ae6",
       "g-c1aaf25649dd",
       "g-e259e850f4af",
-      "g-fa976b6e64d2"
+      "g-fa976b6e64d2",
+      "inner-mongol-hinggan"
     ],
     "area_km2": 139439
   },
@@ -5546,7 +5549,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1182.4,
     "y": 190.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-2ca40b5cd436",
       "g-3ce79d82da2b",
@@ -5565,7 +5568,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1182.4,
     "y": 185.5,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-2ca40b5cd436",
       "g-41a7ff4adbdf",
@@ -5582,14 +5585,14 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1171.0,
     "y": 192.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-41a7ff4adbdf",
       "g-724d7c938273",
       "g-8de5d954a170",
       "g-be675e00d850",
       "g-d5569c59d8a1",
-      "g-ebd60376b526"
+      "suiyuan-guisui"
     ],
     "area_km2": 27540
   },
@@ -5601,13 +5604,14 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1169.3,
     "y": 198.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-8de5d954a170",
       "g-a744d359bd07",
       "g-bbfd96efb8d9",
       "g-df4fd20516dd",
-      "g-ebd60376b526"
+      "g-ebd60376b526",
+      "suiyuan-guisui"
     ],
     "area_km2": 21861
   },
@@ -5619,13 +5623,13 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1169.3,
     "y": 185.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-8141968ee2ce",
       "g-bbfd96efb8d9",
       "g-d5569c59d8a1",
-      "g-ebd60376b526",
-      "g-f4223eeed54f"
+      "g-f4223eeed54f",
+      "suiyuan-guisui"
     ],
     "area_km2": 33827
   },
@@ -5637,7 +5641,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1174.5,
     "y": 185.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-3ce79d82da2b",
       "g-41a7ff4adbdf",
@@ -5656,7 +5660,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1182.9,
     "y": 179.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-2ca40b5cd436",
       "g-3ce79d82da2b",
@@ -5674,7 +5678,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1185.8,
     "y": 165.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-03430977f3b9",
       "g-3a47d966a622",
@@ -5684,44 +5688,41 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
   },
   {
     "id": "g-ebd60376b526",
-    "name": "Suiyuan / Ordos (綏遠・オルドス・呼和浩特)",
+    "name": "Ordos / Ih Ju (オルドス・伊克昭盟 / 東勝・准格爾)",
     "region": "CN",
     "country": "CN",
-    "x": 1153.0,
-    "y": 197.5,
+    "x": 1151.5,
+    "y": 202.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
-      "g-06bd25adcf51",
-      "g-724d7c938273",
       "g-a55c15e237e5",
-      "g-bbfd96efb8d9",
       "g-be675e00d850",
       "g-df4fd20516dd",
       "g-dfcba81bc6c8",
       "g-f20dab38b1cc",
-      "g-f4223eeed54f"
+      "suiyuan-bayan-nur",
+      "suiyuan-guisui"
     ],
-    "area_km2": 240240
+    "area_km2": 128240
   },
   {
     "id": "g-a55c15e237e5",
-    "name": "West Inner Mongol / Alxa (西部内モンゴル / 阿拉善・アルシャー)",
+    "name": "West Inner Mongol / Alxa (西部内モンゴル / 阿拉善・バヤンホト)",
     "region": "CN",
     "country": "CN",
-    "x": 1129.5,
-    "y": 199.4,
+    "x": 1132.3,
+    "y": 199.0,
     "terrain": "desert",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-06bd25adcf51",
-      "g-13706735ee84",
-      "g-1558027b669f",
-      "g-73c89a387cce",
       "g-ebd60376b526",
-      "g-f20dab38b1cc"
+      "g-f20dab38b1cc",
+      "inner-mongol-ejina",
+      "suiyuan-bayan-nur"
     ],
-    "area_km2": 200097
+    "area_km2": 129100
   },
   {
     "id": "g-53721116ca07",
@@ -5731,7 +5732,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 858.6,
     "y": 234.2,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-4d77c3bf1b59",
       "g-5faf2859702a",
@@ -5751,7 +5752,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 861.1,
     "y": 232.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-4d77c3bf1b59",
       "g-53721116ca07",
@@ -5767,7 +5768,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 863.6,
     "y": 224.5,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-53721116ca07",
       "g-ae519c033804",
@@ -5784,7 +5785,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 865.3,
     "y": 334.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-00083d734824",
       "g-5fdb8e047076",
@@ -5802,7 +5803,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 893.2,
     "y": 323.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-05936452c935",
       "g-1ef1d8d9fa92",
@@ -5822,7 +5823,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 892.2,
     "y": 338.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-05936452c935",
       "g-31852db4a5b1",
@@ -5840,7 +5841,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 883.5,
     "y": 313.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1217ce639f9c",
       "g-19962bf52610",
@@ -5859,7 +5860,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 871.9,
     "y": 307.1,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1217ce639f9c",
       "g-19962bf52610",
@@ -5876,7 +5877,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 868.9,
     "y": 318.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-2a449f62ff53",
       "g-5fdb8e047076",
@@ -5895,7 +5896,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 864.4,
     "y": 324.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-00083d734824",
       "g-1217ce639f9c",
@@ -5913,7 +5914,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 881.5,
     "y": 332.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1217ce639f9c",
       "g-329991de1e0d",
@@ -5933,7 +5934,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 827.5,
     "y": 326.1,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-00083d734824",
       "g-111b1cfd49f5",
@@ -5952,7 +5953,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 836.8,
     "y": 337.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-00083d734824",
       "g-021c88493bcb",
@@ -5970,7 +5971,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 854.6,
     "y": 339.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-00083d734824",
       "g-111b1cfd49f5",
@@ -5988,7 +5989,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 851.0,
     "y": 319.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-00083d734824",
       "g-1217ce639f9c",
@@ -6006,7 +6007,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 845.1,
     "y": 327.9,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-021c88493bcb",
       "g-111b1cfd49f5",
@@ -6026,7 +6027,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 908.9,
     "y": 337.2,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-31852db4a5b1",
       "g-329991de1e0d",
@@ -6043,7 +6044,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 919.5,
     "y": 321.2,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-05936452c935",
       "g-329991de1e0d",
@@ -6059,7 +6060,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 896.8,
     "y": 345.3,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-05936452c935",
       "g-3ba19b6bf0b6",
@@ -6076,7 +6077,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 888.2,
     "y": 359.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-1a036e0f78c6",
       "g-31852db4a5b1",
@@ -6092,7 +6093,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 864.9,
     "y": 356.5,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1058e6bc3228",
       "g-182033346db9",
@@ -6112,7 +6113,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 869.5,
     "y": 363.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-fd40784c404a"
     ],
@@ -6126,7 +6127,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 880.7,
     "y": 355.1,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1a036e0f78c6",
       "g-31852db4a5b1",
@@ -6144,7 +6145,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 879.1,
     "y": 369.4,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-1058e6bc3228",
       "g-4714180d3ccc",
@@ -6161,7 +6162,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 861.0,
     "y": 418.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-f0c01b047ee5"
     ],
@@ -6175,7 +6176,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 851.7,
     "y": 393.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0cb32a3b8c88",
       "g-3a020c6fe61f",
@@ -6194,7 +6195,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 862.9,
     "y": 400.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-57a6aa523d1d",
       "g-92a28d3b9d8e",
@@ -6211,7 +6212,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 842.0,
     "y": 381.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-3a79d9b9f1a4",
       "g-4bf0c508460d",
@@ -6228,7 +6229,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 873.7,
     "y": 398.7,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-2e29ac1445d8",
       "g-3a020c6fe61f",
@@ -6245,7 +6246,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 868.1,
     "y": 391.5,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-1058e6bc3228",
       "g-3a020c6fe61f",
@@ -6263,7 +6264,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 868.2,
     "y": 378.3,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-1a036e0f78c6",
       "g-3a79d9b9f1a4",
@@ -6281,7 +6282,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 854.3,
     "y": 382.9,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0cb32a3b8c88",
       "g-1058e6bc3228",
@@ -6299,7 +6300,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 856.2,
     "y": 371.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0cb32a3b8c88",
       "g-1058e6bc3228",
@@ -6318,7 +6319,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 869.9,
     "y": 223.5,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-5faf2859702a",
       "g-6cf730ec9b95",
@@ -6336,7 +6337,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 876.2,
     "y": 222.9,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-20c060bf5047",
       "g-4b3abefb83e4",
@@ -6357,7 +6358,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 867.8,
     "y": 227.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-53721116ca07",
       "g-5faf2859702a",
@@ -6375,7 +6376,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 882.3,
     "y": 214.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-61d60b719a7b",
       "g-6dea164c7283",
@@ -6394,7 +6395,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 875.8,
     "y": 216.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-20c060bf5047",
       "g-6cf730ec9b95",
@@ -6413,7 +6414,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 869.7,
     "y": 215.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-3052a113d488",
       "g-6cf730ec9b95",
@@ -6432,7 +6433,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 881.2,
     "y": 218.5,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-4b3abefb83e4",
       "g-61d60b719a7b",
@@ -6450,7 +6451,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 867.0,
     "y": 218.1,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-20c060bf5047",
       "g-5faf2859702a",
@@ -6469,7 +6470,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 904.3,
     "y": 320.9,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-1ef1d8d9fa92",
       "g-329991de1e0d",
@@ -6485,7 +6486,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 506.9,
     "y": 347.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-23b2ae015564",
       "g-a0a6bff43c60",
@@ -6502,7 +6503,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 506.4,
     "y": 341.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-2323c6048fde",
       "g-23b2ae015564",
@@ -6519,7 +6520,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 736.8,
     "y": 164.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-08b32296a394",
       "g-2b641312acc4",
@@ -6539,7 +6540,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 730.0,
     "y": 160.5,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-2d711760e292",
       "g-4c07327d2f02",
@@ -6561,7 +6562,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 743.3,
     "y": 165.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1babde8b0c67",
       "g-23f3c7f4401a",
@@ -6579,7 +6580,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 749.8,
     "y": 166.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-23f3c7f4401a",
       "g-30f5727729fe",
@@ -6599,7 +6600,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 745.0,
     "y": 183.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-4f30e716039e",
       "g-541ce0458844",
@@ -6616,7 +6617,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 742.9,
     "y": 178.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-2b641312acc4",
       "g-3da546701699",
@@ -6637,7 +6638,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 719.3,
     "y": 183.1,
     "terrain": "plains",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-177983c42c4c",
       "g-278fab365b75",
@@ -6655,7 +6656,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 725.7,
     "y": 184.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1b8e8fd24ea3",
       "g-278fab365b75",
@@ -6675,7 +6676,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 734.6,
     "y": 185.4,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-177983c42c4c",
       "g-5a8763e7bd70",
@@ -6694,7 +6695,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 744.5,
     "y": 171.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1babde8b0c67",
       "g-2b641312acc4",
@@ -6714,7 +6715,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 719.4,
     "y": 175.5,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-1b8e8fd24ea3",
       "g-278fab365b75",
@@ -6731,7 +6732,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 715.6,
     "y": 170.3,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-2abc42a9576e",
       "g-2d711760e292",
@@ -6748,7 +6749,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 709.3,
     "y": 167.3,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-4c07327d2f02",
       "g-862bcac9ca4d"
@@ -6763,7 +6764,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 717.7,
     "y": 164.2,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-08b32296a394",
       "g-2abc42a9576e",
@@ -6780,7 +6781,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 475.9,
     "y": 301.4,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 1097
   },
@@ -6792,7 +6793,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 473.3,
     "y": 295.4,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 1657
   },
@@ -6804,7 +6805,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 942.1,
     "y": 444.4,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 2582
   },
@@ -6816,7 +6817,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 900.6,
     "y": 411.3,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 395
   },
@@ -6828,7 +6829,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 756.3,
     "y": 191.3,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-976a91de8e2f"
     ],
@@ -6842,7 +6843,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 726.4,
     "y": 177.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-177983c42c4c",
       "g-1b8e8fd24ea3",
@@ -6860,7 +6861,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 727.5,
     "y": 168.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-08b32296a394",
       "g-278fab365b75",
@@ -6881,7 +6882,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 732.4,
     "y": 177.1,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-177983c42c4c",
       "g-278fab365b75",
@@ -6900,7 +6901,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 736.9,
     "y": 170.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-2d711760e292",
       "g-4e234547af7b",
@@ -6918,7 +6919,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 496.1,
     "y": 345.1,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-2323c6048fde",
       "g-7b5fb25fc3d4",
@@ -6938,7 +6939,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 499.4,
     "y": 340.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-23b2ae015564",
       "g-8f8e4697e73f",
@@ -6954,7 +6955,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 482.9,
     "y": 338.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-0171f9024750",
       "g-0feb5b147faa",
@@ -6973,7 +6974,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 481.8,
     "y": 330.7,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-0feb5b147faa",
       "g-3761ab3af3b2",
@@ -6990,7 +6991,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 485.0,
     "y": 344.9,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-0171f9024750",
       "g-2323c6048fde",
@@ -7009,7 +7010,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1231.2,
     "y": 207.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-65127c9efacc",
       "g-f9b64661f4d7"
@@ -7024,7 +7025,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1231.5,
     "y": 209.9,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-65127c9efacc",
       "g-950c6a91de01",
@@ -7040,7 +7041,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1228.0,
     "y": 219.1,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-950c6a91de01"
     ],
@@ -7054,7 +7055,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1234.1,
     "y": 215.9,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-044ec7aa52f8",
       "g-f9b64661f4d7"
@@ -7069,7 +7070,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1226.6,
     "y": 205.9,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-5a1a717241ec",
       "g-6b860c82fc98",
@@ -7086,7 +7087,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1237.3,
     "y": 192.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-6b860c82fc98",
       "g-8855026f107a",
@@ -7103,7 +7104,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1225.2,
     "y": 197.4,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-5a1a717241ec",
       "g-6b860c82fc98",
@@ -7121,7 +7122,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1224.2,
     "y": 202.1,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-41a1774fbd16",
       "g-65127c9efacc",
@@ -7137,7 +7138,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1232.5,
     "y": 197.5,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-41a1774fbd16",
       "g-4553acf83fcf",
@@ -7157,7 +7158,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 666.9,
     "y": 256.1,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-1a2b91527489",
       "g-4cdabe199400",
@@ -7175,7 +7176,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 710.1,
     "y": 224.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-3a4384b17d47",
       "g-5f19015cc587",
@@ -7194,7 +7195,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 694.0,
     "y": 233.2,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-0d6130c251c0",
       "g-94990a070f7e",
@@ -7211,7 +7212,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 669.7,
     "y": 263.0,
     "terrain": "desert",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-4cdabe199400",
       "g-5dc1c260c56f",
@@ -7228,7 +7229,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 385.5,
     "y": 321.5,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-0055cfcb7504",
       "g-a10b982de791"
@@ -7243,7 +7244,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 382.0,
     "y": 303.9,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-417cd2634cac",
       "g-a10b982de791",
@@ -7259,7 +7260,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 379.1,
     "y": 311.7,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-4d47c5b38e15",
       "g-51c7b1586a2b",
@@ -7276,7 +7277,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 782.7,
     "y": 364.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-567dd2870a8c",
       "g-6236d549bbd5",
@@ -7295,7 +7296,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 778.0,
     "y": 352.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0da3234251dc",
       "g-1b6da45845b4",
@@ -7315,7 +7316,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 776.0,
     "y": 373.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-1b6da45845b4",
       "g-567dd2870a8c",
@@ -7332,7 +7333,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 801.9,
     "y": 361.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0da3234251dc",
       "g-1b6da45845b4",
@@ -7353,7 +7354,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 802.6,
     "y": 348.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-6236d549bbd5",
       "g-6264ffc112fd",
@@ -7373,7 +7374,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 794.2,
     "y": 371.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1b6da45845b4",
       "g-384d59b2ce60",
@@ -7392,7 +7393,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 792.8,
     "y": 384.5,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-3fd9b6a30c83",
       "g-403ebae4a91d",
@@ -7411,7 +7412,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 776.7,
     "y": 379.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-384d59b2ce60",
       "g-403ebae4a91d",
@@ -7428,7 +7429,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 835.6,
     "y": 346.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-111b1cfd49f5",
       "g-6264ffc112fd",
@@ -7445,7 +7446,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 819.2,
     "y": 346.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0da3234251dc",
       "g-4a2903505d9b",
@@ -7462,7 +7463,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 822.8,
     "y": 360.1,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0da3234251dc",
       "g-2e997b029abf",
@@ -7482,7 +7483,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 832.5,
     "y": 388.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-001a6610b0e5",
       "g-2e997b029abf",
@@ -7500,7 +7501,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 815.1,
     "y": 391.9,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-24984a8e6f1c",
       "g-2e997b029abf",
@@ -7519,7 +7520,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 825.7,
     "y": 404.5,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-001a6610b0e5",
       "g-24984a8e6f1c",
@@ -7540,7 +7541,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 806.5,
     "y": 380.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-001a6610b0e5",
       "g-2e997b029abf",
@@ -7559,7 +7560,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 815.9,
     "y": 379.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-001a6610b0e5",
       "g-24984a8e6f1c",
@@ -7578,7 +7579,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 828.0,
     "y": 373.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-24984a8e6f1c",
       "g-2e997b029abf",
@@ -7598,7 +7599,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 831.8,
     "y": 362.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-6264ffc112fd",
       "g-6c188e8a06b6",
@@ -7614,7 +7615,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1081.2,
     "y": 250.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-00af7bf756f9",
       "g-858ccb2989e5",
@@ -7631,7 +7632,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 847.3,
     "y": 154.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-2ada93ba7115",
       "g-31b025538440",
@@ -7650,7 +7651,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 822.4,
     "y": 156.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-13a676e7f1dc",
       "g-60c8db9d4223",
@@ -7669,7 +7670,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 833.4,
     "y": 157.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-06d2e0e260ec",
       "g-702e66e9477b",
@@ -7687,7 +7688,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 843.5,
     "y": 158.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0524b740b8f1",
       "g-06d2e0e260ec",
@@ -7706,7 +7707,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 815.5,
     "y": 165.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-13a676e7f1dc",
       "g-73cfde3815fd",
@@ -7727,7 +7728,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 837.7,
     "y": 176.4,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-729f2faf3162",
       "g-98e659a04a40",
@@ -7743,7 +7744,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 841.7,
     "y": 171.9,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-06d2e0e260ec",
       "g-23df997b428d",
@@ -7762,7 +7763,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 834.1,
     "y": 164.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-47625d79bf21",
       "g-675c4dafb84d",
@@ -7781,7 +7782,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 815.6,
     "y": 161.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-74fac170863f",
       "g-8e5ddeacfaed",
@@ -7800,7 +7801,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 854.6,
     "y": 155.1,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0524b740b8f1",
       "g-2ada93ba7115",
@@ -7819,7 +7820,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 866.5,
     "y": 162.1,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1aee50067fa9",
       "g-2ada93ba7115",
@@ -7838,7 +7839,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 875.6,
     "y": 164.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-4a91f4712302",
       "g-5a306f74b09e",
@@ -7857,7 +7858,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 871.3,
     "y": 167.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-0dd6d75a68d2",
       "g-1aee50067fa9",
@@ -7875,7 +7876,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 853.5,
     "y": 173.4,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-0493b0df70e4",
       "g-0dd6d75a68d2",
@@ -7892,7 +7893,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 863.0,
     "y": 171.6,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-07c9a3033b58",
       "g-4c8235562181",
@@ -7908,7 +7909,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 847.7,
     "y": 170.4,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-07c9a3033b58",
       "g-4c8235562181",
@@ -7925,7 +7926,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 856.2,
     "y": 161.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0524b740b8f1",
       "g-31b025538440",
@@ -7944,7 +7945,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 828.2523,
     "y": 162.8654,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-b12dd2b9db3b-1914-1",
       "g-06d2e0e260ec",
@@ -7964,7 +7965,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 860.6,
     "y": 166.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-07c9a3033b58",
       "g-0dd6d75a68d2",
@@ -7984,7 +7985,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 845.4,
     "y": 164.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0524b740b8f1",
       "g-06d2e0e260ec",
@@ -8004,7 +8005,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 837.9,
     "y": 150.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-04bfa5fc6dda",
       "g-0524b740b8f1",
@@ -8025,7 +8026,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 821.0,
     "y": 150.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-04bfa5fc6dda",
       "g-103ece1edc54",
@@ -8045,7 +8046,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 835.1,
     "y": 139.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-04bfa5fc6dda",
       "g-0fa80d08136d",
@@ -8066,7 +8067,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 819.5,
     "y": 144.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-04bfa5fc6dda",
       "g-314581565b5a",
@@ -8085,7 +8086,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 842.8,
     "y": 145.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-04bfa5fc6dda",
       "g-2a0a2f06c42f",
@@ -8103,7 +8104,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 831.2,
     "y": 145.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-27cb50e25978",
       "g-314581565b5a",
@@ -8122,7 +8123,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 781.1,
     "y": 436.3,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-0746e692b23c",
       "g-667f1de0ad5d",
@@ -8139,7 +8140,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 789.6,
     "y": 462.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-6336eb4bb443",
       "g-667f1de0ad5d",
@@ -8155,7 +8156,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 793.8,
     "y": 441.9,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-0746e692b23c",
       "g-3f1bc9dc570f",
@@ -8175,7 +8176,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 808.1,
     "y": 475.1,
     "terrain": "plains",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-53ec4fbd9511",
       "g-6336eb4bb443",
@@ -8196,7 +8197,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 841.6,
     "y": 475.8,
     "terrain": "plains",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-74564c0f3c2d",
       "g-7e8d19e68b6e",
@@ -8215,7 +8216,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 826.4,
     "y": 474.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-6d107cb86131",
       "g-7d70f1cd44b2",
@@ -8233,7 +8234,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 826.3,
     "y": 488.4,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-6d107cb86131",
       "g-74564c0f3c2d",
@@ -8251,7 +8252,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 837.3,
     "y": 455.1,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-7084fdc58f55",
       "g-7d70f1cd44b2",
@@ -8270,7 +8271,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 839.8,
     "y": 462.9,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-53ec4fbd9511",
       "g-6d107cb86131",
@@ -8289,7 +8290,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 808.5,
     "y": 490.6,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-7d70f1cd44b2",
       "g-d1db21750079"
@@ -8304,7 +8305,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 467.7,
     "y": 287.7,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-491a042dd3a4",
       "g-81238bb198e5",
@@ -8320,7 +8321,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 467.7,
     "y": 287.9,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-18115a08b06b",
       "g-491a042dd3a4",
@@ -8336,7 +8337,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 940.6,
     "y": 262.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-1bbad34be13d",
       "g-45a0a15e37ac",
@@ -8353,7 +8354,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 938.1,
     "y": 284.6,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-1bbad34be13d",
       "g-66c365b3c8b6",
@@ -8369,7 +8370,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 947.6,
     "y": 278.2,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-1bbad34be13d",
       "g-9d5cf2b11439",
@@ -8385,7 +8386,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 945.5,
     "y": 264.4,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-581f955642f8",
       "g-9ead4d4121ac"
@@ -8400,7 +8401,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 952.2,
     "y": 272.2,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-1bbad34be13d",
       "g-56ef3bcf45e3",
@@ -8417,7 +8418,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1007.0,
     "y": 196.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-8cd030fa2730",
       "g-a52852c7ed1d",
@@ -8433,7 +8434,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 998.9,
     "y": 195.1,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-08b32296a394",
       "g-220edaa84d3d",
@@ -8454,7 +8455,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 989.5,
     "y": 199.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-433aafa0e0e7",
       "g-8c3e5102eb68",
@@ -8472,7 +8473,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 987.0,
     "y": 206.5,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0af71512d9ba",
       "g-38d42c220312",
@@ -8491,7 +8492,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 956.6,
     "y": 187.9,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-2abd5c981aab",
       "g-36f93bfc3c15",
@@ -8511,7 +8512,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 977.7,
     "y": 194.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-38d42c220312",
       "g-4159d77b5aa9",
@@ -8530,7 +8531,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1048.1,
     "y": 165.3,
     "terrain": "mountain",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-105d3810be7b",
       "g-272932fb279b",
@@ -8550,7 +8551,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1029.6,
     "y": 181.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-220edaa84d3d",
       "g-272932fb279b",
@@ -8569,7 +8570,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1010.3,
     "y": 183.5,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-220edaa84d3d",
       "g-433aafa0e0e7",
@@ -8587,7 +8588,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 995.0,
     "y": 186.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-220edaa84d3d",
       "g-4159d77b5aa9",
@@ -8608,7 +8609,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 933.9,
     "y": 184.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-7ba5979252e4",
       "g-8a954a37419d",
@@ -8625,7 +8626,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 975.8,
     "y": 181.1,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-433aafa0e0e7",
       "g-46969af4ef10",
@@ -8644,7 +8645,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 957.3,
     "y": 166.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1cb1fd2b9158",
       "g-290a769ab994",
@@ -8665,7 +8666,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 999.0,
     "y": 144.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-310c081ce75a",
       "g-7b5b5cdd7558",
@@ -8683,7 +8684,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 974.1,
     "y": 154.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-290a769ab994",
       "g-310c081ce75a",
@@ -8702,7 +8703,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1025.8,
     "y": 151.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-557b9f609fef",
       "g-856d6d0e592f",
@@ -8721,7 +8722,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 926.0,
     "y": 160.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1c479cf14a5e",
       "g-290a769ab994",
@@ -8741,7 +8742,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 926.7,
     "y": 169.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1c479cf14a5e",
       "g-1cb1fd2b9158",
@@ -8758,7 +8759,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 999.6,
     "y": 152.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-557b9f609fef",
       "g-7b5b5cdd7558",
@@ -8775,7 +8776,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1003.6,
     "y": 165.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-4159d77b5aa9",
       "g-433aafa0e0e7",
@@ -8797,7 +8798,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 996.2,
     "y": 200.1,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0af71512d9ba",
       "g-5f3793580bdf",
@@ -8816,7 +8817,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 997.2,
     "y": 206.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0c9922004c66",
       "g-3293441b13c8",
@@ -8835,7 +8836,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1012.2,
     "y": 207.7,
     "terrain": "mountain",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0af71512d9ba",
       "g-0c9922004c66",
@@ -8852,7 +8853,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 822.4,
     "y": 138.9,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-04bfa5fc6dda",
       "g-0fa80d08136d",
@@ -8871,7 +8872,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 813.6294,
     "y": 139.3993,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-ca9efadbe117-ww1",
       "g-13c83a53b29e",
@@ -8891,7 +8892,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 501.0,
     "y": 484.1,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0071de80d917",
       "g-018a62922ad0",
@@ -8911,7 +8912,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 500.4,
     "y": 474.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-2c70ec73ec80",
       "g-636810c3c014",
@@ -8931,7 +8932,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 512.0,
     "y": 473.9,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-018a62922ad0",
       "g-3f20d1423d2a",
@@ -8949,7 +8950,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 517.5,
     "y": 483.1,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-018a62922ad0",
       "g-3f20d1423d2a",
@@ -8966,7 +8967,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 508.3,
     "y": 487.3,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-0071de80d917",
       "g-8b69fe614ee0",
@@ -8983,7 +8984,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 475.1,
     "y": 352.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-421099cdf239",
       "g-66042a0192b3",
@@ -9004,7 +9005,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 497.6,
     "y": 363.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-23b2ae015564",
       "g-421099cdf239",
@@ -9027,7 +9028,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 528.4,
     "y": 369.2,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-773b8c4a6566",
       "g-a0a6bff43c60",
@@ -9044,7 +9045,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 516.6,
     "y": 386.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-27a0329bd09b",
       "g-4e38fe9c2e31",
@@ -9064,7 +9065,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 498.9,
     "y": 391.5,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-021d98e8e02a",
       "g-27a0329bd09b",
@@ -9083,7 +9084,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 499.5,
     "y": 379.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-575b30a9d9e4",
       "g-ab5c0b96c3ce",
@@ -9100,7 +9101,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 437.3,
     "y": 396.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-8182aa58dd87",
       "g-84a65d58f633",
@@ -9119,7 +9120,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 512.0,
     "y": 353.6,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-23b2ae015564",
       "g-a85165ff0779",
@@ -9137,7 +9138,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 495.0,
     "y": 439.5,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-000e8d5d305d",
       "g-031130557f90",
@@ -9156,7 +9157,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 495.8,
     "y": 433.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-031130557f90",
       "g-7df5b3788030",
@@ -9175,7 +9176,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 507.2,
     "y": 436.1,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-000e8d5d305d",
       "g-4f74159a82d6",
@@ -9196,7 +9197,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 505.4,
     "y": 448.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-148f2ad4772b",
       "g-959a7fe3ba35",
@@ -9215,7 +9216,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 497.8,
     "y": 448.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-000e8d5d305d",
       "g-148f2ad4772b",
@@ -9234,7 +9235,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 509.4,
     "y": 454.5,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-000e8d5d305d",
       "g-089576b602e5",
@@ -9252,7 +9253,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 509.1,
     "y": 462.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-089576b602e5",
       "g-148f2ad4772b",
@@ -9270,7 +9271,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 520.4,
     "y": 458.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-64683ee7e33c",
       "g-7b8a88ebdc3d",
@@ -9288,7 +9289,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 520.0,
     "y": 470.6,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-089576b602e5",
       "g-3f20d1423d2a",
@@ -9306,7 +9307,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 450.9,
     "y": 364.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-4fc7575fc35a",
       "g-84a65d58f633",
@@ -9326,7 +9327,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 451.8,
     "y": 386.1,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-4fc7575fc35a",
       "g-84a65d58f633",
@@ -9344,7 +9345,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 435.8,
     "y": 384.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-552616e785c8",
       "g-8a11259ff454",
@@ -9364,7 +9365,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 465.0,
     "y": 363.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-421099cdf239",
       "g-4fc7575fc35a",
@@ -9383,7 +9384,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 482.6,
     "y": 366.9,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-a20ac6642a87",
       "g-ab5c0b96c3ce",
@@ -9400,7 +9401,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 481.1,
     "y": 383.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-021d98e8e02a",
       "g-421099cdf239",
@@ -9422,7 +9423,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 466.5,
     "y": 383.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-949bc44a9447",
       "g-a20ac6642a87",
@@ -9441,7 +9442,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 466.2,
     "y": 403.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1e2f66c5d684",
       "g-1f036a1e2c1b",
@@ -9466,7 +9467,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 483.8,
     "y": 424.5,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1e2f66c5d684",
       "g-2037d3fe2304",
@@ -9484,7 +9485,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 493.3,
     "y": 425.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-7df5b3788030",
       "g-aaa0c4282c08",
@@ -9503,7 +9504,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 482.9,
     "y": 415.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1e2f66c5d684",
       "g-1f036a1e2c1b",
@@ -9522,7 +9523,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 492.9,
     "y": 415.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-2037d3fe2304",
       "g-518904d1c7bd",
@@ -9542,7 +9543,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 502.2,
     "y": 415.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1f556eae2a0c",
       "g-518904d1c7bd",
@@ -9563,7 +9564,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 511.4,
     "y": 416.1,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-4e38fe9c2e31",
       "g-79ecaa6cff62",
@@ -9581,7 +9582,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 507.2,
     "y": 425.9,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1f556eae2a0c",
       "g-79ecaa6cff62",
@@ -9601,7 +9602,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 501.0,
     "y": 425.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-87e9b5903c6c",
       "g-88b51158dc87",
@@ -9620,7 +9621,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 483.5,
     "y": 405.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-021d98e8e02a",
       "g-2037d3fe2304",
@@ -9638,7 +9639,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 491.1,
     "y": 406.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-021d98e8e02a",
       "g-1f036a1e2c1b",
@@ -9657,7 +9658,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 479.8,
     "y": 398.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-021d98e8e02a",
       "g-1f036a1e2c1b",
@@ -9675,7 +9676,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 488.3,
     "y": 395.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1f036a1e2c1b",
       "g-518904d1c7bd",
@@ -9694,7 +9695,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 500.8,
     "y": 404.9,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-021d98e8e02a",
       "g-27a0329bd09b",
@@ -9714,7 +9715,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 511.9,
     "y": 402.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-4e38fe9c2e31",
       "g-575b30a9d9e4",
@@ -9732,7 +9733,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 511.8,
     "y": 407.9,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1f556eae2a0c",
       "g-27a0329bd09b",
@@ -9750,7 +9751,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 720.0,
     "y": 360.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 34950
   },
@@ -9762,7 +9763,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 533.3,
     "y": 379.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-3c0e4cd3f909",
       "g-3de3021d88aa",
@@ -9782,7 +9783,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 546.7,
     "y": 370.6,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-773b8c4a6566",
       "g-8d984d8d8bd6",
@@ -9798,7 +9799,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 543.4,
     "y": 378.5,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-3c0e4cd3f909",
       "g-773b8c4a6566",
@@ -9815,7 +9816,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 543.9,
     "y": 385.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-3de3021d88aa",
       "g-773b8c4a6566",
@@ -9834,7 +9835,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 534.3,
     "y": 386.5,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-48036fd6b231",
       "g-4e38fe9c2e31",
@@ -9852,7 +9853,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 534.2,
     "y": 395.5,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-3de3021d88aa",
       "g-4e38fe9c2e31",
@@ -9869,7 +9870,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 552.1,
     "y": 380.1,
     "terrain": "plains",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-3c0e4cd3f909",
       "g-8bb05f0ed1d8",
@@ -9889,7 +9890,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 552.3,
     "y": 390.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-568cc22f69b1",
       "g-82ec739e22e3",
@@ -9909,7 +9910,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 542.1,
     "y": 391.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-3de3021d88aa",
       "g-48036fd6b231",
@@ -9928,7 +9929,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 540.8,
     "y": 398.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-24465cd62a5a",
       "g-48036fd6b231",
@@ -9948,7 +9949,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 561.7,
     "y": 376.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-1c768494940b",
       "g-8d984d8d8bd6",
@@ -9964,7 +9965,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 561.3,
     "y": 385.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1c768494940b",
       "g-2c54cf5bc8f1",
@@ -9983,7 +9984,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 573.4,
     "y": 383.6,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-2c54cf5bc8f1",
       "g-e4edc64e3eaf",
@@ -9999,7 +10000,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 573.0,
     "y": 388.6,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-165bfc7c5db1",
       "g-1c768494940b",
@@ -10016,7 +10017,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 574.0,
     "y": 393.3,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-2c54cf5bc8f1",
       "g-aa9033783ecc",
@@ -10032,7 +10033,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 561.7,
     "y": 393.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-165bfc7c5db1",
       "g-2c54cf5bc8f1",
@@ -10053,7 +10054,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 572.0,
     "y": 400.9,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-165bfc7c5db1",
       "g-37adf2f283c7",
@@ -10070,7 +10071,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 564.7,
     "y": 409.6,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-1823c5dcbaeb",
       "g-224568d53ef3",
@@ -10087,7 +10088,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 556.1,
     "y": 409.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0bb60ea49067",
       "g-224568d53ef3",
@@ -10107,7 +10108,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 556.4,
     "y": 400.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1823c5dcbaeb",
       "g-24465cd62a5a",
@@ -10126,7 +10127,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 564.2,
     "y": 399.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1823c5dcbaeb",
       "g-37adf2f283c7",
@@ -10144,7 +10145,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 539.2,
     "y": 408.9,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0bb60ea49067",
       "g-24465cd62a5a",
@@ -10162,7 +10163,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 548.7,
     "y": 410.5,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1823c5dcbaeb",
       "g-24465cd62a5a",
@@ -10180,7 +10181,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 546.3,
     "y": 402.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0bb60ea49067",
       "g-1823c5dcbaeb",
@@ -10199,7 +10200,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 560.0,
     "y": 418.2,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-1823c5dcbaeb",
       "g-37adf2f283c7",
@@ -10217,7 +10218,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 553.1,
     "y": 417.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0bb60ea49067",
       "g-1823c5dcbaeb",
@@ -10236,7 +10237,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 560.7,
     "y": 427.6,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-1f5d8647bc69",
       "g-220c1ab26e9c",
@@ -10254,7 +10255,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 542.3,
     "y": 416.5,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0bb60ea49067",
       "g-37d54cd994e8",
@@ -10274,7 +10275,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 558.3,
     "y": 438.3,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-220c1ab26e9c",
       "g-2a41022e28e2",
@@ -10292,7 +10293,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 551.7,
     "y": 448.3,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-1f5d8647bc69",
       "g-2a41022e28e2",
@@ -10308,7 +10309,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 530.2,
     "y": 455.4,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-089576b602e5",
       "g-2a41022e28e2",
@@ -10327,7 +10328,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 529.5,
     "y": 445.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1289d42c96d2",
       "g-4f74159a82d6",
@@ -10345,7 +10346,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 524.0,
     "y": 453.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-000e8d5d305d",
       "g-089576b602e5",
@@ -10363,7 +10364,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 516.8,
     "y": 443.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-43f3907264bf"
     ],
@@ -10377,7 +10378,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 530.7,
     "y": 417.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-4e38fe9c2e31",
       "g-515e29e11701",
@@ -10397,7 +10398,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 520.4,
     "y": 417.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1f556eae2a0c",
       "g-4e38fe9c2e31",
@@ -10416,7 +10417,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 524.6,
     "y": 428.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-4f74159a82d6",
       "g-520cdb3d0530",
@@ -10437,7 +10438,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 513.9,
     "y": 433.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-4f74159a82d6",
       "g-87e9b5903c6c",
@@ -10455,7 +10456,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 514.1,
     "y": 426.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-79ecaa6cff62",
       "g-87e9b5903c6c",
@@ -10472,7 +10473,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 528.9,
     "y": 423.1,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-520cdb3d0530",
       "g-a3bb6810cd00",
@@ -10488,7 +10489,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 535.6,
     "y": 423.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1c0db77a1e33",
       "g-59992eb5a037",
@@ -10508,7 +10509,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 534.1,
     "y": 431.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1c0db77a1e33",
       "g-4f74159a82d6",
@@ -10526,7 +10527,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 533.2,
     "y": 442.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1c0db77a1e33",
       "g-2a41022e28e2",
@@ -10546,7 +10547,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 522.7,
     "y": 437.9,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-43f3907264bf",
       "g-68c6580297ec",
@@ -10565,7 +10566,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 543.9,
     "y": 422.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1c0db77a1e33",
       "g-220c1ab26e9c",
@@ -10583,7 +10584,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 543.2,
     "y": 429.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-220c1ab26e9c",
       "g-520cdb3d0530",
@@ -10603,7 +10604,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 553.9,
     "y": 423.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1c0db77a1e33",
       "g-220c1ab26e9c",
@@ -10623,7 +10624,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 553.4,
     "y": 430.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1c0db77a1e33",
       "g-1f5d8647bc69",
@@ -10642,7 +10643,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 548.5,
     "y": 437.1,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1c0db77a1e33",
       "g-1f5d8647bc69",
@@ -10660,7 +10661,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 543.9,
     "y": 445.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1f5d8647bc69",
       "g-64683ee7e33c",
@@ -10678,7 +10679,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 526.3,
     "y": 397.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1f556eae2a0c",
       "g-24465cd62a5a",
@@ -10703,7 +10704,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1176.7,
     "y": 166.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-03430977f3b9",
       "g-1c91658998fa",
@@ -10723,7 +10724,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1175.6,
     "y": 174.9,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1c91658998fa",
       "g-724d7c938273",
@@ -10742,14 +10743,14 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1158.8,
     "y": 181.1,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-06bd25adcf51",
       "g-1c91658998fa",
       "g-724d7c938273",
       "g-8141968ee2ce",
       "g-82feda5c9450",
-      "g-ebd60376b526"
+      "suiyuan-guisui"
     ],
     "area_km2": 114569
   },
@@ -10761,15 +10762,15 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1098.4,
     "y": 176.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1558027b669f",
       "g-464972d13efc",
       "g-73c89a387cce",
-      "g-a55c15e237e5",
       "g-ddb2b956c206",
       "g-e088621cacb4",
-      "g-e37647adbfe0"
+      "g-e37647adbfe0",
+      "inner-mongol-ejina"
     ],
     "area_km2": 216416
   },
@@ -10781,14 +10782,14 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1124.2,
     "y": 179.5,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-06bd25adcf51",
       "g-13706735ee84",
       "g-82feda5c9450",
       "g-8ed2f0ed1059",
-      "g-a55c15e237e5",
-      "g-ddb2b956c206"
+      "g-ddb2b956c206",
+      "inner-mongol-ejina"
     ],
     "area_km2": 179190
   },
@@ -10800,13 +10801,16 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1141.4,
     "y": 183.1,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1558027b669f",
       "g-82feda5c9450",
       "g-a55c15e237e5",
       "g-ebd60376b526",
-      "g-f4223eeed54f"
+      "g-f4223eeed54f",
+      "inner-mongol-ejina",
+      "suiyuan-bayan-nur",
+      "suiyuan-guisui"
     ],
     "area_km2": 241307
   },
@@ -10818,7 +10822,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1121.2,
     "y": 159.1,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-105d3810be7b",
       "g-4cbc7851179a",
@@ -10836,7 +10840,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1078.9,
     "y": 165.1,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-105d3810be7b",
       "g-13706735ee84",
@@ -10853,7 +10857,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1105.0,
     "y": 166.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-105d3810be7b",
       "g-13706735ee84",
@@ -10872,7 +10876,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1161.7,
     "y": 169.1,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-03430977f3b9",
       "g-8141968ee2ce",
@@ -10890,7 +10894,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1142.6,
     "y": 166.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-03430977f3b9",
       "g-06bd25adcf51",
@@ -10911,7 +10915,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1122.0,
     "y": 167.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1558027b669f",
       "g-82feda5c9450",
@@ -10928,7 +10932,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 834.2,
     "y": 130.5,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0b9395809f4c",
       "g-0fa80d08136d",
@@ -10946,7 +10950,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 839.9,
     "y": 131.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-2a0a2f06c42f",
       "g-3079dd0f7486",
@@ -10964,7 +10968,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 881.8,
     "y": 182.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-10a810b7c5e7",
       "g-6c7e638a5492",
@@ -10982,7 +10986,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 880.8,
     "y": 176.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-60615cd53c68",
       "g-7626df1ac1d7",
@@ -11000,7 +11004,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 874.0,
     "y": 178.5,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-0493b0df70e4",
       "g-60615cd53c68",
@@ -11017,7 +11021,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 886.8,
     "y": 184.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-10a810b7c5e7",
       "g-20b27a0cbbfa",
@@ -11034,7 +11038,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 893.9,
     "y": 186.9,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-10a810b7c5e7",
       "g-1eb79ded6214",
@@ -11053,7 +11057,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 904.7,
     "y": 187.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-092856bcd1ae",
       "g-103481612bc6",
@@ -11072,7 +11076,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 848.4,
     "y": 98.6,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-33b3e0aa3a9e",
       "g-3d8a063bb987",
@@ -11091,7 +11095,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 806.5,
     "y": 139.9,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-13c83a53b29e",
       "g-b924a8a341c1",
@@ -11108,7 +11112,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 848.0,
     "y": 141.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1a6e3bfab44a",
       "g-3079dd0f7486",
@@ -11127,7 +11131,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 856.8,
     "y": 139.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1abf6db9d5d7",
       "g-2a0a2f06c42f",
@@ -11146,7 +11150,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 852.5,
     "y": 148.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0524b740b8f1",
       "g-2a0a2f06c42f",
@@ -11168,7 +11172,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 864.6,
     "y": 153.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-31b025538440",
       "g-79011cb6de9c",
@@ -11187,7 +11191,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 869.0,
     "y": 157.5,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1aee50067fa9",
       "g-31b025538440",
@@ -11205,7 +11209,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 878.6,
     "y": 156.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1044ee6fda9b",
       "g-1aee50067fa9",
@@ -11225,7 +11229,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 883.8,
     "y": 157.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-34811c217d04",
       "g-38d5f7b47f52",
@@ -11245,7 +11249,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 882.0,
     "y": 164.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1044ee6fda9b",
       "g-1aee50067fa9",
@@ -11264,7 +11268,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 880.7,
     "y": 172.1,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-1aee50067fa9",
       "g-38d5f7b47f52",
@@ -11285,7 +11289,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 887.6,
     "y": 164.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1044ee6fda9b",
       "g-34811c217d04",
@@ -11303,7 +11307,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 891.3,
     "y": 172.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1c479cf14a5e",
       "g-34811c217d04",
@@ -11324,7 +11328,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 934.0,
     "y": 150.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1cb1fd2b9158",
       "g-310c081ce75a",
@@ -11345,7 +11349,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 912.5,
     "y": 154.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1044ee6fda9b",
       "g-1cb1fd2b9158",
@@ -11366,7 +11370,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 902.1,
     "y": 162.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1c479cf14a5e",
       "g-1cb1fd2b9158",
@@ -11383,7 +11387,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 891.6,
     "y": 162.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1044ee6fda9b",
       "g-1c479cf14a5e",
@@ -11402,7 +11406,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 856.5,
     "y": 178.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-07c9a3033b58",
       "g-7626df1ac1d7"
@@ -11417,7 +11421,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 885.8,
     "y": 105.7,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-181cbf97a86c",
       "g-7ff3e944d8d4",
@@ -11433,7 +11437,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 906.0,
     "y": 172.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1cb1fd2b9158",
       "g-1eb79ded6214",
@@ -11454,7 +11458,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 945.3,
     "y": 143.9,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-290a769ab994",
       "g-310c081ce75a",
@@ -11471,7 +11475,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 875.5,
     "y": 149.1,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1044ee6fda9b",
       "g-5104d45e69d4",
@@ -11491,7 +11495,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 886.4,
     "y": 149.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1044ee6fda9b",
       "g-6a3cd0dd39c5",
@@ -11510,7 +11514,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 915.4,
     "y": 135.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-181cbf97a86c",
       "g-21548413d3ff",
@@ -11530,7 +11534,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 898.9,
     "y": 147.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-5104d45e69d4",
       "g-5e8ace7a2af8",
@@ -11548,7 +11552,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 865.3,
     "y": 148.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-5fdc84e98703",
       "g-79011cb6de9c",
@@ -11566,7 +11570,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 898.3,
     "y": 142.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-01becf2ecbb3",
       "g-21548413d3ff",
@@ -11585,7 +11589,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 860.4,
     "y": 142.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1abf6db9d5d7",
       "g-337900f640e4",
@@ -11603,7 +11607,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 875.8,
     "y": 129.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-08669de99b3b",
       "g-1abf6db9d5d7",
@@ -11621,7 +11625,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 882.3,
     "y": 136.1,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-01becf2ecbb3",
       "g-1abf6db9d5d7",
@@ -11640,7 +11644,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 882.5,
     "y": 142.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-01becf2ecbb3",
       "g-08669de99b3b",
@@ -11661,7 +11665,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 885.3,
     "y": 131.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-01becf2ecbb3",
       "g-08669de99b3b",
@@ -11678,7 +11682,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 901.4,
     "y": 134.9,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-01becf2ecbb3",
       "g-181cbf97a86c",
@@ -11696,7 +11700,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 895.5,
     "y": 135.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-08669de99b3b",
       "g-21548413d3ff",
@@ -11715,7 +11719,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 869.6,
     "y": 144.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1abf6db9d5d7",
       "g-79011cb6de9c",
@@ -11733,7 +11737,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 871.1,
     "y": 122.9,
     "terrain": "plains",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-01becf2ecbb3",
       "g-0b9395809f4c",
@@ -11759,7 +11763,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 864.7,
     "y": 130.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-08669de99b3b",
       "g-1abf6db9d5d7",
@@ -11778,7 +11782,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 851.9,
     "y": 132.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1a6e3bfab44a",
       "g-2a0a2f06c42f",
@@ -11796,7 +11800,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 870.9,
     "y": 137.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-08669de99b3b",
       "g-337900f640e4",
@@ -11816,7 +11820,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 947.7,
     "y": 108.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-0d516b6a901a",
       "g-181cbf97a86c",
@@ -11835,7 +11839,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 928.9,
     "y": 109.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-21548413d3ff",
       "g-3d8a063bb987",
@@ -11853,7 +11857,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 922.8,
     "y": 146.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1cb1fd2b9158",
       "g-290a769ab994",
@@ -11872,7 +11876,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 889.5,
     "y": 179.9,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1c479cf14a5e",
       "g-20b27a0cbbfa",
@@ -11893,7 +11897,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 897.6,
     "y": 180.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1c479cf14a5e",
       "g-1eb79ded6214",
@@ -11911,7 +11915,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1164.9,
     "y": 145.5,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-03430977f3b9",
       "g-105d3810be7b",
@@ -11930,7 +11934,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1192.4,
     "y": 144.9,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1c91658998fa",
       "g-3a47d966a622",
@@ -11953,7 +11957,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1240.8,
     "y": 148.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-03430977f3b9",
       "g-5bb6c7df19b0",
@@ -11973,7 +11977,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1271.5,
     "y": 150.2,
     "terrain": "plains",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-11462b1eb3ea",
       "g-4553acf83fcf",
@@ -11995,7 +11999,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1002.5,
     "y": 133.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-247728396158",
       "g-310c081ce75a",
@@ -12014,7 +12018,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1049.3,
     "y": 146.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-105d3810be7b",
       "g-247728396158",
@@ -12032,7 +12036,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1107.5,
     "y": 148.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-247728396158",
       "g-464972d13efc",
@@ -12055,7 +12059,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1336.3,
     "y": 109.6,
     "terrain": "plains",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-12c78c61e45f",
       "g-1ab47522c495",
@@ -12073,7 +12077,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1289.7,
     "y": 151.2,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-1624ca4cea1f",
       "g-f4cf7cfb8aaa"
@@ -12088,7 +12092,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1289.5,
     "y": 168.2,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-11462b1eb3ea",
       "g-2161788ee246"
@@ -12103,7 +12107,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1307.0,
     "y": 184.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-4fb0499f9c23",
       "g-82b74c42b1e8"
@@ -12118,7 +12122,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1343.5,
     "y": 158.2,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-28eaf03faacc",
       "g-7f4f255cc7df"
@@ -12133,7 +12137,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1398.0,
     "y": 96.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-12c78c61e45f",
       "g-28eaf03faacc",
@@ -12149,7 +12153,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 997.2,
     "y": 89.7,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-7d193fd4b359",
       "g-c0311e315dcd",
@@ -12165,7 +12169,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1161.6,
     "y": 94.3,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-7661747a8617",
       "g-bed458b1c013"
@@ -12180,7 +12184,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1189.0,
     "y": 97.6,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-03430977f3b9",
       "g-7661747a8617",
@@ -12198,7 +12202,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1218.0,
     "y": 106.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-a2a714c32ec3",
       "g-b310e22bce79",
@@ -12214,7 +12218,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1241.0,
     "y": 105.7,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-b310e22bce79",
       "g-c460b7612f8f",
@@ -12231,7 +12235,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1281.6,
     "y": 97.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-12c78c61e45f",
       "g-a2a714c32ec3",
@@ -12248,7 +12252,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1332.4,
     "y": 87.6,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-1ab47522c495",
       "g-c460b7612f8f",
@@ -12264,7 +12268,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1062.0,
     "y": 93.3,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-0d516b6a901a",
       "g-247728396158",
@@ -12282,7 +12286,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1088.5,
     "y": 85.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-036f3ae48738",
       "g-b0f86c18c01b",
@@ -12299,7 +12303,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1088.5,
     "y": 129.1,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-036f3ae48738",
       "g-105d3810be7b",
@@ -12319,7 +12323,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1116.8,
     "y": 84.5,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-036f3ae48738",
       "g-65cc771410c8",
@@ -12335,7 +12339,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1112.6,
     "y": 121.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-65cc771410c8",
       "g-b0f86c18c01b",
@@ -12352,7 +12356,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1131.2,
     "y": 45.2,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 393505
   },
@@ -12364,7 +12368,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1359.2,
     "y": 128.4,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-1ab47522c495",
       "g-4fb0499f9c23",
@@ -12380,7 +12384,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 965.7,
     "y": 132.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-290a769ab994",
       "g-4445ff1ee79f",
@@ -12400,7 +12404,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1007.7,
     "y": 111.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0d516b6a901a",
       "g-247728396158",
@@ -12419,7 +12423,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1046.3,
     "y": 126.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-105d3810be7b",
       "g-a05ac3ef227e",
@@ -12438,7 +12442,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1136.6,
     "y": 129.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-036f3ae48738",
       "g-105d3810be7b",
@@ -12456,7 +12460,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1171.1,
     "y": 125.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-03430977f3b9",
       "g-4cbc7851179a",
@@ -12474,7 +12478,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 770.964,
     "y": 160.78,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-180669b1eb0a",
       "g-1c634796c218",
@@ -12498,7 +12502,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 773.4913,
     "y": 161.2478,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-c9ff36dd7180",
       "g-dff9a7b3e112",
@@ -12514,7 +12518,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 777.7119,
     "y": 162.995,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1c634796c218",
       "g-291f427f69b4",
@@ -12531,7 +12535,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 783.2937,
     "y": 159.48,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "sudeten-east",
       "g-824595d51bf6",
@@ -12551,7 +12555,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 790.806,
     "y": 162.82,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0ae1ebd51ebe",
       "g-180669b1eb0a",
@@ -12571,7 +12575,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 793.6612,
     "y": 161.4515,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "sudeten-east",
       "g-824595d51bf6",
@@ -12590,7 +12594,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 786.8215,
     "y": 163.48,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-180669b1eb0a",
       "g-1c634796c218",
@@ -12610,7 +12614,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 782.5532,
     "y": 162.37,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-180669b1eb0a",
       "g-db2c7beb61fa",
@@ -12628,7 +12632,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 777.5715,
     "y": 159.825,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-180669b1eb0a",
       "g-1c634796c218",
@@ -12646,7 +12650,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 774.0,
     "y": 156.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-102b30cc6b2d",
       "g-166ea1e86c40",
@@ -12666,7 +12670,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 768.2,
     "y": 164.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-102b30cc6b2d",
       "g-261578d4a9df",
@@ -12689,7 +12693,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 749.0,
     "y": 160.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1ab40fcfe708",
       "g-1babde8b0c67",
@@ -12711,7 +12715,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 759.9,
     "y": 143.4,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-3b680adde68a",
       "g-5ee037ccbf68",
@@ -12727,7 +12731,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 755.3,
     "y": 149.6,
     "terrain": "plains",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-02423f854394",
       "g-102b30cc6b2d",
@@ -12750,7 +12754,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 750.2,
     "y": 154.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1ab40fcfe708",
       "g-3b680adde68a",
@@ -12771,7 +12775,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 753.9,
     "y": 166.5,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1babde8b0c67",
       "g-30f5727729fe",
@@ -12791,7 +12795,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 757.8,
     "y": 165.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-6be6bca002af",
       "g-9189536bedb8",
@@ -12809,7 +12813,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 773.7,
     "y": 150.1,
     "terrain": "urban",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-166ea1e86c40",
       "g-180142ad9368",
@@ -12828,7 +12832,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 769.4,
     "y": 144.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-02423f854394",
       "g-180142ad9368",
@@ -12846,7 +12850,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 756.2,
     "y": 156.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-102b30cc6b2d",
       "g-3b680adde68a",
@@ -12864,7 +12868,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 756.6,
     "y": 158.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-102b30cc6b2d",
       "g-1ab40fcfe708",
@@ -12884,7 +12888,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 765.3,
     "y": 156.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-180142ad9368",
       "g-1ab40fcfe708",
@@ -12903,7 +12907,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 766.2,
     "y": 152.1,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-102b30cc6b2d",
       "g-2fc8c381d714",
@@ -12921,7 +12925,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 821.4,
     "y": 125.6,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-0fa80d08136d",
       "g-637e38ded245",
@@ -12938,7 +12942,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 827.8,
     "y": 133.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0b9395809f4c",
       "g-314581565b5a",
@@ -12956,7 +12960,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 809.5,
     "y": 131.7,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-0b9395809f4c",
       "g-0fa80d08136d",
@@ -12973,7 +12977,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 766.2,
     "y": 105.8,
     "terrain": "plains",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-1e1cd3be54df",
       "g-4bbec2d6c01b",
@@ -12993,7 +12997,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 767.4,
     "y": 114.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-5a627b7d5a37",
       "g-9792f0196988",
@@ -13010,7 +13014,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 789.9,
     "y": 82.9,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-4bbec2d6c01b",
       "g-8e3071831a25",
@@ -13029,7 +13033,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 754.4,
     "y": 122.1,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-b0a172d5e6a4",
       "g-f44c6c1fbb2d"
@@ -13044,7 +13048,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 749.1,
     "y": 124.3,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-2295daba9ff6",
       "g-b0a172d5e6a4"
@@ -13059,7 +13063,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 745.2,
     "y": 116.4,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-2295daba9ff6",
       "g-c21cdc3762f2",
@@ -13075,7 +13079,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 810.6,
     "y": 40.6,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 62082
   },
@@ -13087,7 +13091,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 733.6,
     "y": 577.7,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 55
   },
@@ -13099,7 +13103,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 760.9,
     "y": 120.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-90c04ab2bc2d"
     ],
@@ -13113,7 +13117,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 800.1,
     "y": 91.6,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-4bbec2d6c01b",
       "g-6f63ec48f52c",
@@ -13129,7 +13133,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 792.2,
     "y": 100.4,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-6f63ec48f52c",
       "g-8e3071831a25",
@@ -13146,7 +13150,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 786.2,
     "y": 110.9,
     "terrain": "plains",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-2bf4657d2ebb",
       "g-4bbec2d6c01b",
@@ -13166,7 +13170,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 775.7,
     "y": 107.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1e1cd3be54df",
       "g-9ed9425aafcd",
@@ -13183,7 +13187,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 777.0,
     "y": 115.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1e1cd3be54df",
       "g-2bf4657d2ebb",
@@ -13202,7 +13206,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 773.4,
     "y": 120.1,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1e1cd3be54df",
       "g-2bf4657d2ebb",
@@ -13219,7 +13223,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 770.8,
     "y": 128.7,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-2bf4657d2ebb",
       "g-53e799e8b7a3",
@@ -13236,7 +13240,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 786.4,
     "y": 124.2,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-2bf4657d2ebb",
       "g-9ed9425aafcd",
@@ -13252,7 +13256,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 781.0,
     "y": 122.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-5a627b7d5a37",
       "g-702617c35a39",
@@ -13270,7 +13274,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 779.4,
     "y": 133.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-702617c35a39",
       "g-90c04ab2bc2d",
@@ -13286,7 +13290,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 826.2,
     "y": 88.6,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-6f63ec48f52c",
       "g-7c3fc77e50e5",
@@ -13303,7 +13307,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 830.1,
     "y": 100.2,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-33b3e0aa3a9e",
       "g-c244b29809a4",
@@ -13320,7 +13324,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 833.4,
     "y": 111.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-06944a0b8df2",
       "g-7c3fc77e50e5",
@@ -13338,7 +13342,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 815.6,
     "y": 117.4,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-33b3e0aa3a9e",
       "g-ed98c2757f23"
@@ -13353,7 +13357,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 813.7,
     "y": 109.9,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-06944a0b8df2",
       "g-33b3e0aa3a9e",
@@ -13369,7 +13373,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1153.5,
     "y": 305.2,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-751c751ac4b0",
       "g-a79ed8b81231",
@@ -13385,7 +13389,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1141.7,
     "y": 320.6,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-a79ed8b81231",
       "g-db17caac3c13"
@@ -13400,7 +13404,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1136.1,
     "y": 273.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-01086db19465",
       "g-9d0e1b505cc1",
@@ -13419,7 +13423,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1142.0,
     "y": 286.1,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-751c751ac4b0",
       "g-7a34797eb8fc",
@@ -13437,7 +13441,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1151.9,
     "y": 297.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-2330cced4cc8",
       "g-d2060ed34390",
@@ -13455,7 +13459,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1142.0,
     "y": 278.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-2330cced4cc8",
       "g-61daecc369db",
@@ -13472,7 +13476,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1143.3,
     "y": 272.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-61daecc369db",
       "g-68c328d8bdcf",
@@ -13489,7 +13493,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1151.1,
     "y": 312.5,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-88d905fa2eaa",
       "g-d2060ed34390",
@@ -13506,7 +13510,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1146.3,
     "y": 307.1,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-751c751ac4b0",
       "g-a79ed8b81231",
@@ -13525,7 +13529,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1138.5,
     "y": 306.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-289d250f95c6",
       "g-72f3d4897ba0",
@@ -13544,7 +13548,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1138.0,
     "y": 312.2,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-289d250f95c6",
       "g-88d905fa2eaa",
@@ -13562,7 +13566,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 744.4,
     "y": 160.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1babde8b0c67",
       "g-a7b972e6459b",
@@ -13580,7 +13584,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 741.4,
     "y": 159.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-08b32296a394",
       "g-1babde8b0c67",
@@ -13602,7 +13606,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 741.6006,
     "y": 156.89,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-32b9a5391f57-ww1",
       "g-64335a3c60aa",
@@ -13619,7 +13623,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 736.4,
     "y": 157.1,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-08b32296a394",
       "g-52bff3cb5d5d",
@@ -13637,7 +13641,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 889.5,
     "y": 188.7,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-10d51ce0f6b2",
       "g-20b27a0cbbfa",
@@ -13655,7 +13659,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 899.8,
     "y": 192.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-092856bcd1ae",
       "g-10a810b7c5e7",
@@ -13674,7 +13678,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 890.9,
     "y": 192.7,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-10a810b7c5e7",
       "g-282067334459",
@@ -13693,7 +13697,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 806.9,
     "y": 193.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-5242d3ab8eec",
       "g-567d6779d16e",
@@ -13712,7 +13716,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 800.0,
     "y": 195.4,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-ab29fff7b5af",
       "g-b5555b54bdba",
@@ -13731,7 +13735,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 914.8,
     "y": 199.5,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-092856bcd1ae",
       "g-1eb79ded6214",
@@ -13747,7 +13751,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 907.2,
     "y": 198.5,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-103481612bc6",
       "g-17343c3847a8",
@@ -13766,7 +13770,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 804.4674,
     "y": 189.7711,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-484c647b0567-ww1",
       "g-6ebd320ac94a",
@@ -13783,7 +13787,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 893.7174,
     "y": 201.95,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-c50285cf29f4-ww1",
       "g-0b094f67191e",
@@ -13803,7 +13807,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 894.5,
     "y": 207.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-319ec794204a",
       "g-61d60b719a7b",
@@ -13821,7 +13825,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 828.9,
     "y": 195.7,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-311f3128c0c8",
       "g-bf7445f99a68",
@@ -13839,7 +13843,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 892.3,
     "y": 197.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-10d51ce0f6b2",
       "g-282067334459",
@@ -13859,7 +13863,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 875.8,
     "y": 210.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-20c060bf5047",
       "g-3052a113d488",
@@ -13878,7 +13882,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 862.6,
     "y": 198.1,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-700b0b9fc6e4",
       "g-d56f2938c577",
@@ -13895,7 +13899,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 859.3,
     "y": 197.7,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-0b8f55317c8f",
       "g-1622bfe4da3d",
@@ -13914,7 +13918,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 852.9,
     "y": 195.5,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-6b2d8dd6e097",
       "g-700b0b9fc6e4",
@@ -13930,7 +13934,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 839.4,
     "y": 198.4,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-22247c258906",
       "g-6b2d8dd6e097",
@@ -13948,7 +13952,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 829.2,
     "y": 200.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-04e7cde9246a",
       "g-22247c258906",
@@ -13966,7 +13970,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 834.0,
     "y": 210.5,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-04e7cde9246a",
       "g-0fa3d0a9f215",
@@ -13984,7 +13988,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 842.4,
     "y": 210.7,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-0fa3d0a9f215",
       "g-78fa3413a4fe",
@@ -14001,7 +14005,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 855.0,
     "y": 213.2,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-1622bfe4da3d",
       "g-2cdf5515a68c",
@@ -14018,7 +14022,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 863.1,
     "y": 211.2,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-1622bfe4da3d",
       "g-20c060bf5047",
@@ -14037,7 +14041,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 846.6,
     "y": 196.4,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-0b8f55317c8f",
       "g-6b2d8dd6e097",
@@ -14053,7 +14057,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 848.1,
     "y": 201.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0b8f55317c8f",
       "g-0fa3d0a9f215",
@@ -14074,7 +14078,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 868.9,
     "y": 197.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-700b0b9fc6e4",
       "g-d56f2938c577",
@@ -14091,7 +14095,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 868.8,
     "y": 201.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-3052a113d488",
       "g-328ad3a714ec",
@@ -14111,7 +14115,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 838.2,
     "y": 203.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-04e7cde9246a",
       "g-0fa3d0a9f215",
@@ -14130,7 +14134,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 850.1,
     "y": 208.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0fa3d0a9f215",
       "g-1622bfe4da3d",
@@ -14148,7 +14152,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 856.3,
     "y": 206.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-6b2d8dd6e097",
       "g-700b0b9fc6e4",
@@ -14167,7 +14171,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 863.4,
     "y": 205.9,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1622bfe4da3d",
       "g-3052a113d488",
@@ -14186,7 +14190,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 831.4,
     "y": 205.3,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-22247c258906",
       "g-bf7445f99a68",
@@ -14203,7 +14207,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 877.5,
     "y": 202.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-6dea164c7283",
       "g-ac037271ae31",
@@ -14222,7 +14226,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 842.5,
     "y": 205.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-22247c258906",
       "g-2cdf5515a68c",
@@ -14240,7 +14244,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 867.4,
     "y": 209.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-20c060bf5047",
       "g-af03d5d19c9a",
@@ -14259,7 +14263,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 885.2,
     "y": 202.9,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-328ad3a714ec",
       "g-5b124fcb49a3",
@@ -14278,7 +14282,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 884.3259,
     "y": 197.2153,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-c50285cf29f4",
       "g-c123fd4f281c-ww1",
@@ -14298,7 +14302,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 877.3,
     "y": 198.4,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-328ad3a714ec",
       "g-d56f2938c577",
@@ -14315,7 +14319,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 873.9,
     "y": 206.9,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-3052a113d488",
       "g-328ad3a714ec",
@@ -14333,7 +14337,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 881.6,
     "y": 207.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-328ad3a714ec",
       "g-6faa2327f774",
@@ -14352,7 +14356,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 889.2,
     "y": 207.5,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0b094f67191e",
       "g-61d60b719a7b",
@@ -14371,7 +14375,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 698.6,
     "y": 216.4,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-0d6130c251c0",
       "g-9fe6fbf95a83"
@@ -14386,7 +14390,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 708.2,
     "y": 218.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-0d6130c251c0"
     ],
@@ -14400,7 +14404,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 712.2,
     "y": 189.1,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-04be7ddab20b",
       "g-1b8e8fd24ea3",
@@ -14418,7 +14422,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 716.6,
     "y": 194.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-06936a1a8fef",
       "g-177983c42c4c",
@@ -14438,7 +14442,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 726.3,
     "y": 193.3,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-177983c42c4c",
       "g-4f30e716039e",
@@ -14456,7 +14460,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 696.1,
     "y": 203.1,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-24bfde274ed4",
       "g-492bb77938bc",
@@ -14474,7 +14478,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 695.8,
     "y": 210.5,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-0d6130c251c0",
       "g-3a4384b17d47",
@@ -14494,7 +14498,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 707.2,
     "y": 209.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-06936a1a8fef",
       "g-8352aed0dd07",
@@ -14511,7 +14515,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 688.5,
     "y": 188.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-3f8c9ed07cf5",
       "g-cb76001c09f6",
@@ -14527,7 +14531,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 698.2,
     "y": 193.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-04be7ddab20b",
       "g-24bfde274ed4",
@@ -14547,7 +14551,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 707.7,
     "y": 192.5,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-06936a1a8fef",
       "g-739c0601d9eb",
@@ -14565,7 +14569,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 717.1,
     "y": 203.7,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-06936a1a8fef",
       "g-739c0601d9eb",
@@ -14582,7 +14586,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 653.5,
     "y": 246.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 7435
   },
@@ -14594,7 +14598,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 710.9,
     "y": 201.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-739c0601d9eb",
       "g-8352aed0dd07",
@@ -14612,7 +14616,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 703.1,
     "y": 200.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-06936a1a8fef",
       "g-6cd0f6c5fa4f",
@@ -14631,7 +14635,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1125.0,
     "y": 277.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1f3cf2ca2e91",
       "g-6bccd99416f0",
@@ -14650,7 +14654,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1142.3,
     "y": 291.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1202afb4007d",
       "g-2330cced4cc8",
@@ -14669,7 +14673,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1132.7,
     "y": 285.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1202afb4007d",
       "g-2330cced4cc8",
@@ -14690,7 +14694,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1146.4,
     "y": 299.1,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-72f3d4897ba0",
       "g-751c751ac4b0",
@@ -14708,7 +14712,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1131.4,
     "y": 276.9,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-01086db19465",
       "g-26631e4e0e53",
@@ -14727,7 +14731,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1135.8,
     "y": 280.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-2330cced4cc8",
       "g-61daecc369db",
@@ -14745,7 +14749,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1027.2,
     "y": 193.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-220edaa84d3d",
       "g-272932fb279b",
@@ -14763,7 +14767,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1014.4,
     "y": 197.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0af71512d9ba",
       "g-220edaa84d3d",
@@ -14786,7 +14790,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1018.4,
     "y": 189.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-433aafa0e0e7",
       "g-60cc7f5512a5",
@@ -14805,7 +14809,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 899.4,
     "y": 199.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-092856bcd1ae",
       "g-10d51ce0f6b2",
@@ -14826,7 +14830,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 756.3302,
     "y": 139.4855,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-008e17e2a748-ww1",
       "g-02423f854394"
@@ -14841,7 +14845,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 756.9,
     "y": 135.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-a05ad72c9b6f",
       "g-008e17e2a748-ww1"
@@ -14856,7 +14860,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 755.0,
     "y": 132.7,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-cf2b11780a2a"
     ],
@@ -14870,7 +14874,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 767.1,
     "y": 138.6,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-adc37d2175a9"
     ],
@@ -14884,7 +14888,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 808.3,
     "y": 262.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-340be241ed7b",
       "g-37e76c81adb5",
@@ -14906,7 +14910,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 780.9,
     "y": 262.5,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0fd0a3aac355",
       "g-340be241ed7b",
@@ -14925,7 +14929,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 782.6,
     "y": 245.7,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-1be233743b2e",
       "g-6bf4d1cea7b9",
@@ -14943,7 +14947,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 807.0,
     "y": 240.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-340be241ed7b",
       "g-6bc4a9bb74f7",
@@ -14959,7 +14963,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 772.8,
     "y": 236.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-2e41e8064edd",
       "g-340be241ed7b",
@@ -14976,7 +14980,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 755.5,
     "y": 224.9,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-1be233743b2e",
       "g-2e41e8064edd",
@@ -14992,7 +14996,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 808.3,
     "y": 172.9,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0f5cb3ed1485",
       "g-7a3dbab3b2bc",
@@ -15010,7 +15014,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 807.2,
     "y": 178.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0f5cb3ed1485",
       "g-6ebd320ac94a",
@@ -15029,7 +15033,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 814.6,
     "y": 181.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-5796fb865f2d",
       "g-6ebd320ac94a",
@@ -15048,7 +15052,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 827.0,
     "y": 183.1,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-5796fb865f2d",
       "g-ec8480001de9",
@@ -15066,7 +15070,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 826.626,
     "y": 171.47,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-b12dd2b9db3b",
       "g-84d867cd5f0e-1914-1",
@@ -15084,7 +15088,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 815.2,
     "y": 170.9,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-9854fff4cade",
       "g-a9e3731c3efb",
@@ -15103,7 +15107,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 822.0661,
     "y": 179.995,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-268b88a7fae8-1914-1",
       "g-b96f590db7c6",
@@ -15121,7 +15125,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 828.7,
     "y": 178.3,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-23df997b428d",
       "g-98e659a04a40",
@@ -15140,7 +15144,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 814.3,
     "y": 176.5,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-7a3dbab3b2bc",
       "g-9854fff4cade",
@@ -15160,7 +15164,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 803.7,
     "y": 169.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0f5cb3ed1485",
       "g-25c1c9a20757",
@@ -15181,7 +15185,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 798.2,
     "y": 172.1,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-25c1c9a20757",
       "g-63428c9a1953",
@@ -15203,7 +15207,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 791.9,
     "y": 174.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0f5cb3ed1485",
       "g-25c1c9a20757",
@@ -15221,7 +15225,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 790.6,
     "y": 171.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0f5cb3ed1485",
       "g-3ded7ad7e32f",
@@ -15243,7 +15247,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 796.8,
     "y": 163.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-ad8f13c3ca92",
       "g-dcbfd1c3e357",
@@ -15263,7 +15267,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 804.8,
     "y": 163.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-73cfde3815fd",
       "g-7db6a6e146af",
@@ -15282,7 +15286,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 805.1,
     "y": 165.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-a9e3731c3efb",
       "g-ad8f13c3ca92",
@@ -15299,7 +15303,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 789.5,
     "y": 166.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-25c1c9a20757",
       "g-3ded7ad7e32f",
@@ -15318,7 +15322,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 792.9,
     "y": 164.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-7db6a6e146af",
       "g-ad8f13c3ca92",
@@ -15338,7 +15342,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 797.6,
     "y": 166.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0f5cb3ed1485",
       "g-73cfde3815fd",
@@ -15358,7 +15362,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 793.4,
     "y": 167.1,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0f5cb3ed1485",
       "g-25c1c9a20757",
@@ -15377,7 +15381,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 798.0544,
     "y": 157.6128,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-56bc4c59cd07-ww1",
       "g-56bc4c59cd07-1914-1",
@@ -15397,7 +15401,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 801.0134,
     "y": 160.815,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-56bc4c59cd07-1914-1",
       "g-ce3719cc0da8-1914-2",
@@ -15417,7 +15421,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 808.6,
     "y": 160.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-13a676e7f1dc",
       "g-74fac170863f",
@@ -15436,7 +15440,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 785.4,
     "y": 156.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-166ea1e86c40",
       "g-2fc8c381d714",
@@ -15456,7 +15460,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 791.3,
     "y": 157.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-79ed45b32ad0",
       "g-b123484bed4f",
@@ -15475,7 +15479,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 810.7,
     "y": 146.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-103ece1edc54",
       "g-13c83a53b29e",
@@ -15495,7 +15499,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 803.9,
     "y": 144.9,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-103ece1edc54",
       "g-48797c72fcb9",
@@ -15515,7 +15519,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 781.1,
     "y": 151.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-2fc8c381d714",
       "g-3bc1a565bb93",
@@ -15533,7 +15537,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 782.6,
     "y": 145.8,
     "terrain": "plains",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-166ea1e86c40",
       "g-5ee037ccbf68",
@@ -15555,7 +15559,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 811.0,
     "y": 154.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-103ece1edc54",
       "g-13a676e7f1dc",
@@ -15575,7 +15579,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 788.9384,
     "y": 143.47,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-3bc1a565bb93",
       "g-5ab577113390",
@@ -15591,7 +15595,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 792.7406,
     "y": 143.4487,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-5256eb78831b",
       "danzig",
@@ -15611,7 +15615,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 806.0,
     "y": 151.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-13c83a53b29e",
       "g-60c8db9d4223",
@@ -15631,7 +15635,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 797.6,
     "y": 153.9,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-103ece1edc54",
       "g-78e3f9e239ca",
@@ -15652,7 +15656,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 792.391,
     "y": 147.6297,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-ed3e9ecc7504-ww1",
       "g-13c83a53b29e",
@@ -15671,7 +15675,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 787.2,
     "y": 152.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-166ea1e86c40",
       "g-3bc1a565bb93",
@@ -15690,7 +15694,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 788.4123,
     "y": 150.3895,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-580b8b836d9a-ww1",
       "g-5ab577113390",
@@ -15709,7 +15713,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 803.2,
     "y": 157.1,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-103ece1edc54",
       "g-74fac170863f",
@@ -15729,7 +15733,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 688.2,
     "y": 140.3,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-ae74a2e54fed",
       "g-edda023cef30",
@@ -15745,7 +15749,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 692.2067,
     "y": 144.455,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-0834baa76faa",
       "g-3878761b0a68",
@@ -15779,7 +15783,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 693.7,
     "y": 148.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-4ff753b9d326",
       "g-ae74a2e54fed",
@@ -15795,7 +15799,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 685.5,
     "y": 151.6,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-303ef1de20d0",
       "g-4ff753b9d326",
@@ -15812,7 +15816,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 682.0,
     "y": 151.5,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-0bc8d7e14024",
       "g-303ef1de20d0"
@@ -15827,7 +15831,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 685.5,
     "y": 147.4,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-0bc8d7e14024",
       "g-d8df28c8ab2e",
@@ -15844,7 +15848,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 684.9,
     "y": 144.5,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-303ef1de20d0",
       "g-856b8cf9121c",
@@ -15861,7 +15865,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 690.0,
     "y": 147.1,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0bc8d7e14024",
       "g-303ef1de20d0",
@@ -15880,7 +15884,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 689.5,
     "y": 150.4,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-0bc8d7e14024",
       "g-cd9b9b4dce5e",
@@ -15896,7 +15900,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 709.3,
     "y": 143.7,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-302c5fe80bfc",
       "g-47f095cf0c8d",
@@ -15913,7 +15917,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 708.2,
     "y": 155.9,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-47f095cf0c8d",
       "g-eb81851b798e"
@@ -15928,7 +15932,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 706.1,
     "y": 136.6,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-302c5fe80bfc",
       "g-3837d3d26f3b",
@@ -15944,7 +15948,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 714.1,
     "y": 141.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-3837d3d26f3b",
       "g-8fdcfe79c134",
@@ -15960,7 +15964,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 717.3,
     "y": 148.9,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-302c5fe80bfc",
       "g-3837d3d26f3b",
@@ -15978,7 +15982,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 722.0,
     "y": 151.1,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-d441c51c80e7",
       "g-eb81851b798e"
@@ -15993,7 +15997,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 717.6,
     "y": 154.2,
     "terrain": "urban",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-08b32296a394",
       "g-47f095cf0c8d",
@@ -16011,7 +16015,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 709.4,
     "y": 150.5,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-3837d3d26f3b",
       "g-83eaea250adb",
@@ -16029,7 +16033,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 704.5,
     "y": 132.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-8fdcfe79c134",
       "g-ae74a2e54fed"
@@ -16044,7 +16048,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 811.2,
     "y": 197.4,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-08b32296a394",
       "g-5242d3ab8eec",
@@ -16062,7 +16066,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 823.1581,
     "y": 195.03,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-f27c48a3b728-ww1",
       "g-311f3128c0c8",
@@ -16078,7 +16082,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 805.5,
     "y": 200.2,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-567d6779d16e",
       "g-b5555b54bdba",
@@ -16096,7 +16100,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 811.9882,
     "y": 206.215,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-04e7cde9246a",
       "g-ab29fff7b5af",
@@ -16114,7 +16118,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 809.0,
     "y": 210.5,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-ab29fff7b5af",
       "g-d027c3a9c806",
@@ -16130,7 +16134,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 846.6,
     "y": 408.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-13a7e41ba1ee",
       "g-57a6aa523d1d",
@@ -16148,7 +16152,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 840.3,
     "y": 401.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-24984a8e6f1c",
       "g-57a6aa523d1d",
@@ -16166,7 +16170,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 826.8,
     "y": 426.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-6336eb4bb443",
       "g-667f1de0ad5d",
@@ -16185,7 +16189,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 814.5,
     "y": 422.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0746e692b23c",
       "g-667f1de0ad5d",
@@ -16204,7 +16208,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 821.5,
     "y": 411.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-79260aeddc8b",
       "g-8d20bf867117",
@@ -16221,7 +16225,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 834.1,
     "y": 415.9,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-13a7e41ba1ee",
       "g-6a65662d09c0",
@@ -16242,7 +16246,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 672.4,
     "y": 326.2,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-094e9365086b",
       "g-13816128f470",
@@ -16258,7 +16262,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 681.6,
     "y": 320.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-13816128f470",
       "g-2089c6db7f57",
@@ -16276,7 +16280,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 669.2,
     "y": 316.6,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-094e9365086b",
       "g-3889156c1eb0",
@@ -16294,7 +16298,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 681.2,
     "y": 334.1,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-094e9365086b",
       "g-2089c6db7f57",
@@ -16311,7 +16315,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 812.0,
     "y": 330.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-021c88493bcb",
       "g-41643d0b5277",
@@ -16329,7 +16333,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 801.1,
     "y": 336.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0da3234251dc",
       "g-26b2d7e4c75f",
@@ -16348,7 +16352,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 819.6,
     "y": 335.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-021c88493bcb",
       "g-0da3234251dc",
@@ -16368,7 +16372,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 805.4,
     "y": 324.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-03df7b0d2a91",
       "g-26b2d7e4c75f",
@@ -16388,7 +16392,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 787.5,
     "y": 343.9,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0da3234251dc",
       "g-26b2d7e4c75f",
@@ -16406,7 +16410,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 790.4,
     "y": 332.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-3236da2a7331",
       "g-9080440cebc3",
@@ -16426,7 +16430,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 821.0,
     "y": 316.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-021c88493bcb",
       "g-a362e8df3ca1",
@@ -16445,7 +16449,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 839.4,
     "y": 282.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1f84b179e379",
       "g-37e76c81adb5",
@@ -16464,7 +16468,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 853.7,
     "y": 286.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-19962bf52610",
       "g-8321855c32e9",
@@ -16483,7 +16487,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 820.1,
     "y": 298.9,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-03df7b0d2a91",
       "g-3bc2a74a577c",
@@ -16503,7 +16507,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 861.9,
     "y": 281.9,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-19962bf52610",
       "g-1f84b179e379",
@@ -16519,7 +16523,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 854.7,
     "y": 309.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1217ce639f9c",
       "g-19962bf52610",
@@ -16539,7 +16543,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 839.4,
     "y": 315.9,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-00083d734824",
       "g-021c88493bcb",
@@ -16558,7 +16562,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 838.0,
     "y": 303.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1f84b179e379",
       "g-41643d0b5277",
@@ -16577,7 +16581,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 890.0,
     "y": 312.7,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-19962bf52610",
       "g-329991de1e0d",
@@ -16594,7 +16598,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 872.4,
     "y": 299.2,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-1ef1d8d9fa92",
       "g-1f84b179e379",
@@ -16613,7 +16617,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 783.6,
     "y": 168.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-25c1c9a20757",
       "g-61fbd8a76c66",
@@ -16633,7 +16637,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 774.5,
     "y": 167.5,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-261578d4a9df",
       "g-3ded7ad7e32f",
@@ -16651,7 +16655,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 763.3,
     "y": 171.1,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-01ac6de16823",
       "g-261578d4a9df",
@@ -16673,7 +16677,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 773.2,
     "y": 170.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-44ae6d37e0e6",
       "g-9189536bedb8",
@@ -16692,7 +16696,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 774.6,
     "y": 172.9,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-261578d4a9df",
       "g-61fbd8a76c66",
@@ -16712,7 +16716,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 779.8,
     "y": 171.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-25c1c9a20757",
       "g-261578d4a9df",
@@ -16731,7 +16735,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 896.7,
     "y": 214.5,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0b094f67191e",
       "g-61d60b719a7b",
@@ -16749,7 +16753,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 901.7,
     "y": 237.3,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-308d770363d3",
       "g-45a0a15e37ac",
@@ -16768,7 +16772,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 900.9,
     "y": 221.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-308d770363d3",
       "g-319ec794204a",
@@ -16788,7 +16792,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 903.5,
     "y": 230.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-308d770363d3",
       "g-8f466cbe9cd2",
@@ -16807,7 +16811,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 880.9,
     "y": 228.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-308d770363d3",
       "g-61d60b719a7b",
@@ -16826,7 +16830,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 889.8,
     "y": 228.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-4b3abefb83e4",
       "g-61d60b719a7b",
@@ -16846,7 +16850,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 889.5,
     "y": 215.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0b094f67191e",
       "g-308d770363d3",
@@ -16867,7 +16871,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 894.5,
     "y": 221.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-308d770363d3",
       "g-319ec794204a",
@@ -16885,7 +16889,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 750.5,
     "y": 179.5,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-01ac6de16823",
       "g-30f5727729fe",
@@ -16908,7 +16912,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 758.6,
     "y": 177.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-01ac6de16823",
       "g-541ce0458844",
@@ -16926,7 +16930,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 764.6,
     "y": 182.3,
     "terrain": "plains",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-1f377a563a2a",
       "g-541ce0458844",
@@ -16945,7 +16949,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 771.6,
     "y": 187.3,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-b619b15ce52d",
       "g-ddca20a628a9",
@@ -16962,7 +16966,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 768.5391,
     "y": 177.0747,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-9b8ccdcae659-1914-1",
       "g-9b8ccdcae659-1914-2",
@@ -16982,7 +16986,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 785.6,
     "y": 196.5,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-0125e5b65977",
       "g-4de1dbbec2ca"
@@ -16997,7 +17001,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 786.6,
     "y": 203.9,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-4de1dbbec2ca",
       "g-669d672887f8",
@@ -17013,7 +17017,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 779.0,
     "y": 195.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-0125e5b65977",
       "g-669d672887f8",
@@ -17029,7 +17033,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 773.1,
     "y": 191.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-1f377a563a2a",
       "g-4de1dbbec2ca",
@@ -17045,7 +17049,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 764.9,
     "y": 186.2,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-1f377a563a2a",
       "g-541ce0458844",
@@ -17062,7 +17066,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 776.6,
     "y": 210.2,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-0125e5b65977"
     ],
@@ -17076,7 +17080,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 756.4,
     "y": 199.7,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-c8cfeddf4077"
     ],
@@ -17090,7 +17094,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 750.5,
     "y": 174.9,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-01ac6de16823",
       "g-30f5727729fe",
@@ -17109,7 +17113,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 755.3,
     "y": 174.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-30f5727729fe",
       "g-541ce0458844",
@@ -17130,7 +17134,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 755.8,
     "y": 171.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-01ac6de16823",
       "g-30f5727729fe",
@@ -17151,7 +17155,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 747.2,
     "y": 173.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-30f5727729fe",
       "g-4e234547af7b",
@@ -17168,7 +17172,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 751.6,
     "y": 172.1,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-01ac6de16823",
       "g-1babde8b0c67",
@@ -17189,7 +17193,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 898.8,
     "y": 208.5,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0b094f67191e",
       "g-17343c3847a8",
@@ -17211,7 +17215,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 906.6,
     "y": 208.1,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-092856bcd1ae",
       "g-282067334459",
@@ -17229,7 +17233,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 913.3,
     "y": 207.5,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-092856bcd1ae",
       "g-103481612bc6",
@@ -17247,7 +17251,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 907.6,
     "y": 217.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-79fa4ebc0a08",
       "g-9734a635a1ec",
@@ -17265,7 +17269,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 916.0,
     "y": 234.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-672b92ada027",
       "g-7740dc5da502",
@@ -17283,7 +17287,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 948.3,
     "y": 210.1,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-592ee0118fda",
       "g-715f03364e53",
@@ -17300,7 +17304,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 955.8,
     "y": 214.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-47f5ff57e27e",
       "g-516796ea83cb",
@@ -17319,7 +17323,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 951.3,
     "y": 223.5,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-12e3344d84ab",
       "g-516796ea83cb",
@@ -17337,7 +17341,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 958.1,
     "y": 230.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0562ff3b3bbf",
       "g-516796ea83cb",
@@ -17356,7 +17360,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 960.7,
     "y": 241.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-08ca9ec72039",
       "g-1088ceb9c24d",
@@ -17378,7 +17382,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 968.3,
     "y": 252.9,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-0562ff3b3bbf",
       "g-08ca9ec72039",
@@ -17395,7 +17399,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 959.8,
     "y": 252.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-0562ff3b3bbf",
       "g-1b3844e8f7d2",
@@ -17412,7 +17416,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 929.4,
     "y": 218.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-592ee0118fda",
       "g-672b92ada027",
@@ -17430,7 +17434,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 941.5,
     "y": 215.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-715f03364e53",
       "g-91a509d92e00",
@@ -17451,7 +17455,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 923.5,
     "y": 214.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-17343c3847a8",
       "g-2bb6eab38fc9",
@@ -17471,7 +17475,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 919.0,
     "y": 221.5,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-6669f1543400",
       "g-672b92ada027",
@@ -17489,7 +17493,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 924.3,
     "y": 229.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-7740dc5da502",
       "g-8f4615c94a28",
@@ -17509,7 +17513,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 934.1,
     "y": 228.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-592ee0118fda",
       "g-672b92ada027",
@@ -17528,7 +17532,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 934.3,
     "y": 245.5,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-1b3844e8f7d2",
       "g-672b92ada027",
@@ -17548,7 +17552,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 943.2,
     "y": 238.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1b3844e8f7d2",
       "g-7740dc5da502",
@@ -17565,7 +17569,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 953.0,
     "y": 238.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0562ff3b3bbf",
       "g-12e3344d84ab",
@@ -17583,7 +17587,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 952.4,
     "y": 249.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0562ff3b3bbf",
       "g-6804e2f0356b",
@@ -17601,7 +17605,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 909.5,
     "y": 225.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-6669f1543400",
       "g-672b92ada027",
@@ -17620,7 +17624,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 938.3,
     "y": 235.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-12e3344d84ab",
       "g-672b92ada027",
@@ -17640,7 +17644,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 944.9,
     "y": 225.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-12e3344d84ab",
       "g-592ee0118fda",
@@ -17658,7 +17662,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 745.2,
     "y": 147.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-3b680adde68a",
       "g-551df2d9bf86",
@@ -17674,7 +17678,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 745.5,
     "y": 150.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-3b680adde68a",
       "g-551df2d9bf86",
@@ -17691,7 +17695,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 739.3,
     "y": 150.7,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-ade21483678f",
       "g-ecc94421c08d",
@@ -17708,7 +17712,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 742.7,
     "y": 154.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-551df2d9bf86",
       "g-64335a3c60aa",
@@ -17725,7 +17729,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 447.0,
     "y": 311.4,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 269
   },
@@ -17737,7 +17741,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 468.1,
     "y": 290.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-ef033c4cd222"
     ],
@@ -17751,7 +17755,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 758.2,
     "y": 171.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-01ac6de16823",
       "g-67e7ab517251",
@@ -17767,7 +17771,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 698.9,
     "y": 327.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-094e9365086b",
       "g-278453aae14a",
@@ -17787,7 +17791,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 699.6,
     "y": 335.6,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-2089c6db7f57",
       "g-278453aae14a",
@@ -17803,7 +17807,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 799.7921,
     "y": 178.39,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-908cf304065c-1914-2",
       "g-0f5cb3ed1485",
@@ -17823,7 +17827,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 803.4,
     "y": 185.9,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-5242d3ab8eec",
       "g-5796fb865f2d",
@@ -17847,7 +17851,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 704.6,
     "y": 279.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-4cdabe199400",
       "g-5dc1c260c56f",
@@ -17867,7 +17871,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 726.6,
     "y": 286.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0fd0a3aac355",
       "g-6d283a880ea0",
@@ -17885,7 +17889,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 688.5,
     "y": 307.9,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-094e9365086b",
       "g-13816128f470",
@@ -17906,7 +17910,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 661.4,
     "y": 302.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-13816128f470",
       "g-139751b7d1da",
@@ -17924,7 +17928,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 745.8,
     "y": 320.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-4044abccafcd",
       "g-4b477141c5fb",
@@ -17942,7 +17946,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 743.3,
     "y": 310.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-183fae8bd33c",
       "g-4b477141c5fb",
@@ -17960,7 +17964,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 737.5,
     "y": 329.7,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-183fae8bd33c",
       "g-4b477141c5fb",
@@ -17976,7 +17980,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 765.8,
     "y": 325.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-6407d124e1d8",
       "g-87c67b3298b6",
@@ -17994,7 +17998,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 752.7,
     "y": 333.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-183fae8bd33c",
       "g-4044abccafcd",
@@ -18012,7 +18016,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 759.9,
     "y": 316.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-183fae8bd33c",
       "g-5a1bcd3b24e1",
@@ -18031,7 +18035,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 771.2,
     "y": 313.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-03df7b0d2a91",
       "g-87c67b3298b6",
@@ -18049,7 +18053,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 729.1,
     "y": 322.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-183fae8bd33c",
       "g-4044abccafcd",
@@ -18068,7 +18072,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 797.5,
     "y": 422.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-3f1bc9dc570f",
       "g-667f1de0ad5d",
@@ -18088,7 +18092,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 799.9,
     "y": 413.5,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0746e692b23c",
       "g-77f8252b099b",
@@ -18107,7 +18111,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 782.4,
     "y": 425.1,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0746e692b23c",
       "g-3f1bc9dc570f",
@@ -18123,7 +18127,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 778.6,
     "y": 392.5,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-384d59b2ce60",
       "g-7a56bbb5a4d7",
@@ -18140,7 +18144,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 796.9,
     "y": 394.9,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-001a6610b0e5",
       "g-384d59b2ce60",
@@ -18158,7 +18162,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 785.1,
     "y": 398.1,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-384d59b2ce60",
       "g-3fd9b6a30c83",
@@ -18176,7 +18180,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 803.7,
     "y": 399.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-001a6610b0e5",
       "g-3fd9b6a30c83",
@@ -18195,7 +18199,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 786.9,
     "y": 407.9,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-0746e692b23c",
       "g-403ebae4a91d",
@@ -18214,7 +18218,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 777.6,
     "y": 417.9,
     "terrain": "desert",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-0746e692b23c",
       "g-3f1bc9dc570f",
@@ -18231,7 +18235,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 784.1,
     "y": 177.4,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-25c1c9a20757",
       "g-61fbd8a76c66",
@@ -18251,7 +18255,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 783.5,
     "y": 183.9,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-3f9e0697a838",
       "g-e19aabb624e2"
@@ -18266,7 +18270,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 791.9,
     "y": 178.1,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0f5cb3ed1485",
       "g-3f9e0697a838",
@@ -18285,7 +18289,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 778.5,
     "y": 175.4,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-25c1c9a20757",
       "g-3ded7ad7e32f",
@@ -18306,7 +18310,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 924.6,
     "y": 258.5,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-45a0a15e37ac",
       "g-94ac0dc08846"
@@ -18321,7 +18325,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 915.2,
     "y": 256.7,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-055e0a27c724",
       "g-1bbad34be13d",
@@ -18343,7 +18347,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 926.5,
     "y": 276.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-45a0a15e37ac",
       "g-581f955642f8",
@@ -18364,7 +18368,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 890.5,
     "y": 241.1,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-055e0a27c724",
       "g-308d770363d3",
@@ -18386,7 +18390,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 877.3,
     "y": 240.4,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-055e0a27c724",
       "g-17c67dca63f4",
@@ -18406,7 +18410,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 873.6,
     "y": 257.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-055e0a27c724",
       "g-8a9062e8747c",
@@ -18424,7 +18428,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 888.3,
     "y": 279.3,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-17c67dca63f4",
       "g-8ec7eb3b98a5",
@@ -18442,7 +18446,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 899.9,
     "y": 261.9,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-055e0a27c724",
       "g-17c67dca63f4",
@@ -18462,7 +18466,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 904.2,
     "y": 281.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1bbad34be13d",
       "g-8a9062e8747c",
@@ -18479,7 +18483,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 887.0,
     "y": 251.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-17c67dca63f4",
       "g-45a0a15e37ac",
@@ -18497,7 +18501,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 827.2,
     "y": 447.5,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-53ec4fbd9511",
       "g-6336eb4bb443",
@@ -18514,7 +18518,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 810.4,
     "y": 450.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-667f1de0ad5d",
       "g-7d70f1cd44b2",
@@ -18533,7 +18537,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 831.6,
     "y": 438.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-53ec4fbd9511",
       "g-6336eb4bb443",
@@ -18553,7 +18557,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 842.4,
     "y": 429.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-13a7e41ba1ee",
       "g-684f1eef43e7",
@@ -18572,7 +18576,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 844.8,
     "y": 441.9,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-53ec4fbd9511",
       "g-684f1eef43e7",
@@ -18590,7 +18594,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1021.7,
     "y": 220.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0c9922004c66",
       "g-45f49fb903ae",
@@ -18609,7 +18613,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1006.5,
     "y": 224.1,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-08ca9ec72039",
       "g-0c9922004c66",
@@ -18630,7 +18634,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 992.6,
     "y": 239.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0562ff3b3bbf",
       "g-1088ceb9c24d",
@@ -18652,7 +18656,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 979.6,
     "y": 253.6,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-0562ff3b3bbf",
       "g-08ca9ec72039",
@@ -18669,7 +18673,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1012.0,
     "y": 229.9,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-08ca9ec72039",
       "g-4e990a805169",
@@ -18687,7 +18691,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1005.6,
     "y": 242.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-08ca9ec72039",
       "g-3a323d72eda9",
@@ -18707,7 +18711,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 995.0,
     "y": 255.3,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-08ca9ec72039",
       "g-1088ceb9c24d",
@@ -18727,7 +18731,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 813.7,
     "y": 190.9,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-311f3128c0c8",
       "g-567d6779d16e",
@@ -18746,7 +18750,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 825.5409,
     "y": 188.14,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-75a45ddc110f-ww1",
       "g-311f3128c0c8",
@@ -18763,7 +18767,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 815.3,
     "y": 186.1,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-311f3128c0c8",
       "g-5242d3ab8eec",
@@ -18783,7 +18787,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 821.3,
     "y": 191.9,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-5242d3ab8eec",
       "g-5796fb865f2d",
@@ -18802,7 +18806,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1139.6,
     "y": 297.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1202afb4007d",
       "g-754de97e0524",
@@ -18821,7 +18825,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1113.7,
     "y": 288.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1f3cf2ca2e91",
       "g-26631e4e0e53",
@@ -18841,7 +18845,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1118.3,
     "y": 306.7,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-289d250f95c6",
       "g-3bbf3f64677c",
@@ -18860,7 +18864,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1119.1,
     "y": 330.1,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-15926774430d",
       "g-7fd03e20cde9",
@@ -18876,7 +18880,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1115.3,
     "y": 322.6,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-33b0ac061ea5",
       "g-eaee01279ad5",
@@ -18892,7 +18896,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1126.3,
     "y": 305.7,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-33b0ac061ea5",
       "g-754de97e0524",
@@ -18911,7 +18915,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1129.7,
     "y": 295.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1202afb4007d",
       "g-289d250f95c6",
@@ -18930,7 +18934,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1130.8,
     "y": 300.1,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-289d250f95c6",
       "g-72f3d4897ba0",
@@ -18947,7 +18951,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1131.6,
     "y": 289.5,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-72f3d4897ba0",
       "g-7a34797eb8fc",
@@ -18965,7 +18969,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1120.4,
     "y": 287.9,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1202afb4007d",
       "g-26631e4e0e53",
@@ -18984,7 +18988,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1119.7,
     "y": 296.5,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-289d250f95c6",
       "g-33b0ac061ea5",
@@ -19003,7 +19007,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 769.8,
     "y": 184.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1f377a563a2a",
       "g-b619b15ce52d"
@@ -19018,7 +19022,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 430.9,
     "y": 284.1,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-a90454c454da"
     ],
@@ -19032,7 +19036,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 439.5,
     "y": 284.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-e5763ac66ac4"
     ],
@@ -19046,7 +19050,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 787.0,
     "y": 319.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-03df7b0d2a91",
       "g-26b2d7e4c75f",
@@ -19063,7 +19067,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 800.0,
     "y": 317.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-03df7b0d2a91",
       "g-26b2d7e4c75f",
@@ -19080,7 +19084,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 808.5,
     "y": 286.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-03df7b0d2a91",
       "g-4ee116c8b229",
@@ -19097,7 +19101,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 791.7,
     "y": 281.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-03df7b0d2a91",
       "g-3bc2a74a577c",
@@ -19116,7 +19120,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 791.4,
     "y": 304.5,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-3236da2a7331",
       "g-3bc2a74a577c",
@@ -19138,7 +19142,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 909.7,
     "y": 242.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-45a0a15e37ac",
       "g-9815f7f45cd1",
@@ -19154,7 +19158,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 364.4,
     "y": 304.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-a10b982de791",
       "g-b08dc469abef",
@@ -19170,7 +19174,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 359.9,
     "y": 292.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-6e488f97538c",
       "g-c6fc48ffe665",
@@ -19189,7 +19193,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 357.3,
     "y": 300.3,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-525361ab86a1",
       "g-6e488f97538c",
@@ -19207,7 +19211,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1218.8,
     "y": 397.3,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-fd6648579ed6"
     ],
@@ -19221,7 +19225,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1177.9,
     "y": 341.9,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-f7e3392d6da2"
     ],
@@ -19235,7 +19239,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 749.6,
     "y": 185.1,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-541ce0458844",
       "g-e4aaa3f5761c"
@@ -19250,7 +19254,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 719.7,
     "y": 268.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0fd0a3aac355",
       "g-4cdabe199400",
@@ -19269,7 +19273,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 706.8,
     "y": 247.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1a2b91527489",
       "g-2e41e8064edd",
@@ -19290,7 +19294,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 742.3,
     "y": 273.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-67735117a420",
       "g-6bf4d1cea7b9",
@@ -19310,7 +19314,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 734.2,
     "y": 254.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0fd0a3aac355",
       "g-2e41e8064edd",
@@ -19328,7 +19332,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 714.8,
     "y": 234.9,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0d6130c251c0",
       "g-2e41e8064edd",
@@ -19346,7 +19350,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 742.7,
     "y": 235.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1be233743b2e",
       "g-5f19015cc587",
@@ -19367,7 +19371,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 751.3,
     "y": 251.5,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0fd0a3aac355",
       "g-1be233743b2e",
@@ -19386,7 +19390,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 724.0,
     "y": 220.9,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-0d6130c251c0",
       "g-2e41e8064edd",
@@ -19403,7 +19407,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 743.9,
     "y": 218.6,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-2e41e8064edd",
       "g-5f19015cc587",
@@ -19419,7 +19423,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 877.4,
     "y": 409.3,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-92a28d3b9d8e",
       "g-a9fec59b29ee",
@@ -19435,7 +19439,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 865.9,
     "y": 413.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-2e29ac1445d8",
       "g-3a020c6fe61f",
@@ -19454,7 +19458,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 849.3,
     "y": 423.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-684f1eef43e7",
       "g-a251234952c5",
@@ -19472,7 +19476,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 854.3,
     "y": 455.6,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-53ec4fbd9511",
       "g-684f1eef43e7",
@@ -19491,7 +19495,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 868.8,
     "y": 427.9,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-13a7e41ba1ee",
       "g-684f1eef43e7",
@@ -19508,7 +19512,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 857.1,
     "y": 436.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-13a7e41ba1ee",
       "g-7084fdc58f55",
@@ -19526,7 +19530,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 876.2,
     "y": 420.7,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-2e29ac1445d8",
       "g-f0c01b047ee5",
@@ -19542,7 +19546,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 845.8,
     "y": 466.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-6d107cb86131",
       "g-7e8d19e68b6e",
@@ -19558,7 +19562,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 839.9,
     "y": 373.5,
     "terrain": "mountain",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0cb32a3b8c88",
       "g-3a79d9b9f1a4",
@@ -19575,7 +19579,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 840.3,
     "y": 367.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-3a79d9b9f1a4",
       "g-4bf0c508460d",
@@ -19592,7 +19596,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1096.9,
     "y": 282.3,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-00a8adc50915",
       "g-832f30872173",
@@ -19609,7 +19613,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1094.4,
     "y": 270.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-00a8adc50915",
       "g-269379846d8d",
@@ -19628,7 +19632,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1109.4,
     "y": 255.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-297ea17d3d5e",
       "g-3eebf03f8cf2",
@@ -19649,7 +19653,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1102.3,
     "y": 257.1,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-606903a508b4",
       "g-858ccb2989e5",
@@ -19666,7 +19670,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1099.9,
     "y": 267.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-00a8adc50915",
       "g-5d9a03510cf6",
@@ -19686,7 +19690,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1113.3,
     "y": 277.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-26631e4e0e53",
       "g-3bbf3f64677c",
@@ -19705,7 +19709,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1111.8,
     "y": 268.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1f3cf2ca2e91",
       "g-606903a508b4",
@@ -19724,7 +19728,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1109.8,
     "y": 290.2,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-1f3cf2ca2e91",
       "g-33b0ac061ea5",
@@ -19744,7 +19748,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1116.0,
     "y": 309.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-33b0ac061ea5",
       "g-3bbf3f64677c",
@@ -19760,7 +19764,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1100.6,
     "y": 291.6,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-00a8adc50915",
       "g-94e997155012",
@@ -19776,7 +19780,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1105.3,
     "y": 288.5,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-00a8adc50915",
       "g-3bbf3f64677c",
@@ -19793,7 +19797,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1098.1,
     "y": 277.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-832f30872173",
       "g-94e997155012",
@@ -19812,7 +19816,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1103.3,
     "y": 273.9,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-00a8adc50915",
       "g-1f3cf2ca2e91",
@@ -19831,7 +19835,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1088.4,
     "y": 270.1,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-269379846d8d",
       "g-832f30872173",
@@ -19848,7 +19852,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1083.1,
     "y": 270.4,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-5741860dcad0",
       "g-b3952232b928"
@@ -19863,7 +19867,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1077.3,
     "y": 259.1,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-00af7bf756f9",
       "g-06a28e477cb4",
@@ -19881,7 +19885,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 726.3,
     "y": 189.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-177983c42c4c",
       "g-4f30e716039e",
@@ -19897,7 +19901,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 999.3,
     "y": 213.1,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0af71512d9ba",
       "g-1bb5aaaacb8b",
@@ -19917,7 +19921,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 985.6,
     "y": 215.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0af71512d9ba",
       "g-0c9922004c66",
@@ -19937,7 +19941,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 972.0,
     "y": 225.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0562ff3b3bbf",
       "g-12e3344d84ab",
@@ -19959,7 +19963,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 979.9,
     "y": 232.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0562ff3b3bbf",
       "g-08ca9ec72039",
@@ -19977,7 +19981,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 995.6,
     "y": 220.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0c9922004c66",
       "g-516796ea83cb",
@@ -19996,7 +20000,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 993.8,
     "y": 228.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-08ca9ec72039",
       "g-1bb5aaaacb8b",
@@ -20013,7 +20017,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 797.1905,
     "y": 189.25,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-8846235b3d74-1914-1",
       "g-6ebd320ac94a",
@@ -20032,7 +20036,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 789.6,
     "y": 184.5,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-3f9e0697a838",
       "g-85fa065ff297",
@@ -20051,7 +20055,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 794.3,
     "y": 183.1,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-6ebd320ac94a",
       "g-85fa065ff297",
@@ -20070,7 +20074,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 849.0,
     "y": 361.5,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [],
     "area_km2": 111714
   },
@@ -20082,7 +20086,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 854.5,
     "y": 351.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-dd4093669c1e",
       "g-fd40784c404a"
@@ -20097,7 +20101,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 419.5,
     "y": 280.3,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-88036db11025"
     ],
@@ -20111,7 +20115,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 412.0,
     "y": 276.1,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-64b31e014835",
       "g-fac184d7e3c8"
@@ -20126,7 +20130,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 401.1,
     "y": 270.9,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-88036db11025",
       "g-eec4b4c95f5d"
@@ -20141,7 +20145,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 385.4,
     "y": 270.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-fac184d7e3c8"
     ],
@@ -20155,7 +20159,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 378.5,
     "y": 299.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-51c7b1586a2b",
       "g-b08dc469abef"
@@ -20170,7 +20174,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 367.8,
     "y": 302.2,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-417cd2634cac",
       "g-51c7b1586a2b",
@@ -20188,7 +20192,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 405.0,
     "y": 358.6,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-c81790ad18b9",
       "g-e94feecf98d2",
@@ -20204,7 +20208,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 412.7,
     "y": 361.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-63801e7cc984",
       "g-9d6966b39b47",
@@ -20223,7 +20227,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 412.7,
     "y": 367.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-4a391e5956f6",
       "g-63801e7cc984",
@@ -20241,7 +20245,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 407.3,
     "y": 370.1,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-7589fd595416",
       "g-d2f3d36a52b8",
@@ -20259,7 +20263,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 401.9,
     "y": 376.1,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-466a873c895a",
       "g-4a391e5956f6",
@@ -20277,7 +20281,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 358.5,
     "y": 362.5,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 7713
   },
@@ -20289,7 +20293,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 402.2,
     "y": 365.5,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-4a391e5956f6",
       "g-d2f3d36a52b8",
@@ -20307,7 +20311,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 408.4,
     "y": 354.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-7c597eec5507",
       "g-9d6966b39b47",
@@ -20324,7 +20328,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 413.2,
     "y": 336.5,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-500073bbbe21",
       "g-7c597eec5507",
@@ -20341,7 +20345,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 433.1,
     "y": 364.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-552616e785c8",
       "g-63801e7cc984",
@@ -20362,7 +20366,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 426.3,
     "y": 321.3,
     "terrain": "plains",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-42df7d19a125",
       "g-56770ff6fa23",
@@ -20382,7 +20386,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 443.0,
     "y": 338.5,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-28f2b76e1332",
       "g-86782a142ca1",
@@ -20401,7 +20405,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 440.4,
     "y": 345.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-929e4c4e8484",
       "g-f0cd8afae8f2",
@@ -20417,7 +20421,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 417.4,
     "y": 347.4,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-3ff468180104",
       "g-7273000c98ae",
@@ -20436,7 +20440,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 417.0,
     "y": 327.6,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-3ff468180104",
       "g-56770ff6fa23",
@@ -20454,7 +20458,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 418.6,
     "y": 336.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-3ff468180104",
       "g-500073bbbe21",
@@ -20472,7 +20476,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 421.6,
     "y": 324.5,
     "terrain": "plains",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-500073bbbe21",
       "g-7273000c98ae",
@@ -20490,7 +20494,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 422.1,
     "y": 319.5,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-56770ff6fa23",
       "g-784738b2e9b2"
@@ -20505,7 +20509,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 394.5,
     "y": 306.6,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 38
   },
@@ -20517,7 +20521,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 720.0,
     "y": 360.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 8
   },
@@ -20529,7 +20533,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 418.9,
     "y": 355.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-63801e7cc984",
       "g-7c597eec5507",
@@ -20549,7 +20553,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 427.9,
     "y": 357.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-63801e7cc984",
       "g-8a11259ff454",
@@ -20566,7 +20570,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 435.4,
     "y": 337.1,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-7273000c98ae",
       "g-784738b2e9b2",
@@ -20584,7 +20588,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 429.2,
     "y": 348.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-28f2b76e1332",
       "g-7273000c98ae",
@@ -20607,7 +20611,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 426.0,
     "y": 336.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-500073bbbe21",
       "g-56770ff6fa23",
@@ -20628,7 +20632,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 475.9,
     "y": 451.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-acc5e010c126",
       "g-b075bc863b90",
@@ -20646,7 +20650,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 475.9,
     "y": 444.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1789caa15e53",
       "g-208c26ba372f",
@@ -20663,7 +20667,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 483.8,
     "y": 454.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-208c26ba372f",
       "g-30a876897072",
@@ -20681,7 +20685,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 497.2,
     "y": 462.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-000e8d5d305d",
       "g-2c70ec73ec80",
@@ -20702,7 +20706,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 490.5,
     "y": 464.9,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-148f2ad4772b",
       "g-2c70ec73ec80",
@@ -20722,7 +20726,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 484.6,
     "y": 443.5,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-031130557f90",
       "g-1789caa15e53",
@@ -20743,7 +20747,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 494.0,
     "y": 454.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-148f2ad4772b",
       "g-30a876897072",
@@ -20761,7 +20765,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 689.9,
     "y": 193.6,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-04be7ddab20b",
       "g-24bfde274ed4",
@@ -20777,7 +20781,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 688.0,
     "y": 206.7,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-24bfde274ed4",
       "g-6cd0f6c5fa4f",
@@ -20793,7 +20797,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 652.1,
     "y": 228.9,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 811
   },
@@ -20805,7 +20809,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 618.1,
     "y": 208.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 2608
   },
@@ -20817,7 +20821,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 688.3,
     "y": 200.1,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-3f8c9ed07cf5",
       "g-492bb77938bc",
@@ -20834,7 +20838,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 834.8,
     "y": 173.9,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-23df997b428d",
       "g-47625d79bf21",
@@ -20852,7 +20856,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 833.0,
     "y": 169.1,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-06d2e0e260ec",
       "g-729f2faf3162",
@@ -20870,7 +20874,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 971.3,
     "y": 203.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-2abd5c981aab",
       "g-47f5ff57e27e",
@@ -20890,7 +20894,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 969.4,
     "y": 210.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-38d42c220312",
       "g-516796ea83cb",
@@ -20908,7 +20912,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 957.4,
     "y": 208.5,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-2abd5c981aab",
       "g-38d42c220312",
@@ -20928,7 +20932,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 941.0,
     "y": 200.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-2abd5c981aab",
       "g-36f93bfc3c15",
@@ -20947,7 +20951,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 955.2,
     "y": 195.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-38d42c220312",
       "g-7ba5979252e4",
@@ -20964,7 +20968,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 869.2,
     "y": 230.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-4b3abefb83e4",
       "g-4d77c3bf1b59",
@@ -20986,7 +20990,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 865.5,
     "y": 238.9,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-53721116ca07",
       "g-8c7d5595bdab",
@@ -21004,7 +21008,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1065.3,
     "y": 251.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-3089e0bed69a",
       "g-748edaa3a72f",
@@ -21023,7 +21027,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1048.7,
     "y": 244.5,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0197f2a1876f",
       "g-1d5ccd773a3d",
@@ -21044,7 +21048,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 832.6,
     "y": 478.5,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-6d107cb86131",
       "g-74564c0f3c2d",
@@ -21060,7 +21064,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 774.4,
     "y": 322.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-03df7b0d2a91",
       "g-26b2d7e4c75f",
@@ -21080,7 +21084,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 775.2,
     "y": 344.5,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-26b2d7e4c75f",
       "g-9080440cebc3",
@@ -21098,7 +21102,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 763.8,
     "y": 341.3,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-1011dd501429",
       "g-6407d124e1d8",
@@ -21118,7 +21122,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 764.1,
     "y": 369.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-1b6da45845b4",
       "g-971fb38f1e3f",
@@ -21134,7 +21138,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 767.8,
     "y": 357.7,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-1011dd501429",
       "g-1b6da45845b4",
@@ -21152,7 +21156,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 762.9,
     "y": 298.5,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-03df7b0d2a91",
       "g-4ee116c8b229",
@@ -21172,7 +21176,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 768.1,
     "y": 282.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0fd0a3aac355",
       "g-4ee116c8b229",
@@ -21190,7 +21194,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 742.5,
     "y": 294.5,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0fd0a3aac355",
       "g-4b477141c5fb",
@@ -21210,7 +21214,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 715.2,
     "y": 311.1,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-2089c6db7f57",
       "g-4b477141c5fb",
@@ -21231,7 +21235,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 724.0,
     "y": 325.3,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-278453aae14a",
       "g-4b477141c5fb",
@@ -21248,7 +21252,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 715.1,
     "y": 322.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-2089c6db7f57",
       "g-278453aae14a",
@@ -21265,7 +21269,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 712.2,
     "y": 332.9,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-2089c6db7f57",
       "g-bea0acb026a0",
@@ -21282,7 +21286,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 662.6,
     "y": 312.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-13816128f470",
       "g-ed3d3efe5353"
@@ -21297,7 +21301,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 698.6108,
     "y": 215.48,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-9fe6fbf95a83"
     ],
@@ -21311,7 +21315,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 241.1,
     "y": 170.9,
     "terrain": "urban",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-173ef6dfd949",
       "g-d74126877082",
@@ -21327,7 +21331,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 258.2,
     "y": 178.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-2a05dc721460",
       "g-2d6fb8c6326f",
@@ -21347,7 +21351,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 282.7,
     "y": 173.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-173ef6dfd949",
       "g-64bb476b297d",
@@ -21367,7 +21371,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 318.2,
     "y": 170.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-2d6fb8c6326f",
       "g-7676287b11cf",
@@ -21385,7 +21389,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 342.2,
     "y": 174.9,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0f32e1ff5264",
       "g-21997ac02ca3",
@@ -21404,7 +21408,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 379.2,
     "y": 185.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0f32e1ff5264",
       "g-16818703e79e",
@@ -21421,7 +21425,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 389.0,
     "y": 199.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-40a2f68e3de0",
       "g-4678317e1293",
@@ -21439,7 +21443,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 408.7,
     "y": 196.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-16818703e79e",
       "g-40a2f68e3de0",
@@ -21458,7 +21462,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 415.7,
     "y": 188.3,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-596393281146",
       "g-6ecd87d2b29b",
@@ -21479,7 +21483,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 428.9,
     "y": 184.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-3b86fc08c156",
       "g-6a9b647d068b",
@@ -21496,7 +21500,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 433.8,
     "y": 183.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-596393281146",
       "g-6ecd87d2b29b",
@@ -21513,7 +21517,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 443.4,
     "y": 178.9,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-0d8f61678c6d",
       "g-3b86fc08c156",
@@ -21529,7 +21533,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 273.3,
     "y": 223.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0790ae8ae46d",
       "g-11cfaffeedbb",
@@ -21550,7 +21554,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 240.0,
     "y": 210.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-422b70548eb3",
       "g-b3535b85e205",
@@ -21567,7 +21571,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 295.8,
     "y": 223.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0790ae8ae46d",
       "g-2a05dc721460",
@@ -21587,7 +21591,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 321.3,
     "y": 235.3,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-313c459381ca",
       "g-31b55a96f978",
@@ -21608,7 +21612,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 112.0,
     "y": 107.6,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-8090390bbdc8",
       "g-d74126877082"
@@ -21623,7 +21627,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 353.4,
     "y": 236.1,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-8d6c54a59404",
       "g-b3845ef66a91",
@@ -21639,7 +21643,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 361.0,
     "y": 229.7,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-3eca04dab99a",
       "g-b3845ef66a91",
@@ -21656,7 +21660,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 373.1,
     "y": 229.6,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-74552012238a",
       "g-c9e40e544635",
@@ -21673,7 +21677,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 396.6,
     "y": 252.3,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-b9c4292beace"
     ],
@@ -21687,7 +21691,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 387.0,
     "y": 229.2,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-74e178d2765a",
       "g-b9c4292beace",
@@ -21704,7 +21708,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 397.7,
     "y": 225.5,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-74e178d2765a",
       "g-d0d8833565a0"
@@ -21719,7 +21723,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 398.3,
     "y": 219.1,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-c9e40e544635",
       "g-d08542ac426c",
@@ -21736,7 +21740,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 406.5,
     "y": 209.5,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-40a2f68e3de0",
       "g-4297657812a5",
@@ -21755,7 +21759,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 411.9,
     "y": 204.3,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-51e5ebb578bb",
       "g-eac50afd0c7b"
@@ -21770,7 +21774,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 417.2,
     "y": 206.3,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-40a2f68e3de0",
       "g-4297657812a5",
@@ -21788,7 +21792,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 417.7,
     "y": 203.4,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-51e5ebb578bb",
       "g-8af5a82f781d",
@@ -21804,7 +21808,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 422.5,
     "y": 199.4,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-67e4ce4d6ace",
       "g-6a9b647d068b",
@@ -21820,7 +21824,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 429.4,
     "y": 192.9,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-6a9b647d068b",
       "g-8ed7e2400e8c",
@@ -21836,7 +21840,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 433.6,
     "y": 193.4,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-6a9b647d068b",
       "g-8ed7e2400e8c",
@@ -21852,7 +21856,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 431.6,
     "y": 191.2,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-3b86fc08c156",
       "g-596393281146",
@@ -21870,7 +21874,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 237.9,
     "y": 183.4,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-11cfaffeedbb",
       "g-173ef6dfd949",
@@ -21887,7 +21891,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 98.3,
     "y": 281.7,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 16848
   },
@@ -21899,7 +21903,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 273.8,
     "y": 202.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-173ef6dfd949",
       "g-31b55a96f978",
@@ -21918,7 +21922,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 289.8,
     "y": 187.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-173ef6dfd949",
       "g-2a05dc721460",
@@ -21937,7 +21941,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 253.8,
     "y": 206.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-11cfaffeedbb",
       "g-173ef6dfd949",
@@ -21955,7 +21959,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 297.8,
     "y": 204.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-2a05dc721460",
       "g-313c459381ca",
@@ -21975,7 +21979,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 319.0,
     "y": 184.1,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-21997ac02ca3",
       "g-2d6fb8c6326f",
@@ -21994,7 +21998,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 319.9,
     "y": 194.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-21997ac02ca3",
       "g-4d6f8cac6df9",
@@ -22013,7 +22017,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 326.7,
     "y": 207.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-313c459381ca",
       "g-4d6f8cac6df9",
@@ -22030,7 +22034,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 331.1,
     "y": 220.1,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-31b55a96f978",
       "g-4d6f8cac6df9",
@@ -22049,7 +22053,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 347.4,
     "y": 192.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0f32e1ff5264",
       "g-915ecbfbf813",
@@ -22068,7 +22072,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 350.0,
     "y": 206.9,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-21997ac02ca3",
       "g-313c459381ca",
@@ -22089,7 +22093,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 358.7,
     "y": 180.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-21997ac02ca3",
       "g-4678317e1293",
@@ -22107,7 +22111,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 362.2,
     "y": 200.9,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0f32e1ff5264",
       "g-21997ac02ca3",
@@ -22125,7 +22129,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 381.1,
     "y": 208.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-08b32296a394",
       "g-16818703e79e",
@@ -22146,7 +22150,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 350.2,
     "y": 221.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-313c459381ca",
       "g-3eca04dab99a",
@@ -22165,7 +22169,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 374.6,
     "y": 216.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-74e178d2765a",
       "g-b3845ef66a91",
@@ -22186,7 +22190,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 398.8,
     "y": 204.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-16818703e79e",
       "g-51e5ebb578bb",
@@ -22204,7 +22208,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 375.3,
     "y": 198.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-16818703e79e",
       "g-4678317e1293",
@@ -22221,7 +22225,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 219.4,
     "y": 141.7,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-173ef6dfd949",
       "g-2d6fb8c6326f",
@@ -22241,7 +22245,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 259.6,
     "y": 142.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-2d6fb8c6326f",
       "g-4caff3e1e0a1",
@@ -22258,7 +22262,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 296.4,
     "y": 141.9,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-2d6fb8c6326f",
       "g-4caff3e1e0a1",
@@ -22277,7 +22281,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 332.2,
     "y": 140.4,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-4caff3e1e0a1",
       "g-64bb476b297d",
@@ -22296,7 +22300,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 372.8,
     "y": 162.5,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-0f32e1ff5264",
       "g-4678317e1293",
@@ -22316,7 +22320,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 467.9,
     "y": 162.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-0d8f61678c6d",
       "g-3b86fc08c156",
@@ -22336,7 +22340,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 455.0,
     "y": 173.6,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-69ed7548a2a2",
       "g-6ecd87d2b29b",
@@ -22353,7 +22357,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 172.9,
     "y": 100.6,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-4caff3e1e0a1",
       "g-531fe8c15e0c",
@@ -22369,7 +22373,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 325.2,
     "y": 95.9,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-147495d26d59",
       "g-4caff3e1e0a1",
@@ -22388,7 +22392,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 493.1,
     "y": 163.5,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-9c6fbff6871f"
     ],
@@ -22402,7 +22406,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 462.4,
     "y": 181.1,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-0d8f61678c6d",
       "g-c4af401e3dbd"
@@ -22417,7 +22421,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 233.9,
     "y": 98.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-7676287b11cf",
       "g-8090390bbdc8",
@@ -22436,7 +22440,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 465.5,
     "y": 174.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-0d8f61678c6d",
       "g-69ed7548a2a2"
@@ -22451,7 +22455,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 278.0,
     "y": 242.2,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-31b55a96f978",
       "g-b3535b85e205",
@@ -22469,7 +22473,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 259.0,
     "y": 238.6,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-0790ae8ae46d",
       "g-11cfaffeedbb",
@@ -22486,7 +22490,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 295.7,
     "y": 245.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0790ae8ae46d",
       "g-31b55a96f978",
@@ -22506,7 +22510,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 311.0,
     "y": 250.9,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-21bd0436a802",
       "g-5e4b8310cd48",
@@ -22526,7 +22530,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 326.6,
     "y": 260.4,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-21bd0436a802",
       "g-7891422b6bff",
@@ -22544,7 +22548,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 321.6,
     "y": 258.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-21bd0436a802",
       "g-5e4b8310cd48",
@@ -22562,7 +22566,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 366.1,
     "y": 280.9,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-525361ab86a1",
       "g-6e488f97538c",
@@ -22579,7 +22583,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 360.3,
     "y": 282.7,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-525361ab86a1",
       "g-6e488f97538c",
@@ -22598,7 +22602,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 351.7,
     "y": 288.2,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-525361ab86a1",
       "g-7891422b6bff",
@@ -22615,7 +22619,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 351.1,
     "y": 294.9,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-3bb642363c19",
       "g-525361ab86a1",
@@ -22634,7 +22638,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 304.2,
     "y": 283.5,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-a016926f281f",
       "g-ca88356379a1"
@@ -22649,7 +22653,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 300.5,
     "y": 272.5,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-87b8684e8e9a",
       "g-bc026c747fff",
@@ -22666,7 +22670,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 273.8,
     "y": 258.1,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-b3535b85e205"
     ],
@@ -22680,7 +22684,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 290.4,
     "y": 260.9,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-0790ae8ae46d",
       "g-e1c2e143fb12",
@@ -22697,7 +22701,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 363.7,
     "y": 277.6,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-e036decbf52e",
       "g-e64f3f9029d7"
@@ -22712,7 +22716,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 332.5,
     "y": 280.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-21bd0436a802",
       "g-3bb642363c19",
@@ -22732,7 +22736,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 307.4,
     "y": 276.5,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-21bd0436a802",
       "g-5d807a032847",
@@ -22753,7 +22757,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 313.4,
     "y": 283.3,
     "terrain": "plains",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-55ca836a9f0d",
       "g-587bd9a07e75",
@@ -22772,7 +22776,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 320.3,
     "y": 289.6,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-3bb642363c19",
       "g-5569ed8f4e0d",
@@ -22790,7 +22794,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 335.0,
     "y": 291.3,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-7891422b6bff",
       "g-88417b85c741",
@@ -22807,7 +22811,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 361.4,
     "y": 270.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 133
   },
@@ -22819,7 +22823,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 320.8,
     "y": 282.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-5569ed8f4e0d",
       "g-587bd9a07e75",
@@ -22840,7 +22844,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 330.3,
     "y": 282.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-3bb642363c19",
       "g-5569ed8f4e0d",
@@ -22860,7 +22864,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 323.6,
     "y": 285.1,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-55ca836a9f0d",
       "g-88417b85c741",
@@ -22877,7 +22881,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 319.9,
     "y": 276.9,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-21bd0436a802",
       "g-55ca836a9f0d",
@@ -22895,7 +22899,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 323.2,
     "y": 278.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-21bd0436a802",
       "g-55ca836a9f0d",
@@ -22914,7 +22918,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 314.9,
     "y": 276.5,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-21bd0436a802",
       "g-587bd9a07e75",
@@ -22932,7 +22936,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 315.6,
     "y": 268.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-587bd9a07e75",
       "g-5d807a032847",
@@ -22954,7 +22958,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 307.2,
     "y": 267.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-21bd0436a802",
       "g-5d807a032847",
@@ -22975,7 +22979,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 310.7,
     "y": 271.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-87b8684e8e9a",
       "g-ca88356379a1"
@@ -22990,7 +22994,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 301.6,
     "y": 261.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-87b8684e8e9a",
       "g-bc026c747fff",
@@ -23009,7 +23013,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 327.6,
     "y": 282.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-55ca836a9f0d",
       "g-88417b85c741",
@@ -23025,7 +23029,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 323.4,
     "y": 282.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-5569ed8f4e0d",
       "g-55ca836a9f0d"
@@ -23040,7 +23044,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 365.1,
     "y": 291.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-525361ab86a1",
       "g-c6fc48ffe665",
@@ -23057,7 +23061,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 399.0422,
     "y": 325.065,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-0055cfcb7504"
     ],
@@ -23071,7 +23075,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 392.6,
     "y": 326.5,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-4d47c5b38e15",
       "g-f71310928998"
@@ -23086,7 +23090,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 473.8,
     "y": 324.5,
     "terrain": "plains",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-0171f9024750",
       "g-0ef28e7d0022",
@@ -23104,7 +23108,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 471.6,
     "y": 331.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0171f9024750",
       "g-0ef28e7d0022",
@@ -23124,7 +23128,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 471.1,
     "y": 340.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0feb5b147faa",
       "g-7b5fb25fc3d4",
@@ -23142,7 +23146,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 461.7,
     "y": 339.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-66042a0192b3",
       "g-86782a142ca1",
@@ -23159,7 +23163,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 458.3,
     "y": 332.5,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0e2995a41abc",
       "g-0ef28e7d0022",
@@ -23180,7 +23184,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 456.9,
     "y": 346.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-28f2b76e1332",
       "g-86782a142ca1",
@@ -23202,7 +23206,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 430.2,
     "y": 319.5,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-42df7d19a125",
       "g-751e954d6444",
@@ -23218,7 +23222,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 444.7,
     "y": 331.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0e2995a41abc",
       "g-42df7d19a125",
@@ -23239,7 +23243,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 441.9,
     "y": 315.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-751e954d6444"
     ],
@@ -23253,7 +23257,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 463.5,
     "y": 324.2,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-0e2995a41abc",
       "g-0feb5b147faa",
@@ -23271,7 +23275,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 467.5,
     "y": 321.5,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-0ef28e7d0022",
       "g-0feb5b147faa",
@@ -23288,7 +23292,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 720.0,
     "y": 360.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 1
   },
@@ -23300,7 +23304,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 454.2,
     "y": 323.4,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-0ef28e7d0022",
       "g-42df7d19a125",
@@ -23318,7 +23322,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 437.0,
     "y": 326.7,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-0e2995a41abc",
       "g-751e954d6444",
@@ -23336,7 +23340,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 441.9,
     "y": 321.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-0e2995a41abc",
       "g-42df7d19a125",
@@ -23353,7 +23357,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1287.0,
     "y": 375.9,
     "terrain": "plains",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-38ed91956107",
       "g-451350f11a69",
@@ -23372,7 +23376,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1287.2,
     "y": 384.5,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1717f8bfd473",
       "g-3988b0bbb655",
@@ -23392,7 +23396,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1289.1,
     "y": 392.4,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-3988b0bbb655",
       "g-c9f7a75c5a82",
@@ -23409,7 +23413,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1292.1,
     "y": 376.7,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-1717f8bfd473",
       "g-4862113de39c",
@@ -23425,7 +23429,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1299.5,
     "y": 380.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-38ed91956107",
       "g-a3a628c57800",
@@ -23442,7 +23446,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1305.9,
     "y": 387.7,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-3988b0bbb655",
       "g-4862113de39c",
@@ -23459,7 +23463,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1312.3,
     "y": 396.9,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-3988b0bbb655",
       "g-a3a628c57800"
@@ -23474,7 +23478,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1302.6,
     "y": 390.6,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-7e066702454b",
       "g-9d895b1d427f",
@@ -23493,7 +23497,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1326.2,
     "y": 380.9,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-aaa40df44a21"
     ],
@@ -23507,7 +23511,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1307.8,
     "y": 368.3,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 1941
   },
@@ -23519,7 +23523,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1292.8,
     "y": 383.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1717f8bfd473",
       "g-38ed91956107",
@@ -23538,7 +23542,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1301.1,
     "y": 385.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-3988b0bbb655",
       "g-4862113de39c",
@@ -23555,7 +23559,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 854.2,
     "y": 257.3,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-1f84b179e379",
       "g-37e76c81adb5",
@@ -23574,7 +23578,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 828.1,
     "y": 243.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-37e76c81adb5",
       "g-a08322086e48",
@@ -23592,7 +23596,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 835.8,
     "y": 261.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-6bc4a9bb74f7",
       "g-a08322086e48",
@@ -23609,7 +23613,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 844.5091,
     "y": 241.345,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-6bc4a9bb74f7",
       "g-a08322086e48"
@@ -23624,7 +23628,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 914.0,
     "y": 294.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-1bbad34be13d",
       "g-601e2ba0aa2b",
@@ -23644,7 +23648,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 903.3,
     "y": 305.1,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-601e2ba0aa2b",
       "g-8ec7eb3b98a5",
@@ -23660,7 +23664,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 906.8,
     "y": 301.5,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-67ddcedd1ae1",
       "g-e9d3fd74cb18"
@@ -23675,7 +23679,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 895.9,
     "y": 299.4,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-67ddcedd1ae1",
       "g-8a9062e8747c",
@@ -23691,7 +23695,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 682.9,
     "y": 261.5,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-1a2b91527489",
       "g-5dc1c260c56f",
@@ -23710,7 +23714,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 682.5,
     "y": 274.3,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-139751b7d1da",
       "g-1a2b91527489",
@@ -23729,7 +23733,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 691.1,
     "y": 286.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-139751b7d1da",
       "g-5dc1c260c56f",
@@ -23746,7 +23750,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 670.7,
     "y": 291.4,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-5dc1c260c56f",
       "g-72dc8006bfb4",
@@ -23763,7 +23767,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 761.9,
     "y": 353.5,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-971fb38f1e3f",
       "g-c82f68e654a9"
@@ -23778,7 +23782,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 742.5,
     "y": 365.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 14
   },
@@ -23790,7 +23794,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 754.8,
     "y": 346.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 1986
   },
@@ -23802,7 +23806,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 662.6,
     "y": 306.2,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-ed3d3efe5353"
     ],
@@ -23816,7 +23820,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1176.5,
     "y": 270.5,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-2f8aaa45f80d",
       "g-4f0ac573766f"
@@ -23831,7 +23835,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 720.0,
     "y": 360.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [],
     "area_km2": 0
   },
@@ -23843,7 +23847,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 855.2,
     "y": 218.6,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-75b901132260",
       "g-b1543ba6dcd8"
@@ -23858,7 +23862,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1028.7,
     "y": 218.9,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-81b536866129",
       "g-bfcda469c556",
@@ -23874,7 +23878,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 973.5,
     "y": 176.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-4159d77b5aa9"
     ],
@@ -23888,7 +23892,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 851.8,
     "y": 221.5,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-75b901132260"
     ],
@@ -23902,7 +23906,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1384.3,
     "y": 563.5,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-234482ebf62e"
     ],
@@ -23916,7 +23920,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1396.8,
     "y": 570.1,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 135
   },
@@ -23928,7 +23932,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1435.1,
     "y": 558.7,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 79
   },
@@ -23940,7 +23944,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 15.2,
     "y": 537.2,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 817
   },
@@ -23952,7 +23956,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 8.4,
     "y": 477.1,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 39
   },
@@ -23964,7 +23968,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1392.7,
     "y": 541.9,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-400c2afefea9",
       "g-479a95488b5f"
@@ -23979,7 +23983,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1406.6,
     "y": 530.2,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-234482ebf62e",
       "g-30bc76f9e400",
@@ -23996,7 +24000,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1400.0,
     "y": 541.2,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-30bc76f9e400",
       "g-400c2afefea9",
@@ -24012,7 +24016,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1409.0,
     "y": 531.9,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-234482ebf62e",
       "g-400c2afefea9",
@@ -24028,7 +24032,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1418.2,
     "y": 507.4,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-234482ebf62e",
       "g-f00fee6d1aca"
@@ -24043,7 +24047,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1422.8,
     "y": 520.2,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-30bc76f9e400",
       "g-400c2afefea9",
@@ -24062,7 +24066,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1428.3,
     "y": 515.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-234482ebf62e",
       "g-e014d0d0c842"
@@ -24077,7 +24081,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 35.2,
     "y": 397.4,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 467
   },
@@ -24089,7 +24093,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1381.0,
     "y": 445.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 22718
   },
@@ -24101,7 +24105,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1220.8,
     "y": 483.6,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-59b60af76d38",
       "g-74ad7a287661",
@@ -24118,7 +24122,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1219.8,
     "y": 466.1,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-4e8ce7404a62",
       "g-609e1965ac5b",
@@ -24138,7 +24142,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1193.1,
     "y": 486.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-609e1965ac5b",
       "g-74ad7a287661"
@@ -24153,7 +24157,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1190.4,
     "y": 465.4,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-59b60af76d38",
       "g-609e1965ac5b",
@@ -24170,7 +24174,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1192.1,
     "y": 449.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-74ad7a287661",
       "g-9299bd6bebd4",
@@ -24186,7 +24190,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1211.5,
     "y": 446.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-b31b09bbd7bf",
       "g-e270db781d36",
@@ -24203,7 +24207,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1227.5,
     "y": 445.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-4e8ce7404a62",
       "g-712ca8973fe4",
@@ -24221,7 +24225,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1224.8,
     "y": 426.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-0881c48a83ae",
       "g-712ca8973fe4",
@@ -24238,7 +24242,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1252.3,
     "y": 413.1,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-0881c48a83ae"
     ],
@@ -24252,7 +24256,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1254.0,
     "y": 427.9,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-54d094076a87",
       "g-712ca8973fe4",
@@ -24269,7 +24273,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1254.0,
     "y": 440.5,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0881c48a83ae",
       "g-0ba48f905830",
@@ -24289,7 +24293,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1263.2,
     "y": 454.5,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-13c84093df50",
       "g-27e7b1d8d293",
@@ -24308,7 +24312,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1245.6,
     "y": 455.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0ba48f905830",
       "g-712ca8973fe4",
@@ -24326,7 +24330,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1278.7,
     "y": 498.4,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-0322e33d56ce",
       "g-5f4e2c60a05b",
@@ -24345,7 +24349,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1248.3,
     "y": 476.3,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-0ba48f905830",
       "g-4e8ce7404a62",
@@ -24364,7 +24368,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1272.3,
     "y": 476.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0ba48f905830",
       "g-27e7b1d8d293",
@@ -24383,7 +24387,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1293.7,
     "y": 420.9,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-0881c48a83ae",
       "g-13c84093df50",
@@ -24401,7 +24405,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1310.6,
     "y": 445.6,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-13c84093df50",
       "g-27e7b1d8d293",
@@ -24418,7 +24422,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1318.3,
     "y": 464.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-1882d68d7630",
       "g-27e7b1d8d293",
@@ -24436,7 +24440,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1286.8,
     "y": 460.9,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0ba48f905830",
       "g-13c84093df50",
@@ -24456,7 +24460,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1287.7,
     "y": 444.3,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0ba48f905830",
       "g-1882d68d7630",
@@ -24474,7 +24478,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1327.4,
     "y": 477.7,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-4b0ce8fc6dbf",
       "g-8f84b7cb5035",
@@ -24492,7 +24496,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1326.3,
     "y": 486.7,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-3878761b0a68",
       "g-8f84b7cb5035",
@@ -24510,7 +24514,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1315.6,
     "y": 487.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0834baa76faa",
       "g-3878761b0a68",
@@ -24532,7 +24536,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1314.8,
     "y": 478.1,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-3878761b0a68",
       "g-4b0ce8fc6dbf",
@@ -24552,7 +24556,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1321.5,
     "y": 494.3,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-4b0ce8fc6dbf",
       "g-8f84b7cb5035",
@@ -24570,7 +24574,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1312.2,
     "y": 493.9,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0834baa76faa",
       "g-8f84b7cb5035",
@@ -24590,7 +24594,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1316.2,
     "y": 504.1,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-5877d4c62081",
       "g-93c995a08867",
@@ -24609,7 +24613,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1303.8,
     "y": 499.9,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0834baa76faa",
       "g-5877d4c62081",
@@ -24629,7 +24633,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1302.5,
     "y": 493.1,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-6a6f4a10b790",
       "g-7b5b24e4681a",
@@ -24648,7 +24652,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1291.0,
     "y": 496.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0834baa76faa",
       "g-6a6f4a10b790",
@@ -24668,7 +24672,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1290.9,
     "y": 486.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-5f41fc09329d",
       "g-5f4e2c60a05b",
@@ -24688,7 +24692,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1290.7,
     "y": 480.6,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-27e7b1d8d293",
       "g-5f41fc09329d",
@@ -24707,7 +24711,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1302.8,
     "y": 481.0,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-27e7b1d8d293",
       "g-6a6f4a10b790",
@@ -24728,7 +24732,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1304.5,
     "y": 486.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0834baa76faa",
       "g-5f41fc09329d",
@@ -24749,7 +24753,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1310.4,
     "y": 509.1,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-4f9d6cd4f620",
       "g-93c995a08867",
@@ -24767,7 +24771,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1298.3,
     "y": 510.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-0322e33d56ce",
       "g-5877d4c62081",
@@ -24784,7 +24788,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1289.0,
     "y": 510.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-4f9d6cd4f620",
       "g-9695ce8bf7b1",
@@ -24801,7 +24805,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1289.1,
     "y": 501.4,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0322e33d56ce",
       "g-4f9d6cd4f620",
@@ -24821,7 +24825,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1306.7,
     "y": 528.5,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-0322e33d56ce",
       "g-234482ebf62e",
@@ -24839,7 +24843,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1355.6,
     "y": 578.3,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 119
   },
@@ -24851,7 +24855,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1356.3,
     "y": 486.2,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 14
   },
@@ -24863,7 +24867,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1315.8,
     "y": 502.2,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-a854d195bcae",
       "g-b4cd9d83fa38"
@@ -24878,7 +24882,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 915.8,
     "y": 419.4,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-090ed2d8154b"
     ],
@@ -24892,7 +24896,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 902.5,
     "y": 451.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-090ed2d8154b",
       "g-1bfb10fb2bd5"
@@ -24907,7 +24911,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 903.4,
     "y": 436.2,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-090ed2d8154b",
       "g-2adeb6622e75"
@@ -24922,7 +24926,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 912.2,
     "y": 431.3,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-1bfb10fb2bd5",
       "g-2adeb6622e75",
@@ -24938,7 +24942,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1216.9,
     "y": 320.4,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-e0db9a7462da"
     ],
@@ -24952,7 +24956,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1204.5,
     "y": 308.4,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-4c9774fdb778",
       "g-531ca2717ef9",
@@ -24968,7 +24972,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1210.3,
     "y": 315.3,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-e0db9a7462da"
     ],
@@ -24982,7 +24986,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1223.6,
     "y": 327.7,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-182a3bca988e",
       "g-eaf392c40243"
@@ -24997,7 +25001,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1218.2,
     "y": 328.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-dd06d6d3c083",
       "g-eaf392c40243"
@@ -25012,7 +25016,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1218.9,
     "y": 333.5,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-182a3bca988e",
       "g-dd06d6d3c083"
@@ -25027,7 +25031,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1202.9,
     "y": 296.3,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-24ba89f5fa01",
       "g-e0db9a7462da"
@@ -25042,7 +25046,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1204.1,
     "y": 290.4,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-d5c72040a94e"
     ],
@@ -25056,7 +25060,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1043.5,
     "y": 331.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-9088550f8de5"
     ],
@@ -25070,7 +25074,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1042.2,
     "y": 325.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-b3fed019015e"
     ],
@@ -25084,7 +25088,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 443.9,
     "y": 311.1,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 1104
   },
@@ -25096,7 +25100,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 440.0,
     "y": 309.9,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 529
   },
@@ -25108,7 +25112,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 407.1,
     "y": 253.4,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 29853
   },
@@ -25120,7 +25124,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 433.8,
     "y": 273.1,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 3239
   },
@@ -25132,7 +25136,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1243.3,
     "y": 232.4,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-7f28554f533a",
       "g-e52b2aaf0820"
@@ -25147,7 +25151,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1245.0,
     "y": 228.5,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-16b1f702fcbc",
       "g-17ea56aff164",
@@ -25163,7 +25167,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1240.8,
     "y": 227.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-8cdac4371987",
       "g-e52b2aaf0820"
@@ -25178,7 +25182,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1253.5,
     "y": 225.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-8cdac4371987",
       "g-e52b2aaf0820",
@@ -25194,7 +25198,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1249.6,
     "y": 220.3,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-8cdac4371987",
       "g-ef08172028bf"
@@ -25209,7 +25213,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1252.2,
     "y": 221.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-17ea56aff164",
       "g-2f6bed732547",
@@ -25226,7 +25230,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1261.5,
     "y": 219.7,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-0394243beae4",
       "g-0677e49ecbb4",
@@ -25245,7 +25249,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1271.6,
     "y": 212.2,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-0394243beae4",
       "g-374421a84abb",
@@ -25263,7 +25267,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1281.1,
     "y": 208.1,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-0677e49ecbb4",
       "g-813f421a17bb",
@@ -25279,7 +25283,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1283.7,
     "y": 199.4,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-2161788ee246",
       "g-96e5112b06e6"
@@ -25294,7 +25298,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1278.0,
     "y": 214.2,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-0677e49ecbb4",
       "g-374421a84abb",
@@ -25311,7 +25315,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1281.2,
     "y": 217.7,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-374421a84abb",
       "g-813f421a17bb",
@@ -25327,7 +25331,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1277.6,
     "y": 218.0,
     "terrain": "urban",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-0394243beae4",
       "g-374421a84abb",
@@ -25344,7 +25348,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1285.3,
     "y": 260.9,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-c15d6a570277"
     ],
@@ -25358,7 +25362,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1279.2,
     "y": 227.6,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-2d473212f518",
       "g-ca2182c0a37f"
@@ -25373,7 +25377,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1267.9,
     "y": 218.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-0677e49ecbb4",
       "g-374421a84abb",
@@ -25391,7 +25395,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1264.4,
     "y": 222.7,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-0394243beae4",
       "g-ef08172028bf"
@@ -25406,7 +25410,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1287.8,
     "y": 186.1,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-1624ca4cea1f",
       "g-82b74c42b1e8",
@@ -25422,7 +25426,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1295.5,
     "y": 186.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-2161788ee246",
       "g-7f4f255cc7df"
@@ -25437,7 +25441,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1237.4,
     "y": 246.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-16b1f702fcbc"
     ],
@@ -25451,7 +25455,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1272.3,
     "y": 215.7,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0394243beae4",
       "g-0677e49ecbb4",
@@ -25469,7 +25473,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 495.2,
     "y": 172.9,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 243
   },
@@ -25481,7 +25485,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 646.2,
     "y": 100.2,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 102390
   },
@@ -25493,7 +25497,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 591.6,
     "y": 85.3,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-19e0cd7e2115",
       "g-a707cdaf9490"
@@ -25508,7 +25512,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 551.7,
     "y": 98.1,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-e7941c2a891a"
     ],
@@ -25522,7 +25526,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 613.6,
     "y": 52.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-e7941c2a891a"
     ],
@@ -25536,7 +25540,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 538.1,
     "y": 30.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 347948
   },
@@ -25548,7 +25552,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 506.6,
     "y": 80.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 685810
   },
@@ -25560,7 +25564,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 206.7,
     "y": 457.5,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 43
   },
@@ -25572,7 +25576,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 122.3,
     "y": 430.7,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 28503
   },
@@ -25584,7 +25588,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 881.4,
     "y": 449.3,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 25
   },
@@ -25596,7 +25600,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1000.9,
     "y": 556.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 6987
   },
@@ -25608,7 +25612,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 927.0,
     "y": 545.6,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 205
   },
@@ -25620,7 +25624,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1030.2,
     "y": 511.5,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 63
   },
@@ -25632,7 +25636,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 905.5,
     "y": 397.5,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 4759
   },
@@ -25644,7 +25648,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 90.2,
     "y": 352.5,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 11481
   },
@@ -25656,7 +25660,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1407.4,
     "y": 331.7,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 5471
   },
@@ -25668,7 +25672,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 475.0,
     "y": 318.2,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-3761ab3af3b2",
       "g-96ac24e579a9"
@@ -25683,7 +25687,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 473.3,
     "y": 311.6,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-0ce4fd77f6cb"
     ],
@@ -25697,7 +25701,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 474.4,
     "y": 309.4,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-4d34586a4e93"
     ],
@@ -25711,7 +25715,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 481.8,
     "y": 307.2,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 1240
   },
@@ -25723,7 +25727,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 476.1,
     "y": 304.3,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 1506
   },
@@ -25735,7 +25739,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 474.6,
     "y": 298.2,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 730
   },
@@ -25747,7 +25751,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 720.0,
     "y": 360.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 2
   },
@@ -25759,7 +25763,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 720.0,
     "y": 360.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 2
   },
@@ -25771,7 +25775,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 720.0,
     "y": 360.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 1
   },
@@ -25783,7 +25787,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 720.0,
     "y": 360.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 4
   },
@@ -25795,7 +25799,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 720.0,
     "y": 360.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 4
   },
@@ -25807,7 +25811,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 720.0,
     "y": 360.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 5
   },
@@ -25819,7 +25823,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 720.0,
     "y": 360.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 7
   },
@@ -25831,7 +25835,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 471.2,
     "y": 292.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-8388c371b08b"
     ],
@@ -25845,7 +25849,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 472.9,
     "y": 291.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-ef033c4cd222",
       "g-fc7732069d5e"
@@ -25860,7 +25864,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 469.4,
     "y": 291.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-8388c371b08b",
       "g-c8430f9a3eb6"
@@ -25875,7 +25879,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 460.6,
     "y": 286.6,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-6e881ef7ce27",
       "g-70ee601e3ba1"
@@ -25890,7 +25894,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 468.7,
     "y": 288.5,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-18115a08b06b",
       "g-ecf08e817042"
@@ -25905,7 +25909,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 454.4,
     "y": 287.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-5332037b4f3f"
     ],
@@ -25919,7 +25923,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 467.6,
     "y": 287.1,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-18115a08b06b",
       "g-ecf08e817042"
@@ -25934,7 +25938,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 461.7,
     "y": 286.3,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-5332037b4f3f"
     ],
@@ -25948,7 +25952,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 411.3,
     "y": 287.5,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 13730
   },
@@ -25960,7 +25964,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 400.2,
     "y": 281.2,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 1424
   },
@@ -25972,7 +25976,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 460.9,
     "y": 230.7,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 648
   },
@@ -25984,7 +25988,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1014.1,
     "y": 572.3,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 395
   },
@@ -25996,7 +26000,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 670.9,
     "y": 508.4,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 153
   },
@@ -26008,7 +26012,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 697.1,
     "y": 423.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 125
   },
@@ -26020,7 +26024,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 662.5,
     "y": 391.7,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 89
   },
@@ -26032,7 +26036,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 950.3,
     "y": 440.9,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 3439
   },
@@ -26044,7 +26048,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 897.5,
     "y": 408.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 3351
   },
@@ -26056,7 +26060,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 746.4,
     "y": 359.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 1947
   },
@@ -26068,7 +26072,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 620.4,
     "y": 292.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 8998
   },
@@ -26080,7 +26084,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 777.7,
     "y": 216.3,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 1170
   },
@@ -26092,7 +26096,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 711.5,
     "y": 163.1,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 119
   },
@@ -26104,7 +26108,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 709.7,
     "y": 162.1,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 73
   },
@@ -26116,7 +26120,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 702.0,
     "y": 143.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 577
   },
@@ -26128,7 +26132,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 799.7,
     "y": 119.5,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 484
   },
@@ -26140,7 +26144,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 692.8,
     "y": 111.2,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 1329
   },
@@ -26152,7 +26156,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 720.0,
     "y": 360.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 13
   },
@@ -26164,7 +26168,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1142.6,
     "y": 402.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 99
   },
@@ -26176,7 +26180,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1010.0,
     "y": 389.2,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 49
   },
@@ -26188,7 +26192,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1135.3,
     "y": 354.6,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-e109a0cfa4b4",
       "g-ef8a288e7774"
@@ -26203,7 +26207,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1391.8,
     "y": 476.1,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 41
   },
@@ -26215,7 +26219,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 80.8,
     "y": 444.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 3395
   },
@@ -26227,7 +26231,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1431.9,
     "y": 431.1,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 33399
   },
@@ -26239,7 +26243,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 19.2,
     "y": 444.6,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 3621
   },
@@ -26251,7 +26255,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 7.7,
     "y": 417.2,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 1190
   },
@@ -26263,7 +26267,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 32.8,
     "y": 415.6,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 4697
   },
@@ -26275,7 +26279,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1360.6,
     "y": 398.4,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-69a28aa070f5"
     ],
@@ -26289,7 +26293,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1424.5,
     "y": 382.7,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 1920
   },
@@ -26301,7 +26305,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1013.9,
     "y": 338.4,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 20896
   },
@@ -26313,7 +26317,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1387.7,
     "y": 362.1,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 335
   },
@@ -26325,7 +26329,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1352.9,
     "y": 332.5,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 5666
   },
@@ -26337,7 +26341,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 574.1,
     "y": 577.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 3958
   },
@@ -26349,7 +26353,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 485.7,
     "y": 567.2,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 11597
   },
@@ -26361,7 +26365,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1387.6,
     "y": 420.7,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 23042
   },
@@ -26373,7 +26377,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 40.5,
     "y": 436.1,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 543
   },
@@ -26385,7 +26389,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 41.8,
     "y": 416.9,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 1659
   },
@@ -26397,7 +26401,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1258.2,
     "y": 330.1,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 3432
   },
@@ -26409,7 +26413,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1298.9,
     "y": 306.2,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 1187
   },
@@ -26421,7 +26425,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1303.1,
     "y": 287.5,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 3939
   },
@@ -26433,7 +26437,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 922.2,
     "y": 255.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-4380cdeb6226",
       "g-45a0a15e37ac"
@@ -26448,7 +26452,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 720.0,
     "y": 360.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 1
   },
@@ -26460,7 +26464,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 720.0,
     "y": 360.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 12
   },
@@ -26472,7 +26476,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 720.0,
     "y": 360.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 5
   },
@@ -26484,7 +26488,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1174.2,
     "y": 271.5,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-4f0ac573766f"
     ],
@@ -26498,7 +26502,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 720.0,
     "y": 360.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 3
   },
@@ -26510,7 +26514,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 985.0,
     "y": 666.4,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 12294559
   },
@@ -26522,7 +26526,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1205.0,
     "y": 262.0,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-99432143975d"
     ],
@@ -26536,7 +26540,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 1202.8,
     "y": 268.7,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-fe57f412a92a"
     ],
@@ -26550,7 +26554,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 447.6,
     "y": 575.4,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-39c18d8a29c9",
       "g-b74f1336ca85"
@@ -26565,7 +26569,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 442.7,
     "y": 574.8,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-39c18d8a29c9",
       "g-e2c542439384"
@@ -26580,7 +26584,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 409.054,
     "y": 326.285,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-3ff468180104",
       "g-500073bbbe21"
@@ -26595,7 +26599,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 855.1896,
     "y": 241.94,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-17c67dca63f4",
       "g-4d77c3bf1b59",
@@ -26612,7 +26616,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 795.3803,
     "y": 143.3443,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-5ab577113390"
     ],
@@ -26626,7 +26630,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 788.0856,
     "y": 159.95,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0ae1ebd51ebe",
       "g-180669b1eb0a",
@@ -26645,7 +26649,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 823.3597,
     "y": 164.68,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-b12dd2b9db3b",
       "g-13a676e7f1dc",
@@ -26663,7 +26667,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 821.1768,
     "y": 172.0011,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-b12dd2b9db3b-1914-1",
       "g-84d867cd5f0e",
@@ -26682,7 +26686,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 822.2566,
     "y": 176.545,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-84d867cd5f0e-1914-1",
       "g-268b88a7fae8",
@@ -26699,7 +26703,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 795.545,
     "y": 160.705,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-0ae1ebd51ebe",
       "g-7db6a6e146af",
@@ -26717,7 +26721,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 799.5994,
     "y": 158.8,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-ce3719cc0da8",
       "g-78e3f9e239ca",
@@ -26733,7 +26737,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 764.7475,
     "y": 174.5305,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-9b8ccdcae659",
       "g-01ac6de16823",
@@ -26752,7 +26756,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 773.6628,
     "y": 176.835,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-9b8ccdcae659",
       "g-3f9e0697a838",
@@ -26768,7 +26772,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 774.0296,
     "y": 174.0261,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-9b8ccdcae659",
       "g-44ae6d37e0e6",
@@ -26784,7 +26788,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 799.8651,
     "y": 182.095,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-908cf304065c",
       "g-6ebd320ac94a",
@@ -26800,7 +26804,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 794.9352,
     "y": 190.455,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-8846235b3d74",
       "g-e19aabb624e2"
@@ -26815,7 +26819,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 794.7493,
     "y": 158.5536,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-56bc4c59cd07",
       "g-56bc4c59cd07-1914-1",
@@ -26833,7 +26837,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 796.1361,
     "y": 148.9268,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-ed3e9ecc7504",
       "g-103ece1edc54",
@@ -26851,7 +26855,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 793.67,
     "y": 151.8691,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-580b8b836d9a",
       "g-5256eb78831b",
@@ -26871,7 +26875,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 755.8584,
     "y": 137.585,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-008e17e2a748",
       "g-cf2b11780a2a"
@@ -26886,7 +26890,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 805.9756,
     "y": 138.7264,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-ca9efadbe117",
       "g-48797c72fcb9"
@@ -26901,7 +26905,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 744.6745,
     "y": 158.3193,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-32b9a5391f57",
       "g-23f3c7f4401a",
@@ -26919,7 +26923,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 830.7735,
     "y": 185.0439,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-75a45ddc110f",
       "g-5796fb865f2d",
@@ -26935,7 +26939,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 816.931,
     "y": 195.3999,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-f27c48a3b728",
       "g-311f3128c0c8",
@@ -26952,7 +26956,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 801.2215,
     "y": 189.6395,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-484c647b0567",
       "g-6ebd320ac94a",
@@ -26969,7 +26973,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 895.9199,
     "y": 200.4653,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-c50285cf29f4",
       "g-282067334459",
@@ -26986,7 +26990,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 888.3605,
     "y": 196.4635,
     "terrain": "plains",
-    "coastal": false,
+    "coastal": False,
     "neighbors": [
       "g-c123fd4f281c",
       "g-10d51ce0f6b2",
@@ -27002,7 +27006,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 831.6189,
     "y": 215.315,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 2521
   },
@@ -27014,7 +27018,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 691.2406,
     "y": 141.4347,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [
       "g-856b8cf9121c",
       "g-ae74a2e54fed"
@@ -27029,7 +27033,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 731.5421,
     "y": 201.53,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 5165
   },
@@ -27041,7 +27045,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 817.9319,
     "y": 218.775,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 8113
   },
@@ -27053,13 +27057,88 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "x": 827.2672,
     "y": 209.085,
     "terrain": "coastal",
-    "coastal": true,
+    "coastal": True,
     "neighbors": [],
     "area_km2": 3035
+  },
+  {
+    "id": "inner-mongol-ejina",
+    "name": "Ejina / Juyan (額済納・居延 / エチナ)",
+    "region": "CN",
+    "country": "CN",
+    "x": 1118.1,
+    "y": 194.2,
+    "terrain": "desert",
+    "coastal": False,
+    "neighbors": [
+      "g-06bd25adcf51",
+      "g-13706735ee84",
+      "g-1558027b669f",
+      "g-73c89a387cce",
+      "g-a55c15e237e5",
+      "g-f20dab38b1cc"
+    ],
+    "area_km2": 70997
+  },
+  {
+    "id": "suiyuan-bayan-nur",
+    "name": "Bayan Nur / Hetao (巴彦淖爾・河套・後套・五原)",
+    "region": "CN",
+    "country": "CN",
+    "x": 1146.5,
+    "y": 194.4,
+    "terrain": "plains",
+    "coastal": False,
+    "neighbors": [
+      "g-06bd25adcf51",
+      "g-a55c15e237e5",
+      "g-ebd60376b526",
+      "suiyuan-guisui"
+    ],
+    "area_km2": 42720
+  },
+  {
+    "id": "suiyuan-guisui",
+    "name": "Guisui / Hohhot・Baotou (帰綏・呼和浩特・包頭 / 綏遠省都)",
+    "region": "CN",
+    "country": "CN",
+    "x": 1159.6,
+    "y": 193.2,
+    "terrain": "plains",
+    "coastal": False,
+    "neighbors": [
+      "g-06bd25adcf51",
+      "g-724d7c938273",
+      "g-bbfd96efb8d9",
+      "g-be675e00d850",
+      "g-ebd60376b526",
+      "g-f4223eeed54f",
+      "suiyuan-bayan-nur"
+    ],
+    "area_km2": 69280
+  },
+  {
+    "id": "inner-mongol-hinggan",
+    "name": "Hinggan / Ulanhot (興安盟・烏蘭浩特 / 王爺廟)",
+    "region": "CN",
+    "country": "CN",
+    "x": 1205.6,
+    "y": 175.1,
+    "terrain": "plains",
+    "coastal": False,
+    "neighbors": [
+      "g-01bcf445f3e6",
+      "g-2ca40b5cd436",
+      "g-3a47d966a622",
+      "g-3f1f91341497",
+      "g-e259e850f4af",
+      "g-f74336262089"
+    ],
+    "area_km2": 41970
   }
 ]
 
-WORLD_PROVINCE_SPLITS = {
+WORLD_PROVINCE_SPLITS: Dict[str, List[str]] = {
   "g-ae74a2e54fed": [
     "northern-ireland"
   ],
@@ -27139,5 +27218,15 @@ WORLD_PROVINCE_SPLITS = {
     "g-bb8c5b7d079b-ww1",
     "crete",
     "south-aegean-islands"
+  ],
+  "g-a55c15e237e5": [
+    "inner-mongol-ejina"
+  ],
+  "g-ebd60376b526": [
+    "suiyuan-bayan-nur",
+    "suiyuan-guisui"
+  ],
+  "g-e259e850f4af": [
+    "inner-mongol-hinggan"
   ]
 }
