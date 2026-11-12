@@ -5473,12 +5473,12 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "coastal": False,
     "neighbors": [
       "g-03430977f3b9",
-      "g-2ca40b5cd436",
       "g-5bb6c7df19b0",
       "g-70dd838f7c1a",
       "g-aa27af1a9ae6",
       "g-e259e850f4af",
       "g-f74336262089",
+      "inner-mongol-chifeng-north",
       "inner-mongol-hinggan"
     ],
     "area_km2": 121882
@@ -5521,25 +5521,22 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
   },
   {
     "id": "g-2ca40b5cd436",
-    "name": "Chifeng / Ju Ud (赤峰・昭烏達・シラムレン)",
+    "name": "South Chifeng / Harqin・Hongshan (赤峰南部・喀喇沁・紅山)",
     "region": "CN",
     "country": "CN",
-    "x": 1194.5,
-    "y": 182.4,
+    "x": 1195.0,
+    "y": 187.7,
     "terrain": "plains",
     "coastal": False,
     "neighbors": [
-      "g-3a47d966a622",
       "g-3ce79d82da2b",
       "g-41a7ff4adbdf",
-      "g-a99432eb5498",
-      "g-aa27af1a9ae6",
       "g-c1aaf25649dd",
       "g-e259e850f4af",
       "g-fa976b6e64d2",
-      "inner-mongol-hinggan"
+      "inner-mongol-chifeng-north"
     ],
-    "area_km2": 139439
+    "area_km2": 45000
   },
   {
     "id": "g-41a7ff4adbdf",
@@ -5708,21 +5705,21 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
   },
   {
     "id": "g-a55c15e237e5",
-    "name": "West Inner Mongol / Alxa (西部内モンゴル / 阿拉善・バヤンホト)",
+    "name": "Alxa Left / Bayanhot (阿拉善左旗・バヤンホト / 賀蘭山)",
     "region": "CN",
     "country": "CN",
-    "x": 1132.3,
-    "y": 199.0,
+    "x": 1136.6,
+    "y": 200.7,
     "terrain": "desert",
     "coastal": False,
     "neighbors": [
       "g-06bd25adcf51",
       "g-ebd60376b526",
       "g-f20dab38b1cc",
-      "inner-mongol-ejina",
+      "inner-mongol-alxa-right",
       "suiyuan-bayan-nur"
     ],
-    "area_km2": 129100
+    "area_km2": 63900
   },
   {
     "id": "g-53721116ca07",
@@ -27075,8 +27072,8 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
       "g-13706735ee84",
       "g-1558027b669f",
       "g-73c89a387cce",
-      "g-a55c15e237e5",
-      "g-f20dab38b1cc"
+      "g-f20dab38b1cc",
+      "inner-mongol-alxa-right"
     ],
     "area_km2": 70997
   },
@@ -27128,13 +27125,50 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "coastal": False,
     "neighbors": [
       "g-01bcf445f3e6",
-      "g-2ca40b5cd436",
       "g-3a47d966a622",
       "g-3f1f91341497",
       "g-e259e850f4af",
-      "g-f74336262089"
+      "g-f74336262089",
+      "inner-mongol-chifeng-north"
     ],
     "area_km2": 41970
+  },
+  {
+    "id": "inner-mongol-alxa-right",
+    "name": "Alxa Right / Badain Jaran (阿拉善右旗・額肯呼都格 / バダンジリン)",
+    "region": "CN",
+    "country": "CN",
+    "x": 1128.0,
+    "y": 197.4,
+    "terrain": "desert",
+    "coastal": False,
+    "neighbors": [
+      "g-06bd25adcf51",
+      "g-a55c15e237e5",
+      "g-f20dab38b1cc",
+      "inner-mongol-ejina"
+    ],
+    "area_km2": 65200
+  },
+  {
+    "id": "inner-mongol-chifeng-north",
+    "name": "North Chifeng / Hexigten・Shira Muren (赤峰北部・克什克騰・シラムレン)",
+    "region": "CN",
+    "country": "CN",
+    "x": 1195.0,
+    "y": 177.9,
+    "terrain": "plains",
+    "coastal": False,
+    "neighbors": [
+      "g-2ca40b5cd436",
+      "g-3a47d966a622",
+      "g-3ce79d82da2b",
+      "g-a99432eb5498",
+      "g-aa27af1a9ae6",
+      "g-e259e850f4af",
+      "inner-mongol-hinggan"
+    ],
+    "area_km2": 45000
   }
 ]
 
@@ -27220,7 +27254,8 @@ WORLD_PROVINCE_SPLITS: Dict[str, List[str]] = {
     "south-aegean-islands"
   ],
   "g-a55c15e237e5": [
-    "inner-mongol-ejina"
+    "inner-mongol-ejina",
+    "inner-mongol-alxa-right"
   ],
   "g-ebd60376b526": [
     "suiyuan-bayan-nur",
@@ -27228,5 +27263,8 @@ WORLD_PROVINCE_SPLITS: Dict[str, List[str]] = {
   ],
   "g-e259e850f4af": [
     "inner-mongol-hinggan"
+  ],
+  "g-2ca40b5cd436": [
+    "inner-mongol-chifeng-north"
   ]
 }
