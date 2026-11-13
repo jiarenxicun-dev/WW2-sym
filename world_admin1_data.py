@@ -4630,13 +4630,15 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "terrain": "plains",
     "coastal": False,
     "neighbors": [
+      "chahar-xianghuang",
       "g-3748d096fc5d",
       "g-41a7ff4adbdf",
       "g-443ff0aec3d8",
       "g-a744d359bd07",
       "g-bbfd96efb8d9",
       "g-be675e00d850",
-      "g-c1aaf25649dd"
+      "g-c1aaf25649dd",
+      "ulanqab-shangdu"
     ],
     "area_km2": 33065
   },
@@ -5038,6 +5040,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
       "g-11e6eb2af9a6",
       "g-8db5dd38392a",
       "g-8de5d954a170",
+      "g-bbfd96efb8d9",
       "g-be675e00d850",
       "g-df4fd20516dd",
       "g-f4f25ddcc3da"
@@ -5532,7 +5535,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "terrain": "plains",
     "coastal": False,
     "neighbors": [
-      "g-3ce79d82da2b",
+      "g-41a7ff4adbdf",
       "g-a99432eb5498",
       "g-e259e850f4af",
       "inner-mongol-chifeng-north",
@@ -5544,68 +5547,68 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
   },
   {
     "id": "g-41a7ff4adbdf",
-    "name": "Central Inner Mongol / Chahar (中部内モンゴル / 錫林郭勒・チャハル) (1/8)",
+    "name": "Zhenglan・Taibus・Duolun (正藍旗・太僕寺・多倫 / 元上都)",
     "region": "CN",
     "country": "CN",
-    "x": 1182.4,
-    "y": 190.3,
+    "x": 1184.1,
+    "y": 189.7,
     "terrain": "plains",
     "coastal": False,
     "neighbors": [
+      "chahar-xianghuang",
       "g-2ca40b5cd436",
       "g-3ce79d82da2b",
       "g-8de5d954a170",
-      "g-bbfd96efb8d9",
+      "g-a99432eb5498",
       "g-c1aaf25649dd",
-      "g-d5569c59d8a1",
       "inner-mongol-harqin"
     ],
-    "area_km2": 31274
+    "area_km2": 24400
   },
   {
     "id": "g-3ce79d82da2b",
-    "name": "Central Inner Mongol / Chahar (中部内モンゴル / 錫林郭勒・チャハル) (2/8)",
+    "name": "Xilinhot・Abag (錫林浩特・阿巴嘎旗 / 錫林郭勒盟都)",
     "region": "CN",
     "country": "CN",
-    "x": 1182.4,
-    "y": 185.5,
+    "x": 1180.8,
+    "y": 182.7,
     "terrain": "plains",
     "coastal": False,
     "neighbors": [
-      "g-2ca40b5cd436",
+      "chahar-xianghuang",
       "g-41a7ff4adbdf",
+      "g-8141968ee2ce",
       "g-a99432eb5498",
-      "g-d5569c59d8a1",
-      "inner-mongol-harqin"
+      "g-d5569c59d8a1"
     ],
-    "area_km2": 34396
+    "area_km2": 24500
   },
   {
     "id": "g-bbfd96efb8d9",
-    "name": "Central Inner Mongol / Chahar (中部内モンゴル / 錫林郭勒・チャハル) (3/8)",
+    "name": "Jining・Chahar Right (集寧・察ハル右翼 / ウランチャブ市都)",
     "region": "CN",
     "country": "CN",
-    "x": 1171.0,
-    "y": 192.4,
+    "x": 1170.7,
+    "y": 195.6,
     "terrain": "plains",
     "coastal": False,
     "neighbors": [
-      "g-41a7ff4adbdf",
-      "g-724d7c938273",
       "g-8de5d954a170",
+      "g-a744d359bd07",
       "g-be675e00d850",
-      "g-d5569c59d8a1",
-      "suiyuan-guisui"
+      "suiyuan-guisui",
+      "ulanqab-shangdu",
+      "ulanqab-siziwang"
     ],
-    "area_km2": 27540
+    "area_km2": 21100
   },
   {
     "id": "g-be675e00d850",
-    "name": "Central Inner Mongol / Chahar (中部内モンゴル / 錫林郭勒・チャハル) (4/8)",
+    "name": "Fengzhen・Xinghe・Liangcheng (豊鎮・興和・涼城 / ウランチャブ南部)",
     "region": "CN",
     "country": "CN",
-    "x": 1169.3,
-    "y": 198.3,
+    "x": 1169.5,
+    "y": 198.7,
     "terrain": "plains",
     "coastal": False,
     "neighbors": [
@@ -5617,67 +5620,66 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
       "suiyuan-guisui",
       "suiyuan-ordos-east"
     ],
-    "area_km2": 21861
+    "area_km2": 11300
   },
   {
     "id": "g-724d7c938273",
-    "name": "Central Inner Mongol / Chahar (中部内モンゴル / 錫林郭勒・チャハル) (5/8)",
+    "name": "Erenhot・Sonid Right (二連浩特・蘇尼特右旗 / エレンホト)",
     "region": "CN",
     "country": "CN",
-    "x": 1169.3,
-    "y": 185.7,
+    "x": 1169.0,
+    "y": 183.2,
     "terrain": "plains",
     "coastal": False,
     "neighbors": [
+      "chahar-xianghuang",
       "g-8141968ee2ce",
-      "g-bbfd96efb8d9",
       "g-d5569c59d8a1",
       "g-f4223eeed54f",
       "suiyuan-guisui"
     ],
-    "area_km2": 33827
+    "area_km2": 18600
   },
   {
     "id": "g-d5569c59d8a1",
-    "name": "Central Inner Mongol / Chahar (中部内モンゴル / 錫林郭勒・チャハル) (6/8)",
+    "name": "Sonid Left / Mandulat (蘇尼特左旗・マンドゥラト)",
     "region": "CN",
     "country": "CN",
-    "x": 1174.5,
-    "y": 185.8,
+    "x": 1175.2,
+    "y": 183.3,
     "terrain": "plains",
     "coastal": False,
     "neighbors": [
+      "chahar-xianghuang",
       "g-3ce79d82da2b",
-      "g-41a7ff4adbdf",
       "g-724d7c938273",
-      "g-8141968ee2ce",
-      "g-a99432eb5498",
-      "g-bbfd96efb8d9"
+      "g-8141968ee2ce"
     ],
-    "area_km2": 28548
+    "area_km2": 22000
   },
   {
     "id": "g-a99432eb5498",
-    "name": "Central Inner Mongol / Chahar (中部内モンゴル / 錫林郭勒・チャハル) (7/8)",
+    "name": "West Ujimqin / Balagar Gol (西烏珠穆沁旗・バラガルゴル)",
     "region": "CN",
     "country": "CN",
-    "x": 1182.9,
-    "y": 179.0,
+    "x": 1185.7,
+    "y": 180.9,
     "terrain": "plains",
     "coastal": False,
     "neighbors": [
       "g-2ca40b5cd436",
       "g-3ce79d82da2b",
+      "g-41a7ff4adbdf",
       "g-8141968ee2ce",
       "g-aa27af1a9ae6",
-      "g-d5569c59d8a1",
-      "inner-mongol-chifeng-north"
+      "inner-mongol-chifeng-north",
+      "inner-mongol-harqin"
     ],
-    "area_km2": 28601
+    "area_km2": 28200
   },
   {
     "id": "g-70dd838f7c1a",
-    "name": "Central Inner Mongol / Chahar (中部内モンゴル / 錫林郭勒・チャハル) (8/8)",
+    "name": "Xin Barag Right / Kerulen (新バルグ右旗・ケルレン河 / フルン湖西岸)",
     "region": "CN",
     "country": "CN",
     "x": 1185.8,
@@ -10734,6 +10736,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "coastal": False,
     "neighbors": [
       "g-1c91658998fa",
+      "g-3ce79d82da2b",
       "g-724d7c938273",
       "g-a99432eb5498",
       "g-aa27af1a9ae6",
@@ -27118,11 +27121,13 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "terrain": "plains",
     "coastal": False,
     "neighbors": [
+      "chahar-xianghuang",
       "g-724d7c938273",
       "g-bbfd96efb8d9",
       "g-be675e00d850",
       "g-ebd60376b526",
-      "suiyuan-baotou"
+      "suiyuan-baotou",
+      "ulanqab-siziwang"
     ],
     "area_km2": 35280
   },
@@ -27314,8 +27319,8 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "coastal": False,
     "neighbors": [
       "g-2ca40b5cd436",
-      "g-3ce79d82da2b",
       "g-41a7ff4adbdf",
+      "g-a99432eb5498",
       "g-c1aaf25649dd",
       "g-e259e850f4af",
       "g-fa976b6e64d2"
@@ -27337,6 +27342,61 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
       "inner-mongol-hinggan"
     ],
     "area_km2": 29411
+  },
+  {
+    "id": "ulanqab-siziwang",
+    "name": "Siziwang / Dorben Huuhed (四子王旗・ウランチャブ北部)",
+    "region": "CN",
+    "country": "CN",
+    "x": 1168.9,
+    "y": 191.4,
+    "terrain": "plains",
+    "coastal": False,
+    "neighbors": [
+      "chahar-xianghuang",
+      "g-bbfd96efb8d9",
+      "suiyuan-guisui",
+      "ulanqab-shangdu"
+    ],
+    "area_km2": 14900
+  },
+  {
+    "id": "ulanqab-shangdu",
+    "name": "Shangdu・Huade (商都・化徳 / ウランチャブ東部)",
+    "region": "CN",
+    "country": "CN",
+    "x": 1173.8,
+    "y": 191.6,
+    "terrain": "plains",
+    "coastal": False,
+    "neighbors": [
+      "chahar-xianghuang",
+      "g-8de5d954a170",
+      "g-bbfd96efb8d9",
+      "ulanqab-siziwang"
+    ],
+    "area_km2": 11100
+  },
+  {
+    "id": "chahar-xianghuang",
+    "name": "Xianghuang・Zhengxiangbai (鑲黄旗・正鑲白旗 / チャハル西盟)",
+    "region": "CN",
+    "country": "CN",
+    "x": 1174.8,
+    "y": 188.6,
+    "terrain": "plains",
+    "coastal": False,
+    "neighbors": [
+      "g-3ce79d82da2b",
+      "g-41a7ff4adbdf",
+      "g-724d7c938273",
+      "g-8de5d954a170",
+      "g-d5569c59d8a1",
+      "suiyuan-guisui",
+      "ulanqab-shangdu",
+      "ulanqab-siziwang"
+    ],
+    "area_km2": 29000
   }
 ]
 
@@ -27443,5 +27503,12 @@ WORLD_PROVINCE_SPLITS: Dict[str, List[str]] = {
   "g-2ca40b5cd436": [
     "inner-mongol-chifeng-north",
     "inner-mongol-harqin"
+  ],
+  "g-bbfd96efb8d9": [
+    "ulanqab-siziwang",
+    "ulanqab-shangdu"
+  ],
+  "g-41a7ff4adbdf": [
+    "chahar-xianghuang"
   ]
 }
