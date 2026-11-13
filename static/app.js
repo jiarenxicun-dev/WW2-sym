@@ -246,7 +246,11 @@ function handleStandaloneApi(url, data = {}) {
   }
 
   if (url === "/api/scenario/reset") {
-    const base = data.scenario_type === "blank_map" ? window.STANDALONE_BOOTSTRAP.state_blank : window.STANDALONE_BOOTSTRAP.state_aiwa;
+    const base = data.scenario_type === "blank_map"
+      ? window.STANDALONE_BOOTSTRAP.state_blank
+      : (data.scenario_type === "world_admin1" || ACTIVE_WORLD_ID === "world_admin1")
+        ? (window.STANDALONE_BOOTSTRAP.state_world || window.STANDALONE_BOOTSTRAP.state_aiwa)
+        : window.STANDALONE_BOOTSTRAP.state_aiwa;
     const savedTpls = state?.saved_division_templates || [];
     APP_STATE = JSON.parse(JSON.stringify(base));
     APP_STATE.saved_division_templates = savedTpls;
@@ -629,16 +633,17 @@ async function initApp() {
     connectWebSocket();
     fetchDiscordLogs();
   } catch (err) {
-    if (location.protocol === "file:" && window.STANDALONE_BOOTSTRAP) {
+    if (window.STANDALONE_BOOTSTRAP) {
       IS_STANDALONE_MODE = true;
       CATALOG = window.STANDALONE_BOOTSTRAP.catalog;
+      const defaultState = window.STANDALONE_BOOTSTRAP.state_world || window.STANDALONE_BOOTSTRAP.state_aiwa;
       let saved = null;
       try {
-        saved = JSON.parse(localStorage.getItem("aiwa_web_standalone_state_v2") || "null");
+        saved = JSON.parse(localStorage.getItem("aiwa_web_standalone_state_world_v3") || "null");
       } catch (e) {}
-      APP_STATE = saved || JSON.parse(JSON.stringify(window.STANDALONE_BOOTSTRAP.state_aiwa));
+      APP_STATE = saved || JSON.parse(JSON.stringify(defaultState));
       if (saved) {
-        const geography = new Map(window.STANDALONE_BOOTSTRAP.state_aiwa.provinces.map((p) => [p.id, p]));
+        const geography = new Map(defaultState.provinces.map((p) => [p.id, p]));
         const provinces = new Map(APP_STATE.provinces.map((p) => [p.id, p]));
         const splits = window.STANDALONE_BOOTSTRAP.province_splits || {};
         for (const [parentId, childIds] of Object.entries(splits)) {
