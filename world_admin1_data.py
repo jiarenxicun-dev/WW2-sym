@@ -7715,12 +7715,13 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "neighbors": [
       "g-13a676e7f1dc",
       "g-73cfde3815fd",
+      "g-84d867cd5f0e-1914-1",
       "g-a9e3731c3efb",
       "g-acf062113d82",
+      "g-b12dd2b9db3b-1914-1",
       "g-deb6a05ba116",
       "g-e566604f0a88",
-      "g-b12dd2b9db3b-1914-1",
-      "g-84d867cd5f0e-1914-1"
+      "ro-satu-mare"
     ],
     "area_km2": 26878
   },
@@ -7736,7 +7737,8 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "neighbors": [
       "g-729f2faf3162",
       "g-98e659a04a40",
-      "g-ec8480001de9"
+      "g-ec8480001de9",
+      "ro-galati"
     ],
     "area_km2": 12120
   },
@@ -7951,13 +7953,13 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "terrain": "plains",
     "coastal": False,
     "neighbors": [
-      "g-b12dd2b9db3b-1914-1",
       "g-06d2e0e260ec",
       "g-13a676e7f1dc",
       "g-47625d79bf21",
-      "g-84d867cd5f0e",
       "g-8e5ddeacfaed",
-      "g-edca50c3e222"
+      "g-b12dd2b9db3b-1914-1",
+      "g-edca50c3e222",
+      "ro-botosani"
     ],
     "area_km2": 26234
   },
@@ -10943,8 +10945,8 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
       "g-0b9395809f4c",
       "g-0fa80d08136d",
       "g-1a6e3bfab44a",
-      "g-7ff3e944d8d4",
-      "g-b27be3f64f87"
+      "g-b27be3f64f87",
+      "ru-leningrad-west"
     ],
     "area_km2": 30054
   },
@@ -10961,8 +10963,9 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
       "g-2a0a2f06c42f",
       "g-3079dd0f7486",
       "g-637e38ded245",
-      "g-7ff3e944d8d4",
-      "g-b27be3f64f87"
+      "g-b27be3f64f87",
+      "ru-leningrad-west",
+      "ru-novgorod"
     ],
     "area_km2": 23883
   },
@@ -11076,22 +11079,21 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
   },
   {
     "id": "g-c244b29809a4",
-    "name": "Karelia・Murmansk",
+    "name": "South Karelia / Petrozavodsk (南カレリア・ペトロザヴォーツク)",
     "region": "RU",
     "country": "RU",
-    "x": 848.4,
-    "y": 98.6,
-    "terrain": "coastal",
-    "coastal": True,
+    "x": 853.1,
+    "y": 113.0,
+    "terrain": "forest",
+    "coastal": False,
     "neighbors": [
-      "g-33b3e0aa3a9e",
       "g-3d8a063bb987",
-      "g-6f63ec48f52c",
-      "g-7c3fc77e50e5",
-      "g-7ff3e944d8d4",
-      "g-c2d325f72037"
+      "ru-karelia-central",
+      "ru-ladoga-karelia",
+      "ru-leningrad-east",
+      "ru-vologda-west"
     ],
-    "area_km2": 288560
+    "area_km2": 33060
   },
   {
     "id": "g-48797c72fcb9",
@@ -11431,7 +11433,10 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "neighbors": [
       "g-181cbf97a86c",
       "g-7ff3e944d8d4",
-      "g-c244b29809a4"
+      "g-c244b29809a4",
+      "ru-karelia-central",
+      "ru-vologda-east",
+      "ru-vologda-west"
     ],
     "area_km2": 403284
   },
@@ -11619,7 +11624,9 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
       "g-1abf6db9d5d7",
       "g-6ca4eea4eb29",
       "g-7ff3e944d8d4",
-      "g-80a2dfb6ea40"
+      "g-80a2dfb6ea40",
+      "ru-kostroma",
+      "ru-vologda-west"
     ],
     "area_km2": 32226
   },
@@ -11675,8 +11682,8 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "neighbors": [
       "g-01becf2ecbb3",
       "g-08669de99b3b",
-      "g-7ff3e944d8d4",
-      "g-f14926609d1b"
+      "g-f14926609d1b",
+      "ru-kostroma"
     ],
     "area_km2": 21071
   },
@@ -11694,7 +11701,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
       "g-181cbf97a86c",
       "g-5e8ace7a2af8",
       "g-602764f377dc",
-      "g-7ff3e944d8d4"
+      "ru-kostroma"
     ],
     "area_km2": 34949
   },
@@ -11712,8 +11719,8 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
       "g-21548413d3ff",
       "g-5e8ace7a2af8",
       "g-6ca4eea4eb29",
-      "g-7ff3e944d8d4",
-      "g-8d8431436a86"
+      "g-8d8431436a86",
+      "ru-kostroma"
     ],
     "area_km2": 41192
   },
@@ -11737,29 +11744,21 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
   },
   {
     "id": "g-7ff3e944d8d4",
-    "name": "Vologda・Kostroma・Leningrad・City of St. Petersburg",
+    "name": "Central Vologda (ヴォログダ中部)",
     "region": "RU",
     "country": "RU",
-    "x": 871.1,
-    "y": 122.9,
-    "terrain": "plains",
-    "coastal": True,
+    "x": 883.7,
+    "y": 121.0,
+    "terrain": "forest",
+    "coastal": False,
     "neighbors": [
-      "g-01becf2ecbb3",
-      "g-0b9395809f4c",
-      "g-181cbf97a86c",
-      "g-1a6e3bfab44a",
-      "g-21548413d3ff",
-      "g-3079dd0f7486",
-      "g-33b3e0aa3a9e",
       "g-3d8a063bb987",
-      "g-637e38ded245",
-      "g-6ca4eea4eb29",
-      "g-80a2dfb6ea40",
-      "g-c244b29809a4",
-      "g-f14926609d1b"
+      "g-f14926609d1b",
+      "ru-kostroma",
+      "ru-vologda-east",
+      "ru-vologda-west"
     ],
-    "area_km2": 330609
+    "area_km2": 42570
   },
   {
     "id": "g-80a2dfb6ea40",
@@ -11775,8 +11774,9 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
       "g-1abf6db9d5d7",
       "g-3079dd0f7486",
       "g-337900f640e4",
-      "g-7ff3e944d8d4",
-      "g-f14926609d1b"
+      "g-f14926609d1b",
+      "ru-novgorod",
+      "ru-vologda-west"
     ],
     "area_km2": 44955
   },
@@ -11793,8 +11793,8 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
       "g-1a6e3bfab44a",
       "g-2a0a2f06c42f",
       "g-337900f640e4",
-      "g-7ff3e944d8d4",
-      "g-80a2dfb6ea40"
+      "g-80a2dfb6ea40",
+      "ru-novgorod"
     ],
     "area_km2": 39043
   },
@@ -11851,7 +11851,8 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
       "g-3d8a063bb987",
       "g-602764f377dc",
       "g-7d193fd4b359",
-      "g-7ff3e944d8d4"
+      "ru-kostroma",
+      "ru-vologda-east"
     ],
     "area_km2": 463939
   },
@@ -12486,17 +12487,19 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "terrain": "plains",
     "coastal": False,
     "neighbors": [
+      "de-niederbayern",
+      "de-oberfranken",
+      "de-oberpfalz",
       "g-180669b1eb0a",
       "g-1c634796c218",
       "g-291f427f69b4",
+      "g-2fc8c381d714",
       "g-32e294ee2718",
+      "g-3ded7ad7e32f",
+      "g-79ed45b32ad0",
       "g-c9ff36dd7180",
       "g-db2c7beb61fa",
-      "g-79ed45b32ad0",
-      "g-2fc8c381d714",
-      "g-c3c32d5219a3",
-      "g-f85aa2a9b6ec",
-      "g-3ded7ad7e32f"
+      "g-f85aa2a9b6ec"
     ],
     "area_km2": 21933
   },
@@ -12658,38 +12661,35 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "terrain": "plains",
     "coastal": False,
     "neighbors": [
+      "de-oberfranken",
       "g-102b30cc6b2d",
       "g-166ea1e86c40",
       "g-180142ad9368",
       "g-79ed45b32ad0",
       "g-b22f5d54cae6",
-      "g-c3c32d5219a3",
       "g-dff9a7b3e112"
     ],
     "area_km2": 18167
   },
   {
     "id": "g-c3c32d5219a3",
-    "name": "Bayern",
+    "name": "Oberbayern (オーバーバイエルン・ミュンヘン)",
     "region": "DE",
     "country": "DE",
-    "x": 768.2,
-    "y": 164.3,
-    "terrain": "plains",
+    "x": 767.9,
+    "y": 167.0,
+    "terrain": "forest",
     "coastal": False,
     "neighbors": [
-      "g-102b30cc6b2d",
+      "de-mittelfranken",
+      "de-niederbayern",
+      "de-oberpfalz",
+      "de-schwaben",
       "g-261578d4a9df",
-      "g-2fc8c381d714",
-      "g-4c83bbaabca8",
-      "g-67e7ab517251",
-      "g-6be6bca002af",
       "g-9189536bedb8",
-      "g-f85aa2a9b6ec",
-      "g-fd2a338e625f",
-      "g-dff9a7b3e112"
+      "g-f85aa2a9b6ec"
     ],
-    "area_km2": 69976
+    "area_km2": 17628
   },
   {
     "id": "g-e6ff7fa621cb",
@@ -12723,34 +12723,29 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "terrain": "coastal",
     "coastal": True,
     "neighbors": [
-      "g-3b680adde68a",
-      "g-5ee037ccbf68",
-      "g-008e17e2a748"
+      "de-lueneburg",
+      "g-008e17e2a748",
+      "g-5ee037ccbf68"
     ],
     "area_km2": 16210
   },
   {
     "id": "g-3b680adde68a",
-    "name": "Niedersachsen・Bremen",
+    "name": "Hannover (ハノーファー)",
     "region": "DE",
     "country": "DE",
-    "x": 755.3,
-    "y": 149.6,
+    "x": 758.4,
+    "y": 150.6,
     "terrain": "plains",
-    "coastal": True,
+    "coastal": False,
     "neighbors": [
-      "g-02423f854394",
-      "g-102b30cc6b2d",
-      "g-180142ad9368",
+      "de-braunschweig",
+      "de-lueneburg",
+      "de-weser-ems",
       "g-1ab40fcfe708",
-      "g-5ee037ccbf68",
-      "g-6be6bca002af",
-      "g-ade21483678f",
-      "g-b22f5d54cae6",
-      "g-ecc94421c08d",
-      "g-fb21935eee7d"
+      "g-ade21483678f"
     ],
-    "area_km2": 47981
+    "area_km2": 9965
   },
   {
     "id": "g-ade21483678f",
@@ -12762,14 +12757,16 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "terrain": "plains",
     "coastal": False,
     "neighbors": [
+      "de-braunschweig",
+      "de-weser-ems",
       "g-1ab40fcfe708",
+      "g-32b9a5391f57-ww1",
       "g-3b680adde68a",
       "g-551df2d9bf86",
       "g-6be6bca002af",
       "g-e6ff7fa621cb",
       "g-f92ed1f0ff9c",
-      "g-fb21935eee7d",
-      "g-32b9a5391f57-ww1"
+      "g-fb21935eee7d"
     ],
     "area_km2": 34538
   },
@@ -12783,12 +12780,12 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "terrain": "plains",
     "coastal": False,
     "neighbors": [
+      "de-schwaben",
       "g-1babde8b0c67",
       "g-30f5727729fe",
       "g-4c83bbaabca8",
       "g-67e7ab517251",
       "g-9189536bedb8",
-      "g-c3c32d5219a3",
       "g-e6ff7fa621cb"
     ],
     "area_km2": 16002
@@ -12803,9 +12800,11 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "terrain": "plains",
     "coastal": False,
     "neighbors": [
+      "de-mittelfranken",
+      "de-schwaben",
+      "de-unterfranken",
       "g-6be6bca002af",
       "g-9189536bedb8",
-      "g-c3c32d5219a3",
       "g-e6ff7fa621cb",
       "g-fd2a338e625f"
     ],
@@ -12821,10 +12820,10 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "terrain": "urban",
     "coastal": False,
     "neighbors": [
+      "de-lueneburg",
       "g-166ea1e86c40",
       "g-180142ad9368",
       "g-2fc8c381d714",
-      "g-3b680adde68a",
       "g-3bc1a565bb93",
       "g-5ee037ccbf68"
     ],
@@ -12840,9 +12839,9 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "terrain": "coastal",
     "coastal": True,
     "neighbors": [
+      "de-lueneburg",
       "g-02423f854394",
       "g-180142ad9368",
-      "g-3b680adde68a",
       "g-3bc1a565bb93",
       "g-b22f5d54cae6"
     ],
@@ -12858,6 +12857,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "terrain": "plains",
     "coastal": False,
     "neighbors": [
+      "de-braunschweig",
       "g-102b30cc6b2d",
       "g-3b680adde68a",
       "g-6be6bca002af",
@@ -12876,12 +12876,12 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "terrain": "plains",
     "coastal": False,
     "neighbors": [
+      "de-braunschweig",
+      "de-unterfranken",
       "g-102b30cc6b2d",
       "g-1ab40fcfe708",
-      "g-3b680adde68a",
       "g-4c83bbaabca8",
       "g-ade21483678f",
-      "g-c3c32d5219a3",
       "g-e6ff7fa621cb"
     ],
     "area_km2": 12994
@@ -12896,12 +12896,13 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "terrain": "plains",
     "coastal": False,
     "neighbors": [
+      "de-braunschweig",
+      "de-oberfranken",
+      "de-unterfranken",
       "g-180142ad9368",
       "g-1ab40fcfe708",
       "g-2fc8c381d714",
-      "g-3b680adde68a",
-      "g-6be6bca002af",
-      "g-c3c32d5219a3"
+      "g-6be6bca002af"
     ],
     "area_km2": 16068
   },
@@ -12915,9 +12916,10 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "terrain": "plains",
     "coastal": False,
     "neighbors": [
+      "de-braunschweig",
+      "de-lueneburg",
       "g-102b30cc6b2d",
       "g-2fc8c381d714",
-      "g-3b680adde68a",
       "g-5ee037ccbf68",
       "g-b22f5d54cae6"
     ],
@@ -12935,8 +12937,8 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "neighbors": [
       "g-0fa80d08136d",
       "g-637e38ded245",
-      "g-7ff3e944d8d4",
-      "g-e77e34741f3b"
+      "g-e77e34741f3b",
+      "ru-leningrad-west"
     ],
     "area_km2": 43890
   },
@@ -13026,8 +13028,8 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
       "g-8e3071831a25",
       "g-9ed9425aafcd",
       "g-c21cdc3762f2",
-      "g-c244b29809a4",
-      "g-c2d325f72037"
+      "g-c2d325f72037",
+      "ru-petsamo"
     ],
     "area_km2": 110999
   },
@@ -13301,7 +13303,9 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
       "g-6f63ec48f52c",
       "g-7c3fc77e50e5",
       "g-8e3071831a25",
-      "g-c244b29809a4"
+      "ru-karelia-north",
+      "ru-murmansk-west",
+      "ru-petsamo"
     ],
     "area_km2": 95090
   },
@@ -13316,9 +13320,10 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "coastal": True,
     "neighbors": [
       "g-33b3e0aa3a9e",
-      "g-c244b29809a4",
       "g-c2d325f72037",
-      "g-ed98c2757f23"
+      "g-ed98c2757f23",
+      "ru-karelia-central",
+      "ru-karelia-north"
     ],
     "area_km2": 58937
   },
@@ -13334,9 +13339,10 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "neighbors": [
       "g-06944a0b8df2",
       "g-7c3fc77e50e5",
-      "g-7ff3e944d8d4",
-      "g-c244b29809a4",
-      "g-ed98c2757f23"
+      "g-ed98c2757f23",
+      "ru-karelia-central",
+      "ru-ladoga-karelia",
+      "ru-vyborg"
     ],
     "area_km2": 61730
   },
@@ -14996,171 +15002,170 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
   },
   {
     "id": "g-9854fff4cade",
-    "name": "Arad・Bihor",
+    "name": "Arad (アラド)",
     "region": "RO",
     "country": "RO",
-    "x": 808.3,
-    "y": 172.9,
+    "x": 807.6,
+    "y": 174.8,
     "terrain": "plains",
     "coastal": False,
     "neighbors": [
       "g-0f5cb3ed1485",
       "g-7a3dbab3b2bc",
-      "g-a9e3731c3efb",
-      "g-acf062113d82",
-      "g-b96f590db7c6"
+      "g-b96f590db7c6",
+      "ro-bihor",
+      "ro-hunedoara"
     ],
-    "area_km2": 15433
+    "area_km2": 7524
   },
   {
     "id": "g-7a3dbab3b2bc",
-    "name": "Timis・Caras-Severin",
+    "name": "Timiș (ティミシュ)",
     "region": "RO",
     "country": "RO",
-    "x": 807.2,
-    "y": 178.4,
+    "x": 806.2,
+    "y": 177.4,
     "terrain": "plains",
     "coastal": False,
     "neighbors": [
       "g-0f5cb3ed1485",
-      "g-6ebd320ac94a",
+      "g-908cf304065c",
       "g-9854fff4cade",
-      "g-b96f590db7c6",
-      "g-ecbcca2744f0",
-      "g-908cf304065c"
+      "ro-caras-severin",
+      "ro-hunedoara"
     ],
-    "area_km2": 17255
+    "area_km2": 8602
   },
   {
     "id": "g-ecbcca2744f0",
-    "name": "Dolj・Olt・Vâlcea・Gorj・Mehedinti",
+    "name": "Dolj (ドルジュ・クラヨーヴァ)",
     "region": "RO",
     "country": "RO",
-    "x": 814.6,
-    "y": 181.3,
+    "x": 814.5,
+    "y": 183.0,
     "terrain": "plains",
     "coastal": False,
     "neighbors": [
       "g-5796fb865f2d",
-      "g-6ebd320ac94a",
-      "g-7a3dbab3b2bc",
-      "g-b96f590db7c6",
-      "g-e6842ec4dc66",
-      "g-268b88a7fae8"
+      "ro-gorj",
+      "ro-mehedinti",
+      "ro-olt",
+      "ro-valcea"
     ],
-    "area_km2": 28394
+    "area_km2": 6498
   },
   {
     "id": "g-e6842ec4dc66",
-    "name": "Calarasi・Ialomita・Giurgiu・Ilfov・Bucharest",
+    "name": "Bucharest・Ilfov (ブカレスト・イルフォヴ)",
     "region": "RO",
     "country": "RO",
-    "x": 827.0,
-    "y": 183.1,
-    "terrain": "coastal",
-    "coastal": True,
+    "x": 824.6,
+    "y": 182.0,
+    "terrain": "urban",
+    "coastal": False,
     "neighbors": [
-      "g-5796fb865f2d",
-      "g-ec8480001de9",
-      "g-ecbcca2744f0",
       "g-268b88a7fae8",
-      "g-75a45ddc110f-ww1"
+      "ro-calarasi",
+      "ro-dambovita",
+      "ro-giurgiu",
+      "ro-ialomita"
     ],
-    "area_km2": 27563
+    "area_km2": 1700
   },
   {
     "id": "g-84d867cd5f0e",
-    "name": "北モルダヴィア",
+    "name": "Iași (ヤシ・北モルダヴィア)",
     "region": "RO",
     "country": "RO",
-    "x": 826.626,
-    "y": 171.47,
+    "x": 828.8,
+    "y": 171.2,
     "terrain": "plains",
     "coastal": False,
     "neighbors": [
-      "g-b12dd2b9db3b",
-      "g-84d867cd5f0e-1914-1",
       "g-47625d79bf21",
+      "g-84d867cd5f0e-1914-1",
       "g-98e659a04a40",
-      "g-ec8480001de9"
+      "ro-botosani",
+      "ro-neamt",
+      "ro-vaslui"
     ],
-    "area_km2": 30556
+    "area_km2": 5412
   },
   {
     "id": "g-acf062113d82",
-    "name": "Maramures・Satu Mare・Bistrita-Nasaud",
+    "name": "Maramureș (マラムレシュ)",
     "region": "RO",
     "country": "RO",
-    "x": 815.2,
-    "y": 170.9,
-    "terrain": "plains",
+    "x": 816.8,
+    "y": 169.3,
+    "terrain": "mountain",
     "coastal": False,
     "neighbors": [
-      "g-9854fff4cade",
-      "g-a9e3731c3efb",
-      "g-b9006740a698",
-      "g-b96f590db7c6",
+      "g-84d867cd5f0e-1914-1",
       "g-b12dd2b9db3b-1914-1",
-      "g-84d867cd5f0e-1914-1"
+      "g-b9006740a698",
+      "ro-bistrita-nasaud",
+      "ro-cluj",
+      "ro-salaj",
+      "ro-satu-mare"
     ],
-    "area_km2": 26880
+    "area_km2": 6171
   },
   {
     "id": "g-268b88a7fae8",
-    "name": "北ワラキア",
+    "name": "Prahova (プラホヴァ・プロイェシュティ)",
     "region": "RO",
     "country": "RO",
-    "x": 822.0661,
-    "y": 179.995,
+    "x": 824.1,
+    "y": 179.5,
     "terrain": "plains",
     "coastal": False,
     "neighbors": [
       "g-268b88a7fae8-1914-1",
-      "g-b96f590db7c6",
       "g-e6842ec4dc66",
-      "g-ec8480001de9",
-      "g-ecbcca2744f0"
+      "ro-buzau",
+      "ro-dambovita",
+      "ro-ialomita"
     ],
-    "area_km2": 15220
+    "area_km2": 4470
   },
   {
     "id": "g-ec8480001de9",
-    "name": "Buzau・Braila・Tulcea・Vrancea・Galati",
+    "name": "Tulcea (トゥルチャ・北ドブロジャ)",
     "region": "RO",
     "country": "RO",
-    "x": 828.7,
-    "y": 178.3,
+    "x": 835.6,
+    "y": 179.9,
     "terrain": "coastal",
     "coastal": True,
     "neighbors": [
       "g-23df997b428d",
       "g-98e659a04a40",
-      "g-e6842ec4dc66",
-      "g-84d867cd5f0e",
-      "g-268b88a7fae8-1914-1",
-      "g-268b88a7fae8"
+      "ro-braila",
+      "ro-constanta",
+      "ro-galati"
     ],
-    "area_km2": 27407
+    "area_km2": 7544
   },
   {
     "id": "g-b96f590db7c6",
-    "name": "Alba・Sibiu・Hunedoara",
+    "name": "Alba (アルバ)",
     "region": "RO",
     "country": "RO",
-    "x": 814.3,
-    "y": 176.5,
-    "terrain": "plains",
+    "x": 814.2,
+    "y": 175.9,
+    "terrain": "mountain",
     "coastal": False,
     "neighbors": [
-      "g-7a3dbab3b2bc",
       "g-9854fff4cade",
-      "g-acf062113d82",
-      "g-ecbcca2744f0",
-      "g-84d867cd5f0e-1914-1",
-      "g-268b88a7fae8-1914-1",
-      "g-268b88a7fae8"
+      "ro-bihor",
+      "ro-cluj",
+      "ro-hunedoara",
+      "ro-mures",
+      "ro-sibiu",
+      "ro-valcea"
     ],
-    "area_km2": 18840
+    "area_km2": 6043
   },
   {
     "id": "g-a9e3731c3efb",
@@ -15175,11 +15180,11 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
       "g-0f5cb3ed1485",
       "g-25c1c9a20757",
       "g-73cfde3815fd",
-      "g-9854fff4cade",
-      "g-acf062113d82",
       "g-ad8f13c3ca92",
       "g-b9006740a698",
-      "g-ed0fa527233e"
+      "g-ed0fa527233e",
+      "ro-bihor",
+      "ro-satu-mare"
     ],
     "area_km2": 30768
   },
@@ -15197,11 +15202,12 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
       "g-63428c9a1953",
       "g-7a3dbab3b2bc",
       "g-85fa065ff297",
+      "g-908cf304065c",
       "g-9854fff4cade",
       "g-a9e3731c3efb",
       "g-ad8f13c3ca92",
       "g-ed0fa527233e",
-      "g-908cf304065c"
+      "ro-bihor"
     ],
     "area_km2": 25379
   },
@@ -16645,6 +16651,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "terrain": "plains",
     "coastal": False,
     "neighbors": [
+      "de-niederbayern",
       "g-261578d4a9df",
       "g-3ded7ad7e32f",
       "g-9760f7204c93",
@@ -16663,15 +16670,16 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "terrain": "plains",
     "coastal": False,
     "neighbors": [
+      "de-schwaben",
       "g-01ac6de16823",
       "g-261578d4a9df",
       "g-44ae6d37e0e6",
       "g-4c83bbaabca8",
       "g-67e7ab517251",
+      "g-9b8ccdcae659-1914-1",
       "g-c3c32d5219a3",
       "g-e08944243cf9",
-      "g-fd2a338e625f",
-      "g-9b8ccdcae659-1914-1"
+      "g-fd2a338e625f"
     ],
     "area_km2": 13197
   },
@@ -16688,9 +16696,9 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
       "g-44ae6d37e0e6",
       "g-9189536bedb8",
       "g-9760f7204c93",
+      "g-9b8ccdcae659-1914-1",
       "g-c3c32d5219a3",
-      "g-f85aa2a9b6ec",
-      "g-9b8ccdcae659-1914-1"
+      "g-f85aa2a9b6ec"
     ],
     "area_km2": 7206
   },
@@ -17147,7 +17155,6 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
       "g-541ce0458844",
       "g-58f7b6cd1cb6",
       "g-9189536bedb8",
-      "g-c3c32d5219a3",
       "g-e08944243cf9",
       "g-fd2a338e625f"
     ],
@@ -17670,7 +17677,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "terrain": "coastal",
     "coastal": True,
     "neighbors": [
-      "g-3b680adde68a",
+      "de-weser-ems",
       "g-551df2d9bf86",
       "g-fb21935eee7d"
     ],
@@ -17686,7 +17693,7 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "terrain": "plains",
     "coastal": False,
     "neighbors": [
-      "g-3b680adde68a",
+      "de-weser-ems",
       "g-551df2d9bf86",
       "g-ade21483678f",
       "g-ecc94421c08d"
@@ -17815,13 +17822,14 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "terrain": "plains",
     "coastal": False,
     "neighbors": [
-      "g-908cf304065c-1914-2",
       "g-0f5cb3ed1485",
       "g-63428c9a1953",
       "g-6ebd320ac94a",
       "g-7a3dbab3b2bc",
       "g-85fa065ff297",
-      "g-efea21c862c0"
+      "g-908cf304065c-1914-2",
+      "g-efea21c862c0",
+      "ro-caras-severin"
     ],
     "area_km2": 22002
   },
@@ -17835,17 +17843,17 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "terrain": "plains",
     "coastal": False,
     "neighbors": [
+      "g-484c647b0567",
+      "g-484c647b0567-ww1",
       "g-5242d3ab8eec",
       "g-5796fb865f2d",
-      "g-7a3dbab3b2bc",
-      "g-b5555b54bdba",
-      "g-ecbcca2744f0",
-      "g-efea21c862c0",
+      "g-8846235b3d74",
       "g-908cf304065c",
       "g-908cf304065c-1914-2",
-      "g-8846235b3d74",
-      "g-484c647b0567-ww1",
-      "g-484c647b0567"
+      "g-b5555b54bdba",
+      "g-efea21c862c0",
+      "ro-caras-severin",
+      "ro-mehedinti"
     ],
     "area_km2": 47382
   },
@@ -18778,10 +18786,12 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
       "g-311f3128c0c8",
       "g-5242d3ab8eec",
       "g-6ebd320ac94a",
-      "g-e6842ec4dc66",
-      "g-ecbcca2744f0",
+      "g-75a45ddc110f",
       "g-75a45ddc110f-ww1",
-      "g-75a45ddc110f"
+      "g-ecbcca2744f0",
+      "ro-mehedinti",
+      "ro-olt",
+      "ro-teleorman"
     ],
     "area_km2": 20064
   },
@@ -20849,8 +20859,10 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
       "g-23df997b428d",
       "g-47625d79bf21",
       "g-729f2faf3162",
+      "g-84d867cd5f0e",
       "g-ec8480001de9",
-      "g-84d867cd5f0e"
+      "ro-galati",
+      "ro-vaslui"
     ],
     "area_km2": 18978
   },
@@ -20866,9 +20878,10 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "neighbors": [
       "g-06d2e0e260ec",
       "g-729f2faf3162",
+      "g-84d867cd5f0e",
       "g-98e659a04a40",
       "g-b12dd2b9db3b",
-      "g-84d867cd5f0e"
+      "ro-botosani"
     ],
     "area_km2": 14228
   },
@@ -26657,49 +26670,57 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "terrain": "plains",
     "coastal": False,
     "neighbors": [
-      "g-b12dd2b9db3b",
       "g-13a676e7f1dc",
       "g-84d867cd5f0e-1914-1",
       "g-acf062113d82",
-      "g-b9006740a698"
+      "g-b12dd2b9db3b",
+      "g-b9006740a698",
+      "ro-botosani"
     ],
     "area_km2": 16362
   },
   {
     "id": "g-84d867cd5f0e-1914-1",
-    "name": "南ブコヴィナ・北トランシルヴァニア",
+    "name": "Suceava (スチャヴァ・南ブコヴィナ)",
     "region": "RO",
     "country": "RO",
-    "x": 821.1768,
-    "y": 172.0011,
-    "terrain": "plains",
+    "x": 823.4,
+    "y": 169.9,
+    "terrain": "mountain",
     "coastal": False,
     "neighbors": [
-      "g-b12dd2b9db3b-1914-1",
       "g-84d867cd5f0e",
-      "g-268b88a7fae8-1914-1",
       "g-acf062113d82",
+      "g-b12dd2b9db3b-1914-1",
       "g-b9006740a698",
-      "g-b96f590db7c6"
+      "ro-bistrita-nasaud",
+      "ro-botosani",
+      "ro-harghita",
+      "ro-mures",
+      "ro-neamt"
     ],
-    "area_km2": 19915
+    "area_km2": 8446
   },
   {
     "id": "g-268b88a7fae8-1914-1",
-    "name": "ブラショヴ・コヴァスナ",
+    "name": "Brașov (ブラショヴ)",
     "region": "RO",
     "country": "RO",
-    "x": 822.2566,
-    "y": 176.545,
-    "terrain": "plains",
+    "x": 820.6,
+    "y": 176.9,
+    "terrain": "mountain",
     "coastal": False,
     "neighbors": [
-      "g-84d867cd5f0e-1914-1",
       "g-268b88a7fae8",
-      "g-b96f590db7c6",
-      "g-ec8480001de9"
+      "ro-arges",
+      "ro-buzau",
+      "ro-covasna",
+      "ro-dambovita",
+      "ro-harghita",
+      "ro-mures",
+      "ro-sibiu"
     ],
-    "area_km2": 8913
+    "area_km2": 5156
   },
   {
     "id": "g-56bc4c59cd07-1914-1",
@@ -26931,9 +26952,12 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
     "terrain": "coastal",
     "coastal": True,
     "neighbors": [
-      "g-75a45ddc110f",
       "g-5796fb865f2d",
-      "g-e6842ec4dc66"
+      "g-75a45ddc110f",
+      "ro-calarasi",
+      "ro-constanta",
+      "ro-giurgiu",
+      "ro-teleorman"
     ],
     "area_km2": 7855
   },
@@ -27340,6 +27364,960 @@ WORLD_ADMIN1_PROVINCES: List[Dict[str, Any]] = [
       "ulanqab-shangdu"
     ],
     "area_km2": 11071
+  },
+  {
+    "id": "ro-bihor",
+    "name": "Bihor (ビホル)",
+    "region": "RO",
+    "country": "RO",
+    "x": 808.7,
+    "y": 171.9,
+    "terrain": "plains",
+    "coastal": False,
+    "neighbors": [
+      "g-0f5cb3ed1485",
+      "g-9854fff4cade",
+      "g-a9e3731c3efb",
+      "g-b96f590db7c6",
+      "ro-cluj",
+      "ro-salaj",
+      "ro-satu-mare"
+    ],
+    "area_km2": 7492
+  },
+  {
+    "id": "ro-caras-severin",
+    "name": "Caraș-Severin (カラシュ＝セヴェリン)",
+    "region": "RO",
+    "country": "RO",
+    "x": 808.3,
+    "y": 179.5,
+    "terrain": "mountain",
+    "coastal": False,
+    "neighbors": [
+      "g-6ebd320ac94a",
+      "g-7a3dbab3b2bc",
+      "g-908cf304065c",
+      "ro-gorj",
+      "ro-hunedoara",
+      "ro-mehedinti"
+    ],
+    "area_km2": 8023
+  },
+  {
+    "id": "ro-satu-mare",
+    "name": "Satu Mare (サトゥ・マーレ)",
+    "region": "RO",
+    "country": "RO",
+    "x": 811.1,
+    "y": 169.1,
+    "terrain": "plains",
+    "coastal": False,
+    "neighbors": [
+      "g-a9e3731c3efb",
+      "g-acf062113d82",
+      "g-b9006740a698",
+      "ro-bihor",
+      "ro-salaj"
+    ],
+    "area_km2": 4321
+  },
+  {
+    "id": "ro-salaj",
+    "name": "Sălaj (サラージュ)",
+    "region": "RO",
+    "country": "RO",
+    "x": 812.1,
+    "y": 171.4,
+    "terrain": "plains",
+    "coastal": False,
+    "neighbors": [
+      "g-acf062113d82",
+      "ro-bihor",
+      "ro-cluj",
+      "ro-satu-mare"
+    ],
+    "area_km2": 3815
+  },
+  {
+    "id": "ro-bistrita-nasaud",
+    "name": "Bistrița-Năsăud (ビストリツァ＝ナサウド)",
+    "region": "RO",
+    "country": "RO",
+    "x": 818.2,
+    "y": 171.3,
+    "terrain": "mountain",
+    "coastal": False,
+    "neighbors": [
+      "g-84d867cd5f0e-1914-1",
+      "g-acf062113d82",
+      "ro-cluj",
+      "ro-mures"
+    ],
+    "area_km2": 5291
+  },
+  {
+    "id": "ro-sibiu",
+    "name": "Sibiu (シビウ)",
+    "region": "RO",
+    "country": "RO",
+    "x": 817.0,
+    "y": 176.4,
+    "terrain": "mountain",
+    "coastal": False,
+    "neighbors": [
+      "g-268b88a7fae8-1914-1",
+      "g-b96f590db7c6",
+      "ro-arges",
+      "ro-mures",
+      "ro-valcea"
+    ],
+    "area_km2": 5235
+  },
+  {
+    "id": "ro-hunedoara",
+    "name": "Hunedoara (フネドアラ)",
+    "region": "RO",
+    "country": "RO",
+    "x": 811.6,
+    "y": 176.8,
+    "terrain": "mountain",
+    "coastal": False,
+    "neighbors": [
+      "g-7a3dbab3b2bc",
+      "g-9854fff4cade",
+      "g-b96f590db7c6",
+      "ro-caras-severin",
+      "ro-gorj",
+      "ro-valcea"
+    ],
+    "area_km2": 6785
+  },
+  {
+    "id": "ro-olt",
+    "name": "Olt (オルト)",
+    "region": "RO",
+    "country": "RO",
+    "x": 817.8,
+    "y": 182.7,
+    "terrain": "plains",
+    "coastal": False,
+    "neighbors": [
+      "g-5796fb865f2d",
+      "g-ecbcca2744f0",
+      "ro-arges",
+      "ro-teleorman",
+      "ro-valcea"
+    ],
+    "area_km2": 4941
+  },
+  {
+    "id": "ro-valcea",
+    "name": "Vâlcea (ヴルチャ)",
+    "region": "RO",
+    "country": "RO",
+    "x": 816.6,
+    "y": 179.8,
+    "terrain": "mountain",
+    "coastal": False,
+    "neighbors": [
+      "g-b96f590db7c6",
+      "g-ecbcca2744f0",
+      "ro-arges",
+      "ro-gorj",
+      "ro-hunedoara",
+      "ro-olt",
+      "ro-sibiu"
+    ],
+    "area_km2": 5483
+  },
+  {
+    "id": "ro-gorj",
+    "name": "Gorj (ゴルジュ)",
+    "region": "RO",
+    "country": "RO",
+    "x": 813.3,
+    "y": 180.2,
+    "terrain": "mountain",
+    "coastal": False,
+    "neighbors": [
+      "g-ecbcca2744f0",
+      "ro-caras-severin",
+      "ro-hunedoara",
+      "ro-mehedinti",
+      "ro-valcea"
+    ],
+    "area_km2": 5300
+  },
+  {
+    "id": "ro-mehedinti",
+    "name": "Mehedinți (メヘディンツィ)",
+    "region": "RO",
+    "country": "RO",
+    "x": 812.3,
+    "y": 181.6,
+    "terrain": "plains",
+    "coastal": False,
+    "neighbors": [
+      "g-5796fb865f2d",
+      "g-6ebd320ac94a",
+      "g-ecbcca2744f0",
+      "ro-caras-severin",
+      "ro-gorj"
+    ],
+    "area_km2": 4461
+  },
+  {
+    "id": "ro-calarasi",
+    "name": "Călărași (カララシ)",
+    "region": "RO",
+    "country": "RO",
+    "x": 828.5,
+    "y": 182.8,
+    "terrain": "plains",
+    "coastal": False,
+    "neighbors": [
+      "g-75a45ddc110f-ww1",
+      "g-e6842ec4dc66",
+      "ro-constanta",
+      "ro-giurgiu",
+      "ro-ialomita"
+    ],
+    "area_km2": 4603
+  },
+  {
+    "id": "ro-ialomita",
+    "name": "Ialomița (ヤロミツァ)",
+    "region": "RO",
+    "country": "RO",
+    "x": 828.8,
+    "y": 181.6,
+    "terrain": "plains",
+    "coastal": False,
+    "neighbors": [
+      "g-268b88a7fae8",
+      "g-e6842ec4dc66",
+      "ro-braila",
+      "ro-buzau",
+      "ro-calarasi",
+      "ro-constanta"
+    ],
+    "area_km2": 4202
+  },
+  {
+    "id": "ro-giurgiu",
+    "name": "Giurgiu (ジュルジュ)",
+    "region": "RO",
+    "country": "RO",
+    "x": 824.2,
+    "y": 183.4,
+    "terrain": "plains",
+    "coastal": False,
+    "neighbors": [
+      "g-75a45ddc110f-ww1",
+      "g-e6842ec4dc66",
+      "ro-calarasi",
+      "ro-dambovita",
+      "ro-teleorman"
+    ],
+    "area_km2": 3161
+  },
+  {
+    "id": "ro-teleorman",
+    "name": "Teleorman (テレオルマン)",
+    "region": "RO",
+    "country": "RO",
+    "x": 820.9,
+    "y": 183.7,
+    "terrain": "plains",
+    "coastal": False,
+    "neighbors": [
+      "g-5796fb865f2d",
+      "g-75a45ddc110f-ww1",
+      "ro-arges",
+      "ro-dambovita",
+      "ro-giurgiu",
+      "ro-olt"
+    ],
+    "area_km2": 5147
+  },
+  {
+    "id": "ro-constanta",
+    "name": "Constanța (コンスタンツァ)",
+    "region": "RO",
+    "country": "RO",
+    "x": 833.2,
+    "y": 182.9,
+    "terrain": "coastal",
+    "coastal": True,
+    "neighbors": [
+      "g-75a45ddc110f-ww1",
+      "g-ec8480001de9",
+      "ro-braila",
+      "ro-calarasi",
+      "ro-ialomita"
+    ],
+    "area_km2": 6525
+  },
+  {
+    "id": "ro-braila",
+    "name": "Brăila (ブライラ)",
+    "region": "RO",
+    "country": "RO",
+    "x": 830.7,
+    "y": 179.5,
+    "terrain": "plains",
+    "coastal": False,
+    "neighbors": [
+      "g-ec8480001de9",
+      "ro-buzau",
+      "ro-constanta",
+      "ro-galati",
+      "ro-ialomita",
+      "ro-vrancea"
+    ],
+    "area_km2": 4532
+  },
+  {
+    "id": "ro-buzau",
+    "name": "Buzău (ブザウ)",
+    "region": "RO",
+    "country": "RO",
+    "x": 827.1,
+    "y": 178.9,
+    "terrain": "plains",
+    "coastal": False,
+    "neighbors": [
+      "g-268b88a7fae8",
+      "g-268b88a7fae8-1914-1",
+      "ro-braila",
+      "ro-covasna",
+      "ro-ialomita",
+      "ro-vrancea"
+    ],
+    "area_km2": 5815
+  },
+  {
+    "id": "ro-vrancea",
+    "name": "Vrancea (ヴランチャ)",
+    "region": "RO",
+    "country": "RO",
+    "x": 827.5,
+    "y": 176.8,
+    "terrain": "mountain",
+    "coastal": False,
+    "neighbors": [
+      "ro-bacau",
+      "ro-braila",
+      "ro-buzau",
+      "ro-covasna",
+      "ro-galati",
+      "ro-vaslui"
+    ],
+    "area_km2": 4667
+  },
+  {
+    "id": "ro-galati",
+    "name": "Galați (ガラツィ)",
+    "region": "RO",
+    "country": "RO",
+    "x": 831.0,
+    "y": 176.9,
+    "terrain": "plains",
+    "coastal": False,
+    "neighbors": [
+      "g-23df997b428d",
+      "g-98e659a04a40",
+      "g-ec8480001de9",
+      "ro-bacau",
+      "ro-braila",
+      "ro-vaslui",
+      "ro-vrancea"
+    ],
+    "area_km2": 4267
+  },
+  {
+    "id": "ro-botosani",
+    "name": "Botoșani (ボトシャニ)",
+    "region": "RO",
+    "country": "RO",
+    "x": 827.0,
+    "y": 168.6,
+    "terrain": "plains",
+    "coastal": False,
+    "neighbors": [
+      "g-47625d79bf21",
+      "g-84d867cd5f0e",
+      "g-84d867cd5f0e-1914-1",
+      "g-b12dd2b9db3b",
+      "g-b12dd2b9db3b-1914-1"
+    ],
+    "area_km2": 5127
+  },
+  {
+    "id": "ro-neamt",
+    "name": "Neamț (ネアムツ)",
+    "region": "RO",
+    "country": "RO",
+    "x": 826.1,
+    "y": 172.0,
+    "terrain": "mountain",
+    "coastal": False,
+    "neighbors": [
+      "g-84d867cd5f0e",
+      "g-84d867cd5f0e-1914-1",
+      "ro-bacau",
+      "ro-harghita",
+      "ro-vaslui"
+    ],
+    "area_km2": 5802
+  },
+  {
+    "id": "ro-bacau",
+    "name": "Bacău (バカウ)",
+    "region": "RO",
+    "country": "RO",
+    "x": 826.9,
+    "y": 174.3,
+    "terrain": "plains",
+    "coastal": False,
+    "neighbors": [
+      "ro-covasna",
+      "ro-galati",
+      "ro-harghita",
+      "ro-neamt",
+      "ro-vaslui",
+      "ro-vrancea"
+    ],
+    "area_km2": 6444
+  },
+  {
+    "id": "ro-vaslui",
+    "name": "Vaslui (ヴァスルイ)",
+    "region": "RO",
+    "country": "RO",
+    "x": 831.2,
+    "y": 174.0,
+    "terrain": "plains",
+    "coastal": False,
+    "neighbors": [
+      "g-84d867cd5f0e",
+      "g-98e659a04a40",
+      "ro-bacau",
+      "ro-galati",
+      "ro-neamt",
+      "ro-vrancea"
+    ],
+    "area_km2": 5191
+  },
+  {
+    "id": "ro-cluj",
+    "name": "Cluj (クルジュ)",
+    "region": "RO",
+    "country": "RO",
+    "x": 814.9,
+    "y": 172.4,
+    "terrain": "mountain",
+    "coastal": False,
+    "neighbors": [
+      "g-acf062113d82",
+      "g-b96f590db7c6",
+      "ro-bihor",
+      "ro-bistrita-nasaud",
+      "ro-mures",
+      "ro-salaj"
+    ],
+    "area_km2": 6542
+  },
+  {
+    "id": "ro-mures",
+    "name": "Mureș (ムレシュ)",
+    "region": "RO",
+    "country": "RO",
+    "x": 818.5,
+    "y": 173.6,
+    "terrain": "mountain",
+    "coastal": False,
+    "neighbors": [
+      "g-268b88a7fae8-1914-1",
+      "g-84d867cd5f0e-1914-1",
+      "g-b96f590db7c6",
+      "ro-bistrita-nasaud",
+      "ro-cluj",
+      "ro-harghita",
+      "ro-sibiu"
+    ],
+    "area_km2": 6550
+  },
+  {
+    "id": "ro-harghita",
+    "name": "Harghita (ハルギタ)",
+    "region": "RO",
+    "country": "RO",
+    "x": 822.5,
+    "y": 173.4,
+    "terrain": "mountain",
+    "coastal": False,
+    "neighbors": [
+      "g-268b88a7fae8-1914-1",
+      "g-84d867cd5f0e-1914-1",
+      "ro-bacau",
+      "ro-covasna",
+      "ro-mures",
+      "ro-neamt"
+    ],
+    "area_km2": 6471
+  },
+  {
+    "id": "ro-arges",
+    "name": "Argeș (アルジェシュ)",
+    "region": "RO",
+    "country": "RO",
+    "x": 819.4,
+    "y": 180.0,
+    "terrain": "mountain",
+    "coastal": False,
+    "neighbors": [
+      "g-268b88a7fae8-1914-1",
+      "ro-dambovita",
+      "ro-olt",
+      "ro-sibiu",
+      "ro-teleorman",
+      "ro-valcea"
+    ],
+    "area_km2": 6463
+  },
+  {
+    "id": "ro-dambovita",
+    "name": "Dâmbovița (ドゥンボヴィツァ)",
+    "region": "RO",
+    "country": "RO",
+    "x": 821.9,
+    "y": 180.3,
+    "terrain": "plains",
+    "coastal": False,
+    "neighbors": [
+      "g-268b88a7fae8",
+      "g-268b88a7fae8-1914-1",
+      "g-e6842ec4dc66",
+      "ro-arges",
+      "ro-giurgiu",
+      "ro-teleorman"
+    ],
+    "area_km2": 3857
+  },
+  {
+    "id": "ro-covasna",
+    "name": "Covasna (コヴァスナ)",
+    "region": "RO",
+    "country": "RO",
+    "x": 824.0,
+    "y": 176.4,
+    "terrain": "mountain",
+    "coastal": False,
+    "neighbors": [
+      "g-268b88a7fae8-1914-1",
+      "ro-bacau",
+      "ro-buzau",
+      "ro-harghita",
+      "ro-vrancea"
+    ],
+    "area_km2": 3577
+  },
+  {
+    "id": "de-braunschweig",
+    "name": "Braunschweig (ブラウンシュヴァイク)",
+    "region": "DE",
+    "country": "DE",
+    "x": 762.3,
+    "y": 151.8,
+    "terrain": "plains",
+    "coastal": False,
+    "neighbors": [
+      "de-lueneburg",
+      "g-102b30cc6b2d",
+      "g-180142ad9368",
+      "g-1ab40fcfe708",
+      "g-3b680adde68a",
+      "g-6be6bca002af",
+      "g-ade21483678f"
+    ],
+    "area_km2": 8876
+  },
+  {
+    "id": "de-lueneburg",
+    "name": "Lüneburg (リューネブルク)",
+    "region": "DE",
+    "country": "DE",
+    "x": 759.3,
+    "y": 147.2,
+    "terrain": "coastal",
+    "coastal": True,
+    "neighbors": [
+      "de-braunschweig",
+      "de-weser-ems",
+      "g-02423f854394",
+      "g-180142ad9368",
+      "g-3b680adde68a",
+      "g-5ee037ccbf68",
+      "g-b22f5d54cae6"
+    ],
+    "area_km2": 17100
+  },
+  {
+    "id": "de-weser-ems",
+    "name": "Weser-Ems・Bremen (ヴェーザー＝エムス・ブレーメン)",
+    "region": "DE",
+    "country": "DE",
+    "x": 751.5,
+    "y": 148.5,
+    "terrain": "coastal",
+    "coastal": True,
+    "neighbors": [
+      "de-lueneburg",
+      "g-3b680adde68a",
+      "g-ade21483678f",
+      "g-ecc94421c08d",
+      "g-fb21935eee7d"
+    ],
+    "area_km2": 17117
+  },
+  {
+    "id": "de-niederbayern",
+    "name": "Niederbayern (ニーダーバイエルン)",
+    "region": "DE",
+    "country": "DE",
+    "x": 771.0,
+    "y": 165.2,
+    "terrain": "forest",
+    "coastal": False,
+    "neighbors": [
+      "de-oberpfalz",
+      "g-c3c32d5219a3",
+      "g-dff9a7b3e112",
+      "g-f85aa2a9b6ec"
+    ],
+    "area_km2": 10332
+  },
+  {
+    "id": "de-oberpfalz",
+    "name": "Oberpfalz (オーバープファルツ)",
+    "region": "DE",
+    "country": "DE",
+    "x": 768.3,
+    "y": 162.4,
+    "terrain": "forest",
+    "coastal": False,
+    "neighbors": [
+      "de-mittelfranken",
+      "de-niederbayern",
+      "de-oberfranken",
+      "g-c3c32d5219a3",
+      "g-dff9a7b3e112"
+    ],
+    "area_km2": 9773
+  },
+  {
+    "id": "de-oberfranken",
+    "name": "Oberfranken (オーバーフランケン)",
+    "region": "DE",
+    "country": "DE",
+    "x": 766.2,
+    "y": 159.8,
+    "terrain": "forest",
+    "coastal": False,
+    "neighbors": [
+      "de-mittelfranken",
+      "de-oberpfalz",
+      "de-unterfranken",
+      "g-102b30cc6b2d",
+      "g-2fc8c381d714",
+      "g-dff9a7b3e112"
+    ],
+    "area_km2": 7484
+  },
+  {
+    "id": "de-mittelfranken",
+    "name": "Mittelfranken (ミッテルフランケン・ニュルンベルク)",
+    "region": "DE",
+    "country": "DE",
+    "x": 762.8,
+    "y": 162.7,
+    "terrain": "plains",
+    "coastal": False,
+    "neighbors": [
+      "de-oberfranken",
+      "de-oberpfalz",
+      "de-schwaben",
+      "de-unterfranken",
+      "g-4c83bbaabca8",
+      "g-c3c32d5219a3"
+    ],
+    "area_km2": 7375
+  },
+  {
+    "id": "de-unterfranken",
+    "name": "Unterfranken (ウンターフランケン)",
+    "region": "DE",
+    "country": "DE",
+    "x": 759.6,
+    "y": 159.9,
+    "terrain": "plains",
+    "coastal": False,
+    "neighbors": [
+      "de-mittelfranken",
+      "de-oberfranken",
+      "g-102b30cc6b2d",
+      "g-4c83bbaabca8",
+      "g-6be6bca002af"
+    ],
+    "area_km2": 8853
+  },
+  {
+    "id": "de-schwaben",
+    "name": "Schwaben (シュヴァーベン・アウクスブルク)",
+    "region": "DE",
+    "country": "DE",
+    "x": 761.9,
+    "y": 167.4,
+    "terrain": "plains",
+    "coastal": False,
+    "neighbors": [
+      "de-mittelfranken",
+      "g-4c83bbaabca8",
+      "g-9189536bedb8",
+      "g-c3c32d5219a3",
+      "g-fd2a338e625f"
+    ],
+    "area_km2": 10063
+  },
+  {
+    "id": "ru-petsamo",
+    "name": "Petsamo / Pechenga (ペツァモ・ペチェンガ)",
+    "region": "RU",
+    "country": "RU",
+    "x": 842.1,
+    "y": 82.6,
+    "terrain": "coastal",
+    "coastal": True,
+    "neighbors": [
+      "g-6f63ec48f52c",
+      "g-c2d325f72037",
+      "ru-murmansk-west"
+    ],
+    "area_km2": 11613
+  },
+  {
+    "id": "ru-murmansk-west",
+    "name": "Murmansk・Kola (ムルマンスク・コラ西部)",
+    "region": "RU",
+    "country": "RU",
+    "x": 846.8,
+    "y": 88.1,
+    "terrain": "coastal",
+    "coastal": True,
+    "neighbors": [
+      "g-c2d325f72037",
+      "ru-karelia-north",
+      "ru-murmansk-east",
+      "ru-petsamo"
+    ],
+    "area_km2": 75573
+  },
+  {
+    "id": "ru-murmansk-east",
+    "name": "Lovozero・Tersky (ロヴォゼロ・コラ東部)",
+    "region": "RU",
+    "country": "RU",
+    "x": 871.6,
+    "y": 89.8,
+    "terrain": "coastal",
+    "coastal": True,
+    "neighbors": [
+      "ru-murmansk-west"
+    ],
+    "area_km2": 88856
+  },
+  {
+    "id": "ru-karelia-north",
+    "name": "North Karelia / Kem・Louhi (北カレリア・ケミ)",
+    "region": "RU",
+    "country": "RU",
+    "x": 848.7,
+    "y": 98.1,
+    "terrain": "forest",
+    "coastal": True,
+    "neighbors": [
+      "g-7c3fc77e50e5",
+      "g-c2d325f72037",
+      "ru-karelia-central",
+      "ru-murmansk-west"
+    ],
+    "area_km2": 53780
+  },
+  {
+    "id": "ru-karelia-central",
+    "name": "Central Karelia / Belomorsk・Segezha (中カレリア・ベロモルスク)",
+    "region": "RU",
+    "country": "RU",
+    "x": 853.1,
+    "y": 106.2,
+    "terrain": "forest",
+    "coastal": True,
+    "neighbors": [
+      "g-33b3e0aa3a9e",
+      "g-3d8a063bb987",
+      "g-7c3fc77e50e5",
+      "g-c244b29809a4",
+      "ru-karelia-north",
+      "ru-ladoga-karelia"
+    ],
+    "area_km2": 57731
+  },
+  {
+    "id": "ru-ladoga-karelia",
+    "name": "Ladoga Karelia / Sortavala・Suojärvi (ラドガ・カレリア)",
+    "region": "RU",
+    "country": "RU",
+    "x": 847.0,
+    "y": 111.7,
+    "terrain": "forest",
+    "coastal": False,
+    "neighbors": [
+      "g-33b3e0aa3a9e",
+      "g-c244b29809a4",
+      "ru-karelia-central",
+      "ru-vyborg"
+    ],
+    "area_km2": 19758
+  },
+  {
+    "id": "ru-vyborg",
+    "name": "Karelian Isthmus / Vyborg (カレリア地峡・ヴィボルグ)",
+    "region": "RU",
+    "country": "RU",
+    "x": 837.4,
+    "y": 117.0,
+    "terrain": "coastal",
+    "coastal": True,
+    "neighbors": [
+      "g-33b3e0aa3a9e",
+      "ru-ladoga-karelia",
+      "ru-leningrad-west"
+    ],
+    "area_km2": 10249
+  },
+  {
+    "id": "ru-leningrad-west",
+    "name": "Leningrad・St. Petersburg (レニングラード・サンクトペテルブルク)",
+    "region": "RU",
+    "country": "RU",
+    "x": 839.3,
+    "y": 122.1,
+    "terrain": "urban",
+    "coastal": True,
+    "neighbors": [
+      "g-0b9395809f4c",
+      "g-1a6e3bfab44a",
+      "g-637e38ded245",
+      "ru-leningrad-east",
+      "ru-novgorod",
+      "ru-vyborg"
+    ],
+    "area_km2": 27106
+  },
+  {
+    "id": "ru-leningrad-east",
+    "name": "East Leningrad / Tikhvin・Volkhov (レニングラード東部・チフヴィン)",
+    "region": "RU",
+    "country": "RU",
+    "x": 855.6,
+    "y": 119.2,
+    "terrain": "forest",
+    "coastal": False,
+    "neighbors": [
+      "g-c244b29809a4",
+      "ru-leningrad-west",
+      "ru-novgorod",
+      "ru-vologda-west"
+    ],
+    "area_km2": 32455
+  },
+  {
+    "id": "ru-novgorod",
+    "name": "Novgorod (ノヴゴロド州)",
+    "region": "RU",
+    "country": "RU",
+    "x": 847.2,
+    "y": 127.3,
+    "terrain": "forest",
+    "coastal": False,
+    "neighbors": [
+      "g-1a6e3bfab44a",
+      "g-3079dd0f7486",
+      "g-80a2dfb6ea40",
+      "ru-leningrad-east",
+      "ru-leningrad-west",
+      "ru-vologda-west"
+    ],
+    "area_km2": 48665
+  },
+  {
+    "id": "ru-vologda-west",
+    "name": "West Vologda / Cherepovets・Vytegra (ヴォログダ西部・チェレポヴェツ)",
+    "region": "RU",
+    "country": "RU",
+    "x": 868.4,
+    "y": 119.8,
+    "terrain": "forest",
+    "coastal": False,
+    "neighbors": [
+      "g-3d8a063bb987",
+      "g-7ff3e944d8d4",
+      "g-80a2dfb6ea40",
+      "g-c244b29809a4",
+      "g-f14926609d1b",
+      "ru-leningrad-east",
+      "ru-novgorod"
+    ],
+    "area_km2": 51725
+  },
+  {
+    "id": "ru-vologda-east",
+    "name": "East Vologda / Veliky Ustyug (ヴォログダ東部)",
+    "region": "RU",
+    "country": "RU",
+    "x": 900.2,
+    "y": 119.4,
+    "terrain": "forest",
+    "coastal": False,
+    "neighbors": [
+      "g-181cbf97a86c",
+      "g-3d8a063bb987",
+      "g-7ff3e944d8d4",
+      "ru-kostroma"
+    ],
+    "area_km2": 37730
+  },
+  {
+    "id": "ru-kostroma",
+    "name": "Kostroma (コストロマ州)",
+    "region": "RU",
+    "country": "RU",
+    "x": 895.3,
+    "y": 126.2,
+    "terrain": "forest",
+    "coastal": False,
+    "neighbors": [
+      "g-01becf2ecbb3",
+      "g-181cbf97a86c",
+      "g-21548413d3ff",
+      "g-6ca4eea4eb29",
+      "g-7ff3e944d8d4",
+      "g-f14926609d1b",
+      "ru-vologda-east"
+    ],
+    "area_km2": 52941
   }
 ]
 
@@ -27366,10 +28344,16 @@ WORLD_PROVINCE_SPLITS: Dict[str, List[str]] = {
     "g-b12dd2b9db3b-1914-1"
   ],
   "g-84d867cd5f0e": [
-    "g-84d867cd5f0e-1914-1"
+    "g-84d867cd5f0e-1914-1",
+    "ro-botosani",
+    "ro-neamt",
+    "ro-bacau",
+    "ro-vaslui"
   ],
   "g-268b88a7fae8": [
-    "g-268b88a7fae8-1914-1"
+    "g-268b88a7fae8-1914-1",
+    "ro-arges",
+    "ro-dambovita"
   ],
   "g-56bc4c59cd07": [
     "g-56bc4c59cd07-1914-1",
@@ -27450,5 +28434,77 @@ WORLD_PROVINCE_SPLITS: Dict[str, List[str]] = {
   ],
   "g-41a7ff4adbdf": [
     "chahar-xianghuang"
+  ],
+  "g-9854fff4cade": [
+    "ro-bihor"
+  ],
+  "g-7a3dbab3b2bc": [
+    "ro-caras-severin"
+  ],
+  "g-acf062113d82": [
+    "ro-satu-mare",
+    "ro-salaj",
+    "ro-bistrita-nasaud"
+  ],
+  "g-b96f590db7c6": [
+    "ro-sibiu",
+    "ro-hunedoara"
+  ],
+  "g-ecbcca2744f0": [
+    "ro-olt",
+    "ro-valcea",
+    "ro-gorj",
+    "ro-mehedinti"
+  ],
+  "g-e6842ec4dc66": [
+    "ro-calarasi",
+    "ro-ialomita",
+    "ro-giurgiu",
+    "ro-teleorman"
+  ],
+  "g-ec8480001de9": [
+    "ro-constanta",
+    "ro-braila",
+    "ro-buzau",
+    "ro-vrancea",
+    "ro-galati"
+  ],
+  "g-84d867cd5f0e-1914-1": [
+    "ro-cluj",
+    "ro-mures",
+    "ro-harghita"
+  ],
+  "g-268b88a7fae8-1914-1": [
+    "ro-covasna"
+  ],
+  "g-3b680adde68a": [
+    "de-braunschweig",
+    "de-lueneburg",
+    "de-weser-ems"
+  ],
+  "g-c3c32d5219a3": [
+    "de-niederbayern",
+    "de-oberpfalz",
+    "de-oberfranken",
+    "de-mittelfranken",
+    "de-unterfranken",
+    "de-schwaben"
+  ],
+  "g-c244b29809a4": [
+    "ru-petsamo",
+    "ru-murmansk-west",
+    "ru-murmansk-east",
+    "ru-karelia-north",
+    "ru-karelia-central",
+    "ru-ladoga-karelia"
+  ],
+  "g-7ff3e944d8d4": [
+    "ru-vyborg",
+    "ru-leningrad-west",
+    "ru-leningrad-east",
+    "ru-novgorod",
+    "ru-vologda-west",
+    "ru-vologda-east",
+    "ru-kostroma"
   ]
 }

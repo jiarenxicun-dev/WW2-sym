@@ -639,7 +639,7 @@ async function initApp() {
       const defaultState = window.STANDALONE_BOOTSTRAP.state_world || window.STANDALONE_BOOTSTRAP.state_aiwa;
       let saved = null;
       try {
-        saved = JSON.parse(localStorage.getItem("aiwa_web_standalone_state_world_v4") || "null");
+        saved = JSON.parse(localStorage.getItem("aiwa_web_standalone_state_world_v5") || "null");
       } catch (e) {}
       APP_STATE = saved || JSON.parse(JSON.stringify(defaultState));
       if (saved) {
